@@ -4,7 +4,6 @@
 - revisit file uploading/attachments (migrate to paperclip) 
 - get rid of everthing in /plugin that we can remove
 - migrate to rails 3 and ruby 1.9.3
-- move themes into seperate repo
 - easy install script
 - documentation
 - security audit
