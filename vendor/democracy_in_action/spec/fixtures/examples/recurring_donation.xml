@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<recurring_donation>
+
+<item>
+<key>13300</key>
+<recurring_donation_KEY>13300</recurring_donation_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <supporter_KEY></supporter_KEY>
+  <donation_KEY></donation_KEY>
+  <merchant_account_KEY></merchant_account_KEY>
+  <Last_Modified></Last_Modified>
+  <Transaction_Date>2008-06-25 20:56:36.0</Transaction_Date>
+  <RPREF></RPREF>
+  <TRXPNREF></TRXPNREF>
+  <RESULT></RESULT>
+  <PROFILEID></PROFILEID>
+  <RESPMSG></RESPMSG>
+  <amount></amount>
+  <Start_Date></Start_Date>
+  <PAYPERIOD></PAYPERIOD>
+  <TERM></TERM>
+  <Tracking_Code></Tracking_Code>
+  <Designation_Code></Designation_Code>
+  <Email></Email>
+  <First_Name></First_Name>
+  <Last_Name></Last_Name>
+  <Tax_Status></Tax_Status>
+  <Status></Status>
+  <Note></Note>
+  </item><count>1</count>
+</recurring_donation></data>
+
+

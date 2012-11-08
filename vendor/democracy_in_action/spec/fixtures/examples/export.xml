@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<export>
+
+<item>
+<key>569</key>
+<export_KEY>569</export_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <campaign_manager_KEY></campaign_manager_KEY>
+  <report_KEY></report_KEY>
+  <query_KEY></query_KEY>
+  <Last_Modified>2008-06-25 20:19:56.0</Last_Modified>
+  <Date_Created>2008-06-25 20:19:56.0</Date_Created>
+  <Reference_Name>test</Reference_Name>
+  <Status>Active</Status>
+  <Start_Date></Start_Date>
+  <Type></Type>
+  <Recurring_Start></Recurring_Start>
+  <Recurring_Frequency></Recurring_Frequency>
+  <Filename_Format></Filename_Format>
+  <Last_Run></Last_Run>
+  <Last_Filename></Last_Filename>
+  <Last_Linecount></Last_Linecount>
+  <Notification_Email></Notification_Email>
+  <Header_Type></Header_Type>
+  <Header_Details></Header_Details>
+  <Format></Format>
+  <Format_Details></Format_Details>
+  <Compression></Compression>
+  <Footer></Footer>
+  <Error_Message></Error_Message>
+  <Request></Request>
+  </item><count>1</count>
+</export></data>
+
+

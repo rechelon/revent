@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<permission>
+<Field>permission_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>campaign_manager_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>name</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>role</Field>
+  <Type>varchar(32)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>exclude_role</Field>
+  <Type>varchar(64)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Details</Field>
+  <Type>enum('write','read')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default>write</Default>
+  <Extra></Extra>
+  <count>7</count>
+</permission></data>
+
+

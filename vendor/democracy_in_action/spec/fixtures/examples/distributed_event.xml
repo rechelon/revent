@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<distributed_event>
+
+<item>
+<key>136</key>
+<distributed_event_KEY>136</distributed_event_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY>0</chapter_KEY>
+  <Last_Modified></Last_Modified>
+  <Date_Created></Date_Created>
+  <Name>sign up</Name>
+  <Type></Type>
+  <Description>do it now</Description>
+  <Signup_Header></Signup_Header>
+  <Signup_Header_for_Event></Signup_Header_for_Event>
+  <Signup_Help_Text></Signup_Help_Text>
+  <Signup_Footer></Signup_Footer>
+  <Signup_redirect_path></Signup_redirect_path>
+  <Search_Header></Search_Header>
+  <Individual_Signup_Header></Individual_Signup_Header>
+  <Individual_Signup_Additional_Text></Individual_Signup_Additional_Text>
+  <Individual_Signup_Redirect></Individual_Signup_Redirect>
+  <Request>0,First_Name,Last_Name,Email</Request>
+  <Required>0</Required>
+  <Start></Start>
+  <End></End>
+  <merchant_account_KEY>0</merchant_account_KEY>
+  <Confirm_Events>0</Confirm_Events>
+  <Hide_Map>0</Hide_Map>
+  <signup_$email_trigger_KEYS></signup_$email_trigger_KEYS>
+  <attend_$email_trigger_KEYS></attend_$email_trigger_KEYS>
+  <Template></Template>
+  <Suggested_Name></Suggested_Name>
+  <Suggested_Tell_a_Friend_Message></Suggested_Tell_a_Friend_Message>
+  <template_KEY></template_KEY>
+  </item><count>5</count>
+</distributed_event></data>
+
+

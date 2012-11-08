@@ -1,0 +1,39 @@
+<div class="calendar-form">
+  <ul>
+    <li><a href="#info-tab-<%= calendar.get('id') %>">Info</a></li>
+    <li><a href="#text-tab-<%= calendar.get('id') %>">Intro Text</a></li>
+    <li><a href="#host-tab-<%= calendar.get('id') %>">Host Form</a></li>
+    <li><a href="#salsa-tab-<%= calendar.get('id') %>">Salsa</a></li>
+  </ul>
+  <div id="info-tab-<%= calendar.get('id') %>">
+    <ul class="calendar-form-page">
+      <li>
+        <label>permalink</label>
+        <div class="data"><%= calendar.get('permalink') %></div>
+      </li>
+      <li>
+        <label>theme</label>
+        <div class="data"><%= calendar.get('theme') %></div>
+      </li>
+      <li>
+        <label>auto publish reports</label>
+        <div class="data"><%= calendar.get('auto_publish_reports') %></div>
+      </li>
+      <li>
+        <label>start date</label>
+        <div class="data"><%= calendar.get('event_start') %></div>
+      </li>
+      <li>
+        <label>end date</label>
+        <div class="data"><%= calendar.get('event_end') %></div>
+      </li>
+      <li>
+        <label>events expire</label>
+        <div class="data">after <%= calendar.get('days_before_event_expiration') %> days</div>
+      </li>
+    </ul>
+  </div>
+  <div id="text-tab-<%= calendar.get('id') %>"></div>
+  <div id="host-tab-<%= calendar.get('id') %>"></div>
+  <div id="salsa-tab-<%= calendar.get('id') %>"></div> 
+</div>

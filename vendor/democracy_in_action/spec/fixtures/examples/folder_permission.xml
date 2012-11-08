@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<folder_permission>
+
+<item>
+<key>154</key>
+<folder_permission_KEY>154</folder_permission_KEY>
+  <organization_KEY>962</organization_KEY>
+  <folder>export</folder>
+  <Enable_Restrictions>1</Enable_Restrictions>
+  <Allow_Supporters_Only>0</Allow_Supporters_Only>
+  <query_KEY>0</query_KEY>
+  <groups_KEYS>0</groups_KEYS>
+  </item><count>2</count>
+</folder_permission></data>
+
+

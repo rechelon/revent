@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<auto_login>
+<Field>auto_login_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Script_URL</Field>
+  <Type>varchar(255)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>AES_Password</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>4</count>
+</auto_login></data>
+
+

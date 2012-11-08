@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<role>
+<Field>role_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>role</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Display_Name</Field>
+  <Type>varchar(64)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Description</Field>
+  <Type>text</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Show_Me</Field>
+  <Type>tinyint(1)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Last_Modified</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>CURRENT_TIMESTAMP</Default>
+  <Extra>on update CURRENT_TIMESTAMP</Extra>
+  <Field>Date_Created</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>0000-00-00 00:00:00</Default>
+  <Extra></Extra>
+  <Field>Amount</Field>
+  <Type>float(10,2)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Recurring_Amount</Field>
+  <Type>float(10,2)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Recurring_Term</Field>
+  <Type>enum('Monthly','Quarterly','Yearly')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Min_Supporter_Count</Field>
+  <Type>int(11)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Max_Supporter_Count</Field>
+  <Type>int(11)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Plugin_Type</Field>
+  <Type>enum('Not a plugin','Plugin','Paid Plugin')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default>Not a plugin</Default>
+  <Extra></Extra>
+  <Field>Can_Edit_Dashboards</Field>
+  <Type>tinyint(1)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default>0</Default>
+  <Extra></Extra>
+  <count>15</count>
+</role></data>
+
+

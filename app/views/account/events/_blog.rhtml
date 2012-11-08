@@ -1,0 +1,5 @@
+<tr class ="profile_item_row">
+  <td><%= link_to 'Delete', :permalink => @calendar.permalink, :controller => 'account/blogs', :action => 'destroy', :id => blog %></td>
+	<td><%= blog.created_at.to_s(:short) %></td>
+	<td><%= blog.title %></td>
+</tr>

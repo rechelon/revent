@@ -1,0 +1,89 @@
+<div class="event-form">
+  <div class="meta-info">  
+    <div class="info"><label>Id</label><div class="data">
+      <%= event.get('id') %></div>
+    </div>
+    <div class="info"><label>Created</label><div class="data"><%= Date.parse(event.get('created_at')).toString('MM/dd/yyyy hh:mm tt') %></div></div>
+    <div class="info"><label>Last Updated</label><div class="data"><%= Date.parse(event.get('updated_at')).toString('MM/dd/yyyy hh:mm tt') %></div></div>
+    <div class="info"><label for="latitude">Geocode</label><div class="data">
+      <%= event.get('latitude') %>, <%= event.get('longitude') %>, <%= event.get('precision') %>
+    </div></div>
+    <div class="info"><label>District</label><div class="data"><%= event.get('district') %></div></div>  
+    <div class="info"><label>Legislators</label><div class="data">Not Available</div></div>    
+    <div class="checkboxes">
+      <div class="checkbox">
+        <label for="sticky">Category</label>
+        <%= select_field(categories.toSelect(),{name:'category_id'},event.get('category_id')) %>
+      </div>
+      <div class="checkbox">
+        <label for="sticky">Calendar</label>
+        <%= select_field(calendars.toSelect(),{name:'calendar_id'},event.get('calendar_id')) %>
+      </div>
+      <div class="checkbox">
+        <label for="sticky">Spotlight</label>
+        <%= checkbox({name:'sticky'},event.get('sticky')) %>
+      </div>
+      <div class="checkbox">
+        <label for="private">Private</label>
+        <%= checkbox({name:'private'},event.get('private')) %>
+      </div>
+      <div class="checkbox">
+        <label for="worksite_event">Worksite Event</label>
+        <%= checkbox({name:'worksite_event'},event.get('worksite_event')) %>
+      </div>
+      <div class="checkbox">
+        <label for="show_map">Show Map</label>
+        <%= checkbox({name:'show_map'},event.get('show_map')) %>
+      </div>
+      <div class="checkbox">
+        <label for="reports_enabled">Reports Enabled</label>
+        <%= checkbox({name:'reports_enabled'},event.get('reports_enabled')) %>
+      </div>
+    </div>
+  </div>
+  <div class="main-info">
+    <div class='form-controls'>
+      <ul class='form-controls'>
+        <li><a action="save" class="button" href="#">Save</a></li>
+        <li><a action="copy" class="button" href="#">Copy</a></li>
+        <li><a action="alert_nearby_supporters" class="button" href="/admin/events/alert_nearby_supporters/<%= event.get('id') %>">Alert Nearby Supporters</a></li>
+      </ul>
+      <div class="errors">
+      </div>
+    </div>
+    <div class="basic-info">
+      <div class="name"><label for="name">name</label><input class="name-field" name="name" value="<%= event.get('name') %>" /></div>
+      <div class="subtitle"><label for="subtitle">subtitle</label><input class="subtitle-field" name="subtitle" value="<%= event.get('subtitle') %>" /></div>
+      <div class="description"><label for="description">description</label><textarea name="description"><%= event.get('description') %></textarea></div>          
+      <div class="clear"></div>
+      <fieldset>
+        <div class="field"><label for="host_email">host email</label><input name="host_email" value="<%= event.get('host_email') %>" /></div>
+        <div class="field"><label for="start">start</label><input class="date start" name="start" value="<%= event.get_start() %>" /></div>
+        <div class="field"><label for="end">end</label><input class="date end" name="end" value="<%= event.get_end() %>" /></div>  
+        <div class="time_tbd"><%= checkbox({name:'time_tbd'},event.get('time_tbd')) %><label for="time_tbd">time tbd</label></div>  
+        <div class="field"><label for="organization">organization</label><input name="organization" value="<%= event.get('organization') %>" /></div>
+        <div class="field"><label for="max_attendees">max_attendees</label><input name="max_attendees" value="<%= event.get('max_attendees') %>" /></div>
+        <div class="field"><label for="fb_id">fb_id</label><input name="fb_id" value="<%= event.get('fb_id') %>" /></div>
+        <div class="custom_attributes">
+          <%= event.renderCustomAttributes() %>
+        </div>         
+      </fieldset>      
+      <fieldset class="address">
+        <h3>Location</h3>
+        <div class="locationless">
+          <input type="checkbox" 
+            name="locationless" 
+            <% if(event.get('locationless')){ print('checked="checked"') } %> 
+            value="<%= event.get('locationless') %>" 
+          />
+          <label for="locationless">Locationless</label>          
+        </div>
+        <div class="field"><label for="location">address</label><input name="location" value="<%= event.get('location') %>" /></div>
+        <div class="field"><label for="city">city</label><input name="city" value="<%= event.get('city') %>" /></div>
+        <div class="field"><label for="state">state</label><input name="state" value="<%= event.get('state') %>" /></div>
+        <div class="field"><label for="postal_code">postal_code</label><input name="postal_code" value="<%= event.get('postal_code') %>" /></div>
+        <div class="field"><label for="directions">directions</label><textarea name="directions"><%= event.get('directions') %></textarea></div>
+      </fieldset>
+    </div>
+  </div>
+</div>  

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<pledge>
+<Field>pledge_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>chapter_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>supporter_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Pledge_Date</Field>
+  <Type>date</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>amount</Field>
+  <Type>float(10,2)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Due_Date</Field>
+  <Type>date</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>status</Field>
+  <Type>enum('New','Fulfilled','Overdue')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>8</count>
+</pledge></data>
+
+

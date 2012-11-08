@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<url_rewrite>
+<Field>url_rewrite_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>host</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>pattern</Field>
+  <Type>varchar(255)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>target</Field>
+  <Type>varchar(255)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>external_redirect</Field>
+  <Type>tinyint(1)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>stop_after_match</Field>
+  <Type>tinyint(1)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default>0</Default>
+  <Extra></Extra>
+  <Field>_Order</Field>
+  <Type>int(11)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>8</count>
+</url_rewrite></data>
+
+

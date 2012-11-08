@@ -1,0 +1,20 @@
+<% form_for :user, :url=>url_for(:permalink=>@calendar.permalink,:controller=>'account', :action=>'create') do |f| -%>
+  <div class="user-signup">
+    <%= f.label :first_name%>
+    <%= f.text_field :first_name%>
+    <%= f.label :last_name%>
+    <%= f.text_field :last_name%>
+    <%= f.label :postal_code%>
+    <%= f.text_field :postal_code%>
+  </div>
+  <div class="user-signup">
+    <%= f.label :email%>
+    <%= f.text_field :email%>
+    <%= f.label :password%>
+    <%= f.password_field :password%>
+    <%= f.label :password_confirmation%>
+    <%= f.password_field :password_confirmation%>
+    <div class="signup-field"><%= submit_tag('Sign up', :class=>'btn btn-primary') %></div>
+  </div>
+  <input class="redirect" type="hidden" name="redirect" value=""/>
+<% end -%>

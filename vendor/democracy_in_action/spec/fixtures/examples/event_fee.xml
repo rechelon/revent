@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<event_fee>
+
+<item>
+<key>291</key>
+<event_fee_KEY>291</event_fee_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY>0</chapter_KEY>
+  <event_KEY>10915</event_KEY>
+  <Category>Normal</Category>
+  <amount>25.00</amount>
+  <membership_level_KEY></membership_level_KEY>
+  <Description></Description>
+  <Status>Active</Status>
+  </item><count>4</count>
+</event_fee></data>
+
+

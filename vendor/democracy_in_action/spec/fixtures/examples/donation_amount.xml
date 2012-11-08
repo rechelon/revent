@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<donation_amount>
+
+<item>
+<key>1</key>
+<donation_amount_KEY>1</donation_amount_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <amount></amount>
+  <Description>test</Description>
+  <Default_Amount></Default_Amount>
+  <minimum_last_donation></minimum_last_donation>
+  <maximum_last_donation></maximum_last_donation>
+  </item><count>1</count>
+</donation_amount></data>
+
+

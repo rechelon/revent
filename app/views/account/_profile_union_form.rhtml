@@ -1,0 +1,60 @@
+<% fields_for :user, @user do |user| %>
+  <% user.fields_for :custom_attributes_data, @user.custom_attributes_data do |custom| %>
+    <div class="control-group">
+      <label class="checkbox" for="show_phone_on_host_profile"><%= custom.check_box 'send_list', :checked_value => 'We will send you a list of people in your area to call about your event.', :checked => true, :id => 'send_list_confirmation'  %>
+      Yes, send me a list of people in area to call and invite to my event
+      </label>
+    </div> 
+    <%
+    member_options =[
+      ['Select',''],
+      ['Yes','yes'],
+      ['No','no']
+    ]
+    selected_member = @user.custom_attributes_data.union_member || ''
+    %>
+    <div class="control-group">
+      <label for="user[custom_attributes_data][union_member]" class="control-label">            
+      Are you a union member? </label>
+      <div class="controls">
+      <select name="user[custom_attributes_data][union_member]" id="union-membership">
+        <%= options_for_select(member_options,selected_member) %>
+      </select>
+      </div>
+    </div>
+    <%
+    employee_options=[
+      ['Select',''],
+      ['Yes','yes'],
+      ['No','no']
+    ]
+    selected_employee = @user.custom_attributes_data.union_employee || ''
+    %>
+    <div class="control-group union-employee">
+      <label for="user[custom_attributes_data][union_employee]" class="control-label">            
+        Do you work for a union? </label>
+        <div class="controls">
+        <select name="user[custom_attributes_data][union_employee]" id="union-employee">
+        <%= options_for_select(employee_options,selected_employee) %>
+      </select>
+      </div>
+    </div>
+    <%
+      selected_union = @user.custom_attributes_data.union_name || ''
+    %>
+    <div  class="control-group which-union">
+      <label class="control-label">Which Union?</label>
+      <div class="controls">
+        <select name="user[custom_attributes_data][union_name]">
+        <%= options_for_select(union_options, selected_union) %>
+        </select>
+      </div>
+    </div>
+    <div class="control-group union-local">
+      <label class="control-label">Which Local? </label>
+      <div class="controls">
+        <%= custom.text_field "other_organization", :id => 'other-organization' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

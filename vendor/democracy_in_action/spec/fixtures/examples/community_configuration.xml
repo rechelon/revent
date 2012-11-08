@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<community_configuration>
+
+<item>
+<key>2</key>
+<community_configuration_KEY>2</community_configuration_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Name>test</Name>
+  <groups_KEY></groups_KEY>
+  <default_groups_KEY></default_groups_KEY>
+  <profile_fields></profile_fields>
+  <friend_display_fields></friend_display_fields>
+  <search_fields></search_fields>
+  <signup_fields></signup_fields>
+  <privacy_fields></privacy_fields>
+  <profile_edit_fields></profile_edit_fields>
+  <RSS_URL></RSS_URL>
+  <search_text></search_text>
+  <search_header></search_header>
+  <invite_subject></invite_subject>
+  <invite_message></invite_message>
+  <right_column_header></right_column_header>
+  <right_column_footer></right_column_footer>
+  <tab_names></tab_names>
+  <search_result_fields></search_result_fields>
+  <public_search_text></public_search_text>
+  <public_search_fields></public_search_fields>
+  <public_display_fields></public_display_fields>
+  <new_message$email_trigger_KEYS></new_message$email_trigger_KEYS>
+  <Picture_Width></Picture_Width>
+  </item><count>1</count>
+</community_configuration></data>
+
+

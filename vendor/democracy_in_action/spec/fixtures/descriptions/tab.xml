@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<tab>
+<Field>tab_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Reference_Name</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Title</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Directory</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Color</Field>
+  <Type>varchar(6)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>6</count>
+</tab></data>
+
+

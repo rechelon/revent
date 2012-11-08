@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<cms_configuration>
+<Field>cms_configuration_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>CMS_Type</Field>
+  <Type>enum('Mambo')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Homepage_URL</Field>
+  <Type>varchar(255)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Admin_URL</Field>
+  <Type>varchar(255)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Process_Login_URL</Field>
+  <Type>varchar(255)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>username</Field>
+  <Type>varchar(64)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>password</Field>
+  <Type>varchar(64)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>8</count>
+</cms_configuration></data>
+
+

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<action_stats2>
+
+<item>
+<key>8226260</key>
+<action_stats2_KEY>8226260</action_stats2_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Last_Modified>2007-09-13 01:15:24.0</Last_Modified>
+  <table_name>campaign</table_name>
+  <table_key>12722</table_key>
+  <action_KEY>12722</action_KEY>
+  <supporter_table_key>5570080</supporter_table_key>
+  <supporter_action_KEY>5570080</supporter_action_KEY>
+  <Target_ID_Type>recipient_KEY</Target_ID_Type>
+  <Target_ID_Value>121448</Target_ID_Value>
+  <Method>Email</Method>
+  <Result>Success</Result>
+  </item><count>1</count>
+</action_stats2></data>

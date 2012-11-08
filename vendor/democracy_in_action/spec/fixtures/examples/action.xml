@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<action>
+
+<item>
+<key>147</key>
+<action_KEY>147</action_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Last_Modified>2008-06-25 20:19:47.0</Last_Modified>
+  <Date_Created>2008-06-25 20:19:47.0</Date_Created>
+  <Reference_Name>test</Reference_Name>
+  <Title></Title>
+  <Description></Description>
+  <Allow_Comments></Allow_Comments>
+  <Comment_Question></Comment_Question>
+  <Max_Number_Of_Emails>100000</Max_Number_Of_Emails>
+  <Max_Number_Of_Faxes>0</Max_Number_Of_Faxes>
+  <Signatures></Signatures>
+  <Signature_Goal></Signature_Goal>
+  <Deadline></Deadline>
+  <Signature_Minimum_for_Display></Signature_Minimum_for_Display>
+  <Allow_Anonymous></Allow_Anonymous>
+  <Footer></Footer>
+  <Request></Request>
+  <Required></Required>
+  <Thank_You_Text></Thank_You_Text>
+  <redirect_path></redirect_path>
+  <email_trigger_KEYS></email_trigger_KEYS>
+  <add_to_groups_KEYS></add_to_groups_KEYS>
+  <optionally_add_to_groups_KEYS></optionally_add_to_groups_KEYS>
+  <No_Recipient_Text></No_Recipient_Text>
+  <Excluded_Recipient_Text></Excluded_Recipient_Text>
+  <Restricted_Regions></Restricted_Regions>
+  <Restricted_Districts></Restricted_Districts>
+  <Restricted_Text></Restricted_Text>
+  <template_KEY></template_KEY>
+  <Style></Style>
+  <Status>Active</Status>
+  </item><count>1</count>
+</action></data>
+
+

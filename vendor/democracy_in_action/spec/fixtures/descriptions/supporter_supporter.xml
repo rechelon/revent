@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<supporter_supporter>
+<Field>supporter_supporter_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>chapter_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Last_Modified</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>CURRENT_TIMESTAMP</Default>
+  <Extra>on update CURRENT_TIMESTAMP</Extra>
+  <Field>supporter_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>supporter2_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>supporter2_Email</Field>
+  <Type>varchar(64)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Relationship</Field>
+  <Type>enum('Household','Friend','Neighbor','Spouse','Parent','Brother','Sister','Child','Boss','Employee','Coworker','Enemy','Referred By','Partner')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Source</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>9</count>
+</supporter_supporter></data>
+
+

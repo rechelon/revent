@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<role_tab>
+<Field>role_tab_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>role_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>tab_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>_Order</Field>
+  <Type>float</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>5</count>
+</role_tab></data>
+
+

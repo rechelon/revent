@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<role_permission>
+<Field>role_permission_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Last_Modified</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>CURRENT_TIMESTAMP</Default>
+  <Extra>on update CURRENT_TIMESTAMP</Extra>
+  <Field>Date_Created</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>0000-00-00 00:00:00</Default>
+  <Extra></Extra>
+  <Field>role_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>permission_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>table_name</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>field_name</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>level</Field>
+  <Type>enum('SELECT','INSERT','UPDATE','DELETE','ALL')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>9</count>
+</role_permission></data>
+
+

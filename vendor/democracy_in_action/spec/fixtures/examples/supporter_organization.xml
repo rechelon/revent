@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<supporter_organization>
+
+<item>
+<key>492158</key>
+<supporter_organization_KEY>492158</supporter_organization_KEY>
+  <supporter_KEY>1</supporter_KEY>
+  <organization_KEY>962</organization_KEY>
+  <supporter_KEY></supporter_KEY>
+  <organization_KEY></organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Last_Modified></Last_Modified>
+  <Date_Created></Date_Created>
+  <Title></Title>
+  <First_Name></First_Name>
+  <MI></MI>
+  <Last_Name></Last_Name>
+  <Suffix></Suffix>
+  <Email></Email>
+  <Password></Password>
+  <Receive_Email></Receive_Email>
+  <Email_Status></Email_Status>
+  <Email_Preference></Email_Preference>
+  <Soft_Bounce_Count></Soft_Bounce_Count>
+  <Hard_Bounce_Count></Hard_Bounce_Count>
+  <Last_Bounce></Last_Bounce>
+  <Receive_Phone_Blasts></Receive_Phone_Blasts>
+  <Phone></Phone>
+  <Cell_Phone></Cell_Phone>
+  <Phone_Provider></Phone_Provider>
+  <Work_Phone></Work_Phone>
+  <Pager></Pager>
+  <Home_Fax></Home_Fax>
+  <Work_Fax></Work_Fax>
+  <Street></Street>
+  <Street_2></Street_2>
+  <Street_3></Street_3>
+  <City></City>
+  <State></State>
+  <Zip></Zip>
+  <PRIVATE_Zip_Plus_4></PRIVATE_Zip_Plus_4>
+  <County></County>
+  <District></District>
+  <Country></Country>
+  <Latitude></Latitude>
+  <Longitude></Longitude>
+  <Organization></Organization>
+  <Department></Department>
+  <Occupation></Occupation>
+  <Instant_Messenger_Service></Instant_Messenger_Service>
+  <Instant_Messenger_Name></Instant_Messenger_Name>
+  <Web_Page></Web_Page>
+  <Alternative_Email></Alternative_Email>
+  <Other_Data_1></Other_Data_1>
+  <Other_Data_2></Other_Data_2>
+  <Other_Data_3></Other_Data_3>
+  <Notes></Notes>
+  <Source></Source>
+  <Source_Details></Source_Details>
+  <Source_Tracking_Code></Source_Tracking_Code>
+  <Tracking_Code></Tracking_Code>
+  <Status></Status>
+  <uid></uid>
+  <Timezone></Timezone>
+  <organization_KEY>962</organization_KEY>
+  <root_KEY>0</root_KEY>
+  <parent_KEY>0</parent_KEY>
+  <partner_KEY>0</partner_KEY>
+  <Last_Modified>2007-08-22 11:14:16.0</Last_Modified>
+  <Date_Created>2007-04-14 11:34:28.0</Date_Created>
+  <PRIVATE_Date_Created></PRIVATE_Date_Created>
+  <Name>Radical Designs</Name>
+  <Type></Type>
+  <Status>Active</Status>
+  <READONLY_Short_Name>radicaldesigns</READONLY_Short_Name>
+  <Description></Description>
+  <Organization_Homepage>www.radicaldesigns.org</Organization_Homepage>
+  <Newsletter_or_Listserve_Name></Newsletter_or_Listserve_Name>
+  <Custom_Header_HTML></Custom_Header_HTML>
+  <Custom_Footer_HTML></Custom_Footer_HTML>
+  <Print_Header></Print_Header>
+  <Print_Footer></Print_Footer>
+  <Base_URL></Base_URL>
+  <Secure_URL></Secure_URL>
+  <Street></Street>
+  <Street_2></Street_2>
+  <City></City>
+  <State></State>
+  <Zip></Zip>
+  <PRIVATE_Zip_Plus_4></PRIVATE_Zip_Plus_4>
+  <mail_server></mail_server>
+  <mail_user></mail_user>
+  <mail_pass></mail_pass>
+  <Mail_Status>Active</Mail_Status>
+  <Promotional_Code></Promotional_Code>
+  <Interests>Supporter/List Management,Campaigns/Petitions,Scorecard,Email Blasts,Fundraising,Events,Chapters</Interests>
+  <Note></Note>
+  <Global_Mail_HTML_Footer></Global_Mail_HTML_Footer>
+  <Global_Mail_Text_Footer></Global_Mail_Text_Footer>
+  <Link_Track_URL></Link_Track_URL>
+  <Open_Track_URL></Open_Track_URL>
+  <salsified>0</salsified>
+  <Status_Last_Modified></Status_Last_Modified>
+  <Date_Trial_Started></Date_Trial_Started>
+  <Contract_Date></Contract_Date>
+  <Tools_In_Contract></Tools_In_Contract>
+  <Closed_Date></Closed_Date>
+  <Closed_Reason></Closed_Reason>
+  <default_email_address></default_email_address>
+  <default_merchant_account_KEY></default_merchant_account_KEY>
+  <moved></moved>
+  <Blast_Notification_Email></Blast_Notification_Email>
+  <Country></Country>
+  <List_Size></List_Size>
+  <Usages></Usages>
+  <hear_about_us></hear_about_us>
+  <Tier></Tier>
+  <Tax_Status></Tax_Status>
+  <Staff_Contact></Staff_Contact>
+  </item><count>1</count>
+</supporter_organization></data>
+
+

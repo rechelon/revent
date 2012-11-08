@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<signup_page>
+
+<item>
+<key>835</key>
+<signup_page_KEY>835</signup_page_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY>0</chapter_KEY>
+  <Reference_Name>msc</Reference_Name>
+  <Last_Modified></Last_Modified>
+  <Date_Created>2006-07-08 12:13:07.0</Date_Created>
+  <Title>signup for updates!</Title>
+  <Header>header</Header>
+  <Request>0,First_Name,Last_Name,Street,City,State,Zip,Phone,Cell_Phone,Email,0,RADIO0,BOOL0,BOOL1,BOOL2,BOOL3,BOOL4,BOOL5,BOOL6,BOOL7,BOOL8,BOOL9,BOOL10,BOOL11,BOOL12,BOOL13</Request>
+  <Required>0,0,</Required>
+  <Include_Remember_Me_Link>0</Include_Remember_Me_Link>
+  <Opt_in_Text></Opt_in_Text>
+  <PreFooter></PreFooter>
+  <Footer></Footer>
+  <PreGroup_Text></PreGroup_Text>
+  <groups_KEYS>0</groups_KEYS>
+  <Automatically_add_to_Groups>0</Automatically_add_to_Groups>
+  <PreInterest_Text></PreInterest_Text>
+  <interest_KEYS>0</interest_KEYS>
+  <tag_KEYS></tag_KEYS>
+  <event_KEY>0</event_KEY>
+  <Request_Volunteer_Availability>0</Request_Volunteer_Availability>
+  <Email_Confirmed_Opt_In>0</Email_Confirmed_Opt_In>
+  <Default_Tracking_Code></Default_Tracking_Code>
+  <redirect_path></redirect_path>
+  <Maximum_Field_Width>0</Maximum_Field_Width>
+  <PRIVATE_trigger></PRIVATE_trigger>
+  <email_trigger_KEYS>0</email_trigger_KEYS>
+  <READONLY_Hit_Count>14</READONLY_Hit_Count>
+  <chapter_lookup></chapter_lookup>
+  <Template></Template>
+  </item><count>4</count>
+</signup_page></data>
+
+

@@ -1,0 +1,24 @@
+<td class="list-data">
+  <div class="report-list-element">
+    <div class="report-list-media">
+      <% if(report.get('primary_image')){ %>
+        <div class="report-list-image">
+          <%= "<img src='"+report.get("primary_image")+"' />" %>
+        </div>
+      <% } %>
+    </div>
+    <div class="report-list-basics">
+      <div class='report-list-location'>
+        <%= date + " - " + event.get("city") + ", " + event.get("state") %>
+      </div>
+      <div class="report-list-title">
+        <a href="/<%= permalink %>/reports/<%= event.id %>">
+          <%= event.get("name") %>
+        </a>
+      </div>
+      <div class="report-list-text">
+        <%= report.get("text") %>
+      </div>
+    </div>
+  </div>
+</td>

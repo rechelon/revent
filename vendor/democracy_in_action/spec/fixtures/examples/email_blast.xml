@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<email_blast>
+
+<item>
+<key>15767</key>
+<email_blast_KEY>15767</email_blast_KEY>
+  <Last_Modified>2006-04-27 14:05:44.0</Last_Modified>
+  <Date_Created></Date_Created>
+  <Date_Requested>2005-10-31 21:33:35.0</Date_Requested>
+  <Reference_Name></Reference_Name>
+  <template_KEY></template_KEY>
+  <Stage>Complete</Stage>
+  <Subject>test subject</Subject>
+  <_From>Radical Designs</_From>
+  <From_Email_address>radicaldesigns@democracyinaction.org</From_Email_address>
+  <Reply_To_Email>radicaldesigns@democracyinaction.org</Reply_To_Email>
+  <Is_Phone_Blast></Is_Phone_Blast>
+  <Is_Text_Only></Is_Text_Only>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <campaign_manager_KEY>2064</campaign_manager_KEY>
+  <query_KEY>14284</query_KEY>
+  <Test_Email_Address></Test_Email_Address>
+  <Status>Pending</Status>
+  <campaign_KEY></campaign_KEY>
+  <HTML_Content>&amp;nbsp;&amp;nbsp;&amp;nbsp; hey there&lt;br&gt;</HTML_Content>
+  <Text_Content>hello, y'all</Text_Content>
+  <Template></Template>
+  <Footer></Footer>
+  <number_failed></number_failed>
+  <number_sent></number_sent>
+  <total_target_supporters>4</total_target_supporters>
+  <sources></sources>
+  <Processing_Thread>Mon Oct 31 20:35:20 CST 2005</Processing_Thread>
+  <attempts>1</attempts>
+  <last_processed_supporter_KEY></last_processed_supporter_KEY>
+  <Spread_The_Word></Spread_The_Word>
+  <Scheduled_Time>2005-10-31 21:33:35.0</Scheduled_Time>
+  <Do_Not_Track_URL></Do_Not_Track_URL>
+  <Do_Not_Track_Open_Rate></Do_Not_Track_Open_Rate>
+  <From_Phone_Number></From_Phone_Number>
+  <Archive>1</Archive>
+  <Display_To_User></Display_To_User>
+  <chapter_KEYS></chapter_KEYS>
+  <chapter_KEYS_Negate></chapter_KEYS_Negate>
+  <Use_Short_Links></Use_Short_Links>
+  </item><count>13</count>
+</email_blast></data>
+
+

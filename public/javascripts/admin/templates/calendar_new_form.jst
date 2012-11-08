@@ -1,0 +1,59 @@
+<form class="calendar-form">
+  <div class="errors"></div>
+ <ul class="calendar-form-page">
+    <li>
+      <label>name</label>
+      <div class="data">
+        <input name="name" value="<%= calendar.get('name') %>" />
+      </div>
+    </li>
+    <li>
+      <label>permalink</label>
+      <div class="data">
+        <input name="permalink" value="<%= calendar.get('permalink') %>" />
+      </div>
+    </li>
+    <li>
+      <label>auto publish reports</label>
+      <div class="data">
+        <%= checkbox({name:'auto_publish_reports'}, calendar.get('auto_publish_reports')) %>
+      </div>
+    </li>      
+    <li>
+      <label>theme</label>
+      <div class="data">
+        <%= select_field(revent.themes.toSelect(), { name:'theme_id'}, calendar.get('theme_id')) %>
+      </div>
+    </li>
+    <li>
+      <label>start date</label>
+      <div class="data">
+        <input name="event_start" class="date event_start" value"<%= calendar.getStart() %>" />
+      </div>
+    </li>
+    <li>
+      <label>end date</label>
+      <div class="data">
+        <input name="event_start" class="date event_end" value="<%= calendar.getEnd() %>" />
+      </div>
+    </li>
+    <li>
+      <label>default event start</label>
+      <div class="data">
+        <input name="suggested_event_start" class="date event_start" value="<%= calendar.getSuggestedStart() %>" />
+      </div>
+    </li>
+    <li>
+      <label>events expire (# of days)</label>
+      <div class="data">
+        <input name="days_before_event_expiration" value="<%= calendar.get('days_before_event_expiration') %>" />
+      </div>
+    </li>
+    <li>
+      <label>admin email</label>
+      <div class="data">
+        <input name="admin_email" value="<%= calendar.get('admin_email') %>" />
+      </div>
+    </li>
+  </ul>
+</form>

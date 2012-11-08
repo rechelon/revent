@@ -1,0 +1,8 @@
+<div id="targets-official-field" class="control-group">
+  <label class="control-label"><span class="req">*</span>Are you targeting an elected official with your event?</label>
+  <div class="controls">
+  <select class="required" name="event[custom_attributes_data][targets_official]" id="targets-official">
+  <%= options_for_select(Site.current.config.custom_event_options['targets_official'], @event.custom_attributes_data.targets_official) %>
+  </select>
+  </div>
+</div>

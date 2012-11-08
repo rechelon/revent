@@ -1,0 +1,7 @@
+<% unless @nearby_events.empty? %>
+  Nearby events:<br/>
+  <% for nearby_event in @nearby_events %>
+    <%= link_to nearby_event.name, :permalink => @calendar.permalink, :controller => '/events', :action => 'show', :id => nearby_event %>
+    <%= nearby_event.address %><br/>
+  <% end %>
+<% end %>

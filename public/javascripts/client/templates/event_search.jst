@@ -1,0 +1,29 @@
+<div id="event-search-form" class="form">
+  <div class="row">
+    <div class="span9">
+      <h3 class="search-results">Search</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6">
+      <div class="control-group control-group-zip">
+        <label for="postal_code" class="control-label">Zip / Postal Code</label>
+        <input type="text" filter="postal_code" class='filter input-medium' name="postal_code" id="postal_code" value='<%= params.postal_code %>' />
+      </div>
+      <div class="control-group control-group-state">
+        <label for="state" class="control-label">State</label>
+        <%= select_field(us_states,{filter:'state','class':'filter input-small',name:'state'},params.state) %>
+        &nbsp;
+      </div>
+      <% if(categories.length > 1){ %>
+        <div class="control-group control-group-category">
+          <label for="category" class="control-label">Category</label>
+          <%= select_field(options_for_select(categories), {filter:'category_id','class':'filter',name:'category_id', id: 'category_id'}, params.category_id) %>
+        </div>
+      <% } %>
+      <div class="control-group">
+        <img class="search-loader" src="/images/ajax-loader.gif"/>
+      </div>
+    </div>
+  </div>
+</div>

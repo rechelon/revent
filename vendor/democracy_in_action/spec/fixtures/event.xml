@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data organization_KEY="962">
+  <event>
+    <item>
+      <End>Fri Mar 23 2007 14:30:00 GMT-0400 (EDT)</End>
+      <Footer/>
+      <Reminder_Hours>0</Reminder_Hours>
+      <Guests_allowed_BOOLVALUE>false</Guests_allowed_BOOLVALUE>
+      <Last_Modified>Thu Mar 22 2007 14:49:52 GMT-0400 (EDT)</Last_Modified>
+      <Guests_allowed>false</Guests_allowed>
+      <Ticket_Price>0.00</Ticket_Price>
+      <key>25522</key>
+      <Automatically_add_to_Groups>false</Automatically_add_to_Groups>
+      <This_Event_Costs_Money>false</This_Event_Costs_Money>
+      <Reference_Name/>
+      <Reminder_Status/>
+      <Display_to_Chapters_BOOLVALUE>false</Display_to_Chapters_BOOLVALUE>
+      <national_event_KEY>0</national_event_KEY>
+      <Required>0,Email</Required>
+      <Maximum_Waiting_List_Size>0</Maximum_Waiting_List_Size>
+      <Longitude>0.0000000000</Longitude>
+      <merchant_account_KEY>0</merchant_account_KEY>
+      <Event_Name>Salsa Lessons Webinar:  Mar. 23, 2:00 p.m.</Event_Name>
+      <Contact_Email>jason@democracyinaction.org</Contact_Email>
+      <Request_Additional_Attendees_BOOLVALUE>false</Request_Additional_Attendees_BOOLVALUE>
+      <supporter_KEY>0</supporter_KEY>
+      <Start>Fri Mar 23 2007 14:00:00 GMT-0400 (EDT)</Start>
+      <redirect_path>http://www.democracyinaction.org/dia/organizationsORG/dia/content.jsp?content_KEY=1509</redirect_path>
+      <One_Column_Layout>true</One_Column_Layout>
+      <Request>0,First_Name,Last_Name,Email,Occupation,Organization,RADIO2</Request>
+      <object>event</object>
+      <Display_to_Chapters>false</Display_to_Chapters>
+      <Recurrence_Interval/>
+      <chapter_KEY>0</chapter_KEY>
+      <Header/>
+      <Latitude>0.0000000000</Latitude>
+      <Zip/>
+      <event_KEY>25522</event_KEY>
+      <Maximum_Attendees>20</Maximum_Attendees>
+      <Map_URL/>
+      <Recurrence_Frequency>None</Recurrence_Frequency>
+      <Description>&lt;p&gt;Join us for "Salsa Lessons," a half-hour introduction to DemocracyInAction's new user interface for users making the switch from our legacy UI.  Learn what's new, what's the same, and what you can do now that you couldn't before.&lt;/p&gt;
+&lt;p&gt;This webinar is geared to current DIA users.  Brand new or prospective users should register for a "DIA 101" general introduction session, which will also be conducted on the Salsa toolset. (All times are Eastern.)&lt;/p&gt;</Description>
+      <Template/>
+      <Automatically_add_to_Groups_BOOLVALUE>false</Automatically_add_to_Groups_BOOLVALUE>
+      <distributed_event_KEY>0</distributed_event_KEY>
+      <Request_Additional_Attendees>false</Request_Additional_Attendees>
+      <Default_Tracking_Code/>
+      <PRIVATE_Zip_Plus_4/>
+      <City/>
+      <This_Event_Costs_Money_BOOLVALUE>false</This_Event_Costs_Money_BOOLVALUE>
+      <Status>Active</Status>
+      <State/>
+      <Address/>
+      <groups_KEYS>0</groups_KEYS>
+      <Date_Created>Mon Mar 12 2007 13:36:10 GMT-0400 (EDT)</Date_Created>
+      <One_Column_Layout_BOOLVALUE>true</One_Column_Layout_BOOLVALUE>
+      <organization_KEY>962</organization_KEY>
+      <Directions/>
+    </item>
+  </event>
+</data>

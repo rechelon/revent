@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<workflow_field>
+
+<item>
+<key>1224</key>
+<workflow_field_KEY>1224</workflow_field_KEY>
+  <organization_KEY>962</organization_KEY>
+  <workflow_KEY></workflow_KEY>
+  <workflow_task_KEY></workflow_task_KEY>
+  <Type></Type>
+  <field_name></field_name>
+  <custom_label></custom_label>
+  <field_description>test</field_description>
+  <tooltip_text></tooltip_text>
+  <Use_Editor></Use_Editor>
+  <isReadonly></isReadonly>
+  <isRequired></isRequired>
+  <default_value></default_value>
+  <Show_If></Show_If>
+  <_Order></_Order>
+  <Validation_Regex></Validation_Regex>
+  <Validation_Error_Message></Validation_Error_Message>
+  </item><count>1</count>
+</workflow_field></data>
+
+

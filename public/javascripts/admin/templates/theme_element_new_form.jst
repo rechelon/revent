@@ -1,0 +1,12 @@
+<div class="theme-element-form">
+  <div class="basic-info">
+    <div class="name">
+      <label>element name</label>
+      <%= select_field(collection.theme.elementsToSelect(theme_element.get('name')), { name:'name'}, theme_element.get('name')) %>
+    </div>
+    <div class="markdown">
+      <label>html</label>
+      <div class="markdown-text-wrapper"><div class="markdown-text"></div></div>
+    </div>
+  </div>
+</div>

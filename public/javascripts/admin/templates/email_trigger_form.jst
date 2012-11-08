@@ -1,0 +1,26 @@
+<div class="trigger-form">
+  <div class="errors"></div>
+  <div class="trigger-form-fields">
+   <div>
+   <label for="name">email trigger type</label>
+    <%= select_field(trigger.getTypes(),{name:'name'},trigger.get('name')) %>
+    </div>
+    <div><label for="from_name">from name</label><input name="from_name" value="<%= trigger.get('from_name') %>" /></div>
+    <div><label for="from">from email address</label><input name="from" value="<%= trigger.get('from') %>" /></div>        
+    <div><label for="reply_to">reply to</label><input name="reply_to" value="<%= trigger.get('reply_to') %>" /></div>
+    <div><label for="bcc">bcc</label><input name="bcc" value="<%= trigger.get('bcc') %>" /></div>
+    <div><label for="subject">subject</label><input name="subject" value="<%= trigger.get('subject') %>" /></div>
+  </div>
+  <div class="trigger-form-content">
+    <p>The following tokens are available to insert event information (must include square-backets):<br><br>[EVENT_NAME], [EVENT_CITY], [EVENT_STATE], [EVENT_ADDRESS], [EVENT_START_DATE], [EVENT_START_TIME], [EVENT_LINK], [SIGNUP_LINK], [MANAGE_LINK], [REPORT_LINK], [NEW_REPORT_LINK], [HOST_NAME], [HOST_FIRST_NAME], [HOST_LAST_NAME], [HOST_EMAIL]</p>
+    <div class="trigger-form-html">
+      <label for="email_html">Content (HTML)</label>
+      <textarea name="email_html"><%= trigger.get('email_html') %></textarea>
+    </div>
+    <div class="trigger-form-plain">
+      <label for="email_html">Content (Plain Text)</label>
+      <textarea name="email_plain"><%= trigger.get('email_plain') %></textarea>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

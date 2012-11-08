@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<campaign>
+
+<item>
+<key>7004</key>
+<campaign_KEY>7004</campaign_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Last_Modified>2007-03-15 20:21:10.0</Last_Modified>
+  <Date_Created>2007-03-15 20:21:10.0</Date_Created>
+  <Reference_Name></Reference_Name>
+  <Campaign_Title>test</Campaign_Title>
+  <PRIVATE_Recent_Update></PRIVATE_Recent_Update>
+  <Description></Description>
+  <More_Info></More_Info>
+  <Learn_More_Link></Learn_More_Link>
+  <photo_KEY></photo_KEY>
+  <rep_KEYS></rep_KEYS>
+  <person_legislator_IDS></person_legislator_IDS>
+  <exclude_person_legislator_IDS></exclude_person_legislator_IDS>
+  <recipient_KEYS></recipient_KEYS>
+  <recipient_group_KEYS></recipient_group_KEYS>
+  <Suggested_Subject></Suggested_Subject>
+  <Subject_cannot_be_Edited></Subject_cannot_be_Edited>
+  <Letter_cannot_be_Edited></Letter_cannot_be_Edited>
+  <Letter_Salutation></Letter_Salutation>
+  <Suggested_Content></Suggested_Content>
+  <Footer></Footer>
+  <Hide_Message_Type_Options></Hide_Message_Type_Options>
+  <Allow_Emails>1</Allow_Emails>
+  <Allow_Faxes>1</Allow_Faxes>
+  <Max_Number_Of_Emails>10000</Max_Number_Of_Emails>
+  <Max_Number_Of_Faxes>0</Max_Number_Of_Faxes>
+  <PRIVATE_Emails_Sent>0</PRIVATE_Emails_Sent>
+  <PRIVATE_Faxes_Sent>0</PRIVATE_Faxes_Sent>
+  <Hide_Keep_Me_Informed></Hide_Keep_Me_Informed>
+  <Thank_You_Page_Text_or_HTML></Thank_You_Page_Text_or_HTML>
+  <Success_Message></Success_Message>
+  <Suppress_Automatic_Response_Email></Suppress_Automatic_Response_Email>
+  <Spread_The_Word_Text></Spread_The_Word_Text>
+  <Spread_The_Word_Redirect_Path></Spread_The_Word_Redirect_Path>
+  <exclude_rep_KEYS></exclude_rep_KEYS>
+  <Status></Status>
+  <Request></Request>
+  <Required></Required>
+  <redirect_path></redirect_path>
+  <email_trigger_KEYS></email_trigger_KEYS>
+  <groups_KEYS></groups_KEYS>
+  <Automatically_add_to_Groups></Automatically_add_to_Groups>
+  <Default_Tracking_Code></Default_Tracking_Code>
+  <READONLY_Hit_Count></READONLY_Hit_Count>
+  <Archive></Archive>
+  <Brief_Summary></Brief_Summary>
+  <Enable_Preview></Enable_Preview>
+  <Preview_Text></Preview_Text>
+  <No_Recipient_Text></No_Recipient_Text>
+  <Excluded_Recipient_Text></Excluded_Recipient_Text>
+  <Sponsorship_Link></Sponsorship_Link>
+  <Roll_Call_Vote></Roll_Call_Vote>
+  <roll_call_ID></roll_call_ID>
+  <Alternate_Description></Alternate_Description>
+  <Alternate_Subject></Alternate_Subject>
+  <Alternate_Content></Alternate_Content>
+  <Restricted_Regions></Restricted_Regions>
+  <Restricted_Districts></Restricted_Districts>
+  <Restricted_Text></Restricted_Text>
+  <campaignid></campaignid>
+  <Template></Template>
+  </item><count>36</count>
+</campaign></data>
+
+

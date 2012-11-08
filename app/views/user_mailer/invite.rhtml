@@ -1,0 +1,7 @@
+<%= @message %>
+
+You have been invited to <%= @event.name %>.
+
+This event will take place on <%= @event.start.strftime('%A %B %e at %l:%M%p') %> at <%= @event.location %> in <%= @event.city %>, <%= @event.in_usa? ? @event.state : @event.country %>.
+
+Please go to <%= @url %> to find out more about this event<%= @event.worksite_event? ? "" : "or to RSVP" %>.

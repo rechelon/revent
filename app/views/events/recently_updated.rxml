@@ -1,0 +1,17 @@
+xml.instruct! :xml, :version => "1.0", :encoding => "iso-8859-1"
+
+xml.eventlist do
+  xml.timestamp(Time.now)
+  @events.each do |event|
+    xml.event(:id => event.id) do
+      xml.name event.name
+      xml.description event.description
+      xml.location event.location
+      xml.city event.city
+      xml.state event.state
+      xml.postal_code event.postal_code
+      xml.date event.start.strftime("%m/%d")
+      xml.url url_for(:permalink => @calendar.permalink, :controller => 'events', :action => :show, :id => event.id, :only_path => false)
+    end
+  end
+end

@@ -1,0 +1,1 @@
+document.write('<div id="report-widget"><div class="report-widget-title"><%= link_to "#{@report.event.name}, #{@report.event.city}, #{@report.event.state}", :controller => "events", :action => "show", :id => @report.event.id, :only_path=>false %></div></div>');

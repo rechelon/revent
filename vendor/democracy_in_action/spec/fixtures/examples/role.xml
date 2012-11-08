@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<role>
+
+<item>
+<key>581</key>
+<role_KEY>581</role_KEY>
+  <organization_KEY>962</organization_KEY>
+  <role></role>
+  <Display_Name></Display_Name>
+  <Description></Description>
+  <Show_Me></Show_Me>
+  <Last_Modified></Last_Modified>
+  <Date_Created>2008-06-25 20:56:37.0</Date_Created>
+  <Amount></Amount>
+  <Recurring_Amount></Recurring_Amount>
+  <Recurring_Term></Recurring_Term>
+  <Min_Supporter_Count></Min_Supporter_Count>
+  <Max_Supporter_Count></Max_Supporter_Count>
+  <Plugin_Type>Not a plugin</Plugin_Type>
+  <Can_Edit_Dashboards>0</Can_Edit_Dashboards>
+  </item><count>1</count>
+</role></data>
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<tag_data>
+<Field>tag_data_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Last_Modified</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>CURRENT_TIMESTAMP</Default>
+  <Extra></Extra>
+  <Field>database_table_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>table_key</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>tag_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>6</count>
+</tag_data></data>
+
+

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<supporter_invite>
+<Field>supporter_invite_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>supporter_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>tell_a_friend_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Last_Modified</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>CURRENT_TIMESTAMP</Default>
+  <Extra>on update CURRENT_TIMESTAMP</Extra>
+  <Field>Date_Created</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>0000-00-00 00:00:00</Default>
+  <Extra></Extra>
+  <Field>Date_Accepted</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>0000-00-00 00:00:00</Default>
+  <Extra></Extra>
+  <Field>Status</Field>
+  <Type>enum('Pending','Accepted','Declined','Already a supporter')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Email</Field>
+  <Type>varchar(255)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Subject</Field>
+  <Type>varchar(255)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Content</Field>
+  <Type>varchar(255)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>event_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <count>12</count>
+</supporter_invite></data>
+
+

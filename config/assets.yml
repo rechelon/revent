@@ -1,0 +1,53 @@
+javascript_compressor: uglifier
+template_function: _.template
+package_assets: off
+
+javascripts:
+  framework:
+    - public/javascripts/deps/jquery.js
+    - public/javascripts/deps/underscore.js
+    - public/javascripts/deps/*.js
+    - public/javascripts/framework/helpers/*.js
+    - public/javascripts/framework/collections/*.js
+    - public/javascripts/framework/templates/*.jst
+    - public/javascripts/framework/views/*.js
+  admin:
+    - public/javascripts/timepicker.js
+    - public/javascripts/admin/router.js
+    - public/javascripts/admin/models/*.js
+    - public/javascripts/admin/collections/*.js
+    - public/javascripts/admin/templates/*.jst
+    - public/javascripts/admin/views/row.js
+    - public/javascripts/admin/views/search.js
+    - public/javascripts/admin/views/form.js
+    - public/javascripts/admin/views/*.js
+    - public/javascripts/deps/ace/*.js
+  public:
+    - public/javascripts/prototype.js
+    - public/javascripts/validation.js
+    - public/javascripts/application.js
+    - public/javascripts/popup.js
+    - public/javascripts/login_popup.js
+    - public/javascripts/client/router.js
+    - public/javascripts/client/models/*.js
+    - public/javascripts/client/collections/*.js
+    - public/javascripts/client/templates/*.jst
+    - public/javascripts/client/views/row.js
+    - public/javascripts/client/views/search.js
+    - public/javascripts/client/views/form.js
+    - public/javascripts/client/views/*.js
+
+stylesheets:
+  admin:
+    - public/stylesheets/bootstrap.css
+    - public/stylesheets/bootstrap-responsive.css
+    - public/stylesheets/admin.css
+    - public/stylesheets/jquery-ui-admin.css
+  public:
+    - public/stylesheets/bootstrap.css
+    - public/stylesheets/bootstrap-responsive.css
+    - public/stylesheets/events.css
+    - public/stylesheets/login_popup.css
+    - public/stylesheets/jquery-ui-lightness.css
+
+

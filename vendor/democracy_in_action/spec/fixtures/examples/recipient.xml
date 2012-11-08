@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<recipient>
+
+<item>
+<key>121398</key>
+<recipient_KEY>121398</recipient_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Type></Type>
+  <honorific></honorific>
+  <given_name>Dennis</given_name>
+  <middle_name></middle_name>
+  <family_name>Kucinich</family_name>
+  <suffix></suffix>
+  <Letter_Salutation></Letter_Salutation>
+  <organization></organization>
+  <Homepage_URL></Homepage_URL>
+  <email>kuch@house.gov</email>
+  <phone></phone>
+  <fax></fax>
+  <image_url></image_url>
+  <Preferred_Contact_Method>Default</Preferred_Contact_Method>
+  <address_line></address_line>
+  <address_line_2></address_line_2>
+  <municipality></municipality>
+  <region></region>
+  <postal_code></postal_code>
+  <postal_code_extension></postal_code_extension>
+  <country></country>
+  <Note></Note>
+  <targeting_postal_codes></targeting_postal_codes>
+  <targeting_regions></targeting_regions>
+  <webform_KEY></webform_KEY>
+  <web_form_url></web_form_url>
+  <web_form></web_form>
+  <Do_Not_Send_Phone>0</Do_Not_Send_Phone>
+  </item><count>21</count>
+</recipient></data>
+
+

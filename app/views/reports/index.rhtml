@@ -1,0 +1,50 @@
+<% content_for :pre_header do %>
+  <script type='text/javascript'>
+    var revent = {};
+    revent.permalink = "<%= @calendar.permalink %>";
+    revent.current_calendar_id = <%= @calendar.id %>;
+    revent.calendar_permalink = '<%= @calendar.permalink %>';
+  </script>
+<% end %>
+<script type='text/javascript'>
+  var report_fetched = false;
+  revent.reports = new ReportCollection();
+  revent.reports.fetch({
+    success: function(){
+      report_fetched = true;
+    }
+  });
+  router = new Router();
+  jq(function($){
+    report_list = new ListView({
+      el: document.getElementById("report-list"),
+      collection: revent.reports,
+      template: 'report',
+      row_view: ReportRowView
+    });
+    report_search = new ReportSearchView({
+      el: document.getElementById("report-search"),
+      collection: revent.reports,
+      template: 'report',
+      list: report_list
+    });
+    if(report_fetched){
+      report_list.render();
+      report_search.render();
+    }
+    //Backbone.history.start();
+  });
+</script>
+<div id='detail-container'>
+  <h1>
+    <%= @calendar.name %> Reports
+  </h1>
+  <div class="report-add-link">
+    <%= link_to '<i class="icon-plus-sign icon-white"></i> Add a Report Back', {:permalink => @calendar.permalink, :controller => "reports", :action => "new"},{ :class =>'report-back-btn btn btn-primary'} %>
+  </div>
+  <div id='report-search'>
+  </div>
+  <%= @search_results_message %>
+  <hr>  
+  <div id='report-list'></div>
+</div>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<url_rewrite>
+
+<item>
+<key>10005</key>
+<url_rewrite_KEY>10005</url_rewrite_KEY>
+  <organization_KEY>962</organization_KEY>
+  <host>1</host>
+  <pattern></pattern>
+  <target></target>
+  <external_redirect></external_redirect>
+  <stop_after_match>0</stop_after_match>
+  <_Order></_Order>
+  </item><count>1</count>
+</url_rewrite></data>
+
+

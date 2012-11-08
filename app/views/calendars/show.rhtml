@@ -1,0 +1,39 @@
+<% render :partial => 'maps/map_headers' %>
+<%= render :partial => 'calendars/map_js' %>
+<div id="national-container">
+  <div id="national-intro">
+    <div class="national-intro-text">
+      <%#=  @calendar.name %>
+    </div>
+    <div class="national-intro-count">
+      <!--      There are <%#= pluralize @calendar.events.length, @calendar.name %> in <%#= @calendar.events.unique_states %> states. -->
+    </div>
+    <div class="national-intro-directions">
+      <% if @calendar.map_intro_text -%>
+        <%= @calendar.map_intro_text %>
+      <% else -%>
+        Click on a state or enter your zip code to find events near you...
+      <% end -%>
+    </div>
+  </div>
+  <div id='event-search'></div>
+  <div id="event-map-container" class="row">
+    <div id="eventmap_loader" class="span9" style="height: <%=@map_height%>;"><div id="eventmap_loader_inner"></div></div>
+    <div id="eventmap" class="span9" style="height:<%=@map_height%>"></div>
+  </div>
+  <h2>Upcoming Events</h2>
+  <div id='event-list'></div>
+  <div class='pagination-footer'>
+    <%= link_to 'View all upcoming events >>', url_for(:controller => 'events', :action => 'upcoming', :permalink => @calendar.permalink) %>
+  </div>
+
+  <% unless Site.current.config.calendar_list_worksite_events %>
+    <h2>Worksite Events</h2>
+    <div id='worksite-event-list'></div>
+    <div class='pagination-footer'>
+      <%= link_to 'View all upcoming worksite events >>', url_for(:controller => 'events', :action => 'upcoming', :permalink => @calendar.permalink, :worksite => true) %>
+    </div>
+  <% end %>
+  <div id="national-footer">
+  </div>
+</div>

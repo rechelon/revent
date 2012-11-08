@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<scoring_algorithm_entry>
+
+<item>
+<key>10</key>
+<scoring_algorithm_entry_KEY>10</scoring_algorithm_entry_KEY>
+  <scoring_algorithm_KEY>1</scoring_algorithm_KEY>
+  <organization_KEY>962</organization_KEY>
+  <category></category>
+  <table_name></table_name>
+  <multiplier></multiplier>
+  <halflife_in_days></halflife_in_days>
+  <expiration_in_days></expiration_in_days>
+  <minimum></minimum>
+  </item><count>1</count>
+</scoring_algorithm_entry></data>
+
+

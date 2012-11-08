@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<query>
+
+<item>
+<key>14284</key>
+<query_KEY>14284</query_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <campaign_manager_KEY>2064</campaign_manager_KEY>
+  <Last_Modified>2005-10-31 21:34:49.0</Last_Modified>
+  <Date_Created>2005-10-31 21:34:49.0</Date_Created>
+  <Name></Name>
+  <use_query_condition></use_query_condition>
+  <states></states>
+  <states_Negate></states_Negate>
+  <cities></cities>
+  <cities_Negate></cities_Negate>
+  <districts></districts>
+  <districts_Negate></districts_Negate>
+  <sources></sources>
+  <sources_Negate></sources_Negate>
+  <groups_KEYS>25994</groups_KEYS>
+  <groups_KEYS_Negate></groups_KEYS_Negate>
+  <interest_KEYS></interest_KEYS>
+  <interest_KEYS_Negate></interest_KEYS_Negate>
+  <campaign_KEYS></campaign_KEYS>
+  <campaign_KEYS_Negate></campaign_KEYS_Negate>
+  <campaign_date></campaign_date>
+  <campaign_before_after>after</campaign_before_after>
+  <campaign_at_least>0</campaign_at_least>
+  <campaign_at_most>0</campaign_at_most>
+  <letter_KEYS></letter_KEYS>
+  <letter_KEYS_Negate></letter_KEYS_Negate>
+  <petition_KEYS></petition_KEYS>
+  <petition_KEYS_Negate></petition_KEYS_Negate>
+  <event_KEYS></event_KEYS>
+  <event_KEYS_Negate></event_KEYS_Negate>
+  <distributed_event_KEYS></distributed_event_KEYS>
+  <distributed_event_KEYS_Negate></distributed_event_KEYS_Negate>
+  <external_action_min></external_action_min>
+  <external_action_max></external_action_max>
+  <external_action_start></external_action_start>
+  <external_action_end></external_action_end>
+  <No_Donations>0</No_Donations>
+  <Donations_Greater_Than></Donations_Greater_Than>
+  <Donations_Less_Than></Donations_Less_Than>
+  <Donations_After></Donations_After>
+  <Donations_Before></Donations_Before>
+  <supporter_where></supporter_where>
+  <email_regexp></email_regexp>
+  <Signed_Up_After></Signed_Up_After>
+  <Signed_Up_Before></Signed_Up_Before>
+  <percentile></percentile>
+  <percentile_Negate></percentile_Negate>
+  <zip></zip>
+  <zip_Negate></zip_Negate>
+  <custom_sql></custom_sql>
+  <Supporter_Tracking_Code></Supporter_Tracking_Code>
+  <Supporter_Tracking_Code_Negate></Supporter_Tracking_Code_Negate>
+  <Donation_Tracking_Code></Donation_Tracking_Code>
+  <Donation_Tracking_Code_Negate></Donation_Tracking_Code_Negate>
+  <email_blast_KEYS></email_blast_KEYS>
+  <email_blast_KEYS_Negate></email_blast_KEYS_Negate>
+  <email_blast_KEY>0</email_blast_KEY>
+  <email_blast_status></email_blast_status>
+  <volunteer>0</volunteer>
+  <Zip_Region_Base></Zip_Region_Base>
+  <Zip_Region_Distance>0</Zip_Region_Distance>
+  <Query_Type></Query_Type>
+  <qregions></qregions>
+  <qdistricts></qdistricts>
+  <chapter_KEYS></chapter_KEYS>
+  <chapter_KEYS_Negate></chapter_KEYS_Negate>
+  </item><count>30</count>
+</query></data>
+
+

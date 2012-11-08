@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<donate_page>
+
+<item>
+<key>1366</key>
+<donate_page_KEY>1366</donate_page_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY>0</chapter_KEY>
+  <Reference_Name></Reference_Name>
+  <Last_Modified>2007-04-18 18:40:32.0</Last_Modified>
+  <Date_Created></Date_Created>
+  <Header></Header>
+  <Request>0,Email</Request>
+  <Required>0</Required>
+  <Allow_Anonymous_Donations>0</Allow_Anonymous_Donations>
+  <Pre_Custom_Text></Pre_Custom_Text>
+  <PRIVATE_Custom_Fields>0</PRIVATE_Custom_Fields>
+  <PRIVATE_Required_Custom_Fields>0</PRIVATE_Required_Custom_Fields>
+  <Tax_Status>Unknown</Tax_Status>
+  <Pre_Donation_Text></Pre_Donation_Text>
+  <Comma_delimited_Amounts></Comma_delimited_Amounts>
+  <Donation_Minimum></Donation_Minimum>
+  <Donation_Limit>100000.00</Donation_Limit>
+  <Confirm_Box_Text></Confirm_Box_Text>
+  <PreSubmit_Footer></PreSubmit_Footer>
+  <Footer></Footer>
+  <Thank_You_Page_Text></Thank_You_Page_Text>
+  <Number_of_columns>Two columns</Number_of_columns>
+  <Default_Tracking_Code></Default_Tracking_Code>
+  <redirect_path></redirect_path>
+  <PRIVATE_trigger></PRIVATE_trigger>
+  <email_trigger_KEYS>0</email_trigger_KEYS>
+  <merchant_account_KEY></merchant_account_KEY>
+  <event_KEY>0</event_KEY>
+  <groups_KEYS>0</groups_KEYS>
+  <Include_Recurring_Payments>0</Include_Recurring_Payments>
+  <Include_Only_Recurring_Payments></Include_Only_Recurring_Payments>
+  <Include_In_Honor_Of>0</Include_In_Honor_Of>
+  <READONLY_Hit_Count>3</READONLY_Hit_Count>
+  <Custom_Donation_HTML></Custom_Donation_HTML>
+  <donation_amount_KEYS></donation_amount_KEYS>
+  <Template></Template>
+  <Include_In_Memory_Of>0</Include_In_Memory_Of>
+  </item><count>3</count>
+</donate_page></data>
+
+

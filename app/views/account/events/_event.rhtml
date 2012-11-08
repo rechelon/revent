@@ -1,0 +1,28 @@
+<tr class ="profile_item_row">
+  <td><%= event.name  %></td>
+  <td><%= event.city_state  %></td>
+  <td class="manage-event-controls">
+    <% if hosting %>
+      <%= link_to '<i class="icon-eye-open icon-white"></i> Show', 
+          {:controller => '/events', :action => 'show', :permalink => event.calendar.permalink, :id => event},
+          :class=>'btn btn-mini btn-info', :target=>'_new' %>
+      <%= link_to '<i class="icon-share icon-white"></i> Copy', 
+            copy_event_path(:permalink => event.calendar.permalink, :id => event ),
+            :class=>'btn btn-mini btn-warning' %>
+      <%= link_to '<i class="icon-pencil icon-white"></i>  Manage', 
+        {:controller => '/account/events', :permalink=> event.calendar.permalink, :action => 'show', :id => event}, 
+            :class=>'btn btn-mini btn-info' %>
+      <%= link_to '<i class="icon-ban-circle icon-white"></i> Delete', 
+        {:controller => '/account/events',:action => 'destroy', :permalink => event.calendar.permalink, :id => event},
+            :class=>'btn btn-mini btn-danger',
+            :confirm=>'Delete this event?' %>
+    <% else %>
+      <%= link_to '<i class="icon-eye-open icon-white"></i> Show', 
+          {:controller => '/events', :action => 'show', :permalink => event.calendar.permalink, :id => event},
+          :class=>'btn btn-mini btn-info', :target=>'_new' %>
+      <%= link_to '<i class="icon-ban-circle icon-white"></i> Not Going', 
+         {:controller => '/account/events', :permalink => event.calendar.permalink, :action => 'remove', :id => event},
+            :class=>'btn btn-mini btn-danger' %>
+    <% end %>
+  </td>
+</tr>

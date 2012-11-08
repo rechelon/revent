@@ -1,0 +1,48 @@
+<% content_for :pre_header do %>
+  <script type='text/javascript'>
+    var revent = {};
+    revent.zip_codes = {};
+    revent.states = {};
+    revent.nearby_zips = {};
+    revent.permalink = "<%= @calendar.permalink %>";
+    revent.current_calendar_id = <%= @calendar.id %>;
+    revent.events_limit = <%= Site.current.config.calendar_list_upcoming_events_limit %>;
+    revent.show_worksite_events = <%= Site.current.config.calendar_list_worksite_events %>;
+    var icons = {
+      upcoming: {
+        name: 'Upcoming Events',
+        image: '<%= @icons[:icon_upcoming][:image] %>', 
+        show: true,
+        size: [<%= @icons[:icon_upcoming][:width] %>, <%= @icons[:icon_upcoming][:height] %>],
+        anchor: [<%= @icons[:icon_upcoming][:anchor_x] %>, <%= @icons[:icon_upcoming][:anchor_y] %>]
+      },
+      worksite_upcoming: {
+        name: 'Worksite Events',
+        image: '<%= @icons[:icon_worksite][:image] %>', 
+        show: revent.show_worksite_events,
+        size: [<%= @icons[:icon_worksite][:width] %>, <%= @icons[:icon_worksite][:height] %>],
+        anchor: [<%= @icons[:icon_worksite][:anchor_x] %>, <%= @icons[:icon_worksite][:anchor_y] %>]
+      },
+      past: {
+        name: 'Past Events',
+        image: '<%= @icons[:icon_past][:image] %>', 
+        show: true,
+        size: [<%= @icons[:icon_past][:width] %>, <%= @icons[:icon_past][:height] %>],
+        anchor: [<%= @icons[:icon_past][:anchor_x] %>, <%= @icons[:icon_past][:anchor_y] %>]
+      }
+    };
+  </script>
+
+  <% if !@osm_key.blank? %>
+    <script type="text/javascript" src="http://tile.cloudmade.com/wml/latest/web-maps-lite.js"></script>
+    <script>
+      revent.cloudmade_api_key = "<%= @osm_key %>";
+      revent.cloudmade_style_id = <%= @calendar.cloudmade_style_id %>;
+    </script>
+  <% end %>
+
+    <!-- include google maps if required -->
+  <% unless Host.current.google_maps_api_key.empty? %>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.4&key=<%= Host.current.google_maps_api_key %>&sensor=true"></script>
+  <% end %>
+<% end %>

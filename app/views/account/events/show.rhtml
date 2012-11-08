@@ -1,0 +1,278 @@
+<% content_for :header do %>
+  <%= javascript_include_tag 'effects' %>
+<% end %>
+
+<div id="profile_event" class="form-horizontal">
+  <h6><span class="label label-info">Editing Event</span> Click the link below to see what your event looks like to visitors.</h6>
+  <h1> <%= link_to @event.name, {:permalink => @event.calendar.permalink, :controller => '/events', :action => 'show', :id => @event},:target=>'_new' %></h1>
+  
+  <%= render :partial => "fb_event_sync", :locals => {:event => @event} %>
+ 
+  <div class="row spacer">
+    <%= link_to_function '<i class="icon-pencil icon-white"></i> Edit Your Event', visual_effect(:toggle_blind,'profile_event_edit'), :class=>'btn btn-large btn-primary span4' %>
+  </div>
+
+  <div id="profile_event_edit" <% if @event.errors.empty? %> style="display:none;"<% end %>>
+    <div class="well">
+      <h4>Edit Your Event Information</h4>	
+      <% form_for :event, @event, :url =>  url_for(:permalink => @calendar.permalink, :controller => 'account/events', :action => 'update', :id => @event), :html => {:id => 'event-signup-form'} do |f| %>
+      
+      <%= render :partial => "events/form", :locals => {:f => f} %>
+      
+      <div class="control-group">
+        <label class="checkbox" for="event_reports_disabled">
+          <%= f.check_box 'reports_disabled' %>
+          Disable reports for this event
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <%= submit_tag 'Save Event', :class => "btn btn-primary" %>
+        <%= javascript_include_tag "host_form.js" %>
+        <script type="text/javascript" language="javascript">
+          var valid = new Validation("event-signup-form", {useTitles : true});
+        </script>
+      </div>
+    <% end %>
+  </div>
+  <div class="well">
+    <h4>Edit Attachments</h4>
+    <div id="profile_event_attachments">
+      <table class="profile_list_table table table-bordered">
+        <tr class = "profile_header_row">
+          <td>Image</td>
+          <td>Caption</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <%= render :partial => 'image', :collection => @event.images %>
+      </table>			
+      <table class="profile_list_table table table-bordered">
+        <tr class="profile_header_row">
+          <td>Document</td>
+          <td></td>
+        </tr>
+        <%= render :partial => 'document', :collection => @event.documents %>
+      </table>			
+      <div class="manage-document-upload">
+        Upload a new attachment (image or document only)
+        <% form_for :attachment, nil, :url => url_for(:permalink => @calendar.permalink, :action => 'upload', :id => @event.id), :html => {:multipart => true} do |f| -%>
+        <%= f.file_field 'uploaded_data' %>
+          <div class="form-actions">
+            <%= submit_tag 'upload', :class => 'btn btn-primary' %>
+          </div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+  <div class="row spacer">
+    <%= link_to_function '<i class="icon-share"></i> Share Your Event', visual_effect(:toggle_blind,'profile_event_promote'), :class=>"btn btn-large span4" %>
+  </div>
+
+    <div id="profile_event_promote"  class="form-horizontal well" style="display:none;">
+      <div id="profile_event_attend_contact">
+  <h4>Get Social with Your Event</h4>
+        <div class="description"> 
+  Promote your local event on your social networks.   
+  </div>
+        <div class="social-links">
+          <%= twitter_share( "Check out http://"+ request.host + url_for(:permalink => @event.calendar.permalink, :controller => '/events', :action => 'show', :id => @event)) %>
+          <%= facebook_share( "Check out http://"+ request.host + url_for(:permalink => @event.calendar.permalink, :controller => '/events', :action => 'show', :id => @event), @calendar.name) %>
+        <div class="clear"></div>
+      </div>
+    </div>
+    </div>
+
+  <div class="row spacer">
+    <%= link_to_function '<i class="icon-camera"></i> Manage Event Report Backs', visual_effect(:toggle_blind, 'profile_event_report'), :class=>'btn btn-large span4' %>
+  </div>
+
+  <div id="profile_event_report" class="form-horizontal" <% if @report.nil? || @report.errors.empty? %> style="display:none;"<% end %>>
+    <div id="profile_event_report_list">
+      <h4>Event Reports</h4>
+      <div class="btn-row">
+        <%= link_to "Add Report", 
+            {:controller => '/reports', :action => 'new', :id => @event.id, :permalink => @calendar.permalink},
+            :class=>'btn btn-primary ' %>
+      </div>
+      <table class="profile_list_table table table-condensed">
+        <thead>
+          <tr class = "profile_header_row">
+            <th>Report</th>
+            <th>By</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render :partial => "report", :collection => @event.reports %>
+        </tbody>
+      </table>      
+    </div>
+    <div id="profile_event_photo_list">
+      <h4>Event Photos</h4>
+      <table class="profile_list_table table table-condensed">
+        <thead>
+          <tr class="profile_header_row">
+            <th>Image</th>
+            <th>Caption</th>
+            <th>Tags</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render :partial => 'photo', :collection => @event.reports.attachments %>
+        </tbody>
+      </table>      
+    </div>
+    <div id="profile_event_press_list">
+      <h4>Press Coverage</h4>
+      <table class="profile_list_table table table-condensed">
+        <thead>
+          <tr>
+            <td>Coverage</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render :partial => 'press', :collection => @event.press_links %>
+        </tbody>
+      </table>      
+    </div>
+  </div>
+          
+  <div class="row spacer">
+    <%= link_to_function '<i class="icon-eye-open "></i> View and Contact Event Attendees', visual_effect(:toggle_blind,'profile_event_attend'),:class=>"btn btn-large span4" %>
+  </div>
+	
+  <div id="profile_event_attend" style="display:none;" class="form-horizontal well">
+    <div id="profile_event_attend_contact">
+     <h4>Send Email to all Attendees</h4>
+     <div class="description">Messages will be sent with your email address in the from field.</div>
+        <% form_for :message, nil, :url => url_for(:permalink => @calendar.permalink, :controller => 'account/events', :action => 'message', :id => @event) do |f| %>
+          <div class="control-group">
+            <label for="subject" class="control-label">Subject:</label>
+            <div class="controls">
+              <%= f.text_field 'subject', :class => 'input-large' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="body" class="control-label">Message Text:</label>
+            <div class="controls">
+              <%= f.text_area 'body', :rows => 10, :class => 'input-xlarge' %>
+            </div>
+          </div>
+          <%= submit_tag 'Send', :class => 'btn btn-primary'  %>
+        <% end %>
+    </div>
+    <div id="profile_event_attend_list">
+     <h4>Event Attendees</h4> 
+      <table class="profile_list_table table table-bordered">
+        <tr class = "profile_header_row">
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Email</td>
+          <td>Phone</td>
+        </tr>
+        <% @attendees = @event.attendees || @event.to_democracy_in_action_event.attendees.collect {|a| User.new :email => a.Email, :first_name => a.First_Name, :last_name => a.Last_Name, :phone => a.Phone} %>
+	<%= render :partial => 'attendee', :collection => @attendees %>
+      </table>
+      <i class="icon-download"></i> <%= link_to 'Download Attendees in a Spreadsheet', :action => 'attendees', :id => @event, :format => 'csv' %>
+    </div>
+  </div>
+	
+  <div class="row spacer">
+    <%= link_to_function '<i class="icon-envelope"></i> Invite People to Your Event', visual_effect(:toggle_blind, 'profile_event_invite'), :class=>'btn btn-large span4'%>
+  </div>
+
+  <div id="profile_event_invite" style="display:none;" class="form-horizontal well">	
+    <h4>Invite People to Your Event</h4>
+    <div class="description">	
+      This e-mail will have the event name, date, location, and RSVP link appended to the bottom of the message.  The message box below is for a personal note from you to the recipients.
+    </div>
+    <% form_for :invite, :url => url_for(:permalink => @calendar.permalink, :controller => 'account/events',  :action => 'invite', :id => @event) do |f| %>
+      <div class="control-group">
+        <label class="control-label" for="recipients">Recipients:</label>
+        <div class="controls">
+          <%= f.text_field 'recipients', :class => 'input-large' %>
+        </div>
+        <p class="help-block">
+        Enter email addresses separated by commas (example@hotmail.com, example@gmail.com)<br />
+	We do not collect email addresses of people who you invite using this form.
+        </p>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="subject">Subject:</label>
+        <div class="controls">
+        <%= f.text_field 'subject', :class => 'input-large' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="body" class="control-label">Message Text:</label>
+        <div class="controls">
+          <%= f.text_area 'body', :rows => 10, :class => 'input-xlarge' %>
+        </div>
+        <p class="help-block">
+        The date, time, and location of your event along with a link to <br/>the event will be added to the bottom of this outgoing message.
+        </p>
+       </div>
+      <%= submit_tag 'Send', :class => "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="row spacer">
+    <%= link_to_function '<i class="icon-comment"></i> Post an Announcement About Your Event', visual_effect(:toggle_blind, 'profile_event_blog'), :class=>'btn btn-large span4' %>
+  </div>
+
+  <div id="profile_event_blog"  class="form-horizontal well" <% if @blog.nil? || @blog.errors.empty? %> style="display:none;"<% end %>>
+    <div id="profile_event_blog_add">	
+      <h4>Add an Announcements about Your Event</h4>
+      <div class="description">	
+        Announcements will show up on the bottom of your event page.
+     </div>
+     <%= error_messages_for :blog %>
+     <% form_for :blog, @blog, :url =>  url_for(:permalink => @calendar.permalink, :controller => 'account/blogs', :action => 'create') do |f| %>
+       <div class="control-group">
+         <label for="body" class="control-label">Title:</label>
+         <div class="controls">
+           <%= f.text_field 'title', :class => "input-large" %>
+         </div>
+       </div>
+       <div class="control-group">
+         <label for="body" class="control-label">Content:</label>
+         <div class="controls">
+           <%= f.text_area 'body', :rows => 10, :class => "input-xlarge"  %><br/>
+         </div>
+       </div>
+       <%= f.hidden_field 'event_id' %>
+       <div class="control-group">
+        <div class="controls">
+        <%= submit_tag 'post announcement', :class => "btn btn-primary" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div id="profile_event_blog_list">
+      <h4>Past Announcements</h4>
+      <table class="profile_list_table table table-bordered ">
+        <tr class="profile_header_row">
+          <td></td>
+          <td>Date</td>
+          <td>Title</td>
+        </tr>
+        <%= render :partial => 'blog', :collection => @event.blogs %>
+      </table>
+    </div>
+    <div id="profile_event_blog_edit" style="display:none;">
+      <p class="profile_subtitle">Edit Announcements</p>
+      Title:<br>
+      Content:<br>
+    </div>
+  </div>

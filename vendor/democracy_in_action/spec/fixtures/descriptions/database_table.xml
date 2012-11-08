@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<database_table>
+<Field>database_table_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>package_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default>0</Default>
+  <Extra></Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Last_Modified</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>CURRENT_TIMESTAMP</Default>
+  <Extra></Extra>
+  <Field>Date_Created</Field>
+  <Type>timestamp</Type>
+  <Null>NO</Null>
+  <Key></Key>
+  <Default>0000-00-00 00:00:00</Default>
+  <Extra></Extra>
+  <Field>table_name</Field>
+  <Type>varchar(128)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>presave</Field>
+  <Type>mediumtext</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>postsave</Field>
+  <Type>mediumtext</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>create_permission</Field>
+  <Type>enum('Campaign Managers','Public')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default>Campaign Managers</Default>
+  <Extra></Extra>
+  <Field>update_permission</Field>
+  <Type>enum('Campaign Managers','Public')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default>Campaign Managers</Default>
+  <Extra></Extra>
+  <count>10</count>
+</database_table></data>
+
+

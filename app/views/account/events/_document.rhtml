@@ -1,0 +1,6 @@
+<%#this is just like the _photo partial, but without primary images %>
+  <tr class ="profile_item_row" id="attachment-<%= document.id %>">
+	  <td><%= link_to document.filename, document.public_filename %></td>
+    <!--  <td><%#= link_to 'Publish', :controller => 'account/attachments', :action => 'publish', :id => document %></td> -->
+    <td><%= link_to_remote 'Delete', :url => { :controller => 'account/attachments', :action => 'destroy', :id => document } %></td>
+	</tr>

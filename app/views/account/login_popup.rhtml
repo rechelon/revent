@@ -1,0 +1,73 @@
+<div id="user-login-pane" class="popup-pane">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Sign In</h3>
+  </div>
+  <div class="modal-body">
+    <div class="revent-login user-signup">
+      <% form_tag url_for(:permalink=>@calendar.permalink,:controller=>'account', :action=>'login') do |f| -%>
+        <%= label_tag 'email' %>
+        <%= text_field_tag :email %>
+        <%= label_tag 'password' %>
+        <%= password_field_tag :password %>
+        <div class="clear"></div>
+        <a class="popup-password" id="forgot-password-btn" href="#forgot-password">Forgot your password?</a>
+        <%= submit_tag('Log In', :id=>'login-submit') %>
+        <input class="redirect" type="hidden" name="redirect" value=""/>			    
+      <% end -%>
+      
+    </div>
+    <div class="fb-login user-signup">
+      <% if Host.current.fb_login_enabled? %>
+        <%= link_to('<img src="/images/fb-connect2.gif" border="0" alt="Sign in with facebook"/>', oauth_request_path(:provider=>'facebook'), :id=>'fb-oauth-btn', :class=>'oauth-btn') %>
+      <% end %>
+      <% if Host.current.google_login_enabled? %>
+        <%= link_to('Sign in with <span style="color:#0140CA">G</span><span style="color:#DD1812">o</span><span style="color:#FCCA03">o</span><span style="color:#0140CA">g</span><span style="color:#16A61E">l</span><span style="color:#DD1812">e<span>', oauth_request_path(:provider=>'google'), :id=>'google-oauth-btn', :class=>'oauth-btn') %>
+      <% end %>
+      <% if Host.current.twitter_login_enabled? %>
+        <%= link_to('<img src="/images/sign-in-with-twitter-l.png" border="0" alt="Sign in with twitter"/>', oauth_request_path(:provider=>'twitter'), :id=>'twitter-oauth-btn', :class=>'oauth-btn') %>
+      <% end %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="modal-footer">
+    <div class="login-selector">
+      <p>Haven't signed up yet? <a class="popup-signup btn btn-primary" href="#sign-up">Sign Up Now</a></p>
+    </div>
+  </div>
+</div>
+<div id="forgot-password-pane" class="popup-pane" style="display:none;">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>New Password</h3>
+  </div>
+  <div class="modal-body">
+      <% form_tag url_for(:controller=>'account', :action => 'forgot_password') do %>
+          <p>Enter your e-mail address below and we will send you a link to reset your password.<p>
+          <p>If you don't receive the requested password in your e-mail, check to see if it got trapped by a spam filter or got stuck in your "Junk E-Mail Folder"</p>
+          <%= text_field_tag :email, "", :size => 50 %><br />
+          <%= submit_tag 'Request Password' %>
+      <% end %>
+  </div>
+  <div class="modal-footer">
+    <div class="login-selector">
+      <p>
+        <a class="popup-login" href="#login">Log In</a> or  <a class="popup-signup btn btn-primary" href="#sign-up">Sign Up Now</a>
+      </p>
+    </div>
+  </div>
+</div>
+<div id="user-signup-pane" class="popup-pane" style="display:none;">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">×</a>
+    <h3>Sign Up</h3>
+  </div>
+  <div class="modal-body">
+    <%= render :partial=>'signup_form' %>
+  </div>
+  <div class="modal-footer">
+    <div class="login-selector">
+      <p>Already have an account? <a class="popup-login" href="#login">Log In</a></p>
+    </div>
+  </div>
+</div>

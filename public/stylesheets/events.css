@@ -1,0 +1,349 @@
+
+/**** MASTER CSS ****/
+.clear {
+clear: both;
+}
+.intro-text{
+padding: 5px 0 10px 0;
+}
+.list-item {
+padding: 10px 0;
+border-top: 1px solid #aaaaaa;
+}
+.pagination-footer {
+margin-bottom: 1em;
+}
+.pagination-footer .pagination a {
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0;
+    border: none;
+    float: none;
+    line-height: inherit;
+    padding: 0;
+    text-decoration: none;
+}
+.login-box { 
+text-align:right
+}
+.validation-advice {
+margin: 5px 0;
+padding: 5px;
+background-color: #FF3300;
+color : #FFF;
+font-weight: bold;
+}
+.req {
+color: #990000;
+padding: 0 3px 0 0;
+}
+.description {
+padding: 8px 0 15px 0;
+}
+.spacer{
+  margin-bottom:1em;
+}
+/**** REPORTS *****/
+.report-list-element {
+    display: block;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.report-by {
+font-weight: bold;
+}
+.report-list-image  {
+float: left;
+height: 100px;
+padding-right: 10px; 
+}
+.report-list-title {
+font-size:17px;
+margin-bottom: 8px;
+font-weight:bold;
+}
+.report-list-text {
+font-size:12px;
+}
+.report-list-more {
+text-align:right;
+font-size:12px;
+}
+.honeypot {
+display: none;
+width: 1;
+height: 1;
+}
+#report-images img {
+padding: 10px;
+}
+div.report_add_attachment{
+background-color:#f0f0f0;
+margin:10px;
+padding:10px;
+}
+
+/**** CALENDAR MAP List PAGE ****/
+#description{
+padding-bottom: 15px; 
+}
+#description b{
+line-height: 19px; 
+}
+.info-label{
+font-weight: bold;
+}
+.event-info{
+margin-bottom: 1em;
+}
+.event-info p{
+margin: 0 0 1em 0;
+}
+#location{
+padding-bottom: 15px; 
+}
+#location b{
+line-height: 19px; 
+}
+#nav-event{
+display:block;
+text-align: right;
+padding-bottom: 15px; 
+}
+#event-list-container{
+margin-left: 10px;
+}
+.event-list-intro-title{
+font-size:17px;
+font-weight: bold;
+PADDING-BOTTOM: 10px;
+}
+#event-list-intro{
+	PADDING-BOTTOM: 10px;
+}
+/**** Event MAP List PAGE ****/
+
+#description{
+padding-bottom: 15px; 
+}
+
+#description b{
+line-height: 19px; 
+}
+
+.info-label{
+font-weight: bold;
+}
+.event-info{
+margin-bottom: 1em;
+}
+.event-info p{
+margin: 0 0 1em 0;
+}
+#location{
+padding-bottom: 15px; 
+}
+
+#location b{
+line-height: 19px; 
+}
+
+#nav-event{
+display:block;
+text-align: right;
+padding-bottom: 15px; 
+}
+
+#event-map-container{
+	
+	width: 500px;
+	padding-right: 10px; 
+padding-bottom: 15px; 
+}
+
+#event-list-container{
+       margin-left: 10px;
+}
+
+.event-list-intro-title{
+
+font-size:17px;
+font-weight: bold;
+PADDING-BOTTOM: 10px;
+
+}
+
+#event-list-intro{
+	PADDING-BOTTOM: 10px;
+}
+.report-nav {
+display: block;
+}
+#event-search-form .control-group{
+  float: left;
+  margin-right: 1em;
+}
+.map-legend li{
+float: left;
+list-style: none;
+margin-right:1em;
+}
+.search-results{
+  font-size:12px;
+}
+/**** EVENTS ****/
+#event-map{
+width: 560px;
+height: 400px;
+}
+#description{
+padding: 10px 0; 
+}
+#event-rsvp {
+padding: 10px 0;
+}
+#facebook-like {
+padding: 5px 0;
+}
+.form_subtitle{
+font-size:15px;
+font-weight:bold;
+background-color: #CCC;
+padding:3px;
+}
+.form_subtitle{
+font-size:15px;
+font-weight:bold;
+background-color: #CCC;
+padding:3px;
+}
+#event-location .address, #event-location .google-directions{
+  float:left;
+}
+#event-location .google-directions{
+margin-left: 1em;
+}
+#email-host-btn{
+  display: block;
+  width: 15em;
+}
+/* SEARCH LOADER */
+#report-search {
+position: relative;
+}
+#report-search .search-loader {
+bottom: 25px;
+display: none;
+position: absolute;
+right: 100px;
+}
+#report-search .search-button {
+  float: right;
+}
+#event-search .search-loader{
+display: none;
+}
+.paginator-loader{
+display: none;
+}
+.pager-disabled{
+display: none;
+}
+.report-add-link {
+padding: 4px 0;
+}
+
+/* PROFILE */
+.social-btn {
+height: 35px;
+}
+.social-text {
+margin-top: 4px;
+}
+.profile-edit-btn {
+margin-left: 1em;
+float:right;
+}
+.account-profile-image {
+margin-right: 1em;
+margin-bottom: 1em;
+float: left;
+border-radius: 4px;
+display:block;
+}
+#profile_event h3 {
+margin: 5px 0;
+}
+#profile_event h4 {
+font-size: 20px;
+padding: 0;
+margin: 4px 0;
+}
+#userinfo address{
+  float:left;
+}
+#profile_event_dashboard td {
+padding: 5px 10px;
+}
+
+.profile_dashboard_item {
+font-size:16px;
+}
+.profile_header_row {
+border: 1px solid #DDDDDD
+}
+.profile_submit {
+background: #fff;
+border:1px solid black; 
+font-size:11px;
+float:right;
+margin-top:3px;
+margin-right:5px;
+}
+.table .manage-event-controls{
+width: 155px;
+text-align:right;
+}
+.profile_item_row .btn{
+  width:60px;
+  margin-bottom:4px;
+}
+.js-flash-container{
+  display:none;
+  min-height: 3em;
+}
+.js-flash-container .alert{
+  margin:0;
+}
+
+/* Bootstrap Extensions*/
+.btn-row{
+  margin: 1em 0;
+}
+.pagination a{
+  cursor: pointer;
+}
+/* Bootstrap Default Overrides*/
+.alert-success {
+  background-color: #AFF0B8;
+  border-color: #9FE0A8;
+  color: #367837;
+}
+.btn{
+  font-weight:bold;
+}
+
+#eventmap_loader{
+  background-color: black;
+  position: absolute;
+  filter: alpha(opacity=80); /* internet explorer */
+  -khtml-opacity: 0.8;      /* khtml, old safari */
+  -moz-opacity: 0.8;       /* mozilla, netscape */
+  opacity: 0.8;           /* fx, safari, opera */
+}
+
+#eventmap_loader_inner{
+  width: 100%;
+  height: 100%;
+  background: url(../images/loading.gif) 50% 50% no-repeat;
+}

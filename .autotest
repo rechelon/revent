@@ -1,0 +1,8 @@
+Autotest.add_hook :initialize do |at|
+  at.add_mapping(%r{spec/workers/(.*)\.rb}) {|filename, _|
+    [filename]
+  }
+  at.add_mapping(%r{app/workers/(.*)\.rb}) {|_, m|
+    ["spec/workers/#{m[1]}_spec.rb"]
+  }
+end

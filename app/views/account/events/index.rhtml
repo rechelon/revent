@@ -1,0 +1,63 @@
+<div class="well">
+  <div class="profile-edit-btn">
+    <%= link_to '<i class="icon-pencil icon-white"></i> Edit your profile', 
+          profile_path(:permalink=>@calendar.permalink), 
+          :class=>"btn btn-info" %>
+  </div>
+
+  <div id="userinfo">
+    <% if @current_user.profile_image %> 
+      <%= image_tag @current_user.profile_image.public_filename(:list), :class=>'account-profile-image' %>
+    <% end %>
+    <address>
+      <div><strong><%=@current_user.full_name %></strong></div>
+      <div><em><%=@current_user.organization %></em></div>
+      <div><%=@current_user.street %></div>
+      <div><%=@current_user.city_state %></div>
+      <div><%=@current_user.email %></div>
+      <div><%=@current_user.phone %></div>
+    </address>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<%- if !@hosting.empty? %>
+  <h3>Events You are Hosting</h3>
+  <table class="table table-condensed">
+    <thead>
+      <tr class ="profile_header_row">
+        <th>Name</th>
+        <th>Location</th>
+        <th class="manage-event-controls"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => 'event', :collection => @hosting, :locals => {:hosting => true} %>
+    </tbody>
+  </table>
+<% end %>
+
+<div class="btn-row">
+  <a class="btn btn-primary" href="/<%= @calendar.permalink%>/signup"><i class="icon-plus icon-white"></i> Host an event</a>
+</div>
+
+<%- if !@attending.empty? %>
+  <h3>Events You are Attending</h3>
+  <table class="table table-condensed">
+    <thead>
+      <tr class ="profile_header_row">
+        <th>Name</th>
+        <th>Location</th>
+        <th class="manage-event-controls"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => 'event', :collection => @attending, :locals => {:hosting => false} %>
+    </tbody>
+  </table>
+<% end %>
+
+<div class="btn-row">
+  <a class="btn btn-primary" href="/<%= @calendar.permalink%>/"><i class="icon-search icon-white"></i> Find an event to attend</a>
+</div>
+

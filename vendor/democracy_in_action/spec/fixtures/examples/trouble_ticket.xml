@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<trouble_ticket>
+
+<item>
+<key>310</key>
+<trouble_ticket_KEY>310</trouble_ticket_KEY>
+  <organization_KEY>962</organization_KEY>
+  <campaign_manager_KEY>0</campaign_manager_KEY>
+  <Last_Modified>2005-11-21 09:34:18.0</Last_Modified>
+  <Date_Created>2005-11-18 21:51:47.0</Date_Created>
+  <Subject>test</Subject>
+  <Status>Accepted</Status>
+  <Priority>Medium</Priority>
+  <Body>test</Body>
+  <Response></Response>
+  <Notification_Email>test</Notification_Email>
+  </item><count>4</count>
+</trouble_ticket></data>
+
+

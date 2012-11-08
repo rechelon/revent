@@ -1,0 +1,9 @@
+<%= render :partial => 'report', :collection => @events %>
+<script>
+//  DaysOfAction.current_district = <%= @district ? "'#{@district}'" : 'null' %>;
+  <% if @district -%>
+  setButtons('<%= @district %>');
+  <% else -%>
+  $('invite-context').update('');
+  <% end -%>
+</script>

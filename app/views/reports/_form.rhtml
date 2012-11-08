@@ -1,0 +1,145 @@
+<%= error_messages_for :report %>
+<div class="required-fields"><span class="req"><span class="req">*</span></span>Required fields</div>
+  <div class="section event">
+    <% if @profile_complete %>
+      <div class="profile-edit-link">
+        <i class="icon-pencil"></i> <%= link_to('Edit your profile', profile_path(:permalink=>@calendar.permalink)) %>
+      </div>
+  <% else %>
+      <%= render :partial => 'account/profile_form' %>
+  <% end %>
+  <h3>Your Report</h3>
+  <div class="control-group">
+      <label class="control-label" for="event_id">
+        <span class="req">*</span>Select Your Event
+      </label>
+      <div class="controls">
+        <%= f.select 'event_id', events_select, {:include_blank => true}, {:class => 'input-large validate-selection'} %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">
+        <span class="req">*</span>Tell Us About What Happened at Your Event:
+      </label>
+      <div class="controls">
+        <%= f.text_area 'text', :rows => 7, :class => 'input-xlarge required'%>
+      </div>
+    </div>
+
+    <%= liquid_or_default(@calendar.theme.report_form_additional_fields, "", @liquid) %>
+
+    <div class="control-group">
+      <label class="control-label" for="attendees">
+        Estimated Attendance:
+      </label>
+      <div class="controls">
+        <%= f.text_field 'attendees', :class => 'input-mini' %>
+      </div>
+    </div>
+    <div class="well">    
+    <h3>Upload Images</h3>
+    <div class="description">
+      We support images up to 2 megabytes in size in the following formats: .gif, .jpg, and .png.
+      <br />
+      For large file uploads, this page may take awhile to load.
+    </div>
+      <% allowed_attachments = 6 %>
+      <% f.fields_for :attachment_data do |ff| %>
+        <% 1.upto( allowed_attachments ) do |n| %>
+          <%=  tag( "div",   :class => 'report_add_attachment', :id=>"report_add_photo_#{n}", :style => ( n > 1 ?  "display:none;" : ""))  %>
+            <div class="control-group">
+              <%= ff.label "#{n}_uploaded_data" , "File:", :class => "control-label"%>
+              <div class="controls">
+              <%= ff.file_field "uploaded_data", :index => n, :class => "input-large"%>
+            </div>
+            </div>
+            <div class="control-group">
+              <%= ff.label "#{n}_caption" , "Caption:", :class => "control-label"%>
+              <div class="controls">
+              <%= ff.text_area "caption", :rows => 2, :index => n, :class => "input-xlarge" %>
+            </div>
+            </div>
+            <div class="control-group">
+              <%= ff.label "#{n}_primary", ff.check_box("primary", :index => n) +" Check this box if the image is the main event photo.", :class => 'checkbox' %>
+            </div>
+            <%- if n < allowed_attachments %>
+              <div class="report_add_another">
+              <i class="icon-plus-sign"></i> <%= link_to_function 'Add Another Photo', visual_effect(:toggle_blind,"report_add_photo_#{n+1}")%>
+              </div>
+            <% end %>
+          </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="well">
+  <h3>Attach a Video from Your Event</h3>
+  <div class="description">
+      To include videos in your event report, first upload them to YouTube.
+      Once you've done that, you can copy the video's "embed code" and paste it in the box below.
+      Upload your YouTube video <a href="http://youtube.com/signup?next=/my_videos_upload" target="_blank" />here</a>
+    </div>
+    <%- allowed_embeds = 4 %>
+    <%- f.fields_for :embed_data do |ff|%>
+      <%- 1.upto(allowed_embeds) do |n|%>
+        <%= tag( "div", :class => "report_add_attachment", :id => "report_add_video_#{n}", :style => (n > 1 and @report.errors.empty? ? "display:none;" : "")) %>
+          <div class="control-group">
+            <%= ff.label "#{n}_html", "Video Embed Code:", :class => "control-label" %>
+            <div class="controls">
+            <%= ff.text_area "html", :rows => 3, :index => n, :class => 'input-xlarge'%>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= ff.label "#{n}_caption", "Video Title:", :class => "control-label" %>
+            <div class="controls">
+            <%= ff.text_field "caption", :size => 40, :index => n, :class => "input-large"%>
+          </div>
+          </div>
+          <%- if n < allowed_embeds %>
+          <div class="report_add_another">
+            <i class="icon-plus-sign"></i> <%= link_to_function 'Add Another Video', visual_effect(:toggle_blind,"report_add_video_#{n+1}")%>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+<div class="well">
+  <h3>Press Coverage</h3>
+    <div class="description">
+    Did the press cover your event?
+    <br/> 
+    If so, paste in links to the press coverage below.
+    <br/> 
+  </div>
+  <%- allowed_press_links = 4%>
+  <%- f.fields_for :press_link_data do |ff| %>
+    <%- 1.upto(allowed_press_links) do |n| %>
+      <%= tag("div", :class => "report_add_attachment",  :id => "report_add_press_#{n}", :style => (n > 1 and @report.errors.empty? ? "display:none;" : "")) %>
+
+  <div class="control-group">
+    <%= ff.label "#{n}_url", "Press Coverage URL:" , :class => "control-label" %>
+    <div class="controls">
+      <%= ff.text_field "url", :class => "input-large", :index => n %>
+      <em> (start with http://)</em>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= ff.label "#{n}_text", "Press Coverage Title/Outlet:", :class => "control-label" %>
+    <div class="controls">
+      <%= ff.text_field "text",:class => "input-large", :index => n %>
+    </div>
+  </div>
+  <%- if n < allowed_press_links  %>
+        <div class="report_add_another">
+          <i class="icon-plus-sign"></i> <%= link_to_function 'Add More Press Coverage', visual_effect(:toggle_blind,"report_add_press_#{n+1}") %>
+            </div>
+      <% end %>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%- if @calendar.report_redirect %>
+<%= hidden_field_tag "redirect", @calendar.report_redirect %>
+<% end %>

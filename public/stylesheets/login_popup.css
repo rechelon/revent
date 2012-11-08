@@ -1,0 +1,57 @@
+#forgot-password-btn{
+display: block;
+float:left;
+margin-top:4px;
+}
+#login-submit{
+display: block;
+float:right;
+}
+.login-selector{
+margin-top:10px;
+}
+#login-popup-padder{
+}
+#login-popup h3{
+margin: 0;
+padding: 0;
+}
+.user-signup{
+margin-left: 26px;
+float:left;
+}
+#popup-spinner{
+display:block;
+margin: 25px auto;
+}
+.signup-field{
+margin:0 0 8px 0;
+}
+.user-signup .fieldWithErrors input{
+border:1px solid #ff0000;
+}
+
+.revent-login {
+float:left;
+border-right: 1px solid #ccc;
+padding-right: 26px;
+}
+.fb-login{
+  float:left;
+}
+#fb-oauth-btn{
+    display: block;
+    margin: 20px 0 10px 0;
+}
+#google-oauth-btn{
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Georgia;    
+    color: #DD1812;    
+}
+#twitter-oauth-btn{
+    display: block;
+    margin: 10px 0;
+}

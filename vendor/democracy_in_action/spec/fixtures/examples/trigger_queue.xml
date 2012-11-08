@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<trigger_queue>
+
+<item>
+<key>260718</key>
+<trigger_queue_KEY>260718</trigger_queue_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Send_Date></Send_Date>
+  <Email_Address></Email_Address>
+  <From_Email></From_Email>
+  <Subject>test</Subject>
+  <HTML_Body></HTML_Body>
+  <Text_Body></Text_Body>
+  <Error></Error>
+  </item><count>1</count>
+</trigger_queue></data>
+
+

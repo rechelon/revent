@@ -1,0 +1,94 @@
+<% content_for :header do %>
+<%= stylesheet_link_tag 'lightbox' %>
+<%= javascript_include_tag 'lightbox' %>
+<% end %>
+
+<h1>Event Report</h1>
+
+<div class="report-intro-text intro-text">
+  <h2><%= link_to(white_list(@event.name),   :permalink => @calendar.permalink, :controller => 'events', :action => 'show', :id => @event.id ) %></h2>
+  <h3><%= white_list @event.city %>, <%= @event.state %></h3>
+  <div class="report-event-start"><h4><%= @event.start? ? @event.start.strftime('%B %e, %Y') : '?' %></h4></div>
+  <div class="report-actions-nav">      
+    <blockquote>
+    <span class="report-nav"><%= link_to('Add Your Report of the Event', { :permalink => @calendar.permalink, :controller => "reports", :action => "new", :id => @event}) %></span>    
+    <span class="report-nav"><%= link_to "View & Search All Reports",  :permalink => @calendar.permalink, :controller => "reports"   %></span>
+  </blockquote>
+  </div>
+</div>
+
+<div id="report-details">
+  <% if @event.reports.empty? -%>
+    <div id="report-none">
+      There are no reports for this event.<br>
+      If you attended this event please <%= link_to 'submit a report', :controller => "reports", :action => "new" %>
+    </div>
+  <% else -%>
+  <% unless @event.press_links.empty?  %>
+    <div class="reports-press-coverage">
+      <h4>Press Coverage</h4>
+      <ul>
+        <% for press in @event.reports.collect {|r| r.press_links}.flatten %>
+          <% if press.text.empty? %> 
+            <li><%= link_to press.url, press.url %></li>
+          <% else %>
+            <li><%= link_to press.text, press.url %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% for report in @event.reports do %>
+  <% if report.reporter_name %>
+    <div class="report-by">Report Author: <%= report.reporter_name %></div>
+  <% else -%>
+    <div class="report-by">Report:</div>
+  <% end -%>
+  <div id="report-text">
+    <%= simple_format(report.text) %>
+  </div>
+
+  <% if report.attachments.any? {|a| a.audio?} %>
+    <div class="report-audios">
+      <% report.attachments.find_all {|a| a.audio?}.each do |audio| %>
+      <div class="report-audio">
+        <a href=""><img src="<%= @audio.filename %>" alt="Click Here to Listen to Audio Report"></a>
+        <div class="media-caption">
+          <legend>
+            <%= @audio.caption %>
+          </legend>
+        </div>
+      </div>
+      <% end -%><!-- end each audio -->
+    </div>
+  <% end -%><!-- end if any audio -->
+
+  <% report.embeds.each do |embed| %>
+  <div class="report-embed">
+    <%= white_list embed.html, :tags => %w(object embed param a iframe), :attributes => %w(name src frameborder value type wmode width height data href) %>
+    <div class="media-caption">
+      <legend>
+        <%= white_list embed.caption %>
+      </legend>
+  </div>
+  </div>
+  <% end %>
+
+  <% if report.attachments.any? {|a| a.image?} %>
+  <div class="report-images">
+    <% report.attachments.find_all {|a| a.image?}.each do |image| %>
+    <div class="report-image">
+      <%= link_to(image_tag(image.public_filename(:display)), {:controller => :reports, :action => :lightbox, :id => image.id}, :class => 'lbOn') %>
+      <div class="media-caption">
+        <legend>
+          <%= image.caption %>
+        </legend>
+      </div>
+    </div>
+    <% end -%><!-- end each image -->
+  </div>
+  <% end -%><!-- end any image -->
+  <% end -%><!-- end for each report -->
+  <% end -%><!-- end else reports not empty -->
+</div> <!-- /report-details -->

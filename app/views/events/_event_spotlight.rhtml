@@ -1,0 +1,19 @@
+<div class="clear"></div>
+<div class="event-spotlight">
+<% unless spotlight_events(@calendar).empty? %>
+  <h2>Spotlight Events</h2>
+  <% spotlight_events(@calendar).each do |list_item| %>
+    <div class="event-list-element">
+      <div class="event-list-location">
+        <%= link_to white_list(list_item.name), :permalink => list_item.calendar.permalink, :controller => 'events', :action => 'show', :id => list_item.id %><br />
+        <%= list_item.start.strftime("%B %d, %Y") %> at <%= list_item.start.strftime("%I:%M%p").downcase %>
+      </div>
+      <% if !list_item.locationless? %>
+        <div class="event-list-city">
+          <%= white_list(list_item.city_state) %>
+        </div>
+      <% end -%>
+    </div>
+  <% end -%>
+<% end -%>
+</div>

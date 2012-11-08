@@ -1,0 +1,58 @@
+<div id="account-profile" class="profileInformation">
+  <%= error_messages_for 'user' %>
+  <h3>Your Information</h3>
+  <div class="required-fields"><span class="req">*</span>Required fields</div>
+  <div id="account-profile-form">
+    <% fields_for :user, @user do |user| %>
+    <div class="control-group">
+      <label class="control-label" for="dataFirst_Name"><span class="req">*</span>First Name</label>
+      <div class="controls"><%= user.text_field "first_name", :id => 'dataFirst_Name', :maxlength => "32", :class => "input-large required inputStyle" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="dataLast_Name">Last Name</label>
+      <div class="controls"><%= user.text_field "last_name", :id => "dataLast_Name", :maxlength => "64", :class => "input-large inputStyle" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="dataStreet">Street Address</label>
+      <div class="controls"><%= user.text_field "street", :id => "dataStreet", :maxlength => "64", :class => "input-large inputStyle" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="dataCity">City</label>
+      <div class="controls"><%= user.text_field "city", :id => "dataCity", :maxlength => "32", :class => "input-large inputStyle" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="state"><span class="req">*</span>State/Region</label>
+      <div class="controls"><%= user.select "state", DemocracyInAction::Helpers.state_options_for_select(:include_none=>true), {}, :title => "Please select your state", :class => "input-large validate-selection", :id => "dataState" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="postal_code"><span class="req">*</span>Zip Code</label>
+      <div class="controls"><%= user.text_field "postal_code", :id => "dataZip", :maxlength => "10", :class => "input-large required inputStyle" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="dataEmail"><span class="req">*</span>Email</label>
+      <div class="controls"><%= user.text_field "email", :id => "dataEmail", :maxlength => "64", :class => "input-large required validate-email inputStyle" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="dataPhone">Phone</label>
+      <div class="controls"><%= user.text_field "phone", :id => "dataPhone", :maxlength => "16", :class => "input-large inputStyle" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="checkbox" for="show_phone_on_host_profile"><%= user.check_box "show_phone_on_host_profile", :class => "input-large checkbox inputStyle" %> Show phone number on your host profile?</label>
+    </div>
+    <div class="control-group">
+      <label for="organization" class="control-label">Organization</label>
+      <div class="controls"><%= user.text_field "organization", :id => 'organization', :class => "input-large inputStyle"   %>
+      </div>
+    </div>
+    <%= liquid_or_default(@calendar.theme.profile_form_additional_fields, "", @liquid) %>
+    <% end %>
+  </div>
+</div>

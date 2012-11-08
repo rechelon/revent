@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<supporter_rss>
+<Field>supporter_rss_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>NO</Null>
+  <Key>PRI</Key>
+  <Default></Default>
+  <Extra>auto_increment</Extra>
+  <Field>organization_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>supporter_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key>MUL</Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>rss_KEY</Field>
+  <Type>int(16)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>keyword</Field>
+  <Type>varchar(64)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Frequency</Field>
+  <Type>enum('Weekly','Daily','Twice Daily','Monthly')</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default></Default>
+  <Extra></Extra>
+  <Field>Number_of_Entries</Field>
+  <Type>int(11)</Type>
+  <Null>YES</Null>
+  <Key></Key>
+  <Default>10</Default>
+  <Extra></Extra>
+  <count>7</count>
+</supporter_rss></data>
+
+

@@ -1,0 +1,37 @@
+<div class="report-form">
+  <div class="meta-info">  
+    <div class="info"><label>Id</label><div class="data"><%= report.get('id') %></div></div>
+    <div class="info"><label>Created</label><div class="data"><%= Date.parse(report.get('created_at')).toString('MM/dd/yyyy hh:mm tt')  %></div></div>
+    <div class="info"><label>Last Updated</label><div class="data"><%= Date.parse(report.get('updated_at')).toString('MM/dd/yyyy hh:mm tt') %></div></div>
+    <div class="checkboxes">
+      <div class="checkbox">
+        <label for="status">Status</label>
+        <%= select_field({unpublished:'unpublished',published:'published'},{name:'status'},report.get('status')) %>
+      </div>    
+      <div class="checkbox">
+        <label for="sticky">featured</label>
+        <%= checkbox({name:'featured'},report.get('featured')) %>
+      </div>
+    </div>
+  </div>
+  <div class="main-info">
+    <div class='form-controls'>
+      <ul class='form-controls'>
+        <li><a action="save" class="button">Save</a></li>
+      </ul>
+      <div class="errors">
+      </div>
+    </div>
+    <div class="basic-info">
+      <fieldset>
+        <div class="field"><label for="reporter_name">first name</label><input model="user" class="first_name" name="first_name" value="<%= user.get('first_name') %>" /></div>
+        <div class="field"><label for="reporter_name">last name</label><input model="user" class="last_name" name="last_name" value="<%= user.get('last_name') %>" /></div>        
+        <div class="field"><label for="reporter_email">email</label><input model="user" class="email" name="email" value="<%= user.get('email') %>" /></div>
+        <div class="field"><label for="attendees">estimated attendance</label><input class="attendees" name="attendees" value="<%= report.get('attendees') %>" /></div>
+        <div class="field"><label for="text">text</label><textarea class="text" name="text"><%= report.get('text') %></textarea></div>
+        <div class="field"><label for="text2">text2</label><textarea class="text2" name="text2"><%= report.get('text2') %></textarea></div>
+      </fieldset>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>  

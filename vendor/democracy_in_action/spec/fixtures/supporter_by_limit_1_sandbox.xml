@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data organization_KEY="74">
+  <supporter>
+    <item>
+      <Receive_Phone_Blasts_BOOLVALUE>false</Receive_Phone_Blasts_BOOLVALUE>
+      <Hard_Bounce_Count/>
+      <Phone/>
+      <Receive_Phone_Blasts>false</Receive_Phone_Blasts>
+      <Occupation/>
+      <Source_Details>(No Referring info)</Source_Details>
+      <Source>Web</Source>
+      <Pager/>
+      <State/>
+      <object>supporter</object>
+      <Alternative_Email/>
+      <Timezone/>
+      <PRIVATE_Zip_Plus_4>0000</PRIVATE_Zip_Plus_4>
+      <Latitude/>
+      <Country/>
+      <organization_KEY>74</organization_KEY>
+      <Cell_Phone/>
+      <Email_Preference>HTML Email</Email_Preference>
+      <Work_Fax/>
+      <Notes/>
+      <Receive_Email>1</Receive_Email>
+      <Web_Page/>
+      <Work_Phone/>
+      <Source_Tracking_Code>(No Original Source Available)</Source_Tracking_Code>
+      <First_Name/>
+      <Home_Fax/>
+      <Instant_Messenger_Name/>
+      <Soft_Bounce_Count/>
+      <Street_2/>
+      <Street_3/>
+      <Phone_Provider/>
+      <Organization/>
+      <Email_Status/>
+      <Tracking_Code/>
+      <Other_Data_1/>
+      <Other_Data_2/>
+      <Other_Data_3/>
+      <Title/>
+      <key>28144846</key>
+      <length>59</length>
+      <Suffix/>
+      <County/>
+      <District/>
+      <Instant_Messenger_Service/>
+      <Date_Created>Wed Sep 24 2008 19:27:28 GMT-0400 (EDT)</Date_Created>
+      <Last_Name/>
+      <Last_Bounce/>
+      <Email/>
+      <City/>
+      <Last_Modified>Wed Sep 24 2008 19:27:28 GMT-0400 (EDT)</Last_Modified>
+      <Department/>
+      <Zip/>
+      <uid/>
+      <Password/>
+      <Longitude/>
+      <MI/>
+      <supporter_KEY>28144846</supporter_KEY>
+      <Status/>
+      <Street/>
+      <chapter_KEY/>
+    </item>
+    <count>1</count>
+  </supporter>
+</data>

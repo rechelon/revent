@@ -1,0 +1,11 @@
+<% fields_for :event, @event do |event| %>
+  <% event.fields_for :custom_attributes_data, @event.custom_attributes_data do |custom| %>
+    <!-- custom addtion for 99spring -->
+    <div class="control-group">
+      <label class="checkbox" for="nonviolent">
+        <%= custom.check_box 'nonviolent', :checked_value => 'We pledge to be nonviolent', :class => "required inputStyle" %>
+        <span class="req">*</span>We pledge to be nonviolent 
+      </label>
+    </div>
+  <% end -%>
+<% end -%>

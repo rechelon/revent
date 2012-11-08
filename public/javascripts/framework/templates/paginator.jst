@@ -1,0 +1,47 @@
+<ul>
+  <% if(current_page > 1) { %>
+    <li>
+      <a class="prev-page">&larr;</a>
+    </li>
+  <% } else { %>
+    <li class='disabled'>
+      <a>&larr;</a>
+    </li>
+  <% } %>
+  <% if(lower_bound > 1){ %>
+    <li>
+      <a class="go-to-page">1</a>
+    </li>
+    <li class='disabled'>
+      <a>...</a>
+    </li>
+  <% } %>
+  <% for(i = lower_bound; i < lower_bound+show_pages && i <= total_pages; i++){ %>
+    <% if(current_page === i) { %>
+      <li class='active'>
+        <a class="current-page"><%= i %></a>
+      </li>
+    <% } else { %>
+      <li>
+        <a class="go-to-page"><%= i %></a>
+      </li>
+    <% } %>
+  <% } %>
+  <% if(lower_bound+show_pages <= total_pages){ %>
+    <li class='disabled'>
+      <a>...</a>
+    </li>
+    <li>
+      <a class="go-to-page"><%= total_pages %></a>
+    </li>
+  <% } %>
+  <% if(current_page < total_pages) { %>
+    <li>
+      <a class="next-page">&rarr;</a>
+    </li>
+  <% } else { %>
+    <li class='disabled'>
+      <a>&rarr;</a>
+    </a>
+  <% } %>
+</ul>

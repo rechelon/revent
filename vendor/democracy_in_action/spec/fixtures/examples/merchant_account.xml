@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<merchant_account>
+
+<item>
+<key>315</key>
+<merchant_account_KEY>315</merchant_account_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Name></Name>
+  <Account_Type></Account_Type>
+  <Account_Username></Account_Username>
+  <Account_Password></Account_Password>
+  <Account_Signature></Account_Signature>
+  <Account_Partner></Account_Partner>
+  <Server></Server>
+  <Notes></Notes>
+  <Exclude_Amex></Exclude_Amex>
+  <Exclude_Discover></Exclude_Discover>
+  <Allow_ECheck></Allow_ECheck>
+  <Date_Created></Date_Created>
+  </item><count>2</count>
+</merchant_account></data>
+
+

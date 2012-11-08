@@ -1,0 +1,71 @@
+<script type='text/javascript'>
+  revent.calendar_expiration_date = '<%= @calendar.past_event_cutoff.strftime("%m/%d/%Y") %>';
+  revent.calendar_categories = _.flatten([{id:'', name:''}, <%= @calendar.categories.to_json :only => [:name, :id] %>]);
+  var total_events_fetched = false;
+  var map_generated = false;
+  var router_waiting = false;
+  var event_list, worksite_event_list;
+  revent.total_events = new EventCollection({
+    date_range_start: revent.calendar_expiration_date
+  });
+  revent.upcoming_events = new EventSubCollection({
+    parent_collection: revent.total_events,
+    worksite_event: false,
+    'past?': false
+  });
+  revent.upcoming_worksite_events = new EventSubCollection({
+    parent_collection: revent.total_events,
+    worksite_event: true,
+    'past?': false
+  });
+  revent.total_events.fetch({
+    success: function(){
+      total_events_fetched = true;
+      revent.upcoming_events.fetch();
+      revent.upcoming_worksite_events.fetch();
+    }
+  });
+
+  jq(function($){
+    event_list = new ListView({
+      el: document.getElementById("event-list"),
+      collection: revent.upcoming_events,
+      template: 'event',
+      row_view: EventRowView,
+      debug: true,
+      no_results_html: '<div class="no-rows">No upcoming events. Would you like to <%= link_to "create one", signup_url(:permalink => @calendar.permalink), :class => "create-item-link" %>?<br><br></div>'
+    });
+    worksite_event_list = new ListView({
+      el: document.getElementById("worksite-event-list"),
+      collection: revent.upcoming_worksite_events,
+      template: 'event',
+      row_view: EventRowView,
+      no_results_html: '<div class="no-rows">No upcoming worksite events. Would you like to <%= link_to "create one", signup_url(:permalink => @calendar.permalink), :class => "create-item-link" %>?<br><br></div>'
+    });
+    events_map = new MapView({
+      el: document.getElementById("eventmap"),
+      collection: revent.total_events,
+      icons: icons,
+      api: "<%= @calendar.map_engine %>"
+    });
+    if(total_events_fetched == true){
+      events_map.render();
+      worksite_event_list.render();
+      event_list.render();
+    }
+    event_search = new EventSearchView({
+      el: document.getElementById("event-search"),
+      collections: {
+        total: revent.total_events,
+        upcoming_worksite: revent.upcoming_worksite_events,
+        upcoming: revent.upcoming_events
+      },
+      mapview: events_map,
+      template: 'event',
+      categories: revent.calendar_categories
+    });
+    revent.router = new Router();
+    Backbone.history.start();
+  });
+</script>
+

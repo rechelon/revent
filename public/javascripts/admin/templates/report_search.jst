@@ -1,0 +1,70 @@
+<form class="list-search-form" method="get" action="/admin/reports/export">
+  <table class="list-search">
+    <tr>
+        <th>Calendar</th>
+        <th>Status</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Name/Email</th>
+        <th>Events From</th>
+        <th>Events Till</th>
+        <th>Sponsor</th>
+    </tr>
+    <tr>
+      <td>      
+        <select class="filter" filter="calendar_id" name="calendar_id" class="calendar_id">
+          <%  calendars.each(function(calendar){
+                if(calendar.get('id') == current_calendar_id){
+                  selected = 'selected="selected"';
+                } else {
+                  selected = '';
+                }
+                print('<option value="'+calendar.get('id')+'" '+selected+' >'+calendar.get('permalink')+'</option>'); 
+              }); 
+          %>
+        </select>
+      </td>    
+      <td>
+        <%= select_field({'':'--',published:'Published',unpublished:'Unpublished'},{filter:'status',class:'filter',name:'status'},params.status) %>
+      </td>
+      <td>
+        <%= select_field(us_states,{filter:'state',class:'filter input-mini',name:'state'},params.state) %>
+      </td>
+      <td>      
+        <input type="input" filter="postal_code" class="filter input-small" name="postal_code" size="5" 
+          value="<%= params.postal_code %>"/>  
+      </td>
+      <td>      
+        <input type="input" filter="full_text" class="filter" name="full_text"
+          value="<%= params.full_text %>"/>  
+      </td>
+      <td>      
+        <input type="input" filter="date_range_start" class="filter date date_range_start input-small" name="date_range_start" size="9"
+          value="<%= params.date_range_start %>"
+        />
+      </td>
+      <td>      
+        <input type="input" filter="date_range_end" class="filter date date_range_end input-small" name="date_range_end" size="9"
+          value="<%= params.date_range_end %>"/>
+      </td>      
+      <td>
+        <%= select_field(revent.sponsors.toSelect(),{filter: 'sponsor', class: 'filter', name: 'sponsor'}, params.sponsor) %>
+      </td>
+    </tr>
+    <tr>
+      <th>Sort by</th>
+      <th>Per page</th>
+    </tr>
+    <tr>
+      <td>
+        <%= select_field({event_start:'Event Date',event_name:'Event Name',first_name:'First Name',last_name:'Last Name',email:'Email',location:'Location',status:'Published',attendees:'Estimated Attendance'},{class:'sort',name:'order'},params.order) %>
+      </td>
+      <td>
+        <%= select_field({25:'25',100:'100',500:'500'},{class:'items-per-page'},params.limit) %>
+      </td>
+      <td>
+        <a class="button export-btn">Export</a>
+      </td>
+    </tr>
+  <table>
+</form>

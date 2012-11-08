@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<store_item>
+
+<item>
+<key>1857</key>
+<store_item_KEY>1857</store_item_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Name></Name>
+  <Description>test</Description>
+  <store_item_category_KEYS></store_item_category_KEYS>
+  <Price></Price>
+  <Number_in_Stock></Number_in_Stock>
+  <Status></Status>
+  <Note></Note>
+  <photo_KEY></photo_KEY>
+  <Image_URL></Image_URL>
+  <Order_></Order_>
+  <Options></Options>
+  <Shipping_and_Handling></Shipping_and_Handling>
+  <Bulk_Shipping></Bulk_Shipping>
+  <detailed_explanation></detailed_explanation>
+  <thumb_size>0</thumb_size>
+  </item><count>1</count>
+</store_item></data>
+
+

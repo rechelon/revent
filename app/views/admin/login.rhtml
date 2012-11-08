@@ -1,0 +1,21 @@
+<form id="login-form" method="post" action="/admin/login">
+  <div class="modal-body">  
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email">
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+
+    <!-- Uncomment this if you want this functionality
+    <label for="remember_me">Remember me:</label>
+    <input id="remember_me" name="remember_me" type="checkbox" value="1" />
+    -->
+    <input type="submit" value="Log in" name="commit" class="btn-primary">
+  </div>
+  <div class="modal-footer">
+  </div>
+</form>
+
+<script type="text/javascript" language="JavaScript">
+  document.forms['login-form'].elements['email'].focus();
+</script>

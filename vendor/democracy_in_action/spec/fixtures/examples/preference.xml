@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<preference>
+
+<item>
+<key>303</key>
+<preference_KEY>303</preference_KEY>
+  <organization_KEY>962</organization_KEY>
+  <campaign_manager_KEY>0</campaign_manager_KEY>
+  <No_WYSIWYG>0</No_WYSIWYG>
+  <Show_Chapter></Show_Chapter>
+  <Advanced_Headquarters>1</Advanced_Headquarters>
+  <Max_Hard_Bounce>0</Max_Hard_Bounce>
+  <Max_Soft_Bounce>0</Max_Soft_Bounce>
+  <Default_From_Name></Default_From_Name>
+  <Default_From_Email></Default_From_Email>
+  <Default_Reply_To></Default_Reply_To>
+  <Default_Email_Blast_Text_Header></Default_Email_Blast_Text_Header>
+  <Default_Email_Blast_Text_Footer></Default_Email_Blast_Text_Footer>
+  <Profile_Redirect></Profile_Redirect>
+  <packageId></packageId>
+  <preference></preference>
+  <value></value>
+  </item><count>1</count>
+</preference></data>
+
+

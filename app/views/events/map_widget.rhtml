@@ -1,0 +1,21 @@
+<% render :partial => 'maps/map_headers' %>
+<script type='text/javascript'>
+  revent.events = new Backbone.Collection([<%= @all_events.to_json(Event:MAP_JSON) %>],{model: EventModel});
+  jq(function($){
+    events_map = new MapView({
+      el: document.getElementById("event-map"),
+      collection: revent.events,
+      icons: icons,
+      hide_details_link: true,
+      api: "<%= @calendar.map_engine %>"
+    }).render({
+      center:{
+        unit: 'postal_code',
+        value: '<%= @event.postal_code %>'
+      } 
+    });
+  });
+</script>
+<div id="event-map" style="width: <%=@width%>; height: <%=@height%>"></div>
+
+

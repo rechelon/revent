@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<letter>
+
+<item>
+<key>998</key>
+<letter_KEY>998</letter_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <campaign_KEY></campaign_KEY>
+  <Reference_Name>test</Reference_Name>
+  <Letter_Title></Letter_Title>
+  <Beginning_Content></Beginning_Content>
+  <Page_2_Content></Page_2_Content>
+  <READONLY_Creation_Date>2008-06-25 20:19:59.0</READONLY_Creation_Date>
+  <Description></Description>
+  <Letter_Subject></Letter_Subject>
+  <Letter_Salutation></Letter_Salutation>
+  <Letter_Content></Letter_Content>
+  <Use_Custom_Contacts></Use_Custom_Contacts>
+  <Request></Request>
+  <Required></Required>
+  <Allow_Emails>1</Allow_Emails>
+  <Allow_Faxes>1</Allow_Faxes>
+  <Max_Number_Of_Emails>10000</Max_Number_Of_Emails>
+  <Max_Number_Of_Faxes>0</Max_Number_Of_Faxes>
+  <PRIVATE_Emails_Sent>0</PRIVATE_Emails_Sent>
+  <PRIVATE_Faxes_Sent>0</PRIVATE_Faxes_Sent>
+  <Thank_You_Page_Text_or_HTML></Thank_You_Page_Text_or_HTML>
+  <Status></Status>
+  <redirect_path></redirect_path>
+  <Disallow_Clickover_Talking_Points></Disallow_Clickover_Talking_Points>
+  <letter_width></letter_width>
+  <letter_height></letter_height>
+  <recipient_KEYS></recipient_KEYS>
+  <groups_KEYS></groups_KEYS>
+  <email_trigger_KEYS></email_trigger_KEYS>
+  <Suppress_Automatic_Response_Email></Suppress_Automatic_Response_Email>
+  <Template></Template>
+  </item><count>1</count>
+</letter></data>
+
+

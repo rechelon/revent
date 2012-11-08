@@ -1,0 +1,88 @@
+SUPERUSERS = [ 'admin@example.org' ]
+
+DEFAULT_IMPORT_USER = "events@example.org"
+
+SHORTLINE_IP = '127.0.0.1'
+SHORTLINE_PORT = '8009'
+SHORTLINE_TIMEOUT = 5 # in seconds
+
+MEMCACHE_SERVER = '127.0.0.1:11211'
+
+VARNISH_SERVERS = ['127.0.0.1', '10.0.0.1']
+
+AWS_S3_BUCKET_NAME = ''
+
+DEFAULT_GOOGLE_MAPS_API_KEY = ''
+
+ENV['RECAPTCHA_PUBLIC_KEY'] = '' 
+ENV['RECAPTCHA_PRIVATE_KEY'] = '' 
+
+DEFAULT_ICON_UPCOMING = {
+  :image => '/images/dark_blue_dot.png',
+  :width => 10,
+  :height => 10,
+  :anchor_x => 5,
+  :anchor_y => 5
+}
+
+DEFAULT_ICON_PAST = {
+  :image => '/images/light_blue_dot.png',
+  :width => 10,
+  :height => 10,
+  :anchor_x => 5,
+  :anchor_y => 5
+}
+
+DEFAULT_ICON_WORKSITE = {
+  :image => '/images/green_dot.png',
+  :width => 10,
+  :height => 10,
+  :anchor_x => 5,
+  :anchor_y => 5
+}
+
+SALSA_TEST_ACCOUNT = {
+  :user => '',
+  :pass => '',
+  :node => ''
+}
+
+def initialize_geocoders
+  GeoKit::Geocoders::google = ''
+  GeoKit::Geocoders::yahoo  = ''
+  GeoKit::Geocoders::provider_order = [:google, :yahoo]
+  GeoKit::Geocoders::timeout = 4
+end
+
+def actionmailer_options environment
+  case environment
+  when "development"
+    return {
+      :domain => 'some.domain.tld',
+      :address => 'smtp.domain.tld',
+      :port => 587,
+      :user_name => 'events@domain.tld',
+      :password => '***password***',
+      :perform_deliveries => true,
+      :authentication => :login
+    }
+  when "production"
+    return {
+      :domain         => "some.domain.tld",
+      :address        => 'smtp.domain.tld',
+      :port           => 587,
+      :user_name      => 'events@domain.tld',
+      :password       => '***password***',
+      :authentication => :login
+    }
+  when "test"
+    return {
+      :domain         => "some.domain.tld",
+      :address        => 'smtp.domain.tld',
+      :port           => 587,
+      :user_name      => 'events@domain.tld',
+      :password       => '***password***',
+      :authentication => :login
+    }
+  end
+end

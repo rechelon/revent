@@ -1,0 +1,5 @@
+<%= @message %>
+
+<%= @event.name %> <%= @event.past? ? 'took place on' : 'will take place on' %> <%= @event.start.strftime('%A %B %e at %l:%M%p') %> at <%= @event.location %> in <%= @event.city_state %>.
+
+For the latest information on this event, visit: <%= @url %>

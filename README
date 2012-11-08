@@ -1,0 +1,110 @@
+The source code for Revent is released under the GNU General Public License:
+http://www.gnu.org/licenses/gpl.html
+
+REVENT: MASS MOBILIZATION
+
+  The radicalDESIGNS distributed event organizing tool is designed to aid 
+  organizers in planning and executing national days of action, house parties, 
+  meetups, and other organizing models. The tool is a full featured event 
+  planning system that includes host signup, participant RSVP, host management 
+  features and extensive report back tools. The tool integrates with Salsa CRM, 
+  and supports multiple admin interfaces for multi-member coalition organizting.
+
+
+Event Tool Features:
+ Event Display
+  * Geo location and mapping:  All events are geo located and then plotted on a
+    series of Flash and Google based maps depending on the current view of the
+    event or search.
+  * Event Searching:  Users can search for events by date and geographical
+    location.
+  * Email Triggers:  Customized emails can be sent to event hosts and
+    participants after they signup to host or attend an event via DIA and/or the
+    rEvent system,.
+  * Event Updates:  Hosts have the ability to post ongoing blog style updates
+    about the event.
+  * File and image attachment:  Event host can upload pictures flyer or other
+    files to attache to events.
+  * Host Profile Pages:  Events hosts have individual pages that show their
+    contact information and a picture.
+  * Congressional District Matching:  Events can be mapped to congressional
+    district based on their zip code or address.
+  * Event Types and Tagging:  Special event types and tags can be created to sort
+    and search for events by different criteria.
+  * Public/Private Events:  Allow the option for event to be private. Private
+    events will be accessible by a direct web address but will not show up on the
+    event map or the event search pages.
+  * Multiple calendars for different simultaneous mobilizations.
+
+Event Report Back System
+  Users and event hosts can report back on the outcome of events. The report back
+  tool includes user narratives, photo uploads with Flickr integration and
+  slideshows, YouTube vide integration, press coverage reporting, and mapping of
+  event reports. The report back tool also includes a javascript power badge for
+  embedding featured report backs on other websites.
+
+Event Host Management Tools
+  Event hosts have the ability to log into the tool and manage all aspects of their
+  event. Host can update event information, manage their profile, view and email
+  event participants, invite other event participants, and attach images and
+  documents. Event host can also manage event report back information.
+
+Administrator Management Tools
+  System administrators will be able to view edit and manage all events and reset
+  user passwords.
+
+Salsa CRM Database Integration 
+  All users and event data will be mirrored into DIA. This data includes event
+  information, event hosting, event attendance and user profiles. DIA trigger
+  emails can also be called from the event system. *(subscription to DIA required)
+
+
+REVENT SETUP
+
+Mass mobilizations can create a significant amount of load.  If you are expecting 
+a large turnout, it is sugested that you have at least three servers: a caching 
+server, one or more application servers, and db server.
+
+caching server:
+- install varnish
+
+application server:
+- install ruby 1.8.7
+- install apache
+- install passenger
+- install revent (instructions below)
+
+db server:
+- install mysql
+- install memcached
+- install shortline
+
+
+WARNING: if rails, varnish, and mysql are unfamilar technologies, it is STRONGLY recomended that you DO NOT HOST REVENT YOURSELF.  There is only a brief window of success for a national day of action, and a server failure could cripple all of the hard work you have done to organize your event. 
+
+Again: DO NOT HOST REVENT YOURSELF UNLESS YOU HAVE BOTH AN EXPERIENCED REVENT DEVELOPER AND AN EXPERIENCED MYSQL DB ADMIN.
+
+
+HOSTING OPTIONS
+Radical Designs offers a monitored shared hosting environment for Revent, this is the sugested deployment strategy if you are not part of the Revent development team.  Go to http://radicaldesigns.org/revent for more information.
+
+BEFORE YOU INSTALL
+You will need access to the following services:
+  - google maps or open streetmaps
+  - amazon s3 for report back image storage
+  - google, twitter, and facebook applications for oauth login
+
+REVENT INSTALLATION
+- apt-get install libmagickwand-dev libcurl4-gnutls-dev
+- bundle install
+- run ./script/initialize
+- fill out created config files (database, amazon_s3, revent_config)
+- rake db:create
+- open script/console production
+    s = Site.new
+    s.save
+    h = Host.new :hostname => 'events.example.org'
+    h.site = s
+    h.save
+    c = Calendar.new :site_id => s.id, :permalink => 'calendar_name', :name => 'Calendar Name'
+    c.save

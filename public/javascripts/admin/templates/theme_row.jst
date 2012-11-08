@@ -1,0 +1,20 @@
+<h3><%= theme.get('name') %></h3>
+<div class="theme-form">
+  <ul class="theme-form-page">
+    <li>
+      <a class="button theme-delete-btn" action="delete">Delete</a>
+      <a class="button theme-clone-btn" action="clone">Clone</a>
+      <a class="button theme-save-btn" action="save">Save</a>
+      <label>name</label>
+      <div class="data">
+        <input name="name" value="<%= theme.get('name') %>" />
+      </div>
+    </li>
+    <li><hr /></li>
+    <li>
+      <a class="button new-theme-element-btn" action="new_theme_element">New Theme Element</a>
+      <div class='theme-element-list'></div>
+      <div class="clear"></div>
+    </li>
+  </ul>
+</div>

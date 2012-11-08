@@ -1,0 +1,22 @@
+<% if(!hide_details_link){ %>
+  <a href='/<%= revent.permalink %>/events/show/<%= item.id %>' target='_blank'>
+<% } %>
+<% if(item.get('time_tbd')){ %>
+  <%= start_date+(start_date == end_date ? "" : " - "+end_date) %> (time TBD)
+<% } else { %>
+  <%= start_date+start_time+" - "+(start_date == end_date ? end_time : end_date+end_time) %>
+<% } %>
+<% if(item.sponsor_union){ %>
+  Sponsored by
+  <%= item.sponsor_union %>
+  <% if(item.sponsor_local){ %>
+    , Local <%= item.sponsor_local %>
+  <% } %>
+<% } else if(item.sponsor_other){ %>
+  Sponsored by
+  <%= item.sponsor_other %>
+<% } %>
+<% if(!hide_details_link){ %>
+  </a>
+<% } %>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<bad_word>
+
+<item>
+<key>128</key>
+<bad_word_KEY>128</bad_word_KEY>
+  <Last_Modified>2008-06-25 20:19:49.0</Last_Modified>
+  <organization_KEY>962</organization_KEY>
+  <word>test</word>
+  <Date_Created>2008-06-25 20:19:49.0</Date_Created>
+  </item><count>1</count>
+</bad_word></data>
+
+

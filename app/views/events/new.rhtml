@@ -1,0 +1,59 @@
+<h1>
+  <% if @hostform and @hostform.title -%>
+    <%= @hostform.title %>
+  <% else -%>
+     Organize an Event 
+  <% end -%>
+</h1>
+
+<div class="host-intro-text intro-text">
+  <% if @hostform and @hostform.intro_text -%>
+    <%= @hostform.intro_text %>
+  <% else -%>
+     Sign up below
+    <p>Be a part of our Day of Action.&nbsp; Join us by organizing a demonstration!&nbsp; 
+      Fill out the form below if you can host an action in your community.&nbsp; 
+    </p>
+  <% end -%>
+</div>
+
+<div class="form-horizontal" id="host-new-form">
+  <% form_for :event, @event, :url => url_for(:permalink => @calendar.permalink, :controller => 'events', :action => 'create'), :html => {:id => 'event-signup-form', :multipart => true} do |f| -%>
+    <%= error_messages_for 'event' %>
+    <% if @profile_complete %>
+      <div class="profile-edit-link">
+        <i class="icon-pencil"></i> <%= link_to('Edit your profile', profile_path(:permalink=>@calendar.permalink)) %>
+      </div>
+    <% else %>
+      <%= render :partial => 'account/profile_form', :locals =>{ :f =>f } %>
+    <% end %>
+    <div id="event-information">
+      <h3>Action Information</h3>
+      <div class="required-fields"><span class="req">*</span>Required fields</div>
+      <div id="event-host-form">
+        <% if !@profile_complete %>
+          <div class="control-group">
+            <label class="checkbox">
+              <input type="checkbox" id="copy_host_info" name="copy_host_info" /> Same address as above
+            </label>
+          </div>
+        <% end %>
+        
+        <%= render :partial => 'events/form', :locals =>{ :f =>f } %>
+
+        <div class="host-form-footer description">
+          <% if @hostform and @hostform.pre_submit_text %>
+            <%= @hostform.pre_submit_text %>
+          <% end %>
+        </div>
+        <div class="form-actions well">
+          <input type="submit" value="Create My Event" id="event-submit" class="btn btn-primary" />
+        </div>
+      </div> <!-- /event-host-form -->
+      <%= javascript_include_tag "host_form.js" %>
+      <script type="text/javascript" language="javascript">
+        var valid = new Validation("event-signup-form", {useTitles : true});
+      </script>
+    </div> <!-- /event-information -->
+  <% end %>
+</div> <!-- /host-new-form -->

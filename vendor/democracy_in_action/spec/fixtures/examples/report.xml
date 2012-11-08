@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<report>
+
+<item>
+<key>203</key>
+<report_KEY>203</report_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <campaign_manager_KEY>2067</campaign_manager_KEY>
+  <package_KEY></package_KEY>
+  <version_KEY></version_KEY>
+  <Last_Modified>2007-01-30 17:51:20.0</Last_Modified>
+  <Date_Created>2007-01-30 17:51:20.0</Date_Created>
+  <Type></Type>
+  <Name>test</Name>
+  <tableNames>event,supporter_event,supporter</tableNames>
+  <limitClause></limitClause>
+  <report_category_KEY></report_category_KEY>
+  <order_by_report_field_KEY></order_by_report_field_KEY>
+  <AscDesc>asc</AscDesc>
+  <order_by2_report_field_KEY></order_by2_report_field_KEY>
+  <AscDesc2>asc</AscDesc2>
+  <order_by3_report_field_KEY></order_by3_report_field_KEY>
+  <AscDesc3>asc</AscDesc3>
+  <orderBy></orderBy>
+  <orderBy2></orderBy2>
+  <orderBy3></orderBy3>
+  <Use_Cache>1</Use_Cache>
+  <Caching_Interval>24</Caching_Interval>
+  <Last_Cache></Last_Cache>
+  <Status></Status>
+  <Last_Error></Last_Error>
+  <is_batch></is_batch>
+  <with_rollup></with_rollup>
+  </item><count>10</count>
+</report></data>
+
+

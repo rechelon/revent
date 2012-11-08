@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+  <%= render :partial=>'/shared/headers' %>
+  <% if @calendar.theme.head %>
+    <%= @calendar.theme.head %>
+  <% else %>
+    <link href="/stylesheets/style.css" media="screen" rel="Stylesheet" type="text/css" />
+  <% end %>
+
+  <title><%= liquid_or_default(@calendar.theme.site_title, "Revent") %><% if @pagetitle %> <%= ' | '+@pagetitle %> <% end %></title>
+
+  </head>
+  <body style="background:none";>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<div class="user-form">
+  <div class="meta-info">  
+    <div class="info"><label>Id</label><div class="data"><%= user.get('id') %></div></div>
+    <div class="info"><label>Created</label><div class="data"><% 
+      if(user.get('created_at')){ 
+        print(Date.parse(user.get('created_at')).toString('MM/dd/yyyy hh:mm tt')); 
+      } 
+    %></div></div>
+    <div class="info"><label>Activated</label><div class="data"><% 
+      if(user.get('activated_at')){ 
+        print(Date.parse(user.get('activated_at')).toString('MM/dd/yyyy hh:mm tt')); 
+      }  
+    %></div></div>
+    <div class="info"><label>Last Updated</label><div class="data"><% 
+      if(user.get('updated_at')){ 
+        print(Date.parse(user.get('updated_at')).toString('MM/dd/yyyy hh:mm tt')); 
+      }  
+    %></div></div>
+    <div class="info"><label>Facebook Id</label><div class="data"><%= user.get('fb_id') %></div></div>
+    <div class="info"><label>Twitter Id</label><div class="data"><%= user.get('twitter_id') %></div></div>
+    <div class="checkboxes">
+      <div class="checkbox">
+        <label for="sticky">Show Phone #</label>
+        <%= checkbox({name:'show_phone_on_host_profile'},user.get('show_phone_on_host_profile'))%>
+      </div>
+    </div>
+    <% if(revent.current_user.is_site_admin()){ %>
+      <div class="permissions">
+        <div class="checkbox">
+          <label for="sticky">Admin User</label>
+          <%= checkbox({name:'admin', class: 'admin-user'},user.get('admin'))%>
+        </div>
+        <div class="permission-list" style='display: <%= (user.get('admin') ? "block" : "none") %>'>
+        </div>
+        <div class="create-permission" style='display: <%= (user.get('admin') ? "block" : "none") %>'>
+          <a class="button create-permission-btn">Add Permission</a>
+        </div>
+      </div>
+    <% } %>
+  </div>
+  <div class="main-info">
+    <div class='form-controls'>
+      <ul class='form-controls'>
+        <li><a action="save" class="button">Save</a></li>
+        <li><a action="reset_password" class="button">Reset Password</a></li>
+      </ul>
+      <div class="errors">
+      </div>
+    </div>
+    <div class="basic-info">
+      <fieldset>
+        <div class="field"><label for="first_name">first name</label><input class="first_name" name="first_name" value="<%= user.get('first_name') %>" /></div>
+        <div class="field"><label for="last_name">last name</label><input class="last_name" name="last_name" value="<%= user.get('last_name') %>" /></div>
+        <div class="field"><label for="email">email</label><input class="email" name="email" value="<%= user.get('email') %>" /></div>
+        <div class="field"><label for="organization">organization</label><input name="organization" value="<%= user.get('organization') %>" /></div>      
+        <div class="field"><label for="partner_id">partner id</label><input name="partner_id" value="<%= user.get('partner_id') %>" /></div>      
+      </fieldset>
+      <div class="clear"></div>
+      <fieldset class="address">
+        <h3>Location</h3>
+        <div class="field"><label for="street">street</label><input name="street" value="<%= user.get('street') %>" /></div>
+        <div class="field"><label for="street_2">street 2</label><input name="street_2" value="<%= user.get('street_2') %>" /></div>
+        <div class="field"><label for="city">city</label><input name="city" value="<%= user.get('city') %>" /></div>
+        <div class="field"><label for="state">state</label><input name="state" value="<%= user.get('state') %>" /></div>
+        <div class="field"><label for="postal_code">postal code</label><input name="postal_code" value="<%= user.get('postal_code') %>" /></div>
+      </fieldset>
+    </div>
+  </div>
+</div>  

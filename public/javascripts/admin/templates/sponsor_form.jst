@@ -1,0 +1,22 @@
+<div class="sponsor-form">
+  <div class="meta-info">  
+    <div class="info"><label>Id</label><div class="data"><%= sponsor.get('id') %></div></div>
+  </div>
+  <div class="main-info">
+    <div class='form-controls'>
+      <ul class='form-controls'>
+        <li><a action="save" class="button">Save</a></li>
+      </ul>
+      <div class="errors">
+      </div>
+    </div>
+    <div class="basic-info">
+      <fieldset>
+        <div class="field"><label for="name">name</label><input model="sponsor" class="name" name="name" value="<%= sponsor.get('name') %>" /></div>
+        <div class="field"><label for="partner_code">partner code</label><input model="sponsor" class="partner_code" name="partner_code" value="<%= sponsor.get("partner_code") %>" /></div>        
+        <div class="field"><label for="description">description</label><textarea model="sponsor" class="description" name="description"><%= sponsor.get('description') %></textarea></div>
+      </fieldset>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>  

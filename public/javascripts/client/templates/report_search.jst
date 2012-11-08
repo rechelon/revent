@@ -1,0 +1,56 @@
+<form class="list-search-form well form-inline" method="get" action="/admin/reports/export">
+  <table class="list-search">
+    <tr>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Events From</th>
+      <th>Events Till</th>
+      <th>Sort by</th>
+      <th>Per page</th>
+    </tr>
+    <tr>
+      <td>
+        <%= select_field(us_states,{filter:'state','class':'filter input-mini',name:'state'},params.state) %>
+      </td>
+      <td>      
+        <input type="input" filter="nearby_zip" class="filter input-mini" name="nearby_zip" size="5" 
+          value="<%= params.nearby_zip %>"/>  
+      </td>
+      <td>      
+        <input type="input" filter="date_range_start" class="filter date date_range_start input-small" name="date_range_start" size="9"
+          value="<%= params.date_range_start %>"
+        />
+      </td>
+      <td>      
+        <input type="input" filter="date_range_end" class="filter date date_range_end input-small" name="date_range_end" size="9"
+          value="<%= params.date_range_end %>"/>
+      </td>      
+      <td>
+        <%= select_field({event_start:'Event Date',event_name:'Event Name','location':'Location',attendees:'Estimated Attendance'},{'class':'sort input-medium',name:'order'},params.order) %>
+      </td>
+      <td>
+        <%= select_field({25:'25',100:'100',500:'500'},{'class':'items-per-page input-mini'},params.limit) %>
+      </td>
+    </tr>
+  <table>
+  <table class='list-search-content'>
+    <tr>
+      <td>
+        <div class="contol-group">
+        <input type='checkbox' filter='content_image' class='filter content_image' name='content_image' value='true'<%= params.content_image ? " checked='checked'" : "" %> />
+        Images 
+        &nbsp;
+        &nbsp;
+        <input type='checkbox' filter='content_video' class='filter content_video' name='content_video' value='true'<%= params.content_video ? " checked='checked'" : "" %> />
+        Videos 
+        &nbsp;
+        &nbsp;
+        <input type='checkbox' filter='content_document' class='filter content_document' name='content_document' value='true'<%= params.content_document ? " checked='checked'" : "" %> />
+        Documents 
+        </div>
+      </td>
+    </tr>
+  </table>
+  <input type='button' value='Search' class='search-button btn btn-primary' />
+  <div class='clear'></div>
+</form>

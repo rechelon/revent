@@ -1,0 +1,58 @@
+<form class="list-search-form" method="get" action="/admin/events/export" >
+  <table class="list-search">
+    <tr>
+        <th>Calendar</th>
+        <th>Category</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Name/Host/Location</th>
+        <th>From</th>
+        <th>Till</th>
+        <th>Sponsor</th>
+    <tr>
+      <td>
+        <%= select_field(calendars.toSelect(),{ filter:'calendar_id', class:'filter', name:'calendar_id'},current_calendar_id) %>
+      </td>
+      <td>
+        <%= select_field(categories.toSelect(),{ filter:'category_id', class:'filter', name:'category_id'},params.category_id) %>
+      </td>
+      <td>
+        <%= select_field(us_states,{filter:'state',class:'filter input-mini',name:'state'},params.state) %>
+      </td>
+      <td>      
+        <input type="input" filter="postal_code" class="filter input-small" name="postal_code" size="5" 
+          value="<%= params.postal_code %>"/>  
+      </td>
+      <td>      
+        <input type="input" filter="full_text" class="filter" name="full_text"
+          value="<%= params.full_text %>"/>  
+      </td>
+      <td>      
+        <input type="input" filter="date_range_start" class="filter date date_range_start input-small" name="date_range_start" size="9"
+          value="<%= params.date_range_start %>"
+        />
+      </td>
+      <td>      
+        <input type="input" filter="date_range_end" class="filter date date_range_end input-small" name="date_range_end" size="9"
+          value="<%= params.date_range_end %>"/>
+      </td>
+      <td>
+        <%= select_field(revent.sponsors.toSelect(),{filter: 'sponsor', class: 'filter', name: 'sponsor'}, params.sponsor) %>
+      </td>
+    </tr>
+    <th>Sort by</th>
+        <th>Per page</th>
+    </tr>
+    <tr>
+      <td>
+        <%= select_field({start: 'Start Date',end: 'End Date',location: 'Location',name: 'Name',host_last_name: 'Host'}, {class: 'sort',name: 'order'}, params.order ) %>
+      </td>
+      <td>
+        <%= select_field({25:'25',100:'100',500:'500'},{class:'items-per-page'},params.limit) %>
+      </td>
+      <td>
+        <a class="button export-btn" >Export</a>
+      </td>
+    </tr>
+  <table>
+</form>

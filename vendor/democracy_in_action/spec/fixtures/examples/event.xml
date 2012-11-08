@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<event>
+
+<item>
+<key>25522</key>
+<event_KEY>25522</event_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY>0</chapter_KEY>
+  <national_event_KEY>0</national_event_KEY>
+  <distributed_event_KEY>0</distributed_event_KEY>
+  <supporter_KEY>0</supporter_KEY>
+  <Reference_Name></Reference_Name>
+  <Event_Name>Salsa Lessons Webinar:  Mar. 23, 2:00 p.m.</Event_Name>
+  <Last_Modified>2007-03-22 14:49:52.0</Last_Modified>
+  <Date_Created>2007-03-12 13:36:10.0</Date_Created>
+  <Description>&lt;p&gt;Join us for "Salsa Lessons," a half-hour introduction to DemocracyInAction's new user interface for users making the switch from our legacy UI.  Learn what's new, what's the same, and what you can do now that you couldn't before.&lt;/p&gt;
+&lt;p&gt;This webinar is geared to current DIA users.  Brand new or prospective users should register for a "DIA 101" general introduction session, which will also be conducted on the Salsa toolset. (All times are Eastern.)&lt;/p&gt;</Description>
+  <Address></Address>
+  <City></City>
+  <State></State>
+  <Zip></Zip>
+  <Directions></Directions>
+  <Header></Header>
+  <Footer></Footer>
+  <PRIVATE_Zip_Plus_4></PRIVATE_Zip_Plus_4>
+  <Start>2007-03-23 14:00:00.0</Start>
+  <End>2007-03-23 14:30:00.0</End>
+  <Recurrence_Frequency>None</Recurrence_Frequency>
+  <Recurrence_Interval></Recurrence_Interval>
+  <Contact_Email>jason@democracyinaction.org</Contact_Email>
+  <Guests_allowed>0</Guests_allowed>
+  <Maximum_Attendees>20</Maximum_Attendees>
+  <Maximum_Waiting_List_Size>0</Maximum_Waiting_List_Size>
+  <Map_URL></Map_URL>
+  <Status>Active</Status>
+  <This_Event_Costs_Money>0</This_Event_Costs_Money>
+  <Ticket_Price>0.00</Ticket_Price>
+  <merchant_account_KEY>0</merchant_account_KEY>
+  <Default_Tracking_Code></Default_Tracking_Code>
+  <redirect_path>http://www.democracyinaction.org/dia/organizationsORG/dia/content.jsp?content_KEY=1509</redirect_path>
+  <Request>0,First_Name,Last_Name,Email,Occupation,Organization,RADIO2</Request>
+  <Required>0,Email</Required>
+  <groups_KEYS>0</groups_KEYS>
+  <Automatically_add_to_Groups>0</Automatically_add_to_Groups>
+  <Display_to_Chapters>0</Display_to_Chapters>
+  <Request_Additional_Attendees>0</Request_Additional_Attendees>
+  <One_Column_Layout>1</One_Column_Layout>
+  <event$email_trigger_KEYS>0,436</event$email_trigger_KEYS>
+  <waiting_list$email_trigger_KEYS>0</waiting_list$email_trigger_KEYS>
+  <upgrade_$email_trigger_KEYS>0</upgrade_$email_trigger_KEYS>
+  <Reminder_Status></Reminder_Status>
+  <reminder_$email_trigger_KEYS>0</reminder_$email_trigger_KEYS>
+  <Reminder_Hours>0</Reminder_Hours>
+  <Latitude>0.0000000000</Latitude>
+  <Longitude>0.0000000000</Longitude>
+  <Template></Template>
+  </item><count>1923</count>
+</event></data>
+
+

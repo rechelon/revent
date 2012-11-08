@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<donation>
+
+<item>
+<key>10575897</key>
+<donation_KEY>10575897</donation_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <supporter_KEY>10753927</supporter_KEY>
+  <event_KEY></event_KEY>
+  <donate_page_KEY></donate_page_KEY>
+  <recurring_donation_KEY></recurring_donation_KEY>
+  <membership_invoice_KEY></membership_invoice_KEY>
+  <Last_Modified>2008-04-06 19:55:54.0</Last_Modified>
+  <Transaction_Date></Transaction_Date>
+  <Date_Entered></Date_Entered>
+  <amount>0.02</amount>
+  <Transaction_Type></Transaction_Type>
+  <Form_Of_Payment></Form_Of_Payment>
+  <cc_type></cc_type>
+  <Credit_Card_Digits></Credit_Card_Digits>
+  <Credit_Card_Expiration></Credit_Card_Expiration>
+  <PNREF></PNREF>
+  <RESULT></RESULT>
+  <RESPMSG></RESPMSG>
+  <AUTHCODE></AUTHCODE>
+  <AVS></AVS>
+  <Order_Info></Order_Info>
+  <Status></Status>
+  <Disbursement_Status>Unknown</Disbursement_Status>
+  <Responsible_Party></Responsible_Party>
+  <Date_Fulfilled></Date_Fulfilled>
+  <PRIVATE_Complete_Summary></PRIVATE_Complete_Summary>
+  <First_Name></First_Name>
+  <Last_Name></Last_Name>
+  <Email></Email>
+  <Tracking_Code>1300: ACCOUNTS RECEIVABLE</Tracking_Code>
+  <Donation_Tracking_Code></Donation_Tracking_Code>
+  <Tax_Status></Tax_Status>
+  <Designation_Code></Designation_Code>
+  <PRIVATE_Donation_Source>Other</PRIVATE_Donation_Source>
+  <Note>WABAPTR =&gt; 00173nCHKNO =&gt; 0nCHKDATE =&gt; 2/23/98nCHKAMT =&gt; 0.00nCHKCODE =&gt; 1300: ACCOUNTS RECEIVABLEnLDATE =&gt; 2/23/98nVNAME =&gt; MCCARTHY AND ELLEN JONES, JAMESnCHKDC =&gt; nDEP =&gt; Y</Note>
+  <Thank_You_Sent></Thank_You_Sent>
+  <Thank_Date></Thank_Date>
+  <referral_supporter_KEY></referral_supporter_KEY>
+  <merchant_account_KEY></merchant_account_KEY>
+  <IP_Address></IP_Address>
+  <In_Honor_Name></In_Honor_Name>
+  <In_Honor_Email></In_Honor_Email>
+  <In_Honor_Address></In_Honor_Address>
+  <uid></uid>
+  <Batch_Code></Batch_Code>
+  <VARCHAR0></VARCHAR0>
+  <VARCHAR1>00173</VARCHAR1>
+  <VARCHAR2></VARCHAR2>
+  <In_Memory_Name></In_Memory_Name>
+  <event_fee_KEY></event_fee_KEY>
+  </item><count>26369</count>
+</donation></data>
+
+

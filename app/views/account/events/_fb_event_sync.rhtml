@@ -1,0 +1,238 @@
+<script type="text/javascript">
+
+var event = {
+  update : function( data ){
+
+    jQuery.each( data, function( name, value){
+      event[name] = value;
+    });
+
+    event.venue = {
+      street : event.location,
+      city: event.city,
+      state: event.state,
+      zip: event.postal_code,
+      latitude: event.latitude,
+      longitude: event.longitude,
+    };
+  }
+};
+
+event.update( <%= @event.to_fb %> );
+
+jQuery('body').bind('fb::after_init', function(){
+  revent_fb.initialize();
+});
+
+revent_fb = {
+  id : event.id,
+
+  event_id : event.fb_id ,
+
+  afterSave : function(data){
+    jQuery('.flash-box').remove();
+    jQuery('<div class="flash-box"> <div class="flash-body"> Event updated <div class="clearfix"></div></div><div class="flash-btm"></div></div>').prependTo('#main');
+    window.scrollTo(0,0);
+    revent_fb.update(data);
+  },
+
+  showSavingSpinner : function(){
+    jQuery('#form-edit-submit-btn').hide();
+    jQuery('#saving-event').show();
+  },
+  hideSavingSpinner : function(){
+    jQuery('#form-edit-submit-btn').show();
+    jQuery('#saving-event').hide();
+  },
+  showWallPostSpinner : function(){
+    jQuery('#event_wall_btn').hide();
+    jQuery('#posting_wall').show();
+  },
+  hideWallPostSpinner : function(){
+    jQuery('#event_wall_btn').css('display','block');
+    jQuery('#posting_wall').hide();
+  },
+  initialize : function(){
+    console.log('loggin in');
+    FB.getLoginStatus(function(response) {
+      console.log('fb login');
+      if (response.session) {
+          revent_fb.displayFbActions();
+          revent_fb.check_for_event();
+          console.log('fb logged in');
+        } else {
+        console.log('fb not logged in');
+        jQuery('#fb-login-button').show();
+      }
+    });
+
+  },
+
+  after_login : function(){
+    revent_fb.displayFbActions();
+
+  },
+
+  displayFbActions : function(){
+    jQuery('#fb-connect').show();
+    jQuery('#fb-login-button').hide();
+    jQuery('#fb-login-msg').hide();
+
+    if( !event.fb_id ){
+      jQuery('.fb_button').show();
+      jQuery('#create_event_btn')
+        .show()
+        .click(function(){
+          revent_fb.create_event();
+        });
+      jQuery('#event_wall_msg').hide();
+      jQuery('#event_wall_btn').hide();
+      jQuery('#update_event_btn').hide();
+      jQuery('#fb-instructions').html('Create an event on Facebook and invite your friends.');
+      jQuery('#facebook-actions').empty();
+
+    } else {
+      var event_url = 'http://www.facebook.com/event.php?eid='+event.fb_id;
+
+      jQuery('#event_wall_msg').show();
+      jQuery('#create_event_btn').hide();
+      jQuery('#update_event_btn').show();
+      jQuery('#fb-instructions').html('<a href="'+event_url+'" target="_blank">Invite friends on Facebook</a> or post an update to your event\'s wall:');
+      jQuery('#facebook-actions').append('<li><a href="'+event_url+'" target="_blank">Invite friends on Facebook!</a></li>');
+
+      jQuery('#event_wall_btn')
+        .css('display','block')
+        .click(function(){
+          revent_fb.post_to_event_wall( jQuery('#event_wall_msg').val());
+        });
+
+    }
+  },
+
+  create_event : function(){
+    var options = { 
+      name : event.name,
+      start_time : event.fb_start,
+      description : event.description,
+    };
+
+    if(event.location) options.location = event.location; 
+    if(event.city) options.city = event.city;
+ 
+    FB.api(
+      '/me/events',
+      'post', 
+      options,
+      function(response){
+        if (!response || response.error) {
+        } else {
+          event.fb_id = response.id;
+          revent_fb.event_id = event.fb_id;
+          revent_fb.save_facebook_id();
+        }
+      });
+  },
+  
+  save_facebook_id : function(){
+    jQuery.ajax({
+      url: "<%= fb_event_save_path( :permalink=> @calendar.permalink) %>",
+      data: {id: event.id, fb_id: event.fb_id},
+      success: function(){
+        revent_fb.displayFbActions();     
+      }
+    });
+  },
+
+  check_for_event : function(){
+    if( event.fb_id === undefined ) return;
+ 
+    FB.api(
+      event.fb_id,
+      'get',
+      function(response){
+        if (!response || response.error) {
+          event.fb_id = undefined;
+          revent_fb.save_facebook_id();
+          revent_fb.displayFbActions();
+        } else {
+        }
+      }
+    );
+
+   
+  },
+
+  update : function( event_data ){
+    event.update( eval( '('+event_data+')' ));
+
+    if ( !event.fb_id ){
+      return;
+    } else {
+    }
+
+// TODO: this crap does not work
+
+    FB.api(
+      event.fb_id+'/edit',
+      'post',
+      {
+        name : event.name, 
+        start_time : event.fb_start, 
+        description : event.description, 
+        location: event.location,
+        city: event.city + ', ' + event.state
+      }, 
+      function(response){
+        if (!response || response.error) {
+        } else {
+        }
+      }
+    );
+
+  },
+
+  post_to_event_wall : function( msg ){
+    if( msg == undefined || msg == ''){
+    }
+    revent_fb.showWallPostSpinner();  
+    FB.api(
+      event.fb_id+'/feed',
+      'post',
+      { message : msg } ,
+      function(response){
+        revent_fb.hideWallPostSpinner();  
+        if (!response || response.error) {
+        } else {
+          jQuery('#event_wall_msg').before('<h3>Event Wall Updated!</h3>');
+        }
+      }
+    );
+
+  }
+
+};
+</script>
+
+<!-- FB connect -->
+<fb:login-button id="fb-login-button" style="display:none;" autologoutlink="true"  onlogin="revent_fb.after_login()" perms="create_event,offline_access,publish_stream"></fb:login-button>
+<!--
+<div id="fb-login-msg" class="alert alert-info"><strong>Facebook not enabled!</strong> Connect to your Facebook account to share this event with your friends.</div>
+-->
+<style>
+#fb-connect{
+background-color:#EEEEEE;
+border:1px solid black;
+padding:15px;
+}
+</style>
+<div id="fb-connect" style="display:none">
+  <h2>Take action on Facebook!</h2>
+  <p id='fb-instructions'>Create an event on Facebook and invite your friends.</p>
+  <input id="create_event_btn" style="display:none" type="button" value="Create Event"/>
+  <textarea id="event_wall_msg" style="display:none;width:400px;height:80px;" type="text">Write to your event's wall!</textarea>
+  <input id="event_wall_btn" style="display:none;" type="button" value="Post"/>
+  <div id='posting_wall' style='display:none;'><img src='/images/ajax-loader.gif'>&nbsp;&nbsp;&nbsp;Saving...</div>
+  <br>
+  <ul id="facebook-actions"></ul>
+</div>
+

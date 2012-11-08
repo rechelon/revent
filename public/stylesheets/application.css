@@ -1,0 +1,24 @@
+@import "scaffold.css";
+#flash {
+  margin: 20px 0 20px 0;
+  padding: 15px;
+  border: 2px solid #ddee99;
+  background-color: #ffffdd;
+  color: #88aa66;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+
+}
+
+#flash.error {
+  border: 2px solid #dd5555;
+  background-color: #ffccbb;
+  color: #dd5555;
+}
+
+.honeypot {
+  display: none;
+  width: 1;
+  height: 1;
+}

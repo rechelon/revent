@@ -1,0 +1,8 @@
+<td class="list-data">
+  <%= permission.get("name") %> <%= permission.get_value() %>
+</td>
+<% if(revent.current_user.is_site_admin()){ %>
+  <td class="list-control">
+    <a class="button delete-btn">Delete</a>
+  </td>
+<% } %>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<household>
+
+<item>
+<key>1</key>
+<household_KEY>1</household_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Street>test</Street>
+  <Street_2></Street_2>
+  <City></City>
+  <State></State>
+  <Zip></Zip>
+  <PRIVATE_Zip_Plus_4></PRIVATE_Zip_Plus_4>
+  <Latitude></Latitude>
+  <Longitude></Longitude>
+  </item><count>1</count>
+</household></data>
+
+

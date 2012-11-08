@@ -1,0 +1,49 @@
+<form class="list-search-form" method="get" action="/admin/users/export">
+  <table class="list-search">
+    <tr>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Name/Email</th>
+      <th>Sponsor</th><%
+      if(revent.current_user.is_site_admin()){ %>
+        <th>Permission</th><%
+      } %>
+    </tr>
+    <tr>
+      <td>
+        <%= select_field(us_states,{filter:'state',class:'filter',name:'state'},params.state) %>
+      </td>
+      <td>      
+        <input type="input" filter="postal_code" class="filter input-small" name="postal_code" size="5" 
+          value="<%= params.postal_code %>"/>  
+      </td>
+      <td>      
+        <input type="input" filter="full_text" class="filter" name="event_name"
+          value="<%= params.full_text %>"/>  
+      </td>
+      <td>
+        <%= select_field(revent.sponsors.toSelect(),{filter: 'sponsor', class: 'filter', name: 'sponsor'}, params.sponsor) %>
+      </td><%
+      if(revent.current_user.is_site_admin()){ %>
+        <td>
+          <%= select_field(permission_merge(),{filter: 'permission', class: 'filter', name: 'permission'}, params.permission) %>
+        </td><%
+      } %>
+    </tr>
+    <tr>
+      <th>Sort by</th>
+      <th>Per page</th>
+    </tr>
+    <tr>
+      <td>
+        <%= select_field({last_name:'Last Name',first_name:'First Name','location':'Location'},{class:'sort',name:'order'},params.order) %>
+      </td>
+      <td>
+        <%= select_field({25:'25',100:'100',500:'500'},{class:'items-per-page input-small'},params.limit) %>
+      </td>
+      <td>
+        <a class="button export-btn">Export</a>
+      </td>
+    </tr>
+  <table>
+</form>

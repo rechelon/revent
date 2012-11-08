@@ -1,0 +1,284 @@
+<% if(calendar.get('current')){ %>
+  <div class="current-flag">
+     <span><span><span>
+        <br>Default
+     </span></span></span>
+  </div>
+<% } %>
+
+<h3><%= calendar.get('name')%></h3>
+<div class="calendar-form">
+  <ul>
+    <li><a href="#info-tab-<%= calendar.get('id') %>">Info</a></li>
+    <li><a href="#text-tab-<%= calendar.get('id') %>">Intro Text</a></li>
+    <li><a href="#host-tab-<%= calendar.get('id') %>">Host Form</a></li>
+    <li><a href="#redirect-tab-<%= calendar.get('id') %>">Redirects</a></li>
+    <li><a href="#categories-tab-<%= calendar.get('id') %>">Categories</a></li>
+    <li><a href="#triggers-tab-<%= calendar.get('id') %>">Email Triggers</a></li>
+    <li><a href="#import-tab-<%= calendar.get('id') %>">Import</a></li>
+    <li><a href="#export-tab-<%= calendar.get('id') %>">Export</a></li>
+    <li><a href="#salsa-tab-<%= calendar.get('id') %>">Salsa</a></li>
+  </ul>
+  <div id="info-tab-<%= calendar.get('id') %>" class="info-tab calendar-tab">
+    <ul class="calendar-form-page">
+      <li>
+        <label>permalink</label>
+        <div class="data">
+          <%= calendar.get('permalink') %>
+        </div>
+      </li>
+      <li>
+        <label>auto publish reports</label>
+        <div class="data">
+          <%= checkbox({name:'auto_publish_reports'}, calendar.get('auto_publish_reports')) %>
+        </div>
+      </li>      
+      <li>
+        <label>name</label>
+        <div class="data">
+          <input name="name" value="<%= calendar.get('name') %>" />
+        </div>
+      </li>
+      <li>
+        <label>theme</label>
+        <div class="data theme">
+        </div>
+      </li>
+      <li>
+        <label>start date</label>
+        <div class="data">
+          <input name="event_start" class="date event_start" value="<%= calendar.getStart() %>" />
+        </div>
+      </li>
+      <li>
+        <label>end date</label>
+        <div class="data">
+          <input name="event_end" class="date event_end" value="<%= calendar.getEnd() %>" />
+        </div>
+      </li>
+      <li>
+        <label>default event start</label>
+        <div class="data">
+          <input name="suggested_event_start" class="date event_start" value="<%= calendar.getSuggestedStart() %>" />
+        </div>
+      </li>      
+      <li>
+        <label>events expire (# of days)</label>
+        <div class="data">
+          <input name="days_before_event_expiration" value="<%= calendar.get('days_before_event_expiration') %>" />
+        </div>
+      </li>
+      <li>
+        <label>admin email</label>
+        <div class="data">
+          <input name="admin_email" value="<%= calendar.get('admin_email') %>" />
+        </div>
+      </li>      
+    </ul>
+    <div class="form-controls">
+      <a action="save" class="button">Save</a>
+      <a action="default" class="button">Default</a>
+      <a action="archive" class="button">Archive</a>
+    </div>    
+    <div class="clear"></div>    
+  </div>
+  <div id="text-tab-<%= calendar.get('id') %>" class="calendar-tab">
+    <ul class="calendar-form-page">
+      <li>
+        <h2>Home Page</h2>
+      </li>
+        <textarea name="map_intro_text" class="data"><%= calendar.get('map_intro_text') %></textarea>
+      </li>
+      <li>
+        <h2>Report Back Page</h2>
+      </li>
+      <li>
+        <label>title</label>
+        <div name="report_title_text" class="data">
+          <input name="report_title_text" class="wide-input" value="<%= calendar.get('report_title_text') %>" />
+        </div>
+      </li>
+      <li>
+        <label>intro text</label>
+        <textarea name="report_intro_text" class="data"><%= calendar.get('report_intro_text') %></textarea>
+      </li>   
+      <li>
+        <h2>Call Script</h2>
+      </li>
+      <li>
+        <textarea name="call_script" class="data"><%= calendar.get('call_script') %></textarea>
+      </li>
+      <li>
+        <h2>Letter Script</h2>
+      </li>
+      <li>
+        <textarea name="letter_script" class="data"><%= calendar.get('letter_script') %></textarea>
+      </li>
+    </ul>
+    <div class="form-controls">
+      <a action="save" class="button">Save</a>
+    </div>    
+    <div class="clear"></div>
+  </div>
+  <div id="host-tab-<%= calendar.get('id') %>" class="calendar-tab">
+    <ul class="host-form-page">
+      <li>
+        <h2>Host an Event Form</h2>
+      </li>
+      <li>
+        <label>title</label>
+        <div class="data">
+          <input name="title" class="wide-input" value="<%= hostform.get('title') %>" />
+        </div>
+      </li>
+      <li>
+        <label>intro text</label>
+        <textarea name="intro_text" class="data"><%= hostform.get('intro_text') %></textarea>
+      </li>
+      <li>
+        <label>event info text</label>
+        <textarea name="event_info_text" class="data"><%= hostform.get('event_info_text') %></textarea>
+      </li>
+      <li>
+        <label>pre submit text</label>
+        <textarea name="pre_submit_text" class="data"><%= hostform.get('pre_submit_text') %></textarea>
+      </li>
+      <li>
+        <label>thank you text</label>
+        <textarea name="thank_you_text" class="data"><%= hostform.get('thank_you_text') %></textarea>
+      </li>
+    </ul>  
+    <div class="form-controls">
+      <a action="save" class="button">Save</a>
+    </div>    
+    <div class="clear"></div>
+  </div>
+  <div id="redirect-tab-<%= calendar.get('id') %>" class="calendar-tab">
+      <ul class="calendar-form-page">
+      <li>
+        <label>host thank you url</label>
+        <div class="data">
+          <input name="signup_redirect" class="wide-input" value="<%= calendar.get('signup_redirect') %>" />
+        </div>
+      </li>
+      <li>
+        <label>RSVP thank you url</label>
+        <div class="data">
+          <input name="rsvp_redirect" class="wide-input" value="<%= calendar.get('rsvp_redirect') %>" />
+        </div>
+      </li>
+      <li>
+        <label>report thank you url</label>
+        <div class="data">
+          <input name="report_redirect" class="wide-input" value="<%= calendar.get('report_redirect') %>" />
+        </div>
+      </li>
+    </ul>
+    <div class="form-controls">
+      <a action="save" class="button">Save</a>
+    </div>    
+    <div class="clear"></div>
+  </div>      
+  <div id="categories-tab-<%= calendar.get('id') %>" class="calendar-tab">
+    <a class="button new-category-btn">New Category</a>
+    <div class="category-list"></div>  
+    <div class="clear"></div>
+  </div>
+  <div id="triggers-tab-<%= calendar.get('id') %>" class="calendar-tab">
+    <a class="button new-trigger-btn">New Email Trigger</a>
+    <div class="email-trigger-list"></div>
+    <div class="clear"></div>
+  </div>
+  <div id="import-tab-<%= calendar.get('id') %>" class="calendar-tab">
+    <form action='/admin/import' method='post' enctype='multipart/form-data'>
+      <input type='hidden' name='calendar_id' value='<%= calendar.get('id') %>' />
+      <ul class="import-form-page">
+        <li>
+          <h2>Import Events</h2>
+        </li>
+        <% if(categories.length > 0){ %>
+          <li>
+            <label>category</label>
+            <div class="data category_div">
+              <%= select_field(categories.toSelect({'':''}), { name:'category_id'}) %>
+            </div>
+          </li>
+        <% } %>
+        <li>
+          <label>select file</label>
+          <div class="data">
+            <input type="file" name="event-import"/>
+          </div>
+        </li>
+        <li>
+          <label>&nbsp;</label>
+          <div class="data"><input type='submit' value='Import' class='button'/></div>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div id="export-tab-<%= calendar.get('id') %>" class="calendar-tab">
+    <form action='/admin/export' method='get'>
+      <input type='hidden' name='object' value='attendees' />
+      <input type='hidden' name='calendar_id' value='<%= calendar.get('id') %>' />
+      <ul class="export-form-page">
+        <li>
+          <h2>Export Attendees</h2>
+        </li>
+        <li>
+          <label>&nbsp;</label>
+          <div class="data"><input type='submit' value='Export' class='button'/></div>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div id="salsa-tab-<%= calendar.get('id') %>" class="calendar-tab">
+      <ul class="calendar-form-page">
+        <li>
+          <label>host group key</label>
+          <div class="data">
+            <input name="host_dia_group_key" value="<%= calendar.get('host_dia_group_key') %>" />
+          </div>
+        </li>
+        <li>
+          <label>host trigger key</label>
+          <div class="data">
+            <input name="host_dia_trigger_key" value="<%= calendar.get('host_dia_trigger_key') %>" />
+          </div>
+        </li>
+        <li>
+          <label>rsvp group key</label>
+          <div class="data">
+            <input name="rsvp_dia_group_key" value="<%= calendar.get('rsvp_dia_group_key') %>" />
+          </div>
+        </li>
+        <li>
+          <label>rsvp trigger key</label>
+          <div class="data">
+            <input name="rsvp_dia_trigger_key" value="<%= calendar.get('rsvp_dia_trigger_key') %>" />
+          </div>
+        </li>
+          <label>report group key</label>
+          <div class="data">
+            <input name="report_dia_group_key" value="<%= calendar.get('report_dia_group_key') %>" />
+          </div>
+        </li>
+        <li>
+          <label>report trigger key</label>
+          <div class="data">
+            <input name="report_dia_trigger_key" value="<%= calendar.get('report_dia_trigger_key') %>" />
+          </div>
+        </li>
+        <li>
+          <label>supporter import group keys (comma seperated)</label>
+          <div class="data">
+            <input name="supporter_dia_group_keys" value="<%= calendar.get('supporter_dia_group_keys') %>" />
+          </div>
+        </li>
+      </ul>
+    <div class="form-controls">
+      <a action="save" class="button">Save</a>
+    </div>      
+    <div class="clear"></div>
+  </div>
+</div>

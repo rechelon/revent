@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<supporter_campaign>
+
+<item>
+<key>5570080</key>
+<supporter_campaign_KEY>5570080</supporter_campaign_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Last_Modified>2007-09-13 01:15:24.0</Last_Modified>
+  <campaign_Date>2007-09-13 01:15:14.0</campaign_Date>
+  <supporter_KEY>22114915</supporter_KEY>
+  <campaign_KEY>12722</campaign_KEY>
+  <Date_Created>2007-09-13 01:15:14.0</Date_Created>
+  <Send_Email>1</Send_Email>
+  <Send_Fax>0</Send_Fax>
+  <Keep_Me_Informed>1</Keep_Me_Informed>
+  <Current_Status>Done</Current_Status>
+  <Letter_Subject>StepItUp</Letter_Subject>
+  <Letter_Salutation></Letter_Salutation>
+  <Letter_Content>test</Letter_Content>
+  <Action_Source></Action_Source>
+  <Title></Title>
+  <First_Name>test</First_Name>
+  <Last_Name></Last_Name>
+  <Email></Email>
+  <Street>street</Street>
+  <Street_2></Street_2>
+  <City>san francisco</City>
+  <State>CA</State>
+  <Zip>94110</Zip>
+  <PRIVATE_Zip_Plus_4>0000</PRIVATE_Zip_Plus_4>
+  <PRIVATE_District></PRIVATE_District>
+  <recipient_KEYS>121448</recipient_KEYS>
+  <rep_KEYS></rep_KEYS>
+  <person_legislator_IDS>0</person_legislator_IDS>
+  <Processing_Thread>threadID:5542 Done</Processing_Thread>
+  <Completed_Time>2007-09-13 01:15:14.0</Completed_Time>
+  <Tracking_Code>a tracking code</Tracking_Code>
+  <PRIVATE_Resend>1</PRIVATE_Resend>
+  <Campaign_Tracking_Code>a tracking code</Campaign_Tracking_Code>
+  <Error_Message></Error_Message>
+  <Emails_Sent></Emails_Sent>
+  <Faxes_Sent></Faxes_Sent>
+  <supporter_KEY>22114915</supporter_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Last_Modified>2008-04-07 19:29:05.0</Last_Modified>
+  <Date_Created>2007-08-02 15:42:04.0</Date_Created>
+  <Title></Title>
+  <First_Name>test</First_Name>
+  <MI></MI>
+  <Last_Name>test</Last_Name>
+  <Suffix></Suffix>
+  <Email></Email>
+  <Password>test</Password>
+  <Receive_Email>1</Receive_Email>
+  <Email_Status></Email_Status>
+  <Email_Preference>HTML Email</Email_Preference>
+  <Soft_Bounce_Count></Soft_Bounce_Count>
+  <Hard_Bounce_Count></Hard_Bounce_Count>
+  <Last_Bounce></Last_Bounce>
+  <Receive_Phone_Blasts></Receive_Phone_Blasts>
+  <Phone>555 5555</Phone>
+  <Cell_Phone></Cell_Phone>
+  <Phone_Provider></Phone_Provider>
+  <Work_Phone></Work_Phone>
+  <Pager></Pager>
+  <Home_Fax></Home_Fax>
+  <Work_Fax></Work_Fax>
+  <Street>123 fake st</Street>
+  <Street_2></Street_2>
+  <Street_3></Street_3>
+  <City>san francisco</City>
+  <State>AS</State>
+  <Zip>94110</Zip>
+  <PRIVATE_Zip_Plus_4>0000</PRIVATE_Zip_Plus_4>
+  <County></County>
+  <District></District>
+  <Country></Country>
+  <Latitude></Latitude>
+  <Longitude></Longitude>
+  <Organization>radical designs</Organization>
+  <Department></Department>
+  <Occupation>posy</Occupation>
+  <Instant_Messenger_Service></Instant_Messenger_Service>
+  <Instant_Messenger_Name></Instant_Messenger_Name>
+  <Web_Page></Web_Page>
+  <Alternative_Email></Alternative_Email>
+  <Other_Data_1></Other_Data_1>
+  <Other_Data_2></Other_Data_2>
+  <Other_Data_3></Other_Data_3>
+  <Notes></Notes>
+  <Source>Web</Source>
+  <Source_Details>http://stepitup2007.org/splash.php</Source_Details>
+  <Source_Tracking_Code>(No Original Source Available)</Source_Tracking_Code>
+  <Tracking_Code>a tracking code</Tracking_Code>
+  <Status></Status>
+  <uid></uid>
+  <Timezone></Timezone>
+  <campaign_KEY>12722</campaign_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY>0</chapter_KEY>
+  <Last_Modified>2008-04-08 18:04:56.0</Last_Modified>
+  <Date_Created>2007-09-12 22:52:39.0</Date_Created>
+  <Reference_Name>Invite Rep. Nancy Pelosi to event 14</Reference_Name>
+  <Campaign_Title>Invite Rep. Nancy Pelosi to this action</Campaign_Title>
+  <PRIVATE_Recent_Update></PRIVATE_Recent_Update>
+  <Description>&lt;br&gt;</Description>
+  <More_Info></More_Info>
+  <Learn_More_Link></Learn_More_Link>
+  <photo_KEY></photo_KEY>
+  <rep_KEYS></rep_KEYS>
+  <person_legislator_IDS>0</person_legislator_IDS>
+  <exclude_person_legislator_IDS>0</exclude_person_legislator_IDS>
+  <recipient_KEYS>121448</recipient_KEYS>
+  <recipient_group_KEYS>0</recipient_group_KEYS>
+  <Suggested_Subject>StepItUp</Suggested_Subject>
+  <Subject_cannot_be_Edited>0</Subject_cannot_be_Edited>
+  <Letter_cannot_be_Edited>0</Letter_cannot_be_Edited>
+  <Letter_Salutation></Letter_Salutation>
+  <Suggested_Content>test</Suggested_Content>
+  <Footer></Footer>
+  <Hide_Message_Type_Options>0</Hide_Message_Type_Options>
+  <Allow_Emails>1</Allow_Emails>
+  <Allow_Faxes>1</Allow_Faxes>
+  <Max_Number_Of_Emails>10000</Max_Number_Of_Emails>
+  <Max_Number_Of_Faxes>100</Max_Number_Of_Faxes>
+  <PRIVATE_Emails_Sent>0</PRIVATE_Emails_Sent>
+  <PRIVATE_Faxes_Sent>0</PRIVATE_Faxes_Sent>
+  <Hide_Keep_Me_Informed>1</Hide_Keep_Me_Informed>
+  <Thank_You_Page_Text_or_HTML></Thank_You_Page_Text_or_HTML>
+  <Success_Message></Success_Message>
+  <Suppress_Automatic_Response_Email>0</Suppress_Automatic_Response_Email>
+  <Spread_The_Word_Text></Spread_The_Word_Text>
+  <Spread_The_Word_Redirect_Path></Spread_The_Word_Redirect_Path>
+  <exclude_rep_KEYS></exclude_rep_KEYS>
+  <Status>Active</Status>
+  <Request></Request>
+  <Required></Required>
+  <redirect_path></redirect_path>
+  <email_trigger_KEYS>0</email_trigger_KEYS>
+  <groups_KEYS>0</groups_KEYS>
+  <Automatically_add_to_Groups>0</Automatically_add_to_Groups>
+  <Default_Tracking_Code>a tracking code</Default_Tracking_Code>
+  <READONLY_Hit_Count>8</READONLY_Hit_Count>
+  <Archive>Current</Archive>
+  <Brief_Summary></Brief_Summary>
+  <Enable_Preview></Enable_Preview>
+  <Preview_Text></Preview_Text>
+  <No_Recipient_Text></No_Recipient_Text>
+  <Excluded_Recipient_Text></Excluded_Recipient_Text>
+  <Sponsorship_Link></Sponsorship_Link>
+  <Roll_Call_Vote>Yea</Roll_Call_Vote>
+  <roll_call_ID>0</roll_call_ID>
+  <Alternate_Description></Alternate_Description>
+  <Alternate_Subject></Alternate_Subject>
+  <Alternate_Content></Alternate_Content>
+  <Restricted_Regions>0</Restricted_Regions>
+  <Restricted_Districts></Restricted_Districts>
+  <Restricted_Text></Restricted_Text>
+  <campaignid></campaignid>
+  <Template></Template>
+  </item><count>1</count>
+</supporter_campaign></data>
+
+

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<request_upload>
+
+<item>
+<key>4072</key>
+<request_upload_KEY>4072</request_upload_KEY>
+  <Date_Requested>2005-12-01 15:26:14.0</Date_Requested>
+  <Date_Created></Date_Created>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Date_Completed>2005-12-01 15:26:14.0</Date_Completed>
+  <Supporters_Created>1</Supporters_Created>
+  <Supporters_Updated>1</Supporters_Updated>
+  <Supporters_In_Another_Chapter>0</Supporters_In_Another_Chapter>
+  <Number_of_Errors>0</Number_of_Errors>
+  <filename>supporter-2005-12-01 02.44.35-paste.txt</filename>
+  <hostname>kamikaze.democracyinaction.org</hostname>
+  <Column_Names>Email,Alternative_Email,First_Name,None,Last_Name,None,MI,None,groups_KEY:*,groups_KEY:*</Column_Names>
+  <READONLY_Source>supporter-2005-12-01 02.44.35-paste.txt</READONLY_Source>
+  <table_name>supporter</table_name>
+  <Ignore_Lines>0</Ignore_Lines>
+  <Status>Complete</Status>
+  <other_data_1></other_data_1>
+  <other_data_2></other_data_2>
+  <other_data_3></other_data_3>
+  <Num_Supporters></Num_Supporters>
+  <groups_KEY>26220</groups_KEY>
+  <tag_KEY></tag_KEY>
+  <delimiter>,</delimiter>
+  <Dedupe_Match_Field></Dedupe_Match_Field>
+  <Force_Overwrite></Force_Overwrite>
+  <Append_Only></Append_Only>
+  <Never_Overwrite>0</Never_Overwrite>
+  <No_Dedupe>0</No_Dedupe>
+  <Dedupe_Length></Dedupe_Length>
+  <File_Column_Names>Email1,Email2,FirstName1,FirstName2,LastName1,LastName2,MiddleName1,MiddleName2,IssueAreas,ProgramAreas</File_Column_Names>
+  <Replacement_Rules></Replacement_Rules>
+  <_Type>Normal</_Type>
+  <Error_Message></Error_Message>
+  </item><count>61</count>
+</request_upload></data>
+
+

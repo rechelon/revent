@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<supporter_groups>
+
+<item>
+<key>17650200</key>
+<supporter_groups_KEY>17650200</supporter_groups_KEY>
+  <organization_KEY>962</organization_KEY>
+  <supporter_KEY>0</supporter_KEY>
+  <groups_KEY>51424</groups_KEY>
+  <Last_Modified>2006-03-22 16:59:12.0</Last_Modified>
+  <Properties></Properties>
+  <supporter_KEY></supporter_KEY>
+  <organization_KEY></organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Last_Modified></Last_Modified>
+  <Date_Created></Date_Created>
+  <Title></Title>
+  <First_Name></First_Name>
+  <MI></MI>
+  <Last_Name></Last_Name>
+  <Suffix></Suffix>
+  <Email></Email>
+  <Password></Password>
+  <Receive_Email></Receive_Email>
+  <Email_Status></Email_Status>
+  <Email_Preference></Email_Preference>
+  <Soft_Bounce_Count></Soft_Bounce_Count>
+  <Hard_Bounce_Count></Hard_Bounce_Count>
+  <Last_Bounce></Last_Bounce>
+  <Receive_Phone_Blasts></Receive_Phone_Blasts>
+  <Phone></Phone>
+  <Cell_Phone></Cell_Phone>
+  <Phone_Provider></Phone_Provider>
+  <Work_Phone></Work_Phone>
+  <Pager></Pager>
+  <Home_Fax></Home_Fax>
+  <Work_Fax></Work_Fax>
+  <Street></Street>
+  <Street_2></Street_2>
+  <Street_3></Street_3>
+  <City></City>
+  <State></State>
+  <Zip></Zip>
+  <PRIVATE_Zip_Plus_4></PRIVATE_Zip_Plus_4>
+  <County></County>
+  <District></District>
+  <Country></Country>
+  <Latitude></Latitude>
+  <Longitude></Longitude>
+  <Organization></Organization>
+  <Department></Department>
+  <Occupation></Occupation>
+  <Instant_Messenger_Service></Instant_Messenger_Service>
+  <Instant_Messenger_Name></Instant_Messenger_Name>
+  <Web_Page></Web_Page>
+  <Alternative_Email></Alternative_Email>
+  <Other_Data_1></Other_Data_1>
+  <Other_Data_2></Other_Data_2>
+  <Other_Data_3></Other_Data_3>
+  <Notes></Notes>
+  <Source></Source>
+  <Source_Details></Source_Details>
+  <Source_Tracking_Code></Source_Tracking_Code>
+  <Tracking_Code></Tracking_Code>
+  <Status></Status>
+  <uid></uid>
+  <Timezone></Timezone>
+  <groups_KEY>51424</groups_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY>0</chapter_KEY>
+  <Group_Name>plugin</Group_Name>
+  <parent_KEY></parent_KEY>
+  <Description></Description>
+  <Notes></Notes>
+  <Display_To_User></Display_To_User>
+  <Listserve_Type></Listserve_Type>
+  <Subscription_Type></Subscription_Type>
+  <Manager></Manager>
+  <Moderator_Emails></Moderator_Emails>
+  <Subject_Prefix></Subject_Prefix>
+  <Listserve_Responses></Listserve_Responses>
+  <Append_Header></Append_Header>
+  <Append_Footer></Append_Footer>
+  <Custom_Headers></Custom_Headers>
+  <Listserve_Options></Listserve_Options>
+  <external_ID></external_ID>
+  <From_Email></From_Email>
+  <From_Name></From_Name>
+  <Reply_To></Reply_To>
+  <Headers_To_Remove></Headers_To_Remove>
+  <Confirmation_Message></Confirmation_Message>
+  <Date_Created></Date_Created>
+  <Auto_Update>0</Auto_Update>
+  <query_KEY></query_KEY>
+  <Smart_Group_Options>Off</Smart_Group_Options>
+  </item><count>62192</count>
+</supporter_groups></data>
+
+

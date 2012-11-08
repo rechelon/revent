@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<storefront>
+
+<item>
+<key>530</key>
+<storefront_KEY>530</storefront_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Reference_Name></Reference_Name>
+  <Header>test</Header>
+  <PreSubmit_Footer></PreSubmit_Footer>
+  <store_item_KEYS></store_item_KEYS>
+  <merchant_account_KEY></merchant_account_KEY>
+  <redirect_path></redirect_path>
+  <Exclude_Amex></Exclude_Amex>
+  <Exclude_Discover></Exclude_Discover>
+  <store_item_category_KEYS></store_item_category_KEYS>
+  <Request></Request>
+  <Required></Required>
+  <groups_KEYS></groups_KEYS>
+  <email_trigger_KEYS></email_trigger_KEYS>
+  <Template></Template>
+  </item><count>1</count>
+</storefront></data>
+
+

@@ -1,0 +1,13 @@
+<%= yield :pre_header %>
+
+<!-- revent global headers and javascript -->
+<%= include_javascripts :framework, :public %>
+<%= include_stylesheets :public %>
+
+<!-- namespace jQuery -->
+<script type="text/javascript">
+  var jq = jQuery;
+  var emitter = _.clone(Backbone.Events);
+</script>
+
+<%= yield :header %>

@@ -1,0 +1,19 @@
+<!-- load facebook js sdk -->
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '<%= Site.current.config.fb_app_id  %>', 
+      status: true, 
+      cookie: true,
+      xfbml: true
+    });
+    jQuery('body').trigger('fb::after_init');
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = 'https://connect.facebook.net/en_US/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
+

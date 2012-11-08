@@ -1,0 +1,10 @@
+<tr class="profile_item_row" id="press-<%= press.id %>">
+  <td>
+    <% remote_form_for :press_link, press, :url => {:controller => 'account/press', :action => 'update', :id => press} do |f| %>
+    Title:&nbsp;<%= f.text_field 'text', :size => 25, :id => "press_link_#{press.id}_text" %><br>
+    URL:&nbsp;<%= f.text_field 'url', :size => 25, :id => "press_link_#{press.id}_url" %>
+    <br> <%= submit_tag 'update press coverage', :class => "profile_submit", :onclick => "Element.show('press-spinner-#{press.id}')" %><img style="display:none;" src="/images/spinner.gif" alt="spinner" id="press-spinner-<%= press.id %>" />
+    <% end %>
+  </td>	
+  <td><%= link_to_remote 'Delete', :url => { :controller => 'press', :action => 'destroy', :id => press } %></td>
+</tr>

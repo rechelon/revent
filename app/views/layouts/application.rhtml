@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <%= render :partial=>'/shared/headers' %>
+
+    <% if @calendar.theme.head %>
+      <%= liquid(@calendar.theme.head, @liquid) %>
+    <% else %>
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:site_name" content="<%= liquid_or_default(@calendar.theme.site_name, "Revent") %>"/>
+      <meta property="og:title" content="<%= liquid_or_default(@calendar.theme.site_name, "Revent") %>"/>
+      <meta property="og:description" content="<%= liquid_or_default(@calendar.theme.site_description, "A platform for managing nationwide events and their attendees") %>"/>
+      <meta property="og:url" content="http://<%= request.host %>"/>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="/stylesheets/style.css" media="screen" rel="Stylesheet" type="text/css" />
+    <% end %>
+
+    <title><%= liquid_or_default(@calendar.theme.site_title, "Revent") %><% if @pagetitle %> <%= ' | '+@pagetitle %> <% end %></title>
+  </head>
+  <body>
+    <% if @calendar.theme.body %>
+      <%= liquid(@calendar.theme.pre_content, @liquid) %>
+    <% else %>
+      <div id="wrapper">
+        <div id="app-container" class="container">
+          <div id="header-row" class="row">
+            <div id="header" class="span12">
+              <a id="banner" href="/">DEMO ACTION</a>
+            </div>
+          </div>
+          <div id="body-row" class="row">
+            <div id="main" class="span9">
+              <%= render :partial=>'/shared/flash', :locals=>{:flash => flash}%>
+    <% end %>
+    <%= yield %>
+    <% if @calendar.theme.body %>
+      <%= liquid(@calendar.theme.post_content, @liquid) %>
+    <% else %>
+            </div> <!-- /main -->
+            <div id="sidebar" class="span3">
+              <%= render :partial=>'/shared/take_action' %>
+              <%= render :partial=>'/shared/manage' %>
+              <%= render :partial => 'events/event_spotlight' %>
+            </div> <!-- /sidebar -->
+          </div> <!-- /body-row -->
+          <div id="footer-row" class="row">
+            <div id="footer" class="span12">
+              <hr>
+            </div>
+          </div> <!-- /footer-row -->
+        </div> <!-- /container -->
+      </div> <!-- /wrapper -->
+      <%= render :partial=>'/shared/fb_load' %>
+    <% end %>
+  </body>
+</html>

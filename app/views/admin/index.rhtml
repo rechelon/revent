@@ -1,0 +1,235 @@
+<% content_for :header do %>
+<script type="text/javascript">
+
+  var revent = {};
+  revent.config = <%= Site.current.config.to_json %>;
+  revent.site_id = <%= @site_id %>;
+  revent.current_user = new AdminUser(<%= @current_user.to_admin_json %>);
+  revent.current_calendar_id = <%= @calendar.id %>;
+  revent.calendars = new CalendarCollection();
+  revent.calendars.reset(<%= @calendars.to_json %>);
+  revent.sponsors = new SponsorCollection();
+  revent.sponsors.reset(<%= @sponsors.to_json %>);
+  revent.themes = new ThemeCollection(); 
+  revent.themes.reset(<%= @themes.to_json %>);
+  revent.theme_element_names = <%= Theme::THEME_ELEMENT_NAMES.to_json %>;
+  revent.users = new UserCollection();
+  revent.events = new EventCollection({users:revent.users});
+  revent.reports = new ReportCollection(); 
+
+  router = new Router();
+  
+  $(function(){
+    
+    // User Displays
+
+    user_new = new UserNewView({
+      el: document.getElementById("user-new"),
+      template: 'user_new_form'
+    }).render();
+
+    user_list = new ListView({
+      el: document.getElementById("user-list"),
+      collection: revent.users,
+      template: 'user',
+      row_view: UserRowView,
+      form_view: UserFormView      
+    });
+    
+    user_search = new UserSearchView({
+      el: document.getElementById("user-search"),
+      collection: revent.users,
+      template: 'user',
+      list: user_list
+    });
+
+    // Event Displays
+    event_list = new ListView({
+      el: document.getElementById("event-list"),
+      collection: revent.events,
+      template: 'event',
+      row_view: EventRowView,
+      form_view: EventFormView
+    });
+    
+    event_search = new EventSearchView({
+      el: document.getElementById("event-search"),
+      collection: revent.events,
+      template: 'event',
+      list: event_list
+    });
+
+    // Report Displays
+    report_list = new ListView({
+      el: document.getElementById("report-list"),
+      collection: revent.reports,
+      template: 'report',
+      row_view: ReportRowView,
+      form_view: ReportFormView
+    });
+
+    report_search = new ReportSearchView({
+      el: document.getElementById("report-search"),
+      collection: revent.reports,
+      template: 'report',
+      list: report_list
+    });
+
+    if(revent.current_user.can_view_calendar()){
+      // Calendar Displays
+      calendar_new = new CalendarNewView({
+        el: document.getElementById("calendar-new")
+      }).render();
+      
+      calendar_list = new CalendarListView({
+        el: document.getElementById("calendar-list"),
+        collection: revent.calendars
+      }).render();
+    }
+
+    if(revent.current_user.can_view_theme()){
+      // Theme Displays
+      theme_new = new ThemeNewView({
+        el: document.getElementById("theme-new")
+      }).render();
+      
+      theme_list = new ThemeListView({
+        el: document.getElementById("theme-list"),
+        collection: revent.themes
+      }).render();
+      
+    }
+
+    if(revent.current_user.is_site_admin()){
+      // Sponsor Displays
+      sponsor_new = new SponsorNewView({
+        el: document.getElementById("sponsor-new")
+      }).render();
+ 
+      sponsor_list = new ListView({
+        el: document.getElementById("sponsor-list"),
+        collection: revent.sponsors,
+        template: 'sponsor',
+        row_view: SponsorRowView,
+        form_view: SponsorFormView,
+        paginated: false
+      }).render();
+    }
+
+    // generic callback for initial data load
+    var handle_data_load = function(name, done){
+      return {
+        success: function(){
+          done();
+        },
+        error: function(){
+          loading_bar.hide();
+          dialog({
+            title: 'Error Loading '+name,
+            content: 'Revent is currently experiencing technical difficulty.<br><br>If the problem persists, please contact Radical Designs.'
+          });
+        }
+      }
+    };
+
+    // load data for collections    
+    loading_bar.show();
+    async.parallel([
+      function(done){
+        revent.users.fetch(handle_data_load('Users',done));
+      },
+      function(done){
+        revent.events.fetch(handle_data_load('Events',done));
+      },
+      function(done){
+        revent.reports.fetch(handle_data_load('Reports',done));
+      }
+    ],
+    function(){
+      $('#header').show();
+      $('#main').show();
+      loading_bar.hide();
+      Backbone.history.start();
+    });
+
+  });
+</script>
+<% end %>
+
+<div id="header" style="display:none">
+  <div id="user_menu">
+    <span><%= current_user.full_name %></span>
+    <%= link_to 'Edit Account', :controller => '/account', :action => :profile, :id => current_user.id %>
+    <%= link_to 'Log Out', logout_url %>
+  </div>
+  <div id="site_menu">
+    <div id="site_id"><span class="rd_orange">Revent</span>&nbsp;&nbsp;<%= site.host.hostname %></div>
+  </div> 
+  <div id="main_menu_container">
+    <ul id='main_menu' class="tabs">
+      <li><a id="users-menu-item" href="#users">Users</a></li>
+      <li><a id="events-menu-item" href="#events">Events</a></li>
+      <li><a id="reports-menu-item" href="#reports">Reports</a></li>
+      <% if @current_user.can_view_calendar %>
+        <li><a id="calendars-menu-item" href="#calendars">Calendars</a></li>
+      <% end %>
+      <% if @current_user.can_view_theme %>
+        <li><a id="themes-menu-item" href="#themes">Themes</a></li>
+      <% end %>
+      <% if @current_user.site_admin?%>
+        <li><a id="sponsors-menu-item" href="#sponsors">Sponsors</a></li>
+      <% end %>
+      </ul>
+    <div style="clear:both;"></div>
+  </div>
+</div>
+
+<div id="main" style="display:none">
+  <div class="js-flash-container"></div>
+  
+  <div id="users-page" class="page" style="display:none">
+    <div id="user-new">
+      <a id="new-user-btn" class="button upsert-user-btn">New User</a>
+    </div>
+    <h1>Users</h1>
+    <div id="user-search" class="search-box"></div>
+    <div id="user-list" class="paginated-list"></div>
+  </div>
+
+  <div id="events-page" class="page" style="display:none">
+    <h1>Events</h1>
+    <div id="event-search" class="search-box"></div>
+    <div id="event-list" class="paginated-list"></div>
+  </div>
+
+  <div id="reports-page" class="page" style="display:none">
+    <h1>Reports</h1>
+    <div id="report-search" class="search-box"></div>
+    <div id="report-list" class="paginated-list"></div>
+  </div>
+
+  <div id="calendars-page" class="page" style="display:none">
+    <div id="calendar-new">
+      <a id="new-calendar-btn" class="button">New Calendar</a>
+    </div>
+    <h1>Calendars</h1>
+    <div id="calendar-list"></div>
+  </div>
+
+  <div id="themes-page" class="page" style="display:none">
+    <div id="theme-new">
+      <a id="new-theme-btn" class="button">New Theme</a>
+    </div>
+    <h1>Themes</h1>
+    <div id="theme-list"></div>
+  </div>
+
+  <div id="sponsors-page" class="page" style="display:none">
+    <div id="sponsor-new">
+      <a id="new-sponsor-btn" class="button">New Sponsor</a>
+    </div>
+    <h1>Sponsors</h1>
+    <div id="sponsor-list"></div>
+  </div>
+
+</div>

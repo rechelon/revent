@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<supporter_letter>
+
+<item>
+<key>64437</key>
+<supporter_letter_KEY>64437</supporter_letter_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Last_Modified>2008-06-25 20:56:49.0</Last_Modified>
+  <Date_Created>2008-06-25 20:56:39.0</Date_Created>
+  <supporter_KEY></supporter_KEY>
+  <person_media_ID></person_media_ID>
+  <recipient_KEYS></recipient_KEYS>
+  <letter_KEY></letter_KEY>
+  <Send_Email></Send_Email>
+  <Send_Fax></Send_Fax>
+  <Keep_Me_Informed></Keep_Me_Informed>
+  <Current_Status>Done</Current_Status>
+  <Letter_Subject></Letter_Subject>
+  <Letter_Salutation></Letter_Salutation>
+  <Letter_Content></Letter_Content>
+  <First_Name></First_Name>
+  <Last_Name></Last_Name>
+  <Email></Email>
+  <Street></Street>
+  <Street_2></Street_2>
+  <City></City>
+  <State></State>
+  <Zip></Zip>
+  <PRIVATE_Zip_Plus_4></PRIVATE_Zip_Plus_4>
+  <Processing_Thread>threadID:2893 Done</Processing_Thread>
+  <Completed_Time>2008-06-25 20:56:39.0</Completed_Time>
+  <Tracking_Code></Tracking_Code>
+  <PRIVATE_Resend>1</PRIVATE_Resend>
+  <Error_Message></Error_Message>
+  <supporter_KEY></supporter_KEY>
+  <organization_KEY></organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Last_Modified></Last_Modified>
+  <Date_Created></Date_Created>
+  <Title></Title>
+  <First_Name></First_Name>
+  <MI></MI>
+  <Last_Name></Last_Name>
+  <Suffix></Suffix>
+  <Email></Email>
+  <Password></Password>
+  <Receive_Email></Receive_Email>
+  <Email_Status></Email_Status>
+  <Email_Preference></Email_Preference>
+  <Soft_Bounce_Count></Soft_Bounce_Count>
+  <Hard_Bounce_Count></Hard_Bounce_Count>
+  <Last_Bounce></Last_Bounce>
+  <Receive_Phone_Blasts></Receive_Phone_Blasts>
+  <Phone></Phone>
+  <Cell_Phone></Cell_Phone>
+  <Phone_Provider></Phone_Provider>
+  <Work_Phone></Work_Phone>
+  <Pager></Pager>
+  <Home_Fax></Home_Fax>
+  <Work_Fax></Work_Fax>
+  <Street></Street>
+  <Street_2></Street_2>
+  <Street_3></Street_3>
+  <City></City>
+  <State></State>
+  <Zip></Zip>
+  <PRIVATE_Zip_Plus_4></PRIVATE_Zip_Plus_4>
+  <County></County>
+  <District></District>
+  <Country></Country>
+  <Latitude></Latitude>
+  <Longitude></Longitude>
+  <Organization></Organization>
+  <Department></Department>
+  <Occupation></Occupation>
+  <Instant_Messenger_Service></Instant_Messenger_Service>
+  <Instant_Messenger_Name></Instant_Messenger_Name>
+  <Web_Page></Web_Page>
+  <Alternative_Email></Alternative_Email>
+  <Other_Data_1></Other_Data_1>
+  <Other_Data_2></Other_Data_2>
+  <Other_Data_3></Other_Data_3>
+  <Notes></Notes>
+  <Source></Source>
+  <Source_Details></Source_Details>
+  <Source_Tracking_Code></Source_Tracking_Code>
+  <Tracking_Code></Tracking_Code>
+  <Status></Status>
+  <uid></uid>
+  <Timezone></Timezone>
+  <letter_KEY></letter_KEY>
+  <organization_KEY></organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <campaign_KEY></campaign_KEY>
+  <Reference_Name></Reference_Name>
+  <Letter_Title></Letter_Title>
+  <Beginning_Content></Beginning_Content>
+  <Page_2_Content></Page_2_Content>
+  <READONLY_Creation_Date></READONLY_Creation_Date>
+  <Description></Description>
+  <Letter_Subject></Letter_Subject>
+  <Letter_Salutation></Letter_Salutation>
+  <Letter_Content></Letter_Content>
+  <Use_Custom_Contacts></Use_Custom_Contacts>
+  <Request></Request>
+  <Required></Required>
+  <Allow_Emails></Allow_Emails>
+  <Allow_Faxes></Allow_Faxes>
+  <Max_Number_Of_Emails></Max_Number_Of_Emails>
+  <Max_Number_Of_Faxes></Max_Number_Of_Faxes>
+  <PRIVATE_Emails_Sent></PRIVATE_Emails_Sent>
+  <PRIVATE_Faxes_Sent></PRIVATE_Faxes_Sent>
+  <Thank_You_Page_Text_or_HTML></Thank_You_Page_Text_or_HTML>
+  <Status></Status>
+  <redirect_path></redirect_path>
+  <Disallow_Clickover_Talking_Points></Disallow_Clickover_Talking_Points>
+  <letter_width></letter_width>
+  <letter_height></letter_height>
+  <recipient_KEYS></recipient_KEYS>
+  <groups_KEYS></groups_KEYS>
+  <email_trigger_KEYS></email_trigger_KEYS>
+  <Suppress_Automatic_Response_Email></Suppress_Automatic_Response_Email>
+  <Template></Template>
+  </item><count>1</count>
+</supporter_letter></data>
+
+

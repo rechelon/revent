@@ -1,0 +1,19 @@
+<div class="event-list-element list-item">
+  <div class="event-date">
+    <h5>
+      <%= list_item.start.strftime("%B") %> <%= list_item.start.strftime("%d") %>  
+      <% if list_item.start.strftime("%d") != list_item.end.strftime("%d") && !list_item.supress_end_time %>
+        to&nbsp;<%= list_item.end.strftime("%B") %> <%= list_item.end.strftime("%d") %>    
+      <% end %>
+    </h5>
+  </div>
+  <div class="event-list-name">
+    <h3><%= link_to white_list(list_item.name), :permalink => list_item.calendar.permalink, :controller => 'events', :action => 'show', :id => list_item.id %></h3>
+  </div>
+  <div class="event-list-location">
+    <h4><%= white_list(list_item.city_state) %></h4>
+  </div>
+  <div class="event-list-description">
+    <%= truncate(list_item.description(), 375, '...') %>
+  </div>
+</div>

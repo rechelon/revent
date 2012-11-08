@@ -1,0 +1,14 @@
+<div id="detail-container">
+  <h1>Upcoming Events</h1>
+  <div class="pagination-footer top">
+    <%= will_paginate @events %>
+  </div>
+  <% unless @events.empty? -%>
+    <%= render :partial => 'list_item', :collection => @events %>
+  <% else -%>
+    <div class='list-msg'><div class='no-rows'>No upcoming events. Would you like to <%= link_to 'create one', signup_url(:permalink => @calendar.permalink) %>?</div></div>
+  <% end -%>
+  <div class="pagination-footer bottom">
+    <%= will_paginate @events %>
+  </div>
+</div>

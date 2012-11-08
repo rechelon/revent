@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data organization_KEY="962">
+  <supporter>
+    <item>
+      <uid/>
+      <Organization>radical designs</Organization>
+      <Receive_Email>1</Receive_Email>
+      <MI/>
+      <Timezone/>
+      <Last_Modified>Fri Aug 03 2007 00:42:56 GMT-0400 (EDT)</Last_Modified>
+      <Last_Bounce/>
+      <key>22118014</key>
+      <Pager/>
+      <Suffix/>
+      <Source_Details>https://secure.democracyinaction.org/dia/hq/yourList.jsp</Source_Details>
+      <Country/>
+      <Source>Web</Source>
+      <Notes/>
+      <Other_Data_3/>
+      <Other_Data_2/>
+      <Email>test1@radicaldesigns.org</Email>
+      <Other_Data_1/>
+      <District/>
+      <First_Name>test1</First_Name>
+      <Longitude/>
+      <Source_Tracking_Code>(No Original Source Available)</Source_Tracking_Code>
+      <Tracking_Code/>
+      <supporter_KEY>22118014</supporter_KEY>
+      <Phone>123-456-7890</Phone>
+      <Street>123 fake st</Street>
+      <Receive_Phone_Blasts_BOOLVALUE>false</Receive_Phone_Blasts_BOOLVALUE>
+      <Password/>
+      <Email_Status/>
+      <object>supporter</object>
+      <Home_Fax/>
+      <Cell_Phone/>
+      <Street_3/>
+      <Street_2>apt 1</Street_2>
+      <Work_Phone/>
+      <Email_Preference>HTML Email</Email_Preference>
+      <Soft_Bounce_Count/>
+      <chapter_KEY/>
+      <Occupation/>
+      <Latitude/>
+      <Zip>94110</Zip>
+      <Hard_Bounce_Count/>
+      <Department/>
+      <Phone_Provider/>
+      <Last_Name>data1</Last_Name>
+      <Work_Fax/>
+      <Alternative_Email/>
+      <PRIVATE_Zip_Plus_4>0000</PRIVATE_Zip_Plus_4>
+      <Receive_Phone_Blasts>false</Receive_Phone_Blasts>
+      <Title/>
+      <City>san francisco</City>
+      <Status/>
+      <County/>
+      <State>CA</State>
+      <Date_Created>Fri Aug 03 2007 00:42:56 GMT-0400 (EDT)</Date_Created>
+      <Web_Page/>
+      <organization_KEY>962</organization_KEY>
+      <Instant_Messenger_Service/>
+      <Instant_Messenger_Name/>
+    </item>
+  </supporter>
+</data>

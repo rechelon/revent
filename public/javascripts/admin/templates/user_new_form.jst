@@ -1,0 +1,31 @@
+<div class="user-form new-form">
+  <div class="main-info">
+    <div class="errors">
+    </div>
+    <div class="basic-info">
+        <div class="field"><label for="first_name">first name</label><input class="first_name" name="first_name" value="<%= user.get('first_name') %>" /></div>
+        <div class="field"><label for="last_name">last name</label><input class="last_name" name="last_name" value="<%= user.get('last_name') %>" /></div>
+        <div class="field"><label for="email">email</label><input class="email" name="email" value="<%= user.get('email') %>" /></div>
+        <div class="field"><label for="organization">organization</label><input name="organization" value="<%= user.get('organization') %>" /></div>      
+      <div class="clear"></div>
+      <h3>Location</h3>
+      <div class="field"><label for="street">street</label><input name="street" value="<%= user.get('street') %>" /></div>
+      <div class="field"><label for="street_2">street 2</label><input name="street_2" value="<%= user.get('street_2') %>" /></div>
+      <div class="field"><label for="city">city</label><input name="city" value="<%= user.get('city') %>" /></div>
+      <div class="field"><label for="state">state</label><input name="state" value="<%= user.get('state') %>" /></div>
+      <div class="field"><label for="postal_code">postal code</label><input name="postal_code" value="<%= user.get('postal_code') %>" /></div>
+      <div class="checkboxes">
+        <% if(revent.current_user.is_site_admin()){ %>
+          <div class="checkbox">
+            <label for="sticky">Admin</label>
+            <%= checkbox({name:'admin'},user.get('admin'))%>
+          </div>
+        <% } %>
+        <div class="checkbox">
+          <label for="sticky">Show Phone #</label>
+          <%= checkbox({name:'show_phone_on_host_profile'},user.get('show_phone_on_host_profile'))%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

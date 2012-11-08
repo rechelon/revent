@@ -1,0 +1,26 @@
+<div id="detail-container">
+  <h1><%= @calendar.name %> &mdash; International Events</h1> 
+  <div class="international-intro-text intro-text">
+    <table>
+	<tr>
+	<td>Show events in</td>
+	<td>
+	<% form_tag :permalink => @calendar.permalink, :controller => 'events', :action => 'international' do -%> 
+        <%= select_tag 'country', options_for_select(countries_for_select, @country_a3), :onchange => "window.location.href='/#{@calendar.permalink}/events/international/' + this.value" %>
+	<% end -%>
+	</td>
+        </tr>
+	</table>
+	</div>
+	<div class="pagination-footer top">
+	  <%= will_paginate @events %>
+	</div>
+	<% unless @events.empty? -%>
+          <%= render :partial => 'list_item', :collection => @events %>
+	<% else -%>
+	  There are currently no events in this country.  Click here to <%= link_to 'host an event', signup_url(:permalink => @calendar.permalink) %>
+	<% end -%>
+  <div class="pagination-footer bottom">
+    <%= will_paginate @events %>
+  </div>
+</div>

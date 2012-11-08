@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<petition>
+
+<item>
+<key>1292</key>
+<petition_KEY>1292</petition_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Reference_Name></Reference_Name>
+  <Start_Date></Start_Date>
+  <Title></Title>
+  <Header></Header>
+  <Petition_Content></Petition_Content>
+  <Request></Request>
+  <Required></Required>
+  <Request_Comment></Request_Comment>
+  <Comment_Question></Comment_Question>
+  <PreFooter></PreFooter>
+  <Show_Signatures></Show_Signatures>
+  <Signature_Minimum_for_Display>25</Signature_Minimum_for_Display>
+  <Footer></Footer>
+  <Allow_Anonymous>1</Allow_Anonymous>
+  <PreGroup_Text></PreGroup_Text>
+  <groups_KEYS></groups_KEYS>
+  <Automatically_add_to_Groups></Automatically_add_to_Groups>
+  <Signature_Goal></Signature_Goal>
+  <Deadline></Deadline>
+  <Default_Tracking_Code></Default_Tracking_Code>
+  <redirect_path></redirect_path>
+  <Maximum_Field_Width></Maximum_Field_Width>
+  <PRIVATE_trigger></PRIVATE_trigger>
+  <email_trigger_KEYS></email_trigger_KEYS>
+  <Template></Template>
+  </item><count>2</count>
+</petition></data>
+
+

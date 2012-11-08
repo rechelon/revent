@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<listserve_message>
+
+<item>
+<key>25079</key>
+<listserve_message_KEY>25079</listserve_message_KEY>
+  <parent_KEY></parent_KEY>
+  <thread_KEY></thread_KEY>
+  <organization_KEY>962</organization_KEY>
+  <groups_KEY></groups_KEY>
+  <supporter_KEY></supporter_KEY>
+  <Date_Submitted></Date_Submitted>
+  <Status></Status>
+  <Original_From_Email></Original_From_Email>
+  <From_Email></From_Email>
+  <From_Name></From_Name>
+  <_To></_To>
+  <Subject></Subject>
+  <Content>test</Content>
+  <Message_Type></Message_Type>
+  <Content_type></Content_type>
+  <Result></Result>
+  <Score>0</Score>
+  <Type></Type>
+  <Error_Message></Error_Message>
+  </item><count>1</count>
+</listserve_message></data>
+
+

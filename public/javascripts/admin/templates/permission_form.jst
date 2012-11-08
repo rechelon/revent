@@ -1,0 +1,11 @@
+<div class="permission-form">
+  <div class='permission-type'>
+    <label for='permission_name'>permission type</label>
+    <%= select_field(Permission.permissionTypesToSelect(),{name:'name', class:'permission_name_selector'}) %>
+  </div>
+  <div class="sponsor-permission">
+    <label for='sponsor_admin'>sponsor</h3>
+    <%= select_field(revent.sponsors.toSelect(),{name:'value', class:'sponsor_admin_selector'}) %>
+  </div>
+  <div class='errors'></div>
+</div>

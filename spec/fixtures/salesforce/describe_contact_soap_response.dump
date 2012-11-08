@@ -1,0 +1,514 @@
+o:RForce::SoapResponse:@parsede:RForce::FlashHash{:describeSObjectResponsee;{:resulte;{:deletable"	true:urlDetail"$https://na2.salesforce.com/{ID}:mergeable"	true:
+label"Contact:replicateable"	true:childRelationships[e;{	:childSObject"AccountContactRole:relationshipName"AccountContactRoles:
+field"ContactId:cascadeDelete"	truee;{	;"ActivityHistory;"ActivityHistories;"
+WhoId;"	truee;{	;"
+Asset;"Assets;"ContactId;"
+falsee;{	;"Attachment;"Attachments;"ParentId;"
+falsee;{	;"CampaignMember;"CampaignMembers;"ContactId;"	truee;{	;"	Case;"
+Cases;"ContactId;"
+falsee;{	;"CaseContactRole;"CaseContactRoles;"ContactId;"	truee;{;"Contact;"ReportsToId;"
+falsee;{	;"ContactHistory;"Histories;"ContactId;"	truee;{	;"ContactShare;"Shares;"ContactId;"	truee;{	;"Contract;"ContractsSigned;"CustomerSignedId;"
+falsee;{	;"ContractContactRole;"ContractContactRoles;"ContactId;"	truee;{	;"EmailStatus;"EmailStatuses;"
+WhoId;"	truee;{	;"
+Event;"Events;"
+WhoId;"	truee;{;"EventAttendee;"AttendeeId;"	truee;{;"	Lead;"ConvertedContactId;"
+falsee;{	;"	Note;"
+Notes;"ParentId;"	truee;{	;"NoteAndAttachment;"NotesAndAttachments;"ParentId;"	truee;{	;"OpenActivity;"OpenActivities;"
+WhoId;"	truee;{	;"OpportunityContactRole;"OpportunityContactRoles;"ContactId;"	truee;{	;"ProcessInstance;"ProcessInstances;"TargetObjectId;"	truee;{	;"ProcessInstanceHistory;"ProcessSteps;"TargetObjectId;"
+falsee;{;"SelfServiceUser;"ContactId;"
+falsee;{	;"	Task;"
+Tasks;"
+WhoId;"	truee;{;"	User;"ContactId;"
+false:urlEdit"&https://na2.salesforce.com/{ID}/e:queryable"	true:retrieveable"	true:	name"Contact:urlNew"%https://na2.salesforce.com/003/e:recordTypeInfose;{	:recordTypeId"012000000000000AAA;"Master:available"	true:defaultRecordTypeMapping"	true:fields[0e;{:	type"id:soapType"tns:ID:precision"0;"Contact ID:filterable"	true:autoNumber"
+false:idLookup"	true;"Id:digits"0:byteLength"18:unique"
+false:namePointing"
+false:calculated"
+false:nillable"
+false:nameField"
+false:length"18:updateable"
+false:sortable"	true:custom"
+false:caseSensitive"
+false:
+scale"0:restrictedPicklist"
+false:createable"
+false:defaultedOnCreate"	truee;{;"boolean;"xsd:boolean; "0;"Deleted;!"	true;""
+false;#"
+false;"IsDeleted;$"0;%"0;&"
+false;'"
+false;("
+false;)"
+false;*"
+false;+"0;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"	truee;{;"reference;"tns:ID; "0;"Master Record ID;!"	true;""
+false;"MasterRecord;#"
+false:referenceTo"Contact;"MasterRecordId;$"0;%"18;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"18;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"
+falsee;{;"reference;"tns:ID; "0;"Account ID;!"	true;""
+false;"Account;#"
+false;4"Account;"AccountId;$"0;%"18;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"18;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Last Name;!"	true;""
+false;#"
+false;"LastName;$"0;%"240;&"
+false;'"
+false;("
+false;)"
+false;*"
+false;+"80;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"First Name;!"	true;""
+false;#"
+false;"FirstName;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"picklist;"xsd:string; "0;"Salutation;!"	true:picklistValues[
+e;{	;"Mr.:
+value"Mr.:active"	true:defaultValue"
+falsee;{	;"Ms.;6"Ms.;7"	true;8"
+falsee;{	;"	Mrs.;6"	Mrs.;7"	true;8"
+falsee;{	;"Dr.;6"Dr.;7"	true;8"
+falsee;{	;"
+Prof.;6"
+Prof.;7"	true;8"
+false;""
+false;#"
+false;"Salutation;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Full Name;!"	true;""
+false;#"
+false;"	Name;$"0;%"363;&"
+false;'"
+false;("
+false;)"
+false;*"	true;+"121;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"
+falsee;{;"textarea;"xsd:string; "0;"Other Street;!"	true;""
+false;#"
+false;"OtherStreet;$"0;%"765;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"255;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Other City;!"	true;""
+false;#"
+false;"OtherCity;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Other State/Province;!"	true;""
+false;#"
+false;"OtherState;$"0;%"60;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"20;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Other Zip/Postal Code;!"	true;""
+false;#"
+false;"OtherPostalCode;$"0;%"60;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"20;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Other Country;!"	true;""
+false;#"
+false;"OtherCountry;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"textarea;"xsd:string; "0;"Mailing Street;!"	true;""
+false;#"
+false;"MailingStreet;$"0;%"765;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"255;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Mailing City;!"	true;""
+false;#"
+false;"MailingCity;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Mailing State/Province;!"	true;""
+false;#"
+false;"MailingState;$"0;%"60;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"20;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Mailing Zip/Postal Code;!"	true;""
+false;#"
+false;"MailingPostalCode;$"0;%"60;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"20;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Mailing Country;!"	true;""
+false;#"
+false;"MailingCountry;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"
+phone;"xsd:string; "0;"Business Phone;!"	true;""
+false;#"
+false;"
+Phone;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"
+phone;"xsd:string; "0;"Business Fax;!"	true;""
+false;#"
+false;"Fax;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"
+phone;"xsd:string; "0;"Mobile Phone;!"	true;""
+false;#"
+false;"MobilePhone;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"
+phone;"xsd:string; "0;"Home Phone;!"	true;""
+false;#"
+false;"HomePhone;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"
+phone;"xsd:string; "0;"Other Phone;!"	true;""
+false;#"
+false;"OtherPhone;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"
+phone;"xsd:string; "0;"Asst. Phone;!"	true;""
+false;#"
+false;"AssistantPhone;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"reference;"tns:ID; "0;"Reports To ID;!"	true;""
+false;"ReportsTo;#"
+false;4"Contact;"ReportsToId;$"0;%"18;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"18;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"
+email;"xsd:string; "0;"
+Email;!"	true;""
+false;#"	true;"
+Email;$"0;%"240;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"80;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"
+Title;!"	true;""
+false;#"
+false;"
+Title;$"0;%"240;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"80;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Department;!"	true;""
+false;#"
+false;"Department;$"0;%"240;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"80;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Assistant's Name;!"	true;""
+false;#"
+false;"AssistantName;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"picklist;"xsd:string; "0;"Lead Source;!"	true;5[
+e;{	;"Web;6"Web;7"	true;8"
+falsee;{	;"Phone Inquiry;6"Phone Inquiry;7"	true;8"
+falsee;{	;"Partner Referral;6"Partner Referral;7"	true;8"
+falsee;{	;"Purchased List;6"Purchased List;7"	true;8"
+falsee;{	;"
+Other;6"
+Other;7"	true;8"
+false;""
+false;#"
+false;"LeadSource;$"0;%"120;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"40;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"	date;"xsd:date; "0;"Birthdate;!"	true;""
+false;#"
+false;"Birthdate;$"0;%"0;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"0;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"textarea;"xsd:string; "0;"Contact Description;!"
+false;""
+false;#"
+false;"Description;$"0;%"
+32000;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"
+32000;,"	true;-"
+false;."
+false;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"reference;"tns:ID; "0;"Owner ID;!"	true;""
+false;"
+Owner;#"
+false;4"	User;"OwnerId;$"0;%"18;&"
+false;'"
+false;("
+false;)"
+false;*"
+false;+"18;,"	true;-"	true;."
+false;/"
+false;0"0;1"
+false;2"	true;3"	truee;{;"datetime;"xsd:dateTime; "0;"Created Date;!"	true;""
+false;#"
+false;"CreatedDate;$"0;%"0;&"
+false;'"
+false;("
+false;)"
+false;*"
+false;+"0;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"	truee;{;"reference;"tns:ID; "0;"Created By ID;!"	true;""
+false;"CreatedBy;#"
+false;4"	User;"CreatedById;$"0;%"18;&"
+false;'"
+false;("
+false;)"
+false;*"
+false;+"18;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"	truee;{;"datetime;"xsd:dateTime; "0;"Last Modified Date;!"	true;""
+false;#"
+false;"LastModifiedDate;$"0;%"0;&"
+false;'"
+false;("
+false;)"
+false;*"
+false;+"0;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"	truee;{;"reference;"tns:ID; "0;"Last Modified By ID;!"	true;""
+false;"LastModifiedBy;#"
+false;4"	User;"LastModifiedById;$"0;%"18;&"
+false;'"
+false;("
+false;)"
+false;*"
+false;+"18;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"	truee;{;"datetime;"xsd:dateTime; "0;"System Modstamp;!"	true;""
+false;#"
+false;"SystemModstamp;$"0;%"0;&"
+false;'"
+false;("
+false;)"
+false;*"
+false;+"0;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"	truee;{;"	date;"xsd:date; "0;"Last Activity;!"	true;""
+false;#"
+false;"LastActivityDate;$"0;%"0;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"0;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"
+falsee;{;"datetime;"xsd:dateTime; "0;"$Last Stay-in-Touch Request Date;!"	true;""
+false;#"
+false;"LastCURequestDate;$"0;%"0;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"0;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"
+falsee;{;"datetime;"xsd:dateTime; "0;"!Last Stay-in-Touch Save Date;!"	true;""
+false;#"
+false;"LastCUUpdateDate;$"0;%"0;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"0;,"
+false;-"	true;."
+false;/"
+false;0"0;1"
+false;2"
+false;3"
+falsee;{;"picklist;"xsd:string; "0;"
+Level;!"	true;5[e;{	;"Secondary;6"Secondary;7"	true;8"
+falsee;{	;"Tertiary;6"Tertiary;7"	true;8"
+falsee;{	;"Primary;6"Primary;7"	true;8"
+false;""
+false;#"
+false;"Level__c;$"0;%"765;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"255;,"	true;-"	true;."	true;/"
+false;0"0;1"
+false;2"	true;3"
+falsee;{;"string;"xsd:string; "0;"Languages;!"	true;""
+false;#"
+false;"Languages__c;$"0;%"300;&"
+false;'"
+false;("
+false;)"	true;*"
+false;+"100;,"	true;-"	true;."	true;/"
+false;0"0;1"
+false;2"	true;3"
+false:searchable"	true;,"	true:triggerable"	true:labelPlural"Contacts;."
+false;2"	true:activateable"
+false:undeletable"	true:layoutable"	true:keyPrefix"003

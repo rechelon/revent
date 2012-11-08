@@ -1,0 +1,46 @@
+<% 
+  type_options = [
+    ['Select',''],
+    ['Labor Organization', 'union'],
+    ['Other Organization', 'other'],
+    ['An Individual','individual']
+  ]
+  selected_type = @event.custom_attributes_data.sponsor_type || ''
+%>
+<div class="control-group">
+  <label class="control-label" for="sponsor-type"><span class="req">*</span>Who is the primary sponsor of this event? </label>
+  <div class="controls">
+    <select name="event[custom_attributes_data][sponsor_type]" id="sponsor-type" class="required">
+      <%= options_for_select(type_options, selected_type) %>
+    </select>
+  </div>
+</div>
+<%
+  selected_union = @event.custom_attributes_data.sponsor_union || ''
+%>
+<div id="sponsor-union" class="control-group" style="display:none;">
+  <label class="control-label"><span class="req">*</span>Which Union?</label>
+    <div class="controls">
+     <select name="event[custom_attributes_data][sponsor_union]" class="required">
+      <%= options_for_select(union_options, selected_union) %>
+     </select>
+   </div>
+</div>
+<%
+  selected_local = @event.custom_attributes_data.sponsor_local || ''
+%>
+<div id="sponsor-local" class="control-group" style="display:none;">
+  <label class="control-label">Which Local?</label>
+    <div class="controls">
+    <input id="local-sponsor" value="<%= selected_local %>" name="event[custom_attributes_data][sponsor_local]" size="30">
+  </div>
+</div>
+<%
+  selected_other = @event.custom_attributes_data.sponsor_other || ''
+%>
+<div id="sponsor-other" class="control-group" style="display:none;">
+  <label class="control-label"><span class="req">*</span>What is your Organization?</label>
+  <div class="controls">
+    <input id="other-sponsor" class="required" value="<%= selected_other %>" name="event[custom_attributes_data][sponsor_other]" size="30">
+  </div>
+</div>

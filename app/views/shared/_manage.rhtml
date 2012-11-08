@@ -1,0 +1,22 @@
+<!-- begin manage -->
+<div class="row" id="manage">
+  <div class="span3">
+    <div id="manage-logged-out" class="well" style="display:none">
+      <ul class="unstyled">
+        <li>
+          <i class="icon-user"></i>&nbsp;
+          <%= link_to 'Login to manage your actions', manage_account_url(:permalink=>@calendar.permalink),:class=>"manage-events-btn " %>
+        </li>
+      </ul>
+    </div>
+    <div id="manage-logged-in" class="well" style="display:none">
+      <ul id="manage-nav" class="nav nav-list">
+        <li class="nav-header">Action Tools</li>
+        <li><%= link_to '<i class="icon-pencil"></i>&nbsp;Manage Your Actions', manage_account_url(:permalink=>@calendar.permalink) %></li>
+        <li><%= link_to '<i class="icon-user"></i>&nbspEdit Your Profile', profile_url(:permalink=>@calendar.permalink) %></li>
+        <li><%= link_to '<i class="icon-arrow-right"></i>&nbspLogout', logout_url(:permalink=>@calendar.permalink) %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- end manage -->

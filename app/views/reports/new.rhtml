@@ -1,0 +1,35 @@
+<% content_for :header do %>
+<%= javascript_include_tag 'effects' %>
+<% end %>
+<div id="reports-new" class="add-new">
+  <h1> 
+    <% if @calendar.report_title_text %>
+      <%=  @calendar.report_title_text %>
+    <% else %>
+     Tell Us What Happened at Your Event
+    <% end -%>
+  </h1>
+  <div class="reports-new-intro-text intro-text">
+    <% if @calendar.report_intro_text %>
+      <%=  @calendar.report_intro_text %>
+    <% else %>
+      Please take a few minutes to share your stories, videos and pictures from your event.  This information will be displayed publically.		
+    <% end -%>
+  </div>
+  <% form_for :report, @report, :url => { :controller => 'reports', :permalink => @calendar.permalink, :action => 'create' }, :html => {:class => 'form-horizontal', :id => 'report-back-form',  :multipart => true } do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f, :profile_complete => @profile_complete } %>
+  <% if Site.current.config.enable_recaptcha %>
+  <% end %>
+  <div id="report-submit-box" class="form-actions well">
+    <div class="description">Please allow several minutes for your report to upload.
+      After you are taken to the next page, please allow up to an hour for your report to be posted on the website.
+    </div>
+    <div id="create_button"><%= submit_tag "Submit Your Event Report", :onclick => "Element.show('spinner')", :class => "btn btn-primary"  %></div>
+        <div id="spinner" style="font-style: font-size: 90%; display: none;"><%= image_tag 'spinner.gif' %> Uploading Report</div>
+  </div>
+  <% end -%>
+<script type="text/javascript" language="javascript">
+  var valid = new Validation("report-back-form", {useTitles : true});
+</script>
+</div>
+</div><!-- here -->

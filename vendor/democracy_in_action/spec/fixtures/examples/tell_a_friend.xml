@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<tell_a_friend>
+
+<item>
+<key>2975</key>
+<tell_a_friend_KEY>2975</tell_a_friend_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Reference_Name></Reference_Name>
+  <Title></Title>
+  <HTML_Content>test</HTML_Content>
+  <Letter_Subject></Letter_Subject>
+  <Letter_Body></Letter_Body>
+  <Uneditable_Content></Uneditable_Content>
+  <Tracking_Code></Tracking_Code>
+  <redirect_path></redirect_path>
+  <Number_of_Friends_Told>0</Number_of_Friends_Told>
+  <photo_KEY></photo_KEY>
+  <Template></Template>
+  </item><count>1</count>
+</tell_a_friend></data>
+
+

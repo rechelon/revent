@@ -1,0 +1,20 @@
+<div id="detail-container">
+  <div class="intro-title">
+    <%= @category.name.pluralize %>
+  </div>
+  <% form_tag :action => 'category' do -%> 
+    Show events of type:
+    <%= select_tag 'categories', options_for_select(@category_options, @category.id), :onchange => "window.location.href='/#{@calendar.permalink}/events/category/' + this.value" %><br />
+  <% end -%>  
+  <div class="pagination-footer top">
+    <%= will_paginate @events %>
+  </div>
+  <% unless @events.empty? -%>
+    <%= render :partial => 'list_item', :collection => @events %>
+  <% else -%>
+  Could not find any events. Would you like to <%= link_to 'create one', signup_url(:permalink => @calendar.permalink) %>?
+  <% end -%>
+  <div class="pagination-footer bottom">
+    <%= will_paginate @events %>
+  </div>
+</div>

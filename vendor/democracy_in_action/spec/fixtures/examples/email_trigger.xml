@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<email_trigger>
+
+<item>
+<key>946</key>
+<email_trigger_KEY>946</email_trigger_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY>0</chapter_KEY>
+  <package_KEY></package_KEY>
+  <version_KEY></version_KEY>
+  <Reference_Name>event trigger test</Reference_Name>
+  <PRIVATE_trigger></PRIVATE_trigger>
+  <Trigger_Type>Reply Email</Trigger_Type>
+  <Subject_or_Title>hi</Subject_or_Title>
+  <HTML_Body>what's up [[First_Name]], thanks for signing up for [[Event.Event_Name]] or [[Event_Name]] maybe would work too.</HTML_Body>
+  <Text_Body>what's up [[First_Name]], thanks for signing up for [[Event.Event_Name]] or [[Event_Name]] maybe would work too.</Text_Body>
+  <Email_Address></Email_Address>
+  <From_Name></From_Name>
+  <From_Email></From_Email>
+  <Append_All_Values>1</Append_All_Values>
+  <Send_Condition></Send_Condition>
+  <Hours_Delayed_for_Timed_Trigger>0.00</Hours_Delayed_for_Timed_Trigger>
+  </item><count>4</count>
+</email_trigger></data>
+
+

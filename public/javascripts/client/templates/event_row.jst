@@ -1,0 +1,26 @@
+<td class='list-data'>
+  <div class="event-list-element list-item">
+    <div class="event-date">
+      <h5>
+        <% if(event.get('time_tbd')){ %>
+          <%= start_date+(start_date == end_date ? "" : " - "+end_date) %>
+        <% } else { %>
+          <% if(event.get('supress_end_time')){ %>
+            <%= start_date+start_time + '' %>
+          <% } else { %>
+            <%= start_date+start_time+" - "+(start_date == end_date ? end_time : end_date+end_time) %>
+          <% } %>
+        <% } %>
+      </h5>
+    </div>
+    <div class="event-list-name">
+      <h3><a href="/<%= permalink %>/events/show/<%= event.id %>"><%= event.get('name') %></a></h3>
+    </div>
+    <div class="event-list-location">
+      <h4><%= event.get('city') %>, <%= event.get('state') %></h4>
+    </div>
+    <div class="event-list-description">
+      <%= truncate(event.get('description'), 375) %>
+    </div>
+  </div>  
+</td>

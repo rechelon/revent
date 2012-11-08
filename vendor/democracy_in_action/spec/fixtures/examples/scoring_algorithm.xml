@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<scoring_algorithm>
+
+<item>
+<key>5</key>
+<scoring_algorithm_KEY>5</scoring_algorithm_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Last_Modified></Last_Modified>
+  <Date_Created>2008-06-25 20:56:38.0</Date_Created>
+  <Name></Name>
+  <Description></Description>
+  <Recurring_Interval></Recurring_Interval>
+  <Last_Run>2008-06-25 20:56:38.0</Last_Run>
+  <Status></Status>
+  <Error_Message></Error_Message>
+  </item><count>1</count>
+</scoring_algorithm></data>
+
+

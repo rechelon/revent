@@ -1,0 +1,41 @@
+<h1>Update Your Information</h1>
+<%= error_messages_for 'user' %>
+
+<% form_for :user, @user, :url => { :permalink => @calendar.permalink, :action => 'profile' }, :html => {:id => 'profile-edit-form',:multipart => true, :class => 'form-horizontal'} do |f| %>
+  <%= render :partial => 'account/profile_form', :locals =>{ :f =>f } %>
+  <div id="account-profile-extra">
+    <% if @user.profile_image %>
+      <div class="control-group">
+        <label class="control-label" for="profile_image">Current Profile Image</label>
+        <div class="controls">
+          <%= image_tag @user.profile_image.public_filename(:list) %>
+        </div>
+      </div>
+    <% end %>
+    <div class="control-group">
+      <label class="control-label" for="profile_image">Upload Profile Image</label>
+      <div class="controls">
+        <%= file_field_tag 'profile_image[uploaded_data]' %>
+     </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <%= f.password_field 'password', :autocomplete => 'off' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="password_confirmation">Password Confirmation</label>
+      <div class="controls">
+        <%= f.password_field 'password_confirmation', :autocomplete => 'off'  %>
+      </div>
+    </div>
+    <div class="form-actions well">
+      <%= submit_tag 'save changes', :id => 'account-profile-submit', :class => 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript" language="javascript">
+  var valid = new Validation("profile-edit-form", {useTitles : true});
+</script>

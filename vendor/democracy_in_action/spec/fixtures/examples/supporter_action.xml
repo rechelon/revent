@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<supporter_action>
+
+<item>
+<key>17775</key>
+<supporter_action_KEY>17775</supporter_action_KEY>
+  <organization_KEY>962</organization_KEY>
+  <supporter_KEY></supporter_KEY>
+  <action_KEY></action_KEY>
+  <Last_Modified></Last_Modified>
+  <Date_Created>2008-06-25 20:56:38.0</Date_Created>
+  <supporter_action_comment_KEY></supporter_action_comment_KEY>
+  <Anonymous></Anonymous>
+  <supporter_KEY></supporter_KEY>
+  <organization_KEY></organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Last_Modified></Last_Modified>
+  <Date_Created></Date_Created>
+  <Title></Title>
+  <First_Name></First_Name>
+  <MI></MI>
+  <Last_Name></Last_Name>
+  <Suffix></Suffix>
+  <Email></Email>
+  <Password></Password>
+  <Receive_Email></Receive_Email>
+  <Email_Status></Email_Status>
+  <Email_Preference></Email_Preference>
+  <Soft_Bounce_Count></Soft_Bounce_Count>
+  <Hard_Bounce_Count></Hard_Bounce_Count>
+  <Last_Bounce></Last_Bounce>
+  <Receive_Phone_Blasts></Receive_Phone_Blasts>
+  <Phone></Phone>
+  <Cell_Phone></Cell_Phone>
+  <Phone_Provider></Phone_Provider>
+  <Work_Phone></Work_Phone>
+  <Pager></Pager>
+  <Home_Fax></Home_Fax>
+  <Work_Fax></Work_Fax>
+  <Street></Street>
+  <Street_2></Street_2>
+  <Street_3></Street_3>
+  <City></City>
+  <State></State>
+  <Zip></Zip>
+  <PRIVATE_Zip_Plus_4></PRIVATE_Zip_Plus_4>
+  <County></County>
+  <District></District>
+  <Country></Country>
+  <Latitude></Latitude>
+  <Longitude></Longitude>
+  <Organization></Organization>
+  <Department></Department>
+  <Occupation></Occupation>
+  <Instant_Messenger_Service></Instant_Messenger_Service>
+  <Instant_Messenger_Name></Instant_Messenger_Name>
+  <Web_Page></Web_Page>
+  <Alternative_Email></Alternative_Email>
+  <Other_Data_1></Other_Data_1>
+  <Other_Data_2></Other_Data_2>
+  <Other_Data_3></Other_Data_3>
+  <Notes></Notes>
+  <Source></Source>
+  <Source_Details></Source_Details>
+  <Source_Tracking_Code></Source_Tracking_Code>
+  <Tracking_Code></Tracking_Code>
+  <Status></Status>
+  <uid></uid>
+  <Timezone></Timezone>
+  <action_KEY></action_KEY>
+  <organization_KEY></organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Last_Modified></Last_Modified>
+  <Date_Created></Date_Created>
+  <Reference_Name></Reference_Name>
+  <Title></Title>
+  <Description></Description>
+  <Allow_Comments></Allow_Comments>
+  <Comment_Question></Comment_Question>
+  <Max_Number_Of_Emails></Max_Number_Of_Emails>
+  <Max_Number_Of_Faxes></Max_Number_Of_Faxes>
+  <Signatures></Signatures>
+  <Signature_Goal></Signature_Goal>
+  <Deadline></Deadline>
+  <Signature_Minimum_for_Display></Signature_Minimum_for_Display>
+  <Allow_Anonymous></Allow_Anonymous>
+  <Footer></Footer>
+  <Request></Request>
+  <Required></Required>
+  <Thank_You_Text></Thank_You_Text>
+  <redirect_path></redirect_path>
+  <email_trigger_KEYS></email_trigger_KEYS>
+  <add_to_groups_KEYS></add_to_groups_KEYS>
+  <optionally_add_to_groups_KEYS></optionally_add_to_groups_KEYS>
+  <No_Recipient_Text></No_Recipient_Text>
+  <Excluded_Recipient_Text></Excluded_Recipient_Text>
+  <Restricted_Regions></Restricted_Regions>
+  <Restricted_Districts></Restricted_Districts>
+  <Restricted_Text></Restricted_Text>
+  <template_KEY></template_KEY>
+  <Style></Style>
+  <Status></Status>
+  </item><count>1</count>
+</supporter_action></data>
+
+

@@ -1,0 +1,12 @@
+[submodule "vendor/plugins/workling"]
+	path = vendor/plugins/workling
+	url = git://github.com/purzelrakete/workling.git
+[submodule "vendor/gems/memcache-client"]
+	path = vendor/gems/memcache-client
+	url = git://github.com/fiveruns/memcache-client.git
+[submodule "vendor/plugins/acts_as_tree"]
+	path = vendor/plugins/acts_as_tree
+	url = git://github.com/rails/acts_as_tree.git
+[submodule "vendor/gems/happymapper"]
+	path = "vendor/gems/happymapper"
+	url = git://github.com/jnunemaker/happymapper.git 

@@ -1,0 +1,16 @@
+<!-- begin take-action -->
+<div id="take-action">
+  <div class="row"> 
+    <%= link_to 'Find Your Local '+liquid_or_default(@calendar.theme.event_alias, "Action").capitalize, calendar_home_url(:permalink=>@calendar.permalink),:class=>"find-action-btn btn btn-large span2" %>
+  </div>
+  <div class="row"> 
+    <%= link_to 'Add a Local '+liquid_or_default(@calendar.theme.event_alias, "Action").capitalize, signup_url(:permalink=>@calendar.permalink),:class=>"create-event-btn btn btn-large span2" %>
+  </div>
+  <div class="row"> 
+    <%= link_to 'How Did It Go?', new_report_url(:permalink=>@calendar.permalink),:class=>"create-report-btn btn btn-large span2" %>
+  </div>
+  <div class="row"> 
+    <%= link_to 'View Reportbacks', reports_url(:permalink=>@calendar.permalink),:class=>"view-reports-btn btn btn-large span2" %>
+  </div>
+</div> 
+<!-- end take-action -->

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<rss>
+
+<item>
+<key>94</key>
+<rss_KEY>94</rss_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Type></Type>
+  <Name></Name>
+  <URL></URL>
+  <Number_Of_Entries_Shown></Number_Of_Entries_Shown>
+  <Hours_to_refresh></Hours_to_refresh>
+  <Last_Run></Last_Run>
+  <scraper_regex></scraper_regex>
+  <scrape_header></scrape_header>
+  <scrape_footer></scrape_footer>
+  <scrape_append_to_link></scrape_append_to_link>
+  </item><count>1</count>
+</rss></data>
+
+

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<groups>
+
+<item>
+<key>50816</key>
+<groups_KEY>50816</groups_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Group_Name>Rich</Group_Name>
+  <parent_KEY></parent_KEY>
+  <Description></Description>
+  <Notes></Notes>
+  <Display_To_User></Display_To_User>
+  <Listserve_Type></Listserve_Type>
+  <Subscription_Type></Subscription_Type>
+  <Manager></Manager>
+  <Moderator_Emails></Moderator_Emails>
+  <Subject_Prefix></Subject_Prefix>
+  <Listserve_Responses></Listserve_Responses>
+  <Append_Header></Append_Header>
+  <Append_Footer></Append_Footer>
+  <Custom_Headers></Custom_Headers>
+  <Listserve_Options></Listserve_Options>
+  <external_ID></external_ID>
+  <From_Email></From_Email>
+  <From_Name></From_Name>
+  <Reply_To></Reply_To>
+  <Headers_To_Remove></Headers_To_Remove>
+  <Confirmation_Message></Confirmation_Message>
+  <Date_Created></Date_Created>
+  <Auto_Update>0</Auto_Update>
+  <query_KEY></query_KEY>
+  <Smart_Group_Options>Off</Smart_Group_Options>
+  </item><count>112</count>
+</groups></data>
+
+

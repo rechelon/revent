@@ -1,0 +1,31 @@
+<div id='detail-container'>
+	<div class="intro-title">
+		<%= @calendar.name %> &mdash; International Reports 
+	</div>
+	<div class="intro-text">
+		<table>
+			<tr>
+				<td>Show reports in</td>
+				<td>
+					<% form_tag :permalink => @calendar.permalink, :controller => 'events', :action => 'international' do -%> 
+					  <%= select_tag 'country', options_for_select(countries_for_select, @country_a3), :onchange => "window.location.href='/#{@calendar.permalink}/events/international/' + this.value" %>
+					<% end -%>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<hr>	
+	<div class='pagination-footer'>
+	  <%= will_paginate @events %>
+	</div>
+	<% unless @reports.empty? -%>
+    <%= render :partial => 'report', :collection => @reports %>
+	<% else -%>
+  There are currently no <%= params[:id] == 'all' || params[:id].nil? ? 'international reports.' : 'reports for this country.' %>  
+  Click here to <%= link_to 'add your own report', :permalink => @calendar.permalink, :controller => 'reports', :action => 'new' %>
+	<% end -%>
+  <br><br>
+  <div class='pagination-footer'>
+    <%= will_paginate @events %>
+  </div>
+</div>

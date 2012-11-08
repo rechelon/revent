@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<database_table>
+
+<item>
+<key>257</key>
+<database_table_KEY>257</database_table_KEY>
+  <package_KEY>10035</package_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Last_Modified>2007-10-17 19:17:35.0</Last_Modified>
+  <Date_Created>2007-10-17 19:17:35.0</Date_Created>
+  <table_name>p_10035_user</table_name>
+  <presave></presave>
+  <postsave></postsave>
+  <create_permission>Campaign Managers</create_permission>
+  <update_permission>Campaign Managers</update_permission>
+  </item><count>1</count>
+</database_table></data>
+
+

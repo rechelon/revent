@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<READONLY_donation>
+
+<item>
+<key>0</key>
+<donation_KEY>0</donation_KEY>
+  <organization_KEY>962</organization_KEY>
+  <supporter_KEY>15445375</supporter_KEY>
+  <Last_Modified>2006-11-28 16:43:23.0</Last_Modified>
+  <Transaction_Date>2006-11-28 16:43:23.0</Transaction_Date>
+  <Date_Entered></Date_Entered>
+  <amount>10.00</amount>
+  <Transaction_Type></Transaction_Type>
+  <Form_Of_Payment></Form_Of_Payment>
+  <cc_type>visa</cc_type>
+  <Credit_Card_Digits>4111XXXXXXXX1111</Credit_Card_Digits>
+  <PNREF>V78E0A9A0357</PNREF>
+  <RESULT>-1</RESULT>
+  <RESPMSG>Approved</RESPMSG>
+  <AUTHCODE>010101</AUTHCODE>
+  <Order_Info></Order_Info>
+  <Status></Status>
+  <Responsible_Party></Responsible_Party>
+  <Date_Fulfilled></Date_Fulfilled>
+  <PRIVATE_Complete_Summary>{AVSZIP=N, Status=Donation_Only, trigger=On Donation, table=supporter,supporter_custom, organization_KEY=962, cc_type=visa, amountLimit=100000.0, Transaction_Date=NOW(), donate_page_KEY=2020, IP_Address=66.92.4.212, City=san francisco, CVV2MATCH=Y, Tax_Status=Unknown, Street=123 sesame st, PNREF=V78E0A9A0357, submit=Submit, Last_Modified=NOW(), Credit_Card_Digits=4111XXXXXXXX1111, AUTHCODE=010101, IAVS=N, First_Name=test, RESPMSG=Approved, Transaction_Type=Testing, updateRowValues=true,true, required=0,0,First_Name,Last_Name,Street,City,State,Zip,,0,0,First_Name,Last_Name,Street,City,State,Zip,, State=CA, donation_KEY=10855577, Zip=94110, Credit_Card_Expiration=06/08, Last_Name=test, link=custom, key=0,0, linkKey=0, amount=10, Email=email@example.com, AVSADDR=Y, supporter_KEY=15445375, redirect=http://example.com, RESULT=-1, eligibility=1}</PRIVATE_Complete_Summary>
+  <Email>email@example.com</Email>
+  <State>CA</State>
+  <First_Name>test</First_Name>
+  <Last_Name>test</Last_Name>
+  <Tracking_Code></Tracking_Code>
+  <Donation_Tracking_Code></Donation_Tracking_Code>
+  <Tax_Status>Unknown</Tax_Status>
+  <Designation_Code></Designation_Code>
+  <PRIVATE_Donation_Source></PRIVATE_Donation_Source>
+  <Thank_You_Sent></Thank_You_Sent>
+  <READONLY_donation_KEY>88124</READONLY_donation_KEY>
+  <referral_supporter_KEY></referral_supporter_KEY>
+  <merchant_account_KEY></merchant_account_KEY>
+  <IP_Address>66.92.4.212</IP_Address>
+  </item><count>9</count>
+</READONLY_donation></data>
+
+

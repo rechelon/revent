@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<action_stats>
+
+<item>
+<key>20029178</key>
+<action_stats_KEY>20029178</action_stats_KEY>
+  <organization_KEY>962</organization_KEY>
+  <action_type>campaign</action_type>
+  <action_KEY>12722</action_KEY>
+  <Date_Created>2007-09-13 01:15:24.0</Date_Created>
+  <supporter_action_KEY>5570080</supporter_action_KEY>
+  <recipient_KEY>121448</recipient_KEY>
+  <person_legislator_ID></person_legislator_ID>
+  <person_media_ID></person_media_ID>
+  <rep_KEY></rep_KEY>
+  <Sent_Email>1</Sent_Email>
+  <Sent_Fax></Sent_Fax>
+  <Status></Status>
+  </item><count>1</count>
+</action_stats></data>

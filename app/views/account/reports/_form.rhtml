@@ -1,0 +1,18 @@
+<%= error_messages_for 'report' %>
+
+<div class="control-group">
+  <label class="control-label">
+    <span class="req">*</span>Tell Us About What Happened at Your Event:
+  </label>
+  <div class="controls">
+    <%= f.text_area 'text', :rows => 7, :class => 'input-xlarge required'%>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="attendees">
+    Estimated Attendance:
+  </label>
+  <div class="controls">
+    <%= f.text_field 'attendees', :class => 'input-mini' %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<my_donate_page>
+
+<item>
+<key>65</key>
+<my_donate_page_KEY>65</my_donate_page_KEY>
+  <organization_KEY>962</organization_KEY>
+  <Title></Title>
+  <Description></Description>
+  <email_trigger_KEYS></email_trigger_KEYS>
+  <groups_KEYS></groups_KEYS>
+  <Template></Template>
+  <Search_Description></Search_Description>
+  <Create_Description></Create_Description>
+  <Creation_Redirect></Creation_Redirect>
+  <Donation_Redirect></Donation_Redirect>
+  <Suggested_Title></Suggested_Title>
+  <Suggested_Description></Suggested_Description>
+  <Pre_Donation_Text></Pre_Donation_Text>
+  <Include_Recurring_Payments></Include_Recurring_Payments>
+  <merchant_account_KEY></merchant_account_KEY>
+  <Donation_Page_Footer></Donation_Page_Footer>
+  <Suggested_Tell_a_Friend_Message></Suggested_Tell_a_Friend_Message>
+  <donor_groups_KEYS></donor_groups_KEYS>
+  <donor></donor>
+  <Min_Donation_Goal>0</Min_Donation_Goal>
+  <Max_Donation_Goal>50000</Max_Donation_Goal>
+  <Request></Request>
+  <Required></Required>
+  <donor$email_trigger_KEYS></donor$email_trigger_KEYS>
+  </item><count>1</count>
+</my_donate_page></data>
+
+

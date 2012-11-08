@@ -1,0 +1,25 @@
+#header{}
+#header a{}
+#header a:hover{
+  text-decoration:none;
+}
+#banner{
+color: #000000;
+display: block;
+font-size: 99px;
+line-height: 99px;
+position: relative;
+right: 7px;
+}
+#take-action .btn{
+margin-bottom: 1em;
+}
+#manage-logged-in{
+  padding: 8px 0;
+}
+
+@media (max-width: 480px) { 
+  #event-map-container{
+    display:none;
+  }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<thank_you_page>
+
+<item>
+<key>1745</key>
+<thank_you_page_KEY>1745</thank_you_page_KEY>
+  <organization_KEY>962</organization_KEY>
+  <chapter_KEY></chapter_KEY>
+  <Reference_Name></Reference_Name>
+  <HTML_Content>test</HTML_Content>
+  <Show_Tell_a_Friend>1</Show_Tell_a_Friend>
+  <Associated_Tell_a_Friend$tell_a_friend_KEYS></Associated_Tell_a_Friend$tell_a_friend_KEYS>
+  <Template></Template>
+  </item><count>1</count>
+</thank_you_page></data>
+
+

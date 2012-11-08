@@ -1,0 +1,24 @@
+<form class="sponsor-form new-form">
+ <div class="errors"></div>
+ <ul class="sponsor-form-page">
+    <li>
+      <label>name</label>
+      <div class="data">
+        <input name="name" value="<%= sponsor.get('name') %>" />
+      </div>
+    </li>
+    <li>
+      <label>partner code</label>
+      <div class="data">
+        <input name="partner_code" value="<%= sponsor.get('partner_code') %>" />
+      </div>
+    </li>
+    <li>
+      <label>description</label>
+      <div class="data">
+        <textarea name="description" /><%= sponsor.get('description') %></textarea>
+      </div>
+    </li>
+  </ul>
+</form>
+

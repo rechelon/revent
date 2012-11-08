@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<data organization_KEY="962">
+<organization_item>
+
+<item>
+<key>1</key>
+<organization_item_KEY>1</organization_item_KEY>
+  <organization_KEY>962</organization_KEY>
+  <organization_role_KEY></organization_role_KEY>
+  <Last_Modified></Last_Modified>
+  <Effective_Date>2008-06-25 20:56:35.0</Effective_Date>
+  <Name></Name>
+  <amount></amount>
+  <Recurring_Amount></Recurring_Amount>
+  <Status></Status>
+  <Cancellation_Date></Cancellation_Date>
+  <Recurring_Term></Recurring_Term>
+  <Description></Description>
+  <organization_discount_KEY></organization_discount_KEY>
+  </item><count>2</count>
+</organization_item></data>
+
+

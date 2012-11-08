@@ -1,0 +1,175 @@
+<%= error_messages_for('rsvp', 'user', :class => 'flash', :id => 'notice', :header_message => 'There was a problem registering your RSVP') %>
+
+<% content_for :header do %>
+  <script type='text/javascript'>
+    var permalink = "<%= @calendar.permalink %>";
+    var event_id = "<%= @event.id %>";
+  </script>
+  <script type='text/javascript' src='/javascripts/ui_events_show.js'></script>
+<% end %>
+
+<div id="event-header">
+  <h1><%= white_list @event.name %></h1>
+  <%= "<h4 id='worksite_header'>This event is a worksite action.</h4>" if @event.worksite_event?%>
+  <h2><%= white_list @event.city_state %></h2>
+  <h3 class="start"><%= event_date_range(@event) %></h3>
+  <% if @event.host && !@event.worksite_event?%>
+    <p>Hosted by <%= link_to @event.host.full_name, :permalink => @calendar.permalink,:action => :host, :id => @event %></p>
+    <% if @event.host.show_phone_on_host_profile and @event.host.phone %>
+      <p>Contact: <%= @event.host.phone %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @event.past? %>
+  <div class="alert alert-info">
+    <h4 class="alert-heading">This Event Has Already Taken Place</h4>
+
+    <% if @event.reportable? %>
+      <p>
+        If you attended this event please <strong><%= link_to 'Submit a Report', :permalink => @calendar.permalink, :controller => "reports", :action => "new", :id=>@event.id %></strong>.
+      </p>
+    <% end %>
+
+    <% unless @event.reports.empty? %>
+      <p>
+        <strong><%= link_to 'Click here', report_url(:permalink => @calendar.permalink, :event_id => @event.id)  %></strong> to see reports for this event.
+      </p>
+    <% end %>
+
+    <p>
+      See all <strong><%= link_to 'Event Reports', :permalink => @calendar.permalink, :controller => 'reports', :action => 'index' %></strong>.
+    </p>
+  </div>
+<% end %>
+
+<div id="event-intro-text" class="intro-text">
+  <div id="event-description" class="event-info">
+    <span class="label info-label">Event Description</span><%= simple_format(white_list(auto_link(@event.description))) %>
+  </div>
+
+  <%= sponsor_string @event %>
+
+  <% if @event.category %>  
+    <div id="event-category" class="event-info">
+	<span class="label info-label">Event Type</span> <%= @event.category.name %> 
+    </div>
+  <% end %>
+
+  <% if @event.max_attendees %>  
+    <div id="event-max-attendees" class="event-info">
+      <span class="label info-label">Max Attendees</span> <%= @event.max_attendees %>
+    </div>
+  <% end %>
+
+  <%  unless @event.tags.empty? %>
+    <div id="event-tags" class="event-info">
+      <span class="label info-label">Event Tags</span> <%= @event.tags.collect {|t| link_to(t.name, :permalink => @calendar.permalink, :controller => 'events', :action => 'tagged', :id => t.name )}.join(', ') %>
+    </div>
+  <% end %>
+
+  <% unless (@event.worksite_event? || @event.locationless?)%>  
+    <div id="event-location" class="event-info">
+      <div class="clear location-label">
+        <span class="label info-label">Location</span>
+      </div>
+      <div class="address">
+        <%= white_list @event.location %><br />
+        <%= white_list @event.city_state %><br />
+        <%= white_list @event.postal_code%>
+      </div>
+      <div class="google-directions">
+        <a  class="btn btn-mini" 
+            href="http://maps.google.com/maps?daddr=<%= url_encode @event.address_for_geocode %>" 
+            target="_blank">
+          Get Directions
+        </a>
+      </div>
+      <div class="clear"></div>
+    </div>
+  <% end %>
+
+  <% unless @event.directions.blank? %>
+    <div id="event-directions" class="event-info">
+      <span class="label info-label">Directions</span>
+      <p>
+        <%= white_list word_wrap(auto_link(@event.directions) {|text| truncate(text, 40) + " " }) %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<% if @event.documents.any? %>
+  <span class="label label-info">Attachments From Host</span>
+  <div id="files">
+    <span class="label label-info">Files provided by host<span>
+    <ul>
+      <% @event.documents.collect do |doc| %>
+        <li><%= link_to doc.filename, doc.public_filename %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if !@event.blogs.empty? %>
+  <div id="announcements">
+    <h3>Event Announcements</h3>
+    <%= render :partial => "announcement", :collection => @event.blogs  %>
+  </div>	
+<% end %>
+
+<% if @event.images.any? %>
+  <div id="images">
+    <ul class='unstyled'>
+      <% @event.images.collect do |image| %>
+        <li>
+          <%= image_tag image.public_filename(:display) %><br />
+          <% if image.caption %>
+            <%= image.caption %><br />
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div id="facebook-like">
+  <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+</div>
+
+<%= link_to_remote "Questions? Email the Host", 
+    {:update => 'email-host', :url => {:permalink=>@calendar.permalink, :controller => 'events', :action => 'email_host', :id => @event.id, :params => {:ajax => true}}, :method => :get}, 
+      :class=>"btn btn-info", :id=>'email-host-btn'%>
+
+<div id="email-host"></div>
+
+<% unless @event.past? || @event.worksite_event? %>
+  <%= render :partial => "rsvp", :locals => { :event => @event} %>
+<% end %>
+
+<% unless @event.worksite_event? || !@event.show_map?%>
+  <% render :partial => 'maps/map_headers' %>
+  <script type='text/javascript'>
+    revent.events = new Backbone.Collection([<%= @event.to_map_json %>],{model: EventModel});
+
+    jq(function($){
+      events_map = new MapView({
+        el: document.getElementById("event-map"),
+        collection: revent.events,
+        icons: icons,
+        hide_details_link: true,
+        api: "<%= @calendar.map_engine %>"
+      }).render({
+        center:{
+          unit: 'postal_code',
+          value: '<%= @event.postal_code %>'
+        } 
+      });
+    });
+  </script>
+  <div id="event-map-container" class="row">
+    <div id="event-map" class="span9"></div>
+  </div>
+<% end %>
+
+<div class="spacer"></div>
