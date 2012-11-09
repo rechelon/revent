@@ -10,7 +10,7 @@ describe Varnish::EventSweeper do
 
   describe "when an event is created" do
     it "should expire the maps ajax cache" do
-      Varnish::EventSweeper.instance.should_receive(:hydra_run_purges)
+      Varnish::EventSweeper.instance.should_receive(:hydra_run_requests)
       create_event
     end
   end
@@ -22,7 +22,7 @@ describe Varnish::EventSweeper do
     
     describe "is updated" do
       it "should expire the maps ajax cache" do
-        Varnish::EventSweeper.instance.should_receive(:hydra_run_purges)
+        Varnish::EventSweeper.instance.should_receive(:hydra_run_requests)
         @event.name = "Some new title"
         @event.save
       end
@@ -30,7 +30,7 @@ describe Varnish::EventSweeper do
 
     describe "is destroyed" do
       it "should expire the maps ajax cache" do
-        Varnish::EventSweeper.instance.should_receive(:hydra_run_purges)
+        Varnish::EventSweeper.instance.should_receive(:hydra_run_requests)
         @event.destroy
       end
     end
