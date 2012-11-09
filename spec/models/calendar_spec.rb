@@ -1,6 +1,9 @@
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
 describe Calendar do 
+  before do
+    Varnish::EventSweeper.instance.stub!(:after_create)
+  end
   describe 'when created' do
     before do 
       Site.current = new_site(:id => 777)

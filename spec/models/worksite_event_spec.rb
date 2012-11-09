@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/../spec_helper.rb'
 
 describe Event do 
   before do
+    Varnish::EventSweeper.instance.stub!(:after_create)
     Site.current = new_site(:id => 1)
     Site.stub!(:current_config_path).and_return(File.join(RAILS_ROOT, 'test', 'config'))
 
