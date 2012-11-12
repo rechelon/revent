@@ -5,23 +5,34 @@ describe Varnish::EventSweeper do
     Site.stub!(:current).and_return new_site
     Host.stub!(:current).and_return new_host
     Site.current.hosts << Host.current
-    @calendar = new_calendar
+    @calendar = create_calendar(:permalink => "something")
+    @parent_calendar = create_calendar(:permalink => "everything", :calendars => [@calendar])
   end
 
   describe "when an event is created" do
-    it "should expire the maps ajax cache" do
+    it "should determine the correct purge routes" do
+      next_event_id = ActiveRecord::Base.connection.execute("SHOW TABLE STATUS LIKE 'events'").fetch_hash['Auto_increment']
+      Varnish::EventSweeper.instance.should_receive(:purges).with(construct_routes(next_event_id)).and_return([])
+      create_event :calendar => @calendar
+    end
+    it "should call the purging method" do
       Varnish::EventSweeper.instance.should_receive(:hydra_run_requests)
-      create_event
+      create_event :calendar => @calendar
     end
   end
 
   describe "when an event" do
     before do
-      @event = create_event
+      @event = create_event :calendar => @calendar
     end
     
     describe "is updated" do
-      it "should expire the maps ajax cache" do
+      it "should determine the correct purge routes" do
+        Varnish::EventSweeper.instance.should_receive(:purges).with(construct_routes(@event.id.to_s)).and_return([])
+        @event.name = "Some new title"
+        @event.save
+      end
+      it "should call the purging method" do
         Varnish::EventSweeper.instance.should_receive(:hydra_run_requests)
         @event.name = "Some new title"
         @event.save
@@ -29,10 +40,19 @@ describe Varnish::EventSweeper do
     end
 
     describe "is destroyed" do
-      it "should expire the maps ajax cache" do
+      it "should determine the correct purge routes" do
+        Varnish::EventSweeper.instance.should_receive(:purges).with(construct_routes(@event.id.to_s)).and_return([])
+        @event.destroy
+      end
+      it "should call the purging method" do
         Varnish::EventSweeper.instance.should_receive(:hydra_run_requests)
         @event.destroy
       end
     end
   end
+
+  def construct_routes event_id
+    ['everything/maps', 'everything/events/show/'+event_id, 'something/maps', 'something/events/show/'+event_id]
+  end
+
 end
