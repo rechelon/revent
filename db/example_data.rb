@@ -18,6 +18,17 @@ module FixtureReplacement
     a.event_end = 5.years.from_now
   end
 
+  attributes_for :theme do |a|
+    a.name = "sometheme"
+    a.site = default_site
+  end
+
+  attributes_for :theme_element do |a|
+    a.theme = default_theme
+    a.name = "body"
+    a.markdown = "something"
+  end
+
   attributes_for :category do |a|
     
   end
