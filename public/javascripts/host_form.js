@@ -94,4 +94,12 @@ jq(function(jq){
     }
   });
 
+  jq("#event_host").change(function(){
+    if(jq(this).is(':checked')){
+      jq('#not_event_host').hide();
+    } else {
+      jq('#not_event_host').show();
+    }
+  });
+
 });
