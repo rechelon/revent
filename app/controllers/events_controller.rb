@@ -298,16 +298,25 @@ class EventsController < ApplicationController
 
     # validate both user and event
     if @user.valid? and @event.valid?
-      # create profile image and save user
-      @user.dia_group_key   = @calendar.host_dia_group_key if @user.dia_group_key.blank?
-      @user.dia_trigger_key = @calendar.host_dia_trigger_key if @user.dia_trigger_key.blank?
-      @user.create_profile_image(params[:profile_image]) unless !params[:profile_image] || !params[:profile_image][:uploaded_data] || params[:profile_image][:uploaded_data].blank?
-      @user.save!
-      @user.associate_dia_host @calendar
-      @user.sync_unless_deferred
+      # if an admin chose not to be the host of this event..
+      if @user.admin? and params[:event_host] != "true"
+        @host = User::find_or_build_related_user :first_name => params[:host_first_name], :last_name => params[:host_last_name], :email => params[:host_email], :phone => params[:host_phone]
+        @host.save!
+        @host.associate_dia_host @calendar
 
-      #set user as host and save event
-      @event.host = @user
+        @event.host = @host
+      else
+        # create profile image and save user
+        @user.create_profile_image(params[:profile_image]) unless !params[:profile_image] || !params[:profile_image][:uploaded_data] || params[:profile_image][:uploaded_data].blank?
+        @user.save!
+        @user.associate_dia_host @calendar
+        @user.sync_unless_deferred
+
+        #set user as host
+        @event.host = @user
+      end
+      
+      # save event
       @event.time_tbd = params[:tbd] if params[:tbd]
       @event.save!
       @event.associate_dia_event @calendar.hostform
