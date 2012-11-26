@@ -186,10 +186,10 @@ class AdminController < ApplicationController
     if params[:object] == "attendees":
       events = calendar.events
       csv_string = FasterCSV.generate do |csv| 
-        csv << ["INTERNATIONAL", "LOCAL", "LAST NAME", "FIRST NAME", "CITY", "STATE", "ZIP CODE", "WORK PHONE", "HOME PHONE", "CELL PHONE", "EMAIL", "EVENT", "EVENT DATE", "SHIFT", "STATUS", "VOLUNTEER ACTIVITY", "PARTNER ID"] 
+        csv << ["INTERNATIONAL", "LOCAL", "LAST NAME", "FIRST NAME", "CITY", "STATE", "ZIP CODE", "WORK PHONE", "HOME PHONE", "CELL PHONE", "EMAIL", "EVENT", "EVENT DATE", "EVENT HOST", "SHIFT", "STATUS", "VOLUNTEER ACTIVITY", "PARTNER ID"] 
         events.each do |e|
           e.attendees.each do |u|
-            csv << ["null", "null", u.last_name, u.first_name, u.city, u.state, u.postal_code, "null", u.phone, "null", u.email, e.name, e.start, "null", "null", "null", u.partner_id] 
+            csv << ["null", "null", u.last_name, u.first_name, u.city, u.state, u.postal_code, "null", u.phone, "null", u.email, e.name, e.start, e.host.email, "null", "null", "null", u.partner_id] 
           end
         end
       end
