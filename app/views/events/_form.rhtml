@@ -1,25 +1,25 @@
 <div id="events-form-location">
   <%= liquid_or_default(@calendar.theme.event_form_info_beginning, "", @liquid) %>
-  <% if @user.admin? %>
+  <% if current_user.admin? %>
     <div class="control-group">
       <div class="controls">
-        <input type='checkbox' name='event_host' id='event_host' checked='checked' /> I am the event host
+        <input type='checkbox' name='event_host' value='true' id='event_host' checked='checked' /> I am the event host
       </div>
     </div>
     <div id='not_event_host'>
       <div class="control-group">
         <label class="control-label" for="dataFirst_Name"><span class="req">*</span>Host First Name</label>
-        <div class="controls"><input type='text' name='host_first_name' id='not_host_dataFirst_Name' maxlength="32" class="input-large required inputStyle">
+        <div class="controls"><input type='text' name='host_first_name' id='not_host_dataFirst_Name' maxlength="32" class="input-large inputStyle">
         </div>
       </div>
       <div class="control-group">
-        <label class="control-label" for="dataLast_Name">Host Last Name</label>
+        <label class="control-label" for="dataLast_Name"><span class="req">*</span>Host Last Name</label>
         <div class="controls"><input type='text' name='host_last_name' id="not_host_dataLast_Name" maxlength="64" class="input-large inputStyle">
         </div>
       </div>
       <div class="control-group">
         <label class="control-label" for="dataEmail"><span class="req">*</span>Host Email</label>
-        <div class="controls"><input type='text' name='host_email' id="not_host_dataEmail" maxlength="64" class="input-large required validate-email inputStyle">
+        <div class="controls"><input type='text' name='host_email' id="not_host_dataEmail" maxlength="64" class="input-large validate-email inputStyle">
         </div>
       </div>
       <div class="control-group">
