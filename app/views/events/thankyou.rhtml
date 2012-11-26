@@ -6,9 +6,11 @@
   <h2>Here are some next steps you can take</h2>
   <h3><%= link_to 'View and Share Your Event\'s Public Page', :permalink => @calendar.permalink, :controller => 'events', :action => 'show', :id => @event %></h3>
   <%= link_to 'This', :permalink => @calendar.permalink, :controller => 'events', :action => 'show', :id => @event %> is the page that supporters see for your event. Share its url with friends and supporters.
-  <h3><%= link_to 'Manage This Event', :permalink => @calendar.permalink, :controller => 'account/events', :action => 'show', :id => @event %></h3> 
-  Add more details, share the event with your contacts, view and contact RSVP's, promote your event on facebook and much more.
-  <h3><%= link_to 'View Your Host Profile', :permalink => @calendar.permalink, :action => :host, :id => @event %></h3>
-  This is the page that attendees can use to contact you. 
-  <%= link_to 'Edit your profile ', :permalink => @calendar.permalink, :controller => 'profile' %> to change what appears here.
+  <% if @event.host == current_user %>
+    <h3><%= link_to 'Manage This Event', :permalink => @calendar.permalink, :controller => 'account/events', :action => 'show', :id => @event %></h3> 
+    Add more details, share the event with your contacts, view and contact RSVP's, promote your event on facebook and much more.
+    <h3><%= link_to 'View Your Host Profile', :permalink => @calendar.permalink, :action => :host, :id => @event %></h3>
+    This is the page that attendees can use to contact you. 
+    <%= link_to 'Edit your profile ', :permalink => @calendar.permalink, :controller => 'profile' %> to change what appears here.
+  <% end %>
 </div>

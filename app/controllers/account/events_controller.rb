@@ -88,13 +88,17 @@ class Account::EventsController < AccountControllerShared
       else
         flash[:notice] = 'Event updated'
       end
-      respond_to do |format|
-        format.html do 
-          redirect_to :permalink => @calendar.permalink, :action => 'show', :id => @event
+      if @event.host == current_user
+        respond_to do |format|
+          format.html do 
+            redirect_to :permalink => @calendar.permalink, :action => 'show', :id => @event
+          end
+          format.json do 
+            render :json => @event.to_json
+          end
         end
-        format.json do 
-          render :json => @event.to_json
-        end
+      else
+        redirect_to manage_account_url(:permalink => @calendar.permalink)
       end
 
       logger.info 'updated attributes'
