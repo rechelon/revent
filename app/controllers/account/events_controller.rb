@@ -67,7 +67,7 @@ class Account::EventsController < AccountControllerShared
 
       if @event.valid?
         @event.time_tbd = params[:tbd] if params[:tbd]
-        @event.host_alias = true unless params[:event_host]
+        @event.host_alias = params[:event_host] ? false : true
         @event.save!
         @event.sync_unless_deferred
       else
