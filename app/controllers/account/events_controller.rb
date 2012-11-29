@@ -66,15 +66,8 @@ class Account::EventsController < AccountControllerShared
       end
 
       if @event.valid?
-        if current_user.admin? and params[:event_host] != "true"
-          @host = User::find_or_build_related_user :first_name => params[:host_first_name], :last_name => params[:host_last_name], :email => params[:host_email], :phone => params[:host_phone]
-          @host.save!
-          @host.associate_dia_host @calendar
-
-          @event.host = @host
-        end
-
         @event.time_tbd = params[:tbd] if params[:tbd]
+        @event.host_alias = true unless params[:event_host]
         @event.save!
         @event.sync_unless_deferred
       else
