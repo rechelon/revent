@@ -418,6 +418,26 @@ class Event < ActiveRecord::Base
     host_last_name = host.last_name
   end
 
+  def host_public_first_name
+    host_alias ? host_first_name : host.first_name
+  end
+
+  def host_public_last_name
+    host_alias ? host_last_name : host.last_name
+  end
+
+  def host_public_email
+    host_alias ? host_email : host.email
+  end
+
+  def host_public_phone
+    host_alias ? host_phone : host.phone
+  end
+
+  def host_public_full_name
+    host_alias ? host_first_name+" "+host_last_name : host.full_name
+  end
+
   def sanitize_input
     self.name = scrub(self.name) unless self.name.nil?
     self.description = scrub(self.description) unless self.description.nil?
