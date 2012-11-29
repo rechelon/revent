@@ -90,4 +90,11 @@ class UserMailer < ActionMailer::Base
     @subject    = message[:subject]
     @body       = message[:body]
   end
+
+  def message_to_email(message, email)
+    @recipients = email
+    @from       = message[:from]
+    @subject    = message[:subject]
+    @body       = message[:body]
+  end
 end
