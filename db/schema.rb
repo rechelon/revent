@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121027205926) do
+ActiveRecord::Schema.define(:version => 20121129004059) do
 
   create_table "attachments", :force => true do |t|
     t.string   "content_type"
@@ -214,6 +214,8 @@ ActiveRecord::Schema.define(:version => 20121027205926) do
     t.boolean  "time_tbd",                  :default => false
     t.text     "subtitle"
     t.boolean  "supress_end_time"
+    t.string   "host_email"
+    t.string   "host_phone"
   end
 
   add_index "events", ["calendar_id"], :name => "index_events_on_calendar_id"
