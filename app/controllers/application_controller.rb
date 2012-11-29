@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   include AuthenticatedSystem
   before_filter :login_from_cookie
-  before_filter  :clean, :set_site, :set_calendar, :provide_liquid, :set_cache_root
+  before_filter  :clean, :set_site, :set_calendar, :provide_liquid, :log_forwarded_ip, :set_cache_root
   helper_method  :site 
   
   rescue_from ActionController::UnknownAction, :with => :unknown    
@@ -49,6 +49,12 @@ class ApplicationController < ActionController::Base
     @liquid[:site_name] = @calendar.theme.site_name
     @liquid[:site_description] = @calendar.theme.site_description
     @liquid[:url] = request.url
+  end
+
+  def log_forwarded_ip
+    unless VARNISH_SERVERS.empty?
+      RAILS_DEFAULT_LOGGER.info("X-Forwarded-For: "+request.env['HTTP_X_FORWARDED_FOR'].to_s)
+    end
   end
 
   def render_optional_error_file(status_code)
