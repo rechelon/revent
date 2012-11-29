@@ -504,9 +504,9 @@ class EventsController < ApplicationController
           :subject => params[:subject], 
           :body => params[:body] }
         if @event.democracy_in_action_key.blank? || !Site.current.config.salsa_enabled?
-          UserMailer.deliver_message_to_host(message, @host)
+          UserMailer.deliver_message_to_email(message, @event.host_public_email)
         else
-          message[:to] = @host.email
+          message[:to] = @event.host_public_email
           message[:from] = params[:from_email]
           message[:content] = message[:body]
           DemocracyInActionResource.api.authenticate
