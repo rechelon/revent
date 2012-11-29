@@ -97,10 +97,10 @@ jq(function(jq){
   jq("#event_host").change(function(){
     if(jq(this).is(':checked')){
       jq('#not_event_host').hide();
-      jq('#not_host_dataFirst_Name, #not_host_dataLast_Name, #not_host_dataEmail').removeClass('required');
+      jq('#host_first_name, #host_last_name, #host_email').removeClass('required');
     } else {
       jq('#not_event_host').show();
-      jq('#not_host_dataFirst_Name, #not_host_dataLast_Name, #not_host_dataEmail').addClass('required');
+      jq('#host_first_name, #host_last_name, #host_email').addClass('required');
     }
   });
 
