@@ -82,8 +82,7 @@ class Event < ActiveRecord::Base
       ],
       :include => {
         :custom_attributes => {:only=>[:id,:name,:value]}
-      },
-      :methods => [:host_email]
+      }
     }.merge o)
   end
 
@@ -417,16 +416,6 @@ class Event < ActiveRecord::Base
     return if host.nil?
     host_first_name = host.first_name
     host_last_name = host.last_name
-  end
-
-  def host_email
-    return if self.host.nil?
-    self.host.email
-  end
-
-  def host_email= email
-    h = User.find_by_email email
-    self.host = h unless h.nil?
   end
 
   def sanitize_input

@@ -34,8 +34,8 @@ class Admin::EventsController < AdminController
     new_attributes = {}
     @event.attribute_names.each{|key| new_attributes[key] = params[key] if !params[key].nil? }
     @event.attributes = new_attributes
-    if @event.host_email != params[:host_email]
-      @event.host_email = params[:host_email]
+    if @event.host.email != params[:host_email]
+      @event.host = User.find_by_email params[:host_email]
     end
     if @event.save
       @event.sync_unless_deferred
