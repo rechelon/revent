@@ -5,7 +5,7 @@
       <input type='checkbox' name='event_host' value='true' id='event_host' <%= @event.host_alias ? "" : "checked='checked'" %> /> I am the event host
     </div>
   </div>
-  <div id='not_event_host' <% !@event.host_alias %> style="display: none;" <% end %>>
+  <div id='not_event_host' <% if !@event.host_alias %> style="display: none;" <% end %>>
     <div class="control-group">
       <label class="control-label" for="dataFirst_Name"><span class="req">*</span>Host First Name</label>
       <div class="controls">
