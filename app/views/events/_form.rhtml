@@ -2,10 +2,10 @@
   <%= liquid_or_default(@calendar.theme.event_form_info_beginning, "", @liquid) %>
   <div class="control-group">
     <div class="controls">
-      <input type='checkbox' name='event_host' value='true' id='event_host' checked='checked' /> I am the event host
+      <input type='checkbox' name='event_host' value='true' id='event_host' <%= @event.host_alias ? "" : "checked='checked'" %> /> I am the event host
     </div>
   </div>
-  <div id='not_event_host'>
+  <div id='not_event_host' <% !@event.host_alias %> style="display: none;" <% end %>>
     <div class="control-group">
       <label class="control-label" for="dataFirst_Name"><span class="req">*</span>Host First Name</label>
       <div class="controls">
