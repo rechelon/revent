@@ -484,7 +484,7 @@ class EventsController < ApplicationController
   def host
     @event = @calendar.events.find(params[:id], :include => :host)
     @host = @event.host
-    @pagetitle = 'Profile for '+@host.full_name
+    @pagetitle = 'Profile for '+@event.host_public_full_name
     @liquid[:pagetitle] = @pagetitle
   end
 

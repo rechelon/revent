@@ -1,13 +1,13 @@
 <% if @host %>
   <div id="email-host-form-container">
-    <h2>Send and email to <%= @host.full_name %></h2>
+    <h2>Send and email to <%= @event.host_public_full_name %></h2>
     <h4>Host of <%= @event.name %></h4>
     <%= form_tag @post_url, :id=>'email-host-form', :class=>'form-horizontal' %>
       <div class="control-group">
         <label class="control-label">To</label>
         <div class="controls">
           <span class="input-large uneditable-input">
-            <%= @host.full_name %>
+            <%= @event.host_public_full_name %>
           </span>
         </div>
       </div>

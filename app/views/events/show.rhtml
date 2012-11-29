@@ -14,7 +14,7 @@
   <h2><%= white_list @event.city_state %></h2>
   <h3 class="start"><%= event_date_range(@event) %></h3>
   <% if @event.host && !@event.worksite_event?%>
-    <p>Hosted by <%= link_to @event.host.full_name, :permalink => @calendar.permalink,:action => :host, :id => @event %></p>
+    <p>Hosted by <%= link_to @event.host_public_full_name, :permalink => @calendar.permalink,:action => :host, :id => @event %></p>
     <% if @event.host.show_phone_on_host_profile and @event.host.phone %>
       <p>Contact: <%= @event.host.phone %></p>
     <% end %>

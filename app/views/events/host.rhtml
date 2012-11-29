@@ -1,16 +1,23 @@
 <div id="event-host">
   <h2><%= @event.name %> is hosted by:</h2>
-  <h3><%= @host.full_name %></h3>
-  <% if !@host.city.blank? and !@host.state.blank? -%> of <%= @host.city %>, <%= @host.state %>
-  <% end -%>
-  <% if @host.show_phone_on_host_profile and @host.phone -%>
-  <div id="event-host-contact">Contact: <%= @host.phone %></div>
-  <% end -%>
-  <% if @host.profile_image -%>
-  <div id="event-host-image"><%= image_tag(@host.profile_image.public_filename(:display)) %></div>
-  <% end -%>
+  <h3><%= @event.host_public_full_name %></h3>
+  <% if @event.host_alias %>
+    <% unless @event.host_phone.blank? %>
+      <div id="event-host-contact">Contact: <%= @event.host_phone %></div>
+    <% end %>
+  <% else %>
+    <% if !@host.city.blank? and !@host.state.blank? -%>
+      of <%= @host.city %>, <%= @host.state %>
+    <% end -%>
+    <% if @host.show_phone_on_host_profile and @host.phone -%>
+      <div id="event-host-contact">Contact: <%= @host.phone %></div>
+    <% end -%>
+    <% if @host.profile_image -%>
+      <div id="event-host-image"><%= image_tag(@host.profile_image.public_filename(:display)) %></div>
+    <% end -%>
+  <% end %>
   <div id="event-host-email">
-  <%= link_to "Questions? Email the Host", email_host_path(:permalink=>@calendar.permalink, :id => @event) %>
+    <%= link_to "Questions? Email the Host", email_host_path(:permalink=>@calendar.permalink, :id => @event) %>
   </div>
   <div class="pagination-footer bottom">
     <%= link_to 'Back to Event Search', calendar_home_path(:permalink=>@calendar.permalink) %>
