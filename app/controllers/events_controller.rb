@@ -513,7 +513,7 @@ class EventsController < ApplicationController
           DemocracyInActionResource.api.email message
         end
         flash[:notice] = "Message sent."
-        redirect_to( :controller => 'events', :action => 'show', :id => @event )        
+        redirect_to( :controller => 'events', :permalink => @calendar.permalink, :action => 'show', :id => @event )        
       else
         flash.now[:error] = "You must specify your email."
       end
