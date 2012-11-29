@@ -31,6 +31,7 @@ sub vcl_recv {
     error 200 "Cached Cleared Successfully.";
   }
 
+  set req.http.X-Forwarded-For = client.ip;
 
   set req.backend = revent_service;
 
