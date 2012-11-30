@@ -57,7 +57,7 @@
       <div class="description"><label for="description">description</label><textarea name="description"><%= event.get('description') %></textarea></div>          
       <div class="clear"></div>
       <fieldset>
-        <div class="field"><label for="host_email">host email</label><input name="host_email" value="<%= event.get('host_email') %>" /></div>
+        <div class="field"><label for="host_user_email">host user email</label><input name="host_user_email" value="<%= event.get('host_user_email') %>" /></div>
         <div class="field"><label for="start">start</label><input class="date start" name="start" value="<%= event.get_start() %>" /></div>
         <div class="field"><label for="end">end</label><input class="date end" name="end" value="<%= event.get_end() %>" /></div>  
         <div class="time_tbd"><%= checkbox({name:'time_tbd'},event.get('time_tbd')) %><label for="time_tbd">time tbd</label></div>  
