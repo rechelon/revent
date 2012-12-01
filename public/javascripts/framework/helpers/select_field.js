@@ -4,6 +4,10 @@ function select_field(options,attr,selected_value){
     html += name+'="'+value+'" ';
   });
   html += '>';
+  if(options['']){
+    html += '<option value="">'+options['']+'</option>';
+    delete options[''];
+  }
   _.each(options,function(text,value){
     var selected;
     if(_.isArray(text)){
