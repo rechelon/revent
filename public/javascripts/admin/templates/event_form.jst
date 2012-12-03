@@ -11,13 +11,13 @@
     <div class="info"><label>District</label><div class="data"><%= event.get('district') %></div></div>  
     <div class="info"><label>Legislators</label><div class="data">Not Available</div></div>    
     <div class="checkboxes">
-      <div class="checkbox">
+      <div class="checkbox category_wrapper">
         <label for="sticky">Category</label>
-        <%= select_field(categories.toSelect(),{name:'category_id'},event.get('category_id')) %>
+        <%= select_field(categories.toSelect(),{name:'category_id', class: 'category_select'},event.get('category_id')) %>
       </div>
       <div class="checkbox">
         <label for="sticky">Calendar</label>
-        <%= select_field(calendars.toSelect(),{name:'calendar_id'},event.get('calendar_id')) %>
+        <%= select_field(calendars.toSelect(),{name:'calendar_id', class: 'calendar_select'},event.get('calendar_id')) %>
       </div>
       <div class="checkbox">
         <label for="sticky">Spotlight</label>

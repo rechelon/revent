@@ -4,6 +4,7 @@ var EventFormView = Backbone.View.extend({
     "change input"    : "updateModel",
     "change textarea" : "updateModel",
     "change select" : "updateModel",
+    "change .calendar_select" : "updateCategories",
     "click .form-controls .button": "executeAction"
   },
 
@@ -38,6 +39,16 @@ var EventFormView = Backbone.View.extend({
       ampm: true
     });    
     return this;
+  },
+
+  updateCategories: function(e){
+    var field = e.target;
+    var categories = revent.calendars.get(field.value).getCategories();
+    jq(".category_wrapper", this.el).html(
+      '<label for="sticky">Category</label>' +
+      select_field(categories.toSelect(), {name:'category_id', class: 'category_select'})
+    );
+    this.model.set({'category_id': null});
   },
   
   updateModel: function(e){
