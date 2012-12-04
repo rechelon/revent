@@ -1,12 +1,15 @@
 function select_field(options,attr,selected_value){
+  var options = _.clone(options);
   var html = "<select ";
   _.each(attr,function(value,name){
     html += name+'="'+value+'" ';
   });
   html += '>';
   if(options['']){
-    html += '<option value="">'+options['']+'</option>';
-    delete options[''];
+    if(!_.isArray(options[''])){
+      html += '<option value="">'+options['']+'</option>';
+      delete options[''];
+    }
   }
   _.each(options,function(text,value){
     var selected;
