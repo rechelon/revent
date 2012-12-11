@@ -3,7 +3,6 @@ gem 'i18n'
 gem 'rails', '2.3.16'
 gem "aws-s3", "~> 0.6.2"
 gem 'capistrano', '2.5.19'
-gem 'delayed_job', '2.0.7'
 gem 'fastercsv'
 gem 'google-geocode', '1.2.1'
 gem 'hoe'
