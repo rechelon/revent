@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   include AuthenticatedSystem
   before_filter :login_from_cookie
-  before_filter  :clean, :set_site, :set_calendar, :provide_liquid, :log_forwarded_ip, :set_cache_root
+  before_filter  :clean, :set_site, :set_calendar, :provide_liquid, :log_forwarded_ip
   helper_method  :site 
   
   rescue_from ActionController::UnknownAction, :with => :unknown    
@@ -12,10 +12,6 @@ class ApplicationController < ActionController::Base
 #  include HoptoadNotifier::Catcher
 #  session :off, :if => Proc.new { |req| !(true == req.parameters[:admin]) }
   
-  def set_cache_root
-    self.class.page_cache_directory = File.join([RAILS_ROOT, (RAILS_ENV == 'test' ? 'tmp' : 'public'), 'cache', Host.current.hostname])
-  end
-
   def clean
     Site.current = nil
     true
