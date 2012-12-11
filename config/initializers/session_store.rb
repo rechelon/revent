@@ -1,7 +1,7 @@
-ActionController::Base.session_store = :mem_cache_store
-ActionController::Base.session = { 
-  :key => '_daysofaction_session_id', 
-  :secret => 'JPXCeqhYCnQduzY98nscgbnHDprEALMna9SuqZMfvjzvWvRG',
-  :cache => CACHE
-}
-
+require 'action_dispatch/middleware/session/dalli_store'
+Rails.application.config.session_store(
+  :dalli_store,
+  :memcache_server => [MEMCACHE_SERVERS],
+  :key => '_revent_session_id',
+  :namespace => 'revent_session'
+)
