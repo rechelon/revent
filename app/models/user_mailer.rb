@@ -66,7 +66,6 @@ class UserMailer < ActionMailer::Base
     @recipients  = "#{user.email}" 
     @from        = admin_email(user) || 'events@radicaldesigns.org'
     @subject     = "#{host} - "
-    @sent_on     = Time.now
     @body[:user] = user
   end
   
