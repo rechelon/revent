@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   include ActionView::Helpers::JavaScriptHelper
 
   before_filter :disable_create, :only => [:new, :create, :rsvp]
-  after_filter :cache_search_results, :only => :search
 
   verify :method => :post, :only => [:create, :rsvp], :redirect_to => {:action => 'index'}
 
@@ -20,30 +19,6 @@ class EventsController < ApplicationController
     end
   end
   
-  def all_events_cache_version
-    Cache.get("site_#{Site.current.id}_all_events_version") { rand(10000) }
-  end
-
-  def cache_search_results
-    if params[:state]
-      if params[:permalink]
-        # cache_page accepts string for second argument in rails v2.0
-        # replace url_for hash with state_search_url  once upgrade to 2.0
-        cache_page nil, :permalink => params[:permalink], :controller => :events, :action => :search, :state => params[:state] 
-      else
-        cache_page 
-      end
-    end
-  end
-
-  def cache_version
-    Cache.get(cache_version_key) { rand(10000) }
-  end
-
-  def cache_version_key
-    "site_#{Site.current.id}_#{self.class.to_s.underscore}_#{action_name}_cache_version"
-  end
- 
   def category
     @category_options = @calendar.categories.collect{|c| [c.name, c.id]}.unshift(['All Events', 'all'])
     if params[:id] and not params[:id] == 'all'
