@@ -24,6 +24,7 @@ ActionMailer::Base.smtp_settings = actionmailer_options "test"
 
 DIA_ENABLED = true  
 
-CACHE = MemCache.new [MEMCACHE_SERVER], :namespace => 'daysofaction_test' #, :readonly => true
+config.cache_store = :dalli_store, MEMCACHE_SERVERS,
+  { :namespace => 'revent_test', :compress => true }
 require 'memcache_util'
 

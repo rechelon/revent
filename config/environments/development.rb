@@ -20,5 +20,4 @@ ActionMailer::Base.smtp_settings = actionmailer_options "development"
 
 DIA_ENABLED = false
 
-CACHE = MemCache.new [MEMCACHE_SERVER]
 require 'memcache_util'

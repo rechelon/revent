@@ -21,10 +21,9 @@ ActionMailer::Base.smtp_settings = actionmailer_options "production"
 
 DIA_ENABLED = true
 
-CACHE = MemCache.new [MEMCACHE_SERVER]
+config.cache_store = :dalli_store, MEMCACHE_SERVERS,
+  { :namespace => 'revent_production', :compress => true }
 require 'memcache_util'
-
-ActionController::Base.cache_store = ActiveSupport::Cache::MemCacheStore.new(CACHE)
 
 if defined?(PhusionPassenger)
   PhusionPassenger.on_event(:starting_worker_process) do |forked|
