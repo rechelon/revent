@@ -29,6 +29,7 @@ GEM
       xml-simple
     builder (3.0.0)
     daemon_controller (1.1.1)
+    dalli (2.5.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
     factory_girl (2.6.4)
@@ -110,6 +111,7 @@ DEPENDENCIES
   airbrake
   aws-s3 (~> 0.6.2)
   factory_girl
+  dalli
   fastercsv
   haml
   hoe
@@ -120,7 +122,6 @@ DEPENDENCIES
   libxml-ruby
   linecache
   mem_cache_fragment_store (= 1.0.1)
-  memcache-client (= 1.8.5)
   mime-types (= 1.16)
   mysql
   nokogiri (= 1.4.2)
