@@ -3,7 +3,9 @@
 - refactor OAuth to use standard ruby OAuth lib
 - revisit file uploading/attachments (migrate to paperclip) 
 - get rid of everthing in /plugin that we can remove
-- migrate to rails 3 and ruby 1.9.3
+- migrate to rails 3 
+  - rewrite lib/memcache_util.rb
+- migrate to ruby 1.9.3
 - easy install script
 - documentation
 - security audit
