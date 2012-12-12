@@ -9,7 +9,7 @@
 class DemocracyInActionSupporter <  DemocracyInActionResource
 
   def self.authenticate(email, password)
-    user = find(:first, :conditions => "Email = '#{email}'")
+    user = first(:conditions => "Email = '#{email}'")
     user && Digest::MD5.hexdigest(password) == user.Password ? user : nil
   end
 

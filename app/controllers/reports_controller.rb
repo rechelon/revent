@@ -130,7 +130,7 @@ class ReportsController < ApplicationController
   end
 
   def lightbox
-    @attachment = Attachment.find(:first, :conditions => ["attachments.parent_id = ? AND attachments.thumbnail = 'lightbox'", params[:id]], :include => :parent) || raise(ActiveRecord::RecordNotFound)
+    @attachment = Attachment.first(:conditions => ["attachments.parent_id = ? AND attachments.thumbnail = 'lightbox'", params[:id]], :include => :parent) || raise(ActiveRecord::RecordNotFound)
     render :layout => false
   end
 

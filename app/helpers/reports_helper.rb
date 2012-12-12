@@ -6,6 +6,6 @@ module ReportsHelper
   end
 
   def events_select
-    @calendar.events.reportable.newer_than(@calendar.past_event_cutoff - 60.days).find(:all, :order=>"state,city").collect {|e| [truncate("#{e.state || e.country} - #{e.city} - #{e.start.strftime('%m/%d/%y')}: #{e.name}",:length => 70), e.id]}
+    @calendar.events.reportable.newer_than(@calendar.past_event_cutoff - 60.days).find_all(:order=>"state,city").collect {|e| [truncate("#{e.state || e.country} - #{e.city} - #{e.start.strftime('%m/%d/%y')}: #{e.name}",:length => 70), e.id]}
   end
 end
