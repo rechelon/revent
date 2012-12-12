@@ -24,8 +24,8 @@ class Report < ActiveRecord::Base
     errors.add_to_base "this event does not allow reports" unless event.reports_enabled?
   end
 
-  named_scope :published, :conditions => ["status = ?", PUBLISHED]
-  named_scope :featured, :conditions => ["featured = ?", true]
+  scope :published, :conditions => ["status = ?", PUBLISHED]
+  scope :featured, :conditions => ["featured = ?", true]
 
   before_save :update_calendar, :sanitize_input
   after_save :save_user_if_dirty

@@ -53,7 +53,7 @@ class Calendar < ActiveRecord::Base
 #  'reports.calendar_id IN #{(((calendar_ids || []) << id).join(","))}'
 
 
-  named_scope :current, :conditions => {:current => true}
+  scope :current, :conditions => {:current => true}
   
   validates_uniqueness_of :permalink, :scope => :site_id
   validates_presence_of :site_id, :permalink, :name

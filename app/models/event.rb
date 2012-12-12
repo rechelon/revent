@@ -44,23 +44,23 @@ class Event < ActiveRecord::Base
 
   has_and_belongs_to_many :sponsors
   
-  named_scope :searchable, :conditions => "(private = false OR private IS NULL) AND (worksite_event = false OR worksite_event is NULL )"
-  named_scope :mappable, :conditions => ["(latitude <> 0 AND longitude <> 0) AND (state IS NOT NULL AND state <> '') AND country_code = ?", COUNTRY_CODE_USA]
-  named_scope :worksite, :conditions => "worksite_event = 1"
-  named_scope :private, :conditions => "private = 1"
-  named_scope :not_private, :conditions => "(private = false OR private IS NULL)"
-  named_scope :with_reports, :include => :reports, :conditions => ["reports.status = ?", Report::PUBLISHED]
-  named_scope :sticky, :conditions => ["sticky = ?", true]
-  named_scope :newer_than, lambda{|date| return {:conditions=>["end > ?", date]}}
-  named_scope :older_than, lambda{|date| return {:conditions=>["start < ?", date]}}
-  named_scope :all, lambda {{ }}
-  named_scope :first, lambda {{ :limit => 1 }}
-  named_scope :upcoming, lambda {{:conditions => ["end >= ?", Time.now], :order => 'start, state'}}
-  named_scope :past, lambda {{:conditions => ["end <= ?", Time.now], :order => 'start DESC, state'}}
-  named_scope :first_category, lambda { |category_id|
+  scope :searchable, :conditions => "(private = false OR private IS NULL) AND (worksite_event = false OR worksite_event is NULL )"
+  scope :mappable, :conditions => ["(latitude <> 0 AND longitude <> 0) AND (state IS NOT NULL AND state <> '') AND country_code = ?", COUNTRY_CODE_USA]
+  scope :worksite, :conditions => "worksite_event = 1"
+  scope :private, :conditions => "private = 1"
+  scope :not_private, :conditions => "(private = false OR private IS NULL)"
+  scope :with_reports, :include => :reports, :conditions => ["reports.status = ?", Report::PUBLISHED]
+  scope :sticky, :conditions => ["sticky = ?", true]
+  scope :newer_than, lambda{|date| return {:conditions=>["end > ?", date]}}
+  scope :older_than, lambda{|date| return {:conditions=>["start < ?", date]}}
+  scope :all, lambda {{ }}
+  scope :first, lambda {{ :limit => 1 }}
+  scope :upcoming, lambda {{:conditions => ["end >= ?", Time.now], :order => 'start, state'}}
+  scope :past, lambda {{:conditions => ["end <= ?", Time.now], :order => 'start DESC, state'}}
+  scope :first_category, lambda { |category_id|
     { :order => "if( category_id = #{category_id.to_i}, 1, 0) DESC" }
   }
-  named_scope :created_at, lambda { |order|
+  scope :created_at, lambda { |order|
     { :order => "created_at #{order =~ /desc/i ? 'DESC' : 'ASC'}" }
   }
   
@@ -146,7 +146,7 @@ class Event < ActiveRecord::Base
     sort.inject(self.all) { |search, (finder, value) | sorted = search.send( finder.to_sym, value ) if scopes[ finder.to_sym ]; sorted || search }
   end
 
-  named_scope :by_query, lambda {|query| 
+  scope :by_query, lambda {|query| 
     if query && !query.empty?
       Event.verify_calendar_id( query )
       {:conditions => query }
@@ -514,7 +514,7 @@ class Event < ActiveRecord::Base
     reports_enabled? && !calendar.archived?
   end
 
-  named_scope :reportable, :include => :calendar, :conditions => ["reports_enabled = ? AND calendars.archived = ?", true, false]
+  scope :reportable, :include => :calendar, :conditions => ["reports_enabled = ? AND calendars.archived = ?", true, false]
 
   def past?
     end_datetime = self.end || self.start
