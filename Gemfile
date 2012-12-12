@@ -2,7 +2,7 @@ source :gemcutter
 gem 'i18n'
 gem 'rails', '2.3.16'
 gem "aws-s3", "~> 0.6.2"
-gem 'capistrano', '2.5.19'
+#gem 'capistrano', '2.5.19'
 gem 'fastercsv'
 gem 'google-geocode', '1.2.1'
 gem 'hoe'
