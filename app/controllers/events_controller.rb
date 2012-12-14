@@ -193,10 +193,10 @@ class EventsController < ApplicationController
     @event_end_date = @event.end ? @event.end.strftime('%m/%d/%Y') : ''
     @event_end_time = @event.end ? @event.end.strftime('%I:%M %p') : ''            
     
-    if current_theme
-      cookies[:partner_id] = {:value => params[:partner_id], :expires => 3.hours.from_now} if params[:partner_id] 
-      return if render_partner_signup_form
-    end
+    #if current_theme
+      #cookies[:partner_id] = {:value => params[:partner_id], :expires => 3.hours.from_now} if params[:partner_id] 
+      #return if render_partner_signup_form
+    #end
 
     @liquid[:union_form] = render_to_string :partial => '/events/union_form'
     unless Site.current.config.custom_event_options['targets_official'].nil?
@@ -211,10 +211,10 @@ class EventsController < ApplicationController
     @event = Event.new params[:event]
     @user = current_user ||  User.new(params[:user])
     @categories = @calendar.categories.map {|c| [c.name, c.id] }
-    if current_theme
-      cookies[:partner_id] = {:value => params[:partner_id], :expires => 3.hours.from_now} if params[:partner_id] 
-      return if render_partner_signup_form
-    end
+    #if current_theme
+      #cookies[:partner_id] = {:value => params[:partner_id], :expires => 3.hours.from_now} if params[:partner_id] 
+      #return if render_partner_signup_form
+    #end
     render :action=>'js_new', :layout=>false
   end
   
@@ -537,11 +537,11 @@ class EventsController < ApplicationController
 
   protected
 
-    def render_partner_signup_form
-      if cookies[:partner_id] && is_partner_form(cookies[:partner_id])
-        render :template => "events/partners/#{cookies[:partner_id]}/new"
-      end
-    end
+    #def render_partner_signup_form
+      #if cookies[:partner_id] && is_partner_form(cookies[:partner_id])
+        #render :template => "events/partners/#{cookies[:partner_id]}/new"
+      #end
+    #end
   
     def assign_democracy_in_action_tracking_code( user, code )
       return unless code
@@ -567,7 +567,7 @@ class EventsController < ApplicationController
     end  
 
   private
-    def is_partner_form(form)
-      File.exist?("themes/#{current_theme}/views/events/partners/#{form}")
-    end
+    #def is_partner_form(form)
+      #File.exist?("themes/#{current_theme}/views/events/partners/#{form}")
+    #end
 end
