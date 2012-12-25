@@ -18,7 +18,7 @@ describe EventsController do
 
   describe "show" do
     before do
-      @event = new_event
+      @event = build :event
       @calendar.stub!(:events).and_return(stub('events', :find => @event))
       get :show, :id => 111
     end
@@ -49,11 +49,11 @@ describe EventsController do
   describe "create" do
     describe "with new user" do
       before do
-        @user = new_user
+        @user = build :user, :email => 'newemail@example.com'
         @user.stub!(:save!)
         @user.stub!(:valid?).and_return(true)
         User.stub!(:find_or_build_related_user).and_return @user
-        @event = new_event
+        @event = build :event
         @event.id = 1
         @event.stub!(:save!)
         @event.stub!(:valid?).and_return(true)
@@ -74,7 +74,7 @@ describe EventsController do
   end
   describe "rsvp" do
     before do
-      @event = create_event :calendar => @calendar
+      @event = create :event, :calendar => @calendar
     end
 
     describe "with unused email" do
@@ -101,12 +101,11 @@ describe EventsController do
 
     describe "with used email" do
       before do
-        @user = create_user(
+        @user = create :user,
           :email => 'established_user@example.com',
           :first_name => 'established',
           :last_name => '',
           :site => Site.current
-        )
         post :rsvp, :id => @event.id, :permalink => @calendar.permalink,
           :user => {
             :email => 'established_user@example.com',
@@ -131,7 +130,7 @@ describe EventsController do
 
     describe "with logged in user" do
       before do
-        @user = create_user
+        @user = create :user
         session[:user] = @user.id
         post :rsvp, :id => @event.id, :permalink => @calendar.permalink, :user => {}
       end

@@ -264,7 +264,9 @@ class EventsController < ApplicationController
       if !User.find_by_email(@user.email).blank?
         flash[:error] = 'User with this email already exists.  Please <a href="'+url_for(:action => 'new')+'" class="flash-login-btn" >log in</a> and try again.'
         @event.clean_date_time
-        session[:event_data] = Marshal.dump(params[:event].merge(:start => @event.start, :end => @event.end))
+        if params[:event] # we won't have params[:event] if @calendar.events is stubbed out!
+          session[:event_data] = Marshal.dump(params[:event].merge(:start => @event.start, :end => @event.end))
+        end
         @categories = @calendar.categories.map {|c| [c.name, c.id] }
         render :action => 'new'
         return
