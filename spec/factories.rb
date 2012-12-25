@@ -79,8 +79,8 @@ FactoryGirl.define do
 
   factory :report do
     status Report::PUBLISHED 
-    event default_event
-    user default_user
+    event
+    user
     text "this event was dope"
     akismet_params {}
     embed_data({'1' => {:caption => 'video!', :html => '<iframe width="420" height="315" src="http://www.youtube.com/embed/wKrwlgiYn-c" frameborder="0" allowfullscreen></iframe>'}})

@@ -6,13 +6,13 @@ describe Calendar do
   end
   describe 'when created' do
     before do 
-      Site.current = new_site(:id => 777)
-      @calendar = create_calendar
-      @event = create_event :calendar => @calendar
-      @report = create_report :event => @event, :status => 'published'
-      @other_calendar = create_calendar
-      @other_event = create_event :calendar => @other_calendar
-      @other_report = create_report :event => @other_event, :status => 'published', :calendar => @other_calendar
+      Site.current = build :site, :id => 777
+      @calendar = create :calendar
+      @event = create :event, :calendar => @calendar
+      @report = create :report, :event => @event, :status => 'published'
+      @other_calendar = create :calendar
+      @other_event = create :event, :calendar => @other_calendar
+      @other_report = create :report, :event => @other_event, :status => 'published', :calendar => @other_calendar
     end
 
     describe 'for calendars that are singular' do
@@ -48,12 +48,12 @@ describe Calendar do
         @calendar.reports.published.should == [  @report, @other_report ]
       end
       it "doesn't find unpublished reports" do 
-        @unpublished = create_report( :event => @event )
+        @unpublished = create :report, :event => @event
         @unpublished.unpublish
         @calendar.reports.published.should_not include(@unpublished)
       end
       it "doesn't find unpublished reports on the all calendar" do
-        @unpublished = create_report(:event => @other_event)
+        @unpublished = create :report, :event => @other_event
         @unpublished.unpublish
         @calendar.reports.published.should_not include(@unpublished)
       end
@@ -61,11 +61,11 @@ describe Calendar do
         @calendar.events.searchable.should == [ @event, @other_event ]
       end
       it "hides private events from search results" do 
-        @private_event = create_event :private => true, :calendar => @calendar
+        @private_event = create :event, :private => true, :calendar => @calendar
         @calendar.events.searchable.should_not include(@private_event)
       end
       it "hides private events from the all calendar" do
-        @private_event = create_event :private => true, :calendar => @other_calendar
+        @private_event = create :event, :private => true, :calendar => @other_calendar
         @calendar.events.searchable.should_not include(@private_event)
       end
     end
@@ -73,23 +73,23 @@ describe Calendar do
 
   describe 'featured' do 
     before do
-      Site.current = new_site(:id => 777)
-      @calendar = create_calendar
-      @event = create_event :calendar => @calendar
-      @featured_report = create_report(:featured => true, :event => @event)
+      Site.current = build :site, :id => 777
+      @calendar = create :calendar
+      @event = create :event, :calendar => @calendar
+      @featured_report = create :report, :featured => true, :event => @event
     end
     it "should contain featured reports" do
       @calendar.reports.featured.should include(@featured_report)
     end
     it "not include featured reports" do
-      @non_featured_report = create_report(:featured => false, :event => @event)
+      @non_featured_report = create :report, :featured => false, :event => @event
       @calendar.reports.featured.should_not include(@non_featured_report)
     end
   end
 
   describe 'supporter groups' do
     before do
-      @calendar = create_calendar
+      @calendar = create :calendar
     end
     it 'should return an array of dia group keys' do
       @calendar.supporter_dia_group_keys = '12345,67890'
