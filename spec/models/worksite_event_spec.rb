@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../spec_helper.rb'
 describe Event do 
   before do
     Varnish::EventSweeper.instance.stub!(:after_create)
-    Site.current = new_site(:id => 1)
+    Site.current = build :site, :id => 1
     Site.stub!(:current_config_path).and_return(File.join(RAILS_ROOT, 'test', 'config'))
 
     # mock geocoder
@@ -14,7 +14,7 @@ describe Event do
     @dia_api = stub('dia_api', :save => true, :authenticate => true)
     DemocracyInActionEvent.stub!(:api).and_return(@dia_api)
     
-    @event = new_event
+    @event = build :event
     @event.stub!(:set_district).and_return(true)
   end
 
@@ -44,7 +44,7 @@ describe Event do
     end
     it "should include worksite events and non-private events" do
       @event.save
-      @event2 = new_event :worksite_event => true
+      @event2 = build :event, :worksite_event => true
       @event2.save!
       Event.not_private.find(:all).should(include(@event))
       Event.not_private.find(:all).should(include(@event2))
