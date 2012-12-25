@@ -4,15 +4,15 @@ describe Supporter do
   before do
     initialize_site
     
-    @sf_supporter_1 = create_supporter
-    @sf_supporter_2 = create_supporter( 
+    @sf_supporter_1 = create :supporter
+    @sf_supporter_2 = create :supporter, 
                         :first_name=>'David',
                         :last_name=>'Taylor',
                         :email=>'radcowpenliz+sf_supporter_2@gmail.com',
                         :street=>'3150 24th st',
                         :postal_code => '94110' 
-                        )
-    @ny_supporter_1 = create_supporter( 
+
+    @ny_supporter_1 = create :supporter, 
                         :first_name=>'Jane',
                         :last_name=>'Doe',
                         :email=>'radcowpenliz+ny_supporter_1@gmail.com',
@@ -20,8 +20,8 @@ describe Supporter do
                         :city=>'New York',
                         :state=>'NY',
                         :postal_code => '10005'
-                     )
-    @ny_supporter_2 = create_supporter( 
+
+    @ny_supporter_2 = create :supporter, 
                         :first_name=>'Joe',
                         :last_name=>'Stiglitz',
                         :email=>'radcowpenliz+ny_supporter_2@gmail.com',
@@ -29,7 +29,7 @@ describe Supporter do
                         :city=>'New York',
                         :state=>'NY',
                         :postal_code=> '10005'
-                        )
+
   end
 
   describe 'on creation' do
@@ -42,7 +42,7 @@ describe Supporter do
   end
   describe 'near_event' do
     it 'should return only sf supporters when searching for event with postal_code 94114' do
-      event = create_event( :location=>'1 Market st', :city=>'San Francisco', :state=>'CA', :postal_code=>'94114')
+      event = create :event, :location=>'1 Market st', :city=>'San Francisco', :state=>'CA', :postal_code=>'94114'
       supporters = Supporter.near_event(event)
       supporters.size.should == 2
       supporters.should_not include([@ny_supporter_1, @ny_supporter_2])
