@@ -13,8 +13,8 @@ describe ReportSweeper do
   end
   describe "on create" do
     before do 
-      Site.current = new_site(:id => 1)
-      @event = create_event
+      Site.current = build :site, :id => 1
+      @event = create :event
       permalink = @event.calendar.permalink
       @urls = [ 
         "/#{permalink}/reports/#{@event.id}.html",
@@ -23,8 +23,8 @@ describe ReportSweeper do
       cache_urls(*@urls)
     end
     it "should delete the reports show page" do
-#      lambda { create_report(:event => @event) }.should expire_pages(@urls)
-      report = create_report(:event => @event)
+#      lambda { create(:report, :event => @event) }.should expire_pages(@urls)
+      report = create :report, :event => @event
       report.process!
       @expired_pages, @unexpired_pages = @urls.partition {|u| page_cache_expired?(u)} 
       @expired_pages.should == @urls
