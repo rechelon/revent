@@ -2,12 +2,12 @@ require File.dirname(__FILE__) + '/../spec_helper.rb'
 
 describe Theme do
   before do
-    @theme = create_theme
+    @theme = create :theme
   end
 
   describe "should parse the body" do
     before do
-      create_theme_element :name => "body", :markdown => "testing one two{{content}} three", :theme => @theme
+      create :theme_element, :name => "body", :markdown => "testing one two{{content}} three", :theme => @theme
     end
 
     it "into pre_content" do
