@@ -4,14 +4,14 @@ describe ReportsController do
   describe 'create' do
     before do
       initialize_site
-      @report = new_report
+      @report = build :report
       Report.stub!(:new).and_return(@report)
       @uploaded_data = test_uploaded_file
       @create_params = {
         :report => {
           :text => "text",
           :attendees => '100',
-          :event => create_event,
+          :event => create(:event),
           :press_link_data => {'1' => {:url => 'http://example.com', :text => 'the example site'}, '2' => {:url => 'http://other.example.com', :text => 'another one'}},
           :attachment_data => {'1' => {:caption => 'attachment 0', :uploaded_data => @uploaded_data}},
           :embed_data => {'1' => {:html => "<tag>", :caption => "yay"}, '2' => {:html => "<html>", :caption => "whoopee"}}
