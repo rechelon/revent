@@ -15,8 +15,8 @@ describe Site do
 
   describe "hosts" do
     before do
-      @site = create_site
-      @site.hosts << create_host
+      @site = create :site
+      @site.hosts << create(:host)
       Site.stub!(:current).and_return(@site)
       Host.current = 'localhost'
     end
@@ -38,10 +38,10 @@ describe Site do
 
     describe "multiple sites with multiple hosts" do
       before do
-        @site.hosts << create_host
-        @site2 = create_site 
-        @site2.hosts << create_host 
-        @site2.hosts << create_host 
+        @site.hosts << create(:host)
+        @site2 = create :site 
+        @site2.hosts << create(:host) 
+        @site2.hosts << create(:host) 
       end
       it "should give us the right site for the host" do
         pending
@@ -53,7 +53,7 @@ describe Site do
 
   describe "when destroyed" do
     before do
-      @site = create_site
+      @site = create :site
       @site_config_id = @site.config.id
       @site.destroy
     end

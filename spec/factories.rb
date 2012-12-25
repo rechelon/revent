@@ -96,7 +96,7 @@ FactoryGirl.define do
   end
 
   factory :host do
-    hostname "events." + String.random(10) + ".org"
+    hostname {"events." + String.random(10) + ".org"}
     theme "stepitup"
     site
   end
@@ -118,7 +118,7 @@ FactoryGirl.define do
     first_name "Jon"
     last_name "Warnow"
     phone "555-555-5555"
-    email "jon." + String.random(8) + "@stepitup.org"  #"jon.warnow@siu.org"
+    email {"jon." + String.random(8) + "@stepitup.org"}  #"jon.warnow@siu.org"
     street "1370 Mission St."
     city "San Francisco"
     state "CA"
