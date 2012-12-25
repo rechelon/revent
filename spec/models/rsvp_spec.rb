@@ -3,17 +3,17 @@ require File.dirname(__FILE__) + '/../spec_helper.rb'
 describe Rsvp do
   before do
     initialize_site
-    @event = create_event( :calendar => @calendar, :country_code => 'GBR' )
-    @user = create_user(:site => @site)
+    @event = create :event, :calendar => @calendar, :country_code => 'GBR'
+    @user = create :user, :site => @site
   end
 
   describe "when created" do
     before do
-      @rsvp = create_rsvp( :user => @user, :event => @event )
+      @rsvp = create :rsvp, :user => @user, :event => @event
     end
 
     it "should send an email" do
-      @trigger = create_trigger(:email_plain => 'test email', :from => 'testy mctesterson', :name => 'RSVP Thank You', :calendar => @calendar)
+      @trigger = create :trigger, :email_plain => 'test email', :from => 'testy mctesterson', :name => 'RSVP Thank You', :calendar => @calendar
       TriggerMailer.should_receive :deliver_trigger
       @rsvp.trigger_email
     end
