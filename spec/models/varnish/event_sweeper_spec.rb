@@ -2,28 +2,28 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe Varnish::EventSweeper do
   before do
-    Site.stub!(:current).and_return new_site
-    Host.stub!(:current).and_return new_host
+    Site.stub!(:current).and_return(build :site)
+    Host.stub!(:current).and_return(build :host)
     Site.current.hosts << Host.current
-    @calendar = create_calendar(:permalink => "something")
-    @parent_calendar = create_calendar(:permalink => "everything", :calendars => [@calendar])
+    @calendar = create :calendar, :permalink => "something"
+    @parent_calendar = create :calendar, :permalink => "everything", :calendars => [@calendar]
   end
 
   describe "when an event is created" do
     it "should determine the correct purge routes" do
       next_event_id = ActiveRecord::Base.connection.execute("SHOW TABLE STATUS LIKE 'events'").fetch_hash['Auto_increment']
       Varnish::EventSweeper.instance.should_receive(:purges).with(construct_routes(next_event_id)).and_return([])
-      create_event :calendar => @calendar
+      create :event, :calendar => @calendar
     end
     it "should call the purging method" do
       Varnish::EventSweeper.instance.should_receive(:hydra_run_requests)
-      create_event :calendar => @calendar
+      create :event, :calendar => @calendar
     end
   end
 
   describe "when an event" do
     before do
-      @event = create_event :calendar => @calendar
+      @event = create :event, :calendar => @calendar
     end
     
     describe "is updated" do
