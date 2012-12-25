@@ -43,18 +43,19 @@ Spec::Runner.configure do |config|
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
-  config.include FixtureReplacement
   config.include CacheCustomMatchers
   config.include AuthenticatedTestHelper
+  config.include FactoryGirl::Syntax::Methods
 end
+
 
 def initialize_site( *args )
     opts = args.first || {}
-    @site = opts['current_site'] || create_site
-    @host = opts['current_host'] || create_host(:site => @site)
+    @site = opts['current_site'] || create(:site)
+    @host = opts['current_host'] || create(:host, :site => @site)
     Site.current = @site
     Host.current = @host
-    @calendar = opts['calendar'] || create_calendar(:site => @site)
+    @calendar = opts['calendar'] || create(:calendar, :site => @site)
     @site.stub!(:calendars).and_return([@calendar])
     @site.config.salsa_user = SALSA_TEST_ACCOUNT[:user]
     @site.config.salsa_pass = SALSA_TEST_ACCOUNT[:pass]

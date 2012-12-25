@@ -36,6 +36,7 @@ gem "activerecord-activesalesforce-adapter", "~> 2.0.0"
 gem "typhoeus"
 gem "sanitize"
 gem "hoptoad_notifier"
+gem "factory_girl"
 
 group :test do
   gem 'rspec', '1.3.2'

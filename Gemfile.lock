@@ -31,6 +31,8 @@ GEM
     daemon_controller (0.2.6)
     execjs (1.2.9)
       multi_json (~> 1.0)
+    factory_girl (2.6.4)
+      activesupport (>= 2.3.9)
     fastercsv (1.5.4)
     fastthread (1.0.7)
     google-geocode (1.2.1)
@@ -119,6 +121,7 @@ DEPENDENCIES
   activerecord-activesalesforce-adapter (~> 2.0.0)
   airbrake
   aws-s3 (~> 0.6.2)
+  factory_girl
   fastercsv
   google-geocode (= 1.2.1)
   haml
