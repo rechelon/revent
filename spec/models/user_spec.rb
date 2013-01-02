@@ -8,7 +8,7 @@ describe User do
 
   describe "when saved" do
     before do
-      @user = new_user(:site => @site)
+      @user = build :user, :site => @site
     end
 
     it "should not overwrite an existing password" do
@@ -23,7 +23,7 @@ describe User do
       @user.save
     end
     it "should set a default password" do
-      u = new_user(:password => nil, :password_confirmation => nil)
+      u = build :user, :password => nil, :password_confirmation => nil
       u.save!
       u.crypted_password.should_not be_nil
     end
@@ -62,7 +62,7 @@ describe User do
 
   describe "when being built" do
     it "should not be marked as complete once profile is complete" do
-      Site.current = create_site
+      Site.current = create :site
       Site.current.config.required_custom_attributes = ['test']
       @user = User.new(:password => "secret", :password_confirmation => "secret", :site => Site.current) 
       @user.profile_complete?().should be_false
@@ -87,8 +87,8 @@ describe User do
 
   describe "when already existing" do
     before do
-      Site.current = create_site
-      @user = create_user(:password => "secret", :password_confirmation => "secret", :site => Site.current) 
+      Site.current = create :site
+      @user = create :user, :password => "secret", :password_confirmation => "secret", :site => Site.current
     end
 
     it "should not allow resetting the password with mass assignment" do
@@ -129,7 +129,7 @@ describe User do
 
   describe "integrates with DIA" do
     before do
-      @user = new_user
+      @user = build :user
       @dia_api = mock(DemocracyInAction::API)
       DemocracyInAction::API.stub!(:new).and_return(@dia_api)
       Site.stub!(:current_config_path).and_return(File.join(RAILS_ROOT,'test','config'))
@@ -144,7 +144,7 @@ describe User do
 
   describe "accepts custom attributes" do
     before do
-      @user = new_user
+      @user = build :user
     end
     it "accepts them as a hash" do
       @user.custom_attributes_data = { :ethnicity => 'Kentucky' }
@@ -161,7 +161,7 @@ describe User do
 
   describe "when destroying user" do
     before do
-      @user = new_user
+      @user = build :user
       @user.save
     end
 
