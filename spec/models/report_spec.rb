@@ -4,13 +4,13 @@ describe Report do
   before do
     initialize_site
     Site.current.stub!(:salesforce_enabled?).and_return(false)
-    @event = create_event( :calendar => @calendar, :country_code => 'GBR' )
+    @event = create :event, :calendar => @calendar, :country_code => 'GBR'
     Akismet.stub!(:new).and_return(stub(Akismet, :comment_check => true, :last_response => true))
   end
 
   describe "when created" do 
     it "processes report" do
-      @report = create_report :event => @event, :user => create_user
+      @report = create :report, :event => @event, :user => create(:user)
       @report.should_receive :build_press_links
       @report.should_receive :build_embeds
       #@report.should_receive :send_attachments_to_flickr
@@ -20,18 +20,18 @@ describe Report do
 
     describe "user" do
       before do
-        @user = create_user :first_name => 'foxy', :email => 'test@example.com', :site => @site
+        @user = create :user, :first_name => 'foxy', :email => 'test@example.com', :site => @site
       end
 
       it "should update if user exists" do
-        @report = new_report :event => @event 
+        @report = build :report, :event => @event 
         @report.reporter_data = {:first_name => 'testy', :last_name => 'mctest', :email => 'test@example.com'}
         @report.save!
         User.find(@user.id).first_name.should == 'testy'
       end
 
       it "should set the report user to the existing user" do
-        @report = new_report :event => @event, :user => nil
+        @report = build :report, :event => @event, :user => nil
         @report.reporter_data = {:first_name => 'testy', :last_name => 'mctest', :email => 'test@example.com'}
         @report.save!
         @report.process!
@@ -44,14 +44,14 @@ describe Report do
       end
 
       it "should create new users" do
-        @report = new_report :event => @event
+        @report = build :report, :event => @event
         @report.reporter_data = {:first_name => 'testy', :last_name => 'mctest', :email => 'new@example.com'}
         @report.save!
         User.find(:first, :conditions => { :email => 'new@example.com', :site_id => @event.calendar.site.id }).should == @report.user
       end
 
       it "should assign new users a random password" do
-        @report = new_report
+        @report = build :report
         @report.reporter_data = {:first_name => 'testy', :last_name => 'mctest', :email => 'newpassword@example.com'}
         @report.save
         @report.user.crypted_password.should_not be_nil
@@ -61,7 +61,7 @@ describe Report do
     describe "press links" do
       before do
         @press_params  = {'1' => {:url => 'http://example.com', :text => 'the example site'}, '2' => {:url => 'http://other.example.com', :text => 'another one'}}
-        @report = create_report(:press_link_data => @press_params )
+        @report = create :report, :press_link_data => @press_params
         @report.process!
       end
       it "should create press links" do
@@ -77,12 +77,12 @@ describe Report do
         @uploaded_data = test_uploaded_file
       end
       it "should create attachments" do
-        @report = create_report(:attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => @uploaded_data}})
+        @report = create :report, :attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => @uploaded_data}}
         @report.process!
         File.exist?(@report.attachments(true).first.full_filename).should be_true
       end
       it "should create multiple attachments" do
-        @report = new_report(:attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => test_uploaded_file}, '2' => {:caption => 'attachment 2', :uploaded_data => test_uploaded_file}})
+        @report = build :report, :attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => test_uploaded_file}, '2' => {:caption => 'attachment 2', :uploaded_data => test_uploaded_file}}
         @report.make_local_copies!
         @report.move_to_temp_files!
         @report.save
@@ -91,32 +91,32 @@ describe Report do
       end
       it "should tag attachments" do
         pending 'tagging not high priority now; get this working later'
-        @report = create_report(:attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => @uploaded_data, :tag_depot => {'0' => 'tag1', '1' => 'tag2'}  }})
+        @report = create :report, :attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => @uploaded_data, :tag_depot => {'0' => 'tag1', '1' => 'tag2'}  }}
         @report.process!
         @report.attachments.tags.should_not be_empty
       end
     end
 
     it "should validate all associated models" do
-      lambda {create_report(:press_link_data => {'1' => {:url => '#++ &&^ %%$', :text => 'invalid url'}}).process!}.should raise_error(ActiveRecord::RecordInvalid)
+      lambda {create(:report, :press_link_data => {'1' => {:url => '#++ &&^ %%$', :text => 'invalid url'}}).process!}.should raise_error(ActiveRecord::RecordInvalid)
     end
 
     describe "embeds" do
       before do
-        @report = new_report
+        @report = build :report
       end
       it "should accept embed data" do
         @report.embed_data = "blah"
         @report.embed_data.should == "blah"
       end
       it "should build embeds immediately when not delayed" do
-        Site.current = create_site
+        Site.current = create :site
         Site.current.config.delay_dia_sync = false
         @report.should_receive(:build_embeds).and_return(true)
         @report.sync_unless_deferred
       end
       it "should delay building embeds when delayed" do
-        Site.current = create_site
+        Site.current = create :site
         Site.current.config.delay_dia_sync = true
         ShortLine.stub!(:queue).and_return true
         @report.should_not_receive(:build_embeds)
@@ -134,7 +134,7 @@ describe Report do
       describe "params hash with no attachments, embed, or press links" do
         before do
           @uploaded_data = test_uploaded_file
-          @params = {:report => {:text => "text", :attendees => '100', :event => create_event,
+          @params = {:report => {:text => "text", :attendees => '100', :event => create(:event),
                     :reporter_data => {:first_name => "hannah", :last_name => "barbara", :email => "hannah@example.com"},
                     :press_link_data => {'1' => {:url => '', :text => ''}, '2' => {:url => '', :text => ''}},
                     :attachment_data => {'1' => {:caption => '', :uploaded_data => nil }},
@@ -154,7 +154,7 @@ describe Report do
       describe "full params hash" do
         before do
           @uploaded_data = test_uploaded_file
-          @params = {:report => {:text => "text", :attendees => '100', :event => create_event,
+          @params = {:report => {:text => "text", :attendees => '100', :event => create(:event),
                     :reporter_data => {:first_name => "hannah", :last_name => "barbara", :email => "hannah@example.com"},
                     :press_link_data => {'1' => {:url => 'http://example.com', :text => 'the example site'}, '2' => {:url => 'http://other.example.com', :text => 'another one'}},
                     :attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => @uploaded_data}},
@@ -207,8 +207,8 @@ describe Report do
         @photoset_proxy = stub( 'photoset_proxy', :addPhoto => true )
         @flickr_api = stub( 'flickr_api', :photos => @photo_proxy, :photosets => @photoset_proxy )
         Site.stub!(:flickr).and_return( @flickr_api )
-        @attach = create_attachment(:primary => true, :temp_data => 'data data data')
-        @report = create_report(:event => @event)
+        @attach = create :attachment, :primary => true, :temp_data => 'data data data'
+        @report = create :report, :event => @event
         @report.attachments << @attach
         @report.status = Report::PUBLISHED
       end
@@ -287,7 +287,7 @@ describe Report do
       it "delivers a trigger if the calendar has no triggers but the site does" do
         TriggerMailer.should_receive(:deliver_trigger)
         @site.stub!(:triggers).and_return(stub('triggers', :any? => true, :find_by_name => true ))
-        @report = new_report(:event => @event)
+        @report = build :report, :event => @event
         @report.trigger_email
       end
     end
