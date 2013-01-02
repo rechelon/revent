@@ -12,7 +12,7 @@ describe Event do
     @dia_api = stub('dia_api', :save => true, :authenticate => true)
     DemocracyInActionEvent.stub!(:api).and_return(@dia_api)
     
-    @event = new_event
+    @event = build :event
     @event.stub!(:set_district).and_return(true)
   end
 
@@ -50,30 +50,30 @@ describe Event do
     end
 
     it "should be compatible with will_paginate" do
-      create_event
+      create :event
       Event.by_query({ }).paginate(:all, :page => 1, :per_page => 1).length.should == 1
     end
 
     it "should accept some predefined sorting needs" do
-      cat = create_category :name => 'green jobs'
-      categorized = create_event :category_id => cat.id
+      cat = create :category, :name => 'green jobs'
+      categorized = create :event, :category_id => cat.id
       Event.by_query({}).prioritize(:first_category => cat.id ).first.should == categorized
     end
 
     it "works with child calendars" do
-      parent_calendar = create_calendar
+      parent_calendar = create :calendar
       parent_calendar.calendars << @event.calendar
       parent_calendar.save!
       Event.by_query( :calendar_id => parent_calendar.id ).should include(@event)
     end
 
     it "works on the calendar association" do
-      other_cal_event = create_event
+      other_cal_event = create :event
       @event.calendar.events.prioritize(nil).should_not include( other_cal_event )
     end
 
     it "does not affect the search to have an empty prioritize block" do
-      ev = create_event :state => 'WI'
+      ev = create :event, :state => 'WI'
       Event.prioritize(nil).by_query(:state => 'CA').should_not include(ev)
     end
   end
@@ -150,7 +150,7 @@ describe Event do
 
   describe 'when destroyed' do
     before do
-      Site.current = new_site
+      Site.current = build :site
       #Site.current.stub!(:salesforce_enabled?).and_return(true)
       #SalesforceWorker.stub!(:async_save_event).and_return(true)
 
@@ -182,7 +182,7 @@ describe Event do
 
   describe "congressional district" do
     before do
-      @event = new_event(:postal_code => '94114', :country_code => Event::COUNTRY_CODE_USA)
+      @event = build :event, :postal_code => '94114', :country_code => Event::COUNTRY_CODE_USA
       Cache.stub!(:get).and_yield
     end
     it "should set the congressional districts when saved" do
@@ -211,7 +211,7 @@ describe Event do
   end
   describe 'when locationless' do
     it 'should be valid if no_location is true' do
-      event = new_event(:postal_code => nil, :location => nil, :city => nil, :state => nil, :locationless => true)
+      event = build :event, :postal_code => nil, :location => nil, :city => nil, :state => nil, :locationless => true
       event.valid?.should be_true
     end
   end
