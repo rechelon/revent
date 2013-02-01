@@ -26,8 +26,6 @@ Rails::Initializer.run do |config|
   config.action_controller.session_store = :active_record_store
 
   config.active_record.observers = :event_sweeper, :rsvp_sweeper, :calendar_sweeper, :attachment_sweeper, :report_sweeper, :'varnish/event_sweeper', :'varnish/theme_element_sweeper'
-
-  config.gem "jammit"
 end
 
 ActiveSupport::Inflector.inflections do |inflect|
