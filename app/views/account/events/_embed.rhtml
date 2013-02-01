@@ -1,13 +1,11 @@
-  <tr class ="profile_item_row" id="attachment-<%= embed.id %>">
-      <% remote_form_for :attachment, embeds, :url => {:controller => '/account/embeds', :action => 'update', :id => embed} do |f| %>
-
-	  <td><%= f.text_area 'caption', :rows => 3, :cols => 20, :id => "attachment_#{embed.id}_caption" %></td>
+<tr class ="profile_item_row" id="attachment-<%= embed.id %>">
+  <% form_for :attachment, embeds, :url => {:controller => '/account/embeds', :action => 'update', :id => embed}, :remote => true do |f| %>
+    <td><%= f.text_area 'caption', :rows => 3, :cols => 20, :id => "attachment_#{embed.id}_caption" %></td>
     <td><%= f.text_area 'caption', :rows => 3, :cols => 20, :id => "attachment_#{embed.id}_caption" %>
-        <br><%= submit_tag('update video', :onclick => "Element.show('attachment-spinner-#{embed.id}')", :class => "profile_submit" ) %><img style="display:none;" src="/images/spinner.gif" alt="spinner" id="attachment-spinner-<%= embed.id %>" />
-      <% end %>	
+      <br />
+      <%= submit_tag('update video', :onclick => "Element.show('attachment-spinner-#{embed.id}')", :class => "profile_submit" ) %><img style="display:none;" src="/images/spinner.gif" alt="spinner" id="attachment-spinner-<%= embed.id %>" />
     </td>
-    <td></td>
-	
-
-    <td><%= link_to_remote 'Delete', :url => { :controller => 'account/embeds', :action => 'destroy', :id => embed } %></td>
-	</tr>
+  <% end %>	
+  <td></td>
+  <td><%= link_to 'Delete', { :controller => 'account/embeds', :action => 'destroy', :id => embed }, :remote => true %></td>
+</tr>

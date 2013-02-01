@@ -137,9 +137,7 @@
   <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
 </div>
 
-<%= link_to_remote "Questions? Email the Host", 
-    {:update => 'email-host', :url => {:permalink=>@calendar.permalink, :controller => 'events', :action => 'email_host', :id => @event.id, :params => {:ajax => true}}, :method => :get}, 
-      :class=>"btn btn-info", :id=>'email-host-btn'%>
+<%= link_to "Questions? Email the Host", {:update => 'email-host', :url => {:permalink=>@calendar.permalink, :controller => 'events', :action => 'email_host', :id => @event.id, :params => {:ajax => true}}, :method => :get}, :class=>"btn btn-info", :id=>'email-host-btn', :remote => true %>
 
 <div id="email-host"></div>
 
