@@ -122,13 +122,13 @@ class Account::EventsController < AccountControllerShared
       flash[:notice] = 'Must provide recipient emails (separated by commas), subject, and message for invitations.'
       redirect_to :permalink => @calendar.permalink, :action => 'show', :id => @event and return
     end
-    UserMailer.deliver_invite(current_user.email, @event, params[:invite])
+    UserMailer.invite(current_user.email, @event, params[:invite]).deliver
     flash[:notice] = 'Invites delivered'
     redirect_to :permalink => @calendar.permalink, :action => 'show', :id => @event
   end
 
   def message
-    UserMailer.deliver_message(current_user.email, @event, params[:message])
+    UserMailer.message(current_user.email, @event, params[:message]).deliver
     flash[:notice] = 'Email delivered'
     redirect_to :permalink => @calendar.permalink, :action => 'show', :id => @event
   end

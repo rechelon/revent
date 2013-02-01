@@ -279,8 +279,8 @@ class User < ActiveRecord::Base
   end
 
   def deliver_email
-    UserMailer.deliver_forgot_password(self) if self.recently_forgot_password?
-    UserMailer.deliver_reset_password(self) if self.recently_reset_password?
+    UserMailer.forgot_password(self).deliver if self.recently_forgot_password?
+    UserMailer.reset_password(self).deliver if self.recently_reset_password?
   end
 
   # Authenticates a user by their email and unencrypted password.  Returns the user or nil.

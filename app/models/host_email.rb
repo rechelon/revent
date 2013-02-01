@@ -18,7 +18,7 @@ class HostEmail
       :from => "\"#{from_name}\" <#{from_email}>", 
       :subject => subject, 
       :body => body }
-    UserMailer.deliver_message_to_host(message, host)
+    UserMailer.message_to_host(message, host).deliver
     @new_record = false
     return true
   end

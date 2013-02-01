@@ -481,7 +481,7 @@ class EventsController < ApplicationController
           :subject => params[:subject], 
           :body => params[:body] }
         if @event.democracy_in_action_key.blank? || !Site.current.config.salsa_enabled?
-          UserMailer.deliver_message_to_email(message, @event.host_public_email)
+          UserMailer.message_to_email(message, @event.host_public_email).deliver
         else
           message[:to] = @event.host_public_email
           message[:from] = params[:from_email]
