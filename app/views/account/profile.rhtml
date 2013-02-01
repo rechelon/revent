@@ -1,7 +1,7 @@
 <h1>Update Your Information</h1>
 <%= error_messages_for 'user' %>
 
-<% form_for :user, @user, :url => { :permalink => @calendar.permalink, :action => 'profile' }, :html => {:id => 'profile-edit-form',:multipart => true, :class => 'form-horizontal'} do |f| %>
+<%= form_for :user, @user, :url => { :permalink => @calendar.permalink, :action => 'profile' }, :html => {:id => 'profile-edit-form',:multipart => true, :class => 'form-horizontal'} do |f| %>
   <%= render :partial => 'account/profile_form', :locals =>{ :f =>f } %>
   <div id="account-profile-extra">
     <% if @user.profile_image %>

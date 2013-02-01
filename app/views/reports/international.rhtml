@@ -7,7 +7,7 @@
 			<tr>
 				<td>Show reports in</td>
 				<td>
-					<% form_tag :permalink => @calendar.permalink, :controller => 'events', :action => 'international' do -%> 
+					<%= form_tag :permalink => @calendar.permalink, :controller => 'events', :action => 'international' do -%> 
 					  <%= select_tag 'country', options_for_select(countries_for_select, @country_a3), :onchange => "window.location.href='/#{@calendar.permalink}/events/international/' + this.value" %>
 					<% end -%>
 				</td>

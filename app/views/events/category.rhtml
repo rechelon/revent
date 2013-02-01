@@ -2,7 +2,7 @@
   <div class="intro-title">
     <%= @category.name.pluralize %>
   </div>
-  <% form_tag :action => 'category' do -%> 
+  <%= form_tag :action => 'category' do -%> 
     Show events of type:
     <%= select_tag 'categories', options_for_select(@category_options, @category.id), :onchange => "window.location.href='/#{@calendar.permalink}/events/category/' + this.value" %><br />
   <% end -%>  

@@ -5,7 +5,7 @@
   </div>
   <div class="modal-body">
     <div class="revent-login user-signup">
-      <% form_tag url_for(:permalink=>@calendar.permalink,:controller=>'account', :action=>'login') do |f| -%>
+      <%= form_tag url_for(:permalink=>@calendar.permalink,:controller=>'account', :action=>'login') do |f| -%>
         <%= label_tag 'email' %>
         <%= text_field_tag :email %>
         <%= label_tag 'password' %>
@@ -42,7 +42,7 @@
     <h3>New Password</h3>
   </div>
   <div class="modal-body">
-      <% form_tag url_for(:controller=>'account', :action => 'forgot_password') do %>
+      <%= form_tag url_for(:controller=>'account', :action => 'forgot_password') do %>
           <p>Enter your e-mail address below and we will send you a link to reset your password.<p>
           <p>If you don't receive the requested password in your e-mail, check to see if it got trapped by a spam filter or got stuck in your "Junk E-Mail Folder"</p>
           <%= text_field_tag :email, "", :size => 50 %><br />

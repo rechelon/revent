@@ -1,5 +1,5 @@
-<% fields_for :event, @event do |event| %>
-  <% event.fields_for :custom_attributes_data, @event.custom_attributes_data do |custom| %>
+<%= fields_for :event, @event do |event| %>
+  <%= event.fields_for :custom_attributes_data, @event.custom_attributes_data do |custom| %>
     <!-- custom addtion for 99spring -->
     <div class="control-group">
       <label class="checkbox" for="nonviolent">

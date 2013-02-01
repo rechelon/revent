@@ -1,6 +1,6 @@
 <div id="profile_event_edit">
   <h1 class="profile_subtitle">Edit Report Back</h1>	
-  <% form_for :report, @report, :url => {:controller => 'account/reports', :action => 'update', :id => @report} do |f| %>
+  <%= form_for :report, @report, :url => {:controller => 'account/reports', :action => 'update', :id => @report} do |f| %>
   <%= render :partial => "form", :locals => {:f => f} %>
   <b>Reporter:</b> <%= @report.reporter_name  %>
   <%= submit_tag %>

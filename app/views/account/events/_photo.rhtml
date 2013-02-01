@@ -1,7 +1,7 @@
   <tr class ="profile_item_row" id="attachment-<%= photo.id %>">
 	  <td><%= image_tag photo.public_filename(:list) %></td>
     <td>
-      <% form_for :attachment, photo, :url => {:controller => '/account/attachments', :action => 'update', :id => photo}, :remote => true do |f| %>
+      <%= form_for :attachment, photo, :url => {:controller => '/account/attachments', :action => 'update', :id => photo}, :remote => true do |f| %>
         <%= f.text_area 'caption', :rows => 3, :cols => 20, :id => "attachment_#{photo.id}_caption" %>
         <br><%= submit_tag('update caption', :onclick => "Element.show('attachment-spinner-#{photo.id}')", :class => "profile_submit" ) %><img style="display:none;" src="/images/spinner.gif" alt="spinner" id="attachment-spinner-<%= photo.id %>" />
       <% end %>	

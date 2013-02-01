@@ -3,7 +3,7 @@
   <h3>Your Information</h3>
   <div class="required-fields"><span class="req">*</span>Required fields</div>
   <div id="account-profile-form">
-    <% fields_for :user, @user do |user| %>
+    <%= fields_for :user, @user do |user| %>
     <div class="control-group">
       <label class="control-label" for="dataFirst_Name"><span class="req">*</span>First Name</label>
       <div class="controls"><%= user.text_field "first_name", :id => 'dataFirst_Name', :maxlength => "32", :class => "input-large required inputStyle" %>

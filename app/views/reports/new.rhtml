@@ -16,7 +16,7 @@
       Please take a few minutes to share your stories, videos and pictures from your event.  This information will be displayed publically.		
     <% end -%>
   </div>
-  <% form_for :report, @report, :url => { :controller => 'reports', :permalink => @calendar.permalink, :action => 'create' }, :html => {:class => 'form-horizontal', :id => 'report-back-form',  :multipart => true } do |f| -%>
+  <%= form_for :report, @report, :url => { :controller => 'reports', :permalink => @calendar.permalink, :action => 'create' }, :html => {:class => 'form-horizontal', :id => 'report-back-form',  :multipart => true } do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f, :profile_complete => @profile_complete } %>
   <% if Site.current.config.enable_recaptcha %>
   <% end %>

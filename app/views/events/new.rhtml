@@ -18,7 +18,7 @@
 </div>
 
 <div class="form-horizontal" id="host-new-form">
-  <% form_for :event, @event, :url => url_for(:permalink => @calendar.permalink, :controller => 'events', :action => 'create'), :html => {:id => 'event-signup-form', :multipart => true} do |f| -%>
+  <%= form_for :event, @event, :url => url_for(:permalink => @calendar.permalink, :controller => 'events', :action => 'create'), :html => {:id => 'event-signup-form', :multipart => true} do |f| -%>
     <%= error_messages_for 'event' %>
     <% if @profile_complete %>
       <div class="profile-edit-link">

@@ -15,7 +15,7 @@
   <div id="profile_event_edit" <% if @event.errors.empty? %> style="display:none;"<% end %>>
     <div class="well">
       <h4>Edit Your Event Information</h4>	
-      <% form_for :event, @event, :url =>  url_for(:permalink => @calendar.permalink, :controller => 'account/events', :action => 'update', :id => @event), :html => {:id => 'event-signup-form'} do |f| %>
+      <%= form_for :event, @event, :url =>  url_for(:permalink => @calendar.permalink, :controller => 'account/events', :action => 'update', :id => @event), :html => {:id => 'event-signup-form'} do |f| %>
       
       <%= render :partial => "events/form", :locals => {:f => f} %>
       
@@ -56,7 +56,7 @@
       </table>			
       <div class="manage-document-upload">
         Upload a new attachment (image or document only)
-        <% form_for :attachment, nil, :url => url_for(:permalink => @calendar.permalink, :action => 'upload', :id => @event.id), :html => {:multipart => true} do |f| -%>
+        <%= form_for :attachment, nil, :url => url_for(:permalink => @calendar.permalink, :action => 'upload', :id => @event.id), :html => {:multipart => true} do |f| -%>
         <%= f.file_field 'uploaded_data' %>
           <div class="form-actions">
             <%= submit_tag 'upload', :class => 'btn btn-primary' %>
@@ -156,7 +156,7 @@
     <div id="profile_event_attend_contact">
      <h4>Send Email to all Attendees</h4>
      <div class="description">Messages will be sent with your email address in the from field.</div>
-        <% form_for :message, nil, :url => url_for(:permalink => @calendar.permalink, :controller => 'account/events', :action => 'message', :id => @event) do |f| %>
+        <%= form_for :message, nil, :url => url_for(:permalink => @calendar.permalink, :controller => 'account/events', :action => 'message', :id => @event) do |f| %>
           <div class="control-group">
             <label for="subject" class="control-label">Subject:</label>
             <div class="controls">
@@ -197,7 +197,7 @@
     <div class="description">	
       This e-mail will have the event name, date, location, and RSVP link appended to the bottom of the message.  The message box below is for a personal note from you to the recipients.
     </div>
-    <% form_for :invite, :url => url_for(:permalink => @calendar.permalink, :controller => 'account/events',  :action => 'invite', :id => @event) do |f| %>
+    <%= form_for :invite, :url => url_for(:permalink => @calendar.permalink, :controller => 'account/events',  :action => 'invite', :id => @event) do |f| %>
       <div class="control-group">
         <label class="control-label" for="recipients">Recipients:</label>
         <div class="controls">
@@ -238,7 +238,7 @@
         Announcements will show up on the bottom of your event page.
      </div>
      <%= error_messages_for :blog %>
-     <% form_for :blog, @blog, :url =>  url_for(:permalink => @calendar.permalink, :controller => 'account/blogs', :action => 'create') do |f| %>
+     <%= form_for :blog, @blog, :url =>  url_for(:permalink => @calendar.permalink, :controller => 'account/blogs', :action => 'create') do |f| %>
        <div class="control-group">
          <label for="body" class="control-label">Title:</label>
          <div class="controls">

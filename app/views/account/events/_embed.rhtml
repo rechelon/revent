@@ -1,5 +1,5 @@
 <tr class ="profile_item_row" id="attachment-<%= embed.id %>">
-  <% form_for :attachment, embeds, :url => {:controller => '/account/embeds', :action => 'update', :id => embed}, :remote => true do |f| %>
+  <%= form_for :attachment, embeds, :url => {:controller => '/account/embeds', :action => 'update', :id => embed}, :remote => true do |f| %>
     <td><%= f.text_area 'caption', :rows => 3, :cols => 20, :id => "attachment_#{embed.id}_caption" %></td>
     <td><%= f.text_area 'caption', :rows => 3, :cols => 20, :id => "attachment_#{embed.id}_caption" %>
       <br />

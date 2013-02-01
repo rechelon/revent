@@ -1,5 +1,5 @@
-<% fields_for :user, @user do |user| %>
-  <% user.fields_for :custom_attributes_data, @user.custom_attributes_data do |custom| %>
+<%= fields_for :user, @user do |user| %>
+  <%= user.fields_for :custom_attributes_data, @user.custom_attributes_data do |custom| %>
     <div class="control-group">
       <label class="checkbox" for="show_phone_on_host_profile"><%= custom.check_box 'send_list', :checked_value => 'We will send you a list of people in your area to call about your event.', :checked => true, :id => 'send_list_confirmation'  %>
       Yes, send me a list of people in area to call and invite to my event

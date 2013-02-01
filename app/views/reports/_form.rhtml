@@ -44,7 +44,7 @@
       For large file uploads, this page may take awhile to load.
     </div>
       <% allowed_attachments = 6 %>
-      <% f.fields_for :attachment_data do |ff| %>
+      <%= f.fields_for :attachment_data do |ff| %>
         <% 1.upto( allowed_attachments ) do |n| %>
           <%=  tag( "div",   :class => 'report_add_attachment', :id=>"report_add_photo_#{n}", :style => ( n > 1 ?  "display:none;" : ""))  %>
             <div class="control-group">
@@ -79,7 +79,7 @@
       Upload your YouTube video <a href="http://youtube.com/signup?next=/my_videos_upload" target="_blank" />here</a>
     </div>
     <%- allowed_embeds = 4 %>
-    <%- f.fields_for :embed_data do |ff|%>
+    <%= f.fields_for :embed_data do |ff|%>
       <%- 1.upto(allowed_embeds) do |n|%>
         <%= tag( "div", :class => "report_add_attachment", :id => "report_add_video_#{n}", :style => (n > 1 and @report.errors.empty? ? "display:none;" : "")) %>
           <div class="control-group">
@@ -113,7 +113,7 @@
     <br/> 
   </div>
   <%- allowed_press_links = 4%>
-  <%- f.fields_for :press_link_data do |ff| %>
+  <%= f.fields_for :press_link_data do |ff| %>
     <%- 1.upto(allowed_press_links) do |n| %>
       <%= tag("div", :class => "report_add_attachment",  :id => "report_add_press_#{n}", :style => (n > 1 and @report.errors.empty? ? "display:none;" : "")) %>
 
