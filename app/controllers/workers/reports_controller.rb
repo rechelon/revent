@@ -20,13 +20,13 @@ class Workers::ReportsController < WorkersController
       return false
     end 
 
-    ActionController::Base.page_cache_directory = File.join([RAILS_ROOT, (RAILS_ENV == 'test' ? 'tmp' : 'public'), 'cache', Host.current.hostname]) #aka, set_cache_root
+    ActionController::Base.page_cache_directory = Rails.root.join((Rails.env.test? ? 'tmp' : 'public'), 'cache', Host.current.hostname) #aka, set_cache_root
     @report.background_processes
     @report.trigger_email
     render :nothing => true
   end
 
   def logger
-    RAILS_DEFAULT_LOGGER
+    Rails.logger
   end
 end

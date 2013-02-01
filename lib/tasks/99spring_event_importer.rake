@@ -26,7 +26,7 @@ namespace :'99spring' do
   desc "Import 99 Spring events"
   task :import_events do
     raise 'You need to set an environment varibale called HOST' if ENV['HOST'].nil? or ENV['HOST'].empty?
-    raise 'You need to set a variable called FILE, that file should be located in RAILS_ROOT/tmp/' if ENV['FILE'].nil? or ENV['FILE'].empty?
+    raise 'You need to set a variable called FILE, that file should be located in tmp/' if ENV['FILE'].nil? or ENV['FILE'].empty?
     raise 'You need to set an environment varibale called CALENDAR' if ENV['CALENDAR'].nil? or ENV['CALENDAR'].empty?
 
     require 'fastercsv'
@@ -42,7 +42,7 @@ namespace :'99spring' do
     rejects = FasterCSV::Table.new []
 
 
-    FasterCSV.foreach(RAILS_ROOT + "/tmp/" + ENV['FILE'], {:headers=>true}) do |row|
+    FasterCSV.foreach(Rails.root.join("tmp", ENV['FILE']), {:headers=>true}) do |row|
 
       if row[START_DATE_FIELD].blank?
         puts 'no start date'

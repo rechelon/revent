@@ -15,7 +15,7 @@ class VarnishSweeper < ActionController::Caching::Sweeper
       uri = '/'+uri unless uri.starts_with?('/')
       VARNISH_SERVERS.each do |v|
         url = v+uri
-        RAILS_DEFAULT_LOGGER.info "PURGING: #{url} for Host: #{Site.current.host.hostname}"
+        Rails.logger.info "PURGING: #{url} for Host: #{Site.current.host.hostname}"
         requests.push Typhoeus::Request.new(url, :method => request_method, :headers => {:Host => Site.current.host.hostname})
       end
     end

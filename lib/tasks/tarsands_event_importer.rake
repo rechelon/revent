@@ -2,7 +2,7 @@ namespace :tarsands do
   desc "Import Tarsands Action events"
   task :import_events do
     raise 'You need to set an environment varibale called SITE' if ENV['SITE'].nil? or ENV['SITE'].empty?
-    raise 'You need to set a variable called FILE, that file should be located in RAILS_ROOT/tmp/' if ENV['FILE'].nil? or ENV['FILE'].empty?
+    raise 'You need to set a variable called FILE, that file should be located in tmp/' if ENV['FILE'].nil? or ENV['FILE'].empty?
     raise 'You need to set an environment varibale called CALENDAR' if ENV['CALENDAR'].nil? or ENV['CALENDAR'].empty?
 
     require 'fastercsv'
@@ -18,7 +18,7 @@ namespace :tarsands do
     rejects = FasterCSV::Table.new []
 
 
-    FasterCSV.foreach(RAILS_ROOT + "/tmp/" + ENV['FILE'], {:headers=>true}) do |row|
+    FasterCSV.foreach(Rails.root.join("tmp", ENV['FILE']), {:headers=>true}) do |row|
 
       if row['start_date'].blank?
         puts 'no start date'

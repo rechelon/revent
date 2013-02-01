@@ -49,13 +49,13 @@ class ApplicationController < ActionController::Base
 
   def log_forwarded_ip
     unless VARNISH_SERVERS.empty?
-      RAILS_DEFAULT_LOGGER.info("X-Forwarded-For: "+request.env['HTTP_X_FORWARDED_FOR'].to_s)
+      Rails.logger.info("X-Forwarded-For: "+request.env['HTTP_X_FORWARDED_FOR'].to_s)
     end
   end
 
   def render_optional_error_file(status_code)
     status = interpret_status(status_code)
-    path = "#{RAILS_ROOT}/public/#{status[0,3]}.html"
+    path = Rails.root.join("public","#{status[0,3]}.html")
     if File.exist?(path)
       render :file => path, :status => status
     else

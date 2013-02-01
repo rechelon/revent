@@ -10,7 +10,7 @@ namespace :revent do
   end
 
   task :consolidate_yaml do
-    config_sites_dir = File.join(RAILS_ROOT,'config','sites')
+    config_sites_dir = Rails.root.join('config','sites')
     FileUtils.mkdir_p(config_sites_dir) unless File.exists?(config_sites_dir)
     Site.find(:all).each do |site|
       config = {}

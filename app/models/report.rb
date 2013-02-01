@@ -66,10 +66,10 @@ class Report < ActiveRecord::Base
     return if self.sync_processed
     self.sync_processed = true
     if Site.current.config.delay_dia_sync
-      RAILS_DEFAULT_LOGGER.info('***Delaying Report Sync***') 
+      Rails.logger.info('***Delaying Report Sync***') 
       self.enqueue_background_processes
     else
-      RAILS_DEFAULT_LOGGER.info('***Syncing Report Inline***')
+      Rails.logger.info('***Syncing Report Inline***')
       self.background_processes
     end
   end

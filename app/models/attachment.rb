@@ -55,9 +55,9 @@ class Attachment < ActiveRecord::Base
 
   @@document_condition = send(:sanitize_sql, ['content_type IN (?)', @@document_content_types]).freeze
   cattr_reader :document_content_types, :image_content_types, :document_condition
-  if RAILS_ENV == 'test'
+  if Rails.env.test?
     has_attachment :storage => :file_system, :path_prefix => 'test/tmp/attachments', :content_type => [@@image_content_types, @@document_content_types].flatten, :thumbnails => { :lightbox => '490x390>', :list => '100x100', :display => '300x300' }, :max_size => 2.megabytes #generate print version after the fact
-  elsif File.exists?(s3_config_file = File.join(RAILS_ROOT, 'config', 'amazon_s3.yml'))
+  elsif (s3_config_file = Rails.root.join('config', 'amazon_s3.yml')).exist?
     has_attachment :storage => :s3, :content_type => [Attachment.image_content_types, Attachment.document_content_types].flatten, :path_prefix => 'events/attachments', :thumbnails => { :lightbox => '490x390>', :list => '100x100', :display => '300x300' }, :bucket_name => AWS_S3_BUCKET_NAME
     self.attachment_options = AttachmentOptions.new(attachment_options)
   else
@@ -120,7 +120,7 @@ class Attachment < ActiveRecord::Base
       if tempfile_path.respond_to? :path
         tempfile_path = tempfile_path.path
       end
-      tmp = Tempfile.new(File.basename(tempfile_path), File.join(RAILS_ROOT, 'tmp')) # specific folder please
+      tmp = Tempfile.new(File.basename(tempfile_path), Rails.root.join('tmp')) # specific folder please
       path = tmp.path
       tmp.close(true)
       FileUtils.cp tempfile_path, path

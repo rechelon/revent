@@ -3,18 +3,18 @@ namespace :db do
   task :dump do
     load 'config/environment.rb'
     configs = ActiveRecord::Base.configurations
-    case configs[RAILS_ENV]["adapter"]
+    case configs[Rails.env]["adapter"]
     when 'mysql'
-      ActiveRecord::Base.establish_connection(configs[RAILS_ENV])
-      File.open("db/#{RAILS_ENV}_data.sql", "w+") do |f|
-        if configs[RAILS_ENV]["password"].blank?
-          f << `mysqldump -h #{configs[RAILS_ENV]["host"]} -u #{configs[RAILS_ENV]["username"]} #{configs[RAILS_ENV]["database"]}`
+      ActiveRecord::Base.establish_connection(configs[Rails.env])
+      File.open("db/#{Rails.env}_data.sql", "w+") do |f|
+        if configs[Rails.env]["password"].blank?
+          f << `mysqldump -h #{configs[Rails.env]["host"]} -u #{configs[Rails.env]["username"]} #{configs[Rails.env]["database"]}`
         else
-          f << `mysqldump -h #{configs[RAILS_ENV]["host"]} -u #{configs[RAILS_ENV]["username"]} -p#{configs[RAILS_ENV]["password"]} #{configs[RAILS_ENV]["database"]}`
+          f << `mysqldump -h #{configs[Rails.env]["host"]} -u #{configs[Rails.env]["username"]} -p#{configs[Rails.env]["password"]} #{configs[Rails.env]["database"]}`
         end
       end
     else
-      raise "Task not supported by '#{configs[RAILS_ENV]['adapter']}'" 
+      raise "Task not supported by '#{configs[Rails.env]['adapter']}'" 
     end
   end
 
@@ -22,7 +22,7 @@ namespace :db do
   task :dump_csv do
     load 'config/environment.rb'
     configs = ActiveRecord::Base.configurations
-    ActiveRecord::Base.establish_connection(configs[RAILS_ENV])
+    ActiveRecord::Base.establish_connection(configs[Rails.env])
 
     require 'fastercsv'
     hostname = ENV["SITE"] 
@@ -40,30 +40,6 @@ namespace :db do
         values += user_headers.map { |h| event.host[h] }
         csv << values
       end
-    end
-  end
-
-  desc "Refreshes your local development environment to the current production database" 
-  task :production_data_refresh do
-    `cap db:remote_runner`
-    `rake db:production_data_load --trace`
-    `rake revent:setup_sites --trace`
-  end 
-
-  desc "Loads the production data downloaded into db/production_data.sql into your local development database" 
-  task :production_data_load do
-    load 'config/environment.rb'
-    configs = ActiveRecord::Base.configurations
-    case configs[RAILS_ENV]["adapter"]
-    when 'mysql'
-      ActiveRecord::Base.establish_connection(configs[RAILS_ENV])
-      if configs[RAILS_ENV]["password"].blank?
-        `mysql -h #{configs[RAILS_ENV]["host"]} -u #{configs[RAILS_ENV]["username"]} #{configs[RAILS_ENV]["database"]} < db/production_data.sql`
-      else
-        `mysql -h #{configs[RAILS_ENV]["host"]} -u #{configs[RAILS_ENV]["username"]} -p#{configs[RAILS_ENV]["password"]} #{configs[RAILS_ENV]["database"]} < db/production_data.sql`
-      end
-    else
-      raise "Task not supported by '#{configs[RAILS_ENV]['adapter']}'" 
     end
   end
 end

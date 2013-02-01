@@ -86,10 +86,10 @@ class User < ActiveRecord::Base
     return if self.sync_processed
     self.sync_processed = true
     if Site.current.config.delay_dia_sync
-      RAILS_DEFAULT_LOGGER.info('***Delaying User Sync***') 
+      Rails.logger.info('***Delaying User Sync***') 
       self.enqueue_background_processes
     else
-      RAILS_DEFAULT_LOGGER.info('***Syncing User Inline***')
+      Rails.logger.info('***Syncing User Inline***')
       background_processes
     end
   end
@@ -167,7 +167,7 @@ class User < ActiveRecord::Base
 #   ted: now using :sync_unless_deferred
 #    return true if deferred? #will be handled by background process
 
-    RAILS_DEFAULT_LOGGER.info('***Syncing User to DIA***') 
+    Rails.logger.info('***Syncing User to DIA***') 
     @democracy_in_action = self[:democracy_in_action] || {}
 #    $DEBUG = true
     @democracy_in_action_attrs = {} #attributes to be sent across the wire
