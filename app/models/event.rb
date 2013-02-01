@@ -331,7 +331,7 @@ class Event < ActiveRecord::Base
       elsif Site.current.triggers
         trigger = Site.current.triggers.find_by_name("Host Thank You")
       end
-      TriggerMailer.deliver_trigger(trigger, self.host, self) if trigger
+      TriggerMailer.trigger(trigger, self.host, self).deliver if trigger
     end
   end
   

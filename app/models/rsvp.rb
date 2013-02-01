@@ -8,7 +8,7 @@ class Rsvp < ActiveRecord::Base
     calendar = self.event.calendar
     unless calendar.rsvp_dia_trigger_key
       trigger = calendar.triggers.find_by_name("RSVP Thank You") || Site.current.triggers.find_by_name("RSVP Thank You")
-      TriggerMailer.deliver_trigger(trigger, self.user, self.event) if trigger
+      TriggerMailer.trigger(trigger, self.user, self.event).deliver if trigger
     end
   end
 

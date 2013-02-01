@@ -90,7 +90,7 @@ class Admin::EventsController < AdminController
     supporters = []
     params[:supporters].each do |supporter_id|
       supporter = Supporter.find(supporter_id)
-      TriggerMailer.deliver_trigger(trigger, supporter, event)
+      TriggerMailer.trigger(trigger, supporter, event).deliver
       trigger.bcc = ''
     end
 

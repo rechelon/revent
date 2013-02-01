@@ -2,16 +2,19 @@ class TriggerMailer < ActionMailer::Base
   def trigger(trigger, recipient, event, host=nil)
     host ||= Site.current.host.hostname
     sub_tokens(trigger, event, host, recipient)
-    @from = ["#{trigger.from_name} <#{trigger.from}>"]
-    @headers["reply-to"]  = trigger.reply_to
     if recipient.respond_to? :inject
-      @recipients = recipient.map {|r| "#{r.email}"}
+      recipients = recipient.map {|r| "#{r.email}"}
     else
-      @recipients = ["#{recipient.email}"]
+      recipients = "#{recipient.email}"
     end
-    @bcc = trigger.bcc
-    @subject = trigger.subject
-    @body = {:email_plain => trigger.email_plain, :email_html => trigger.email_html}
+    @email_plain = trigger.email_plain
+    @email_html => trigger.email_html}
+    mail(:to => recipients,
+         :subject => trigger.subject,
+         :from => "#{trigger.from_name} <#{trigger.from}>",
+         :bcc => trigger.bcc,
+         :'reply-to' => trigger.reply_to)
+         
   end
 
   protected
