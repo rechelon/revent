@@ -1,6 +1,6 @@
 source :gemcutter
 gem 'i18n'
-gem 'rails', '2.3.15'
+gem 'rails', '2.3.16'
 gem "aws-s3", "~> 0.6.2"
 gem 'capistrano', '2.5.19'
 gem 'delayed_job', '2.0.7'
