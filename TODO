@@ -5,6 +5,7 @@
 - get rid of everthing in /plugin that we can remove
 - migrate to rails 3 
   - rewrite lib/memcache_util.rb
+- add event importer vendor library
 - migrate to ruby 1.9.3
 - easy install script
 - documentation
