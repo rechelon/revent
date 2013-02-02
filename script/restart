@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-RAILS_ROOT="$( cd -P "$( dirname "$0" )"/.. && pwd )"
-cd $RAILS_ROOT
-echo $RAILS_ROOT
-touch $RAILS_ROOT/tmp/restart.txt
-#rake theme_update_cache
