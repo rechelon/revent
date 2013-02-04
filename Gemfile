@@ -1,6 +1,5 @@
 source :gemcutter
-gem 'i18n'
-gem 'rails', '2.3.16'
+gem 'rails', '3.0.20'
 gem "aws-s3", "~> 0.6.2"
 #gem 'capistrano', '2.5.19'
 gem 'fastercsv'
@@ -33,7 +32,7 @@ gem "activerecord-activesalesforce-adapter", "~> 2.0.0"
 gem "typhoeus"
 gem "sanitize"
 gem "hoptoad_notifier"
-gem "factory_girl"
+gem "factory_girl", "~> 1.1"
 
 group :test do
   gem 'rspec', '1.3.2'
