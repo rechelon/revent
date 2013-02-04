@@ -64,6 +64,7 @@ class Event < ActiveRecord::Base
     { :order => "created_at #{order =~ /desc/i ? 'DESC' : 'ASC'}" }
   }
   
+  geocoded_by :address_for_geocode
   before_validation :geocode
   before_save :set_calendar, :set_district, :clean_country_state, :clean_date_time, :set_host_name, :sanitize_input
   before_destroy :delete_from_democracy_in_action
@@ -404,7 +405,7 @@ class Event < ActiveRecord::Base
   end
   
   def nearby_events
-    self.calendar.events.searchable.find(:all, :origin => self, :within => 50, :conditions => ["events.id <> ?", self.id])
+    self.calendar.events.searchable.near(self, 50).find(:all, :conditions => ["events.id <> ?", self.id])
   end
 
   def set_calendar
@@ -607,16 +608,18 @@ private
   def geocode
     # only geocode US or Canadian events
     return unless (country_code == COUNTRY_CODE_USA or country_code == COUNTRY_CODE_CANADA)
-    if (geo = GeoKit::Geocoders::MultiGeocoder.geocode(address_for_geocode)).success
-      self.latitude, self.longitude = geo.lat, geo.lng
-      self.precision = geo.precision
+    if (geo = Geocoder.search(address_for_geocode)).count == 1
+      self.latitude = geo[0].coordinates[0]
+      self.longitude = geo[0].coordinates[1]
+      self.precision = geo[0].precision
     elsif self.postal_code =~ /^\d{5}(-\d{4})?$/ and (zip = ZipCode.find_by_zip(self.postal_code))
       self.latitude, self.longitude = zip.latitude, zip.longitude if zip
       self.precision = 'zip'
     elsif self.postal_code   # handle US postal codes not in ZipCode table and Canadian postal
-      if (geo = GeoKit::Geocoders::MultiGeocoder.geocode(self.postal_code)).success
-        self.latitude, self.longitude = geo.lat, geo.lng
-        self.precision = geo.precision
+      if (geo = Geocoder.search(self.postal_code)).count == 1
+        self.latitude = geo[0].coordinates[0]
+        self.longitude = geo[0].coordinates[1]
+        self.precision = geo[0].precision
       end
     end
   end
