@@ -1,5 +1,6 @@
 class Supporter < ActiveRecord::Base
   acts_as_mappable :lat_column_name => 'latitude', :lng_column_name => 'longitude'
+  geocoded_by :address_for_geocode
   before_save :geocode
   
   def self.near_event(event)
@@ -9,7 +10,7 @@ class Supporter < ActiveRecord::Base
     likes = 'true' if likes.empty?
     likes = "( "+likes+" )"
     
-    find(:all, :origin => event.postal_code, :within => Site.current.config.nearby_supporter_radius, :conditions => likes)
+    near(event.postal_code, Site.current.config.nearby_supporter_radius).find(:all, :conditions => likes)
   end
 
   def self.create_supporters_from_dia_group(group_key)
@@ -57,19 +58,21 @@ class Supporter < ActiveRecord::Base
   alias address address_for_geocode
 
   private
-   def geocode
-    if (geo = GeoKit::Geocoders::MultiGeocoder.geocode(address_for_geocode)).success
-      self.latitude, self.longitude = geo.lat, geo.lng
-      self.precision = geo.precision
+  def geocode
+    if (geo = Geocoder.search(address_for_geocode)).count == 1
+      self.latitude = geo[0].coordinates[0]
+      self.longitude = geo[0].coordinates[1]
+      self.precision = geo[0].precision
     elsif self.postal_code =~ /^\d{5}(-\d{4})?$/ and (zip = ZipCode.find_by_zip(self.postal_code))
       self.latitude, self.longitude = zip.latitude, zip.longitude if zip
       self.precision = 'zip'
     elsif self.postal_code   # handle US postal codes not in ZipCode table and Canadian postal
-      if (geo = GeoKit::Geocoders::MultiGeocoder.geocode(self.postal_code)).success
-        self.latitude, self.longitude = geo.lat, geo.lng
-        self.precision = geo.precision
+      if (geo = Geocoder.search(self.postal_code)).count == 1
+        self.latitude = geo[0].coordinates[0]
+        self.longitude = geo[0].coordinates[1]
+        self.precision = geo[0].precision
       end
     end
-   end
+  end
 
 end
