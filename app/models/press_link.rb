@@ -1,5 +1,6 @@
 class PressLink < ActiveRecord::Base
   belongs_to :report
+  before_save :add_http
   
   validate :verify_url
   def verify_url
@@ -10,7 +11,7 @@ class PressLink < ActiveRecord::Base
     end
   end
   
-  def before_save
+  def add_http
     # add 'http://' at beginning of url if not there
     if not self.url =~ /^https?:\/\/.*/
       self.url = "http://" + self.url

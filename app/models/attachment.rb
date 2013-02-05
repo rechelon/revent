@@ -75,7 +75,7 @@ class Attachment < ActiveRecord::Base
   belongs_to :user
   belongs_to :report
   belongs_to :event
-  after_validation_on_create :set_event_id
+  after_validation :set_event_id, :on => :create
   def set_event_id
     self.event_id ||= report.event_id if report
   end
