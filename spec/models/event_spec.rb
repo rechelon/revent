@@ -5,8 +5,9 @@ describe Event do
     initialize_site
 
     # mock geocoder
-    @geo = stub('geo', :lat => 77.7777, :lng => -111.1111, :precision => "street", :success => true)
-    GeoKit::Geocoders::MultiGeocoder.stub!(:geocode).and_return(@geo)
+    @geo = stub('geo', [:coordinates => [77.7777, -111.1111], :precision => "ROOFTOP"])
+
+    Geocoder.stub!(:search).and_return(@geo)
 
     # mock democracy in action api
     @dia_api = stub('dia_api', :save => true, :authenticate => true)
