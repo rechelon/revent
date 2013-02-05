@@ -8,7 +8,7 @@ class TriggerMailer < ActionMailer::Base
       recipients = "#{recipient.email}"
     end
     @email_plain = trigger.email_plain
-    @email_html => trigger.email_html}
+    @email_html = trigger.email_html
     mail(:to => recipients,
          :subject => trigger.subject,
          :from => "#{trigger.from_name} <#{trigger.from}>",

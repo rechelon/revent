@@ -24,7 +24,7 @@ class UserMailer < ActionMailer::Base
     host ||= Site.current.host.hostname if Site.current && Site.current.host
     @event = event
     @message = message[:body]
-    @url => url_for(:host => host, :permalink => event.calendar.permalink, :controller => 'events', :action => 'show', :id => event)
+    @url = url_for(:host => host, :permalink => event.calendar.permalink, :controller => 'events', :action => 'show', :id => event)
     mail(:to => from,
          :from => from,
          :bcc => (event.attendees || event.to_democracy_in_action_event.attendees.collect {|a| User.new :email => a.Email}).collect {|a| a.email}.compact.join(','),
@@ -40,7 +40,7 @@ class UserMailer < ActionMailer::Base
 
   def activation(user)
     host ||= Site.current.host.hostname if Site.current && Site.current.host
-    @url => url_for(:host => host, :controller => 'account', :action => 'activate', :id => user.activation_code)
+    @url = url_for(:host => host, :controller => 'account', :action => 'activate', :id => user.activation_code)
     mail(:to => user.email,
          :from => admin_email(user) || 'events@radicaldesigns.org',
          :subject => "Account Avtivation on #{host}")
@@ -83,8 +83,8 @@ class UserMailer < ActionMailer::Base
   def setup_email(user)
     host = Site.current && Site.current.host ? Site.current.host.hostname : ''
     {
-      :to          => "#{user.email}" 
-      :from        => admin_email(user) || 'events@radicaldesigns.org'
+      :to          => "#{user.email}",
+      :from        => admin_email(user) || 'events@radicaldesigns.org',
       :subject     => "#{host} - "
     }
   end
