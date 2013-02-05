@@ -5,7 +5,7 @@ describe Site do
   describe "site.host" do
     it "should return first host if Host.current is not set" do
       Object.send(:remove_const, 'Host')
-      load RAILS_ROOT+'/app/models/host.rb'
+      load Rails.root.join('app','models','host.rb')
       @site = Site.new 
       @site.hosts << Host.new(:hostname => 'example.com')
       @site.hosts << Host.new(:hostname => 'foo.com')

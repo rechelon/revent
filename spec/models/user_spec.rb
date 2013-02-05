@@ -132,7 +132,7 @@ describe User do
       @user = build :user
       @dia_api = mock(DemocracyInAction::API)
       DemocracyInAction::API.stub!(:new).and_return(@dia_api)
-      Site.stub!(:current_config_path).and_return(File.join(RAILS_ROOT,'test','config'))
+      Site.stub!(:current_config_path).and_return(Rails.root.join('test','config'))
     end
 
     it "should push user to DIA supporter" do

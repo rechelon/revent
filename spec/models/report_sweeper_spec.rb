@@ -4,7 +4,7 @@ describe ReportSweeper do
   include CacheSpecHelpers
   include CacheCustomMatchers
   before do
-    test_cache_dir = File.join(RAILS_ROOT, 'tmp', 'cache', 'local_revent.org')
+    test_cache_dir = Rails.root.join('tmp', 'cache', 'local_revent.org')
     File.exists?(test_cache_dir) ? FileUtils.rm_rf(test_cache_dir) : FileUtils.mkdir_p(test_cache_dir)
     ActionController::Base.page_cache_directory = test_cache_dir
     ActionController::Base.perform_caching = true

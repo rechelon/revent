@@ -30,7 +30,7 @@ end
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
 # from the project root directory.
 ENV["RAILS_ENV"] ||= 'test'
-require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_ROOT)
+require File.dirname(__FILE__) + "/../config/environment" unless defined?(Rails.root)
 require 'spec/autorun'
 require 'spec/rails'
 require 'ostruct'
@@ -42,7 +42,7 @@ Spec::Runner.configure do |config|
   # in your config/boot.rb
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
-  config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
+  config.fixture_path = Rails.root.join 'spec', 'fixtures'
   config.include CacheCustomMatchers
   config.include AuthenticatedTestHelper
   config.include FactoryGirl::Syntax::Methods
@@ -62,12 +62,12 @@ def initialize_site( *args )
     @site.config.salsa_node = SALSA_TEST_ACCOUNT[:node]
     @site.save!
     Site.stub!(:current).and_return(@site)
-    Site.stub!(:current_config_path).and_return(File.join(RAILS_ROOT, 'test', 'config'))
+    Site.stub!(:current_config_path).and_return(Rails.root.join('test', 'config'))
     request.stub!(:host).and_return(Host.current.hostname) if defined?(request)
 end
 
 def test_uploaded_file(file = 'arrow.jpg', content_type = 'image/jpg')
-  ActionController::TestUploadedFile.new(File.join(RAILS_ROOT, 'spec', 'fixtures', 'attachments', file), content_type)
+  ActionController::TestUploadedFile.new(Rails.root.join('spec', 'fixtures', 'attachments', file), content_type)
 end
 
 def truncate_float(fl, precision)

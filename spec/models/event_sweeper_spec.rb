@@ -4,7 +4,7 @@ describe EventSweeper do
   include CacheSpecHelpers
   describe "when an event is created" do
     before do
-      ActionController::Base.page_cache_directory = File.join(RAILS_ROOT,'tmp','cache')
+      ActionController::Base.page_cache_directory = Rails.root.join('tmp','cache')
       Site.stub!(:current).and_return(build :site)
       # so sync to DIA does not happen
       Site.stub!(:current_config_path).and_return('tmp')

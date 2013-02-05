@@ -4,7 +4,7 @@ describe Event do
   before do
     Varnish::EventSweeper.instance.stub!(:after_create)
     Site.current = build :site, :id => 1
-    Site.stub!(:current_config_path).and_return(File.join(RAILS_ROOT, 'test', 'config'))
+    Site.stub!(:current_config_path).and_return(Rails.root.join('test', 'config'))
 
     # mock geocoder
     @geo = stub('geo', :lat => 77.7777, :lng => -111.1111, :precision => "street", :success => true)

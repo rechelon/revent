@@ -3,10 +3,11 @@ require File.dirname(__FILE__) + '/../spec_helper.rb'
 describe EventCustomAttribute do 
   before do
     Site.current = new_site(:id => 1)
-    Site.stub!(:current_config_path).and_return(File.join(RAILS_ROOT, 'test', 'config'))
+    Site.stub!(:current_config_path).and_return(Rails.root.join('test', 'config'))
 
     # mock geocoder
     @geo = stub('geo', :lat => 77.7777, :lng => -111.1111, :precision => "street", :success => true)
+
     GeoKit::Geocoders::MultiGeocoder.stub!(:geocode).and_return(@geo)
 
     # mock democracy in action api
