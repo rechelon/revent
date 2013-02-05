@@ -33,6 +33,7 @@ gem "typhoeus"
 gem "sanitize"
 gem "hoptoad_notifier"
 gem "factory_girl", "~> 1.1"
+gem "geocoder"
 
 group :test do
   gem 'rspec', '1.3.2'
