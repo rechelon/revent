@@ -499,24 +499,7 @@ class EventsController < ApplicationController
 
   # params['conditions'] and params['sort'] are ActiveRecord query hash
   def index
-    redirect_to calendar_home_url(:permalink=>@calendar.permalink) and return unless params[:query] || params[:sort]
-
-    origin = params[:query].delete(:origin) || params[:query].delete(:zip) if params[:query]
-    options = origin ? {:origin => origin, :within => 50, :order => 'distance'} : {}
-    options.merge!(:page => params[:page] || 1, :per_page => params[:per_page] || Event.per_page)
-    @events = @calendar.events.prioritize(params[:sort]).searchable.by_query(params[:query]).paginate(options)
-    respond_to do |format|
-      format.xml { render :xml => @events }
-      format.json { 
-        if params[:callback] && params[:target]
-          render :json => "Event.observe( window, 'load', function() { #{params[:callback]}(#{@events.to_json( :methods => [ :start_date, :segmented_date ] )}, '#{params[:target]}'); });"
-        elsif params[:callback]
-          render :json => @events.to_json( :methods => [ :start_date, :segmented_date ] ), :callback => params[:callback]
-        else
-          render :json => @events
-        end
-      }
-    end
+    redirect_to calendar_home_url(:permalink=>@calendar.permalink) and return
   end
 
   def international
