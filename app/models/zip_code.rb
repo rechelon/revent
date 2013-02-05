@@ -24,7 +24,6 @@
 class ZipCode < ActiveRecord::Base
   geocoded_by :zip
 
-  acts_as_mappable :lat_column_name => 'latitude', :lng_column_name => 'longitude'
   def self.find_districts_near_postal_code(postal_code, within = 20, limit = 20)
     zips = ZipCode.near(postal_code.to_s, within).find :all, :limit => limit 
     codes = zips.collect {|z| z.zip} + [postal_code]

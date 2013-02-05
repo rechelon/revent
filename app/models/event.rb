@@ -72,8 +72,6 @@ class Event < ActiveRecord::Base
   
   validates_presence_of :name, :calendar_id
 
-  acts_as_mappable :lat_column_name => 'latitude', :lng_column_name => 'longitude'
-
   def to_json o={}
     super({
       :except => [
