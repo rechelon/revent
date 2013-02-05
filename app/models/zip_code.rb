@@ -22,9 +22,11 @@
 # 2006) and is released under the M
 
 class ZipCode < ActiveRecord::Base
+  geocoded_by :zip
+
   acts_as_mappable :lat_column_name => 'latitude', :lng_column_name => 'longitude'
   def self.find_districts_near_postal_code(postal_code, within = 20, limit = 20)
-    zips = ZipCode.find :all, :origin => postal_code.to_s, :within => within, :order => 'distance DESC', :limit => limit 
+    zips = ZipCode.near(postal_code.to_s, within).find :all, :limit => limit 
     codes = zips.collect {|z| z.zip} + [postal_code]
 
     districts = codes.collect do |code|
@@ -33,7 +35,7 @@ class ZipCode < ActiveRecord::Base
   end
 
   def self.find_states_near_postal_code(postal_code, within = 20, limit = 100)
-    zips = ZipCode.find :all, :origin => postal_code.to_s, :within => within, :order => 'distance DESC', :limit => limit 
+    zips = ZipCode.near(postal_code.to_s, within).find :all, :limit => limit 
     states = zips.collect {|z| z.state}.compact.uniq
   end
 
