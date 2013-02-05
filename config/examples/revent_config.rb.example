@@ -48,10 +48,8 @@ SALSA_TEST_ACCOUNT = {
 }
 
 def initialize_geocoders
-  GeoKit::Geocoders::google = ''
-  GeoKit::Geocoders::yahoo  = ''
-  GeoKit::Geocoders::provider_order = [:google, :yahoo]
-  GeoKit::Geocoders::timeout = 4
+  Geocoder.config[:timeout] = 3
+  Geocoder.config[:lookup] = :google
 end
 
 def actionmailer_options environment
