@@ -446,11 +446,7 @@ class EventsController < ApplicationController
   def nearby_events
     postal_code = params[:postal_code]
     unless postal_code.blank?
-      begin
-        @nearby_events = @calendar.events.upcoming.searchable.find(:all, :origin => postal_code, :within => 25)
-      rescue GeoKit::Geocoders::GeocodeError
-        render(:text => "", :layout => false) and return
-      end
+      @nearby_events = @calendar.events.upcoming.searchable.near(postal_code, 25)
       unless @nearby_events.empty?
         render(:partial => 'shared/nearby_events', :layout => false) && return
       end
