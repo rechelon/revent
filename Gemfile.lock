@@ -45,7 +45,6 @@ GEM
     jammit (0.6.3)
       yui-compressor (>= 0.9.3)
     json (1.6.1)
-    libv8 (3.3.10.2)
     libxml-ruby (2.2.2)
     linecache (0.46)
       rbx-require-relative (> 0.0.4)
@@ -91,8 +90,6 @@ GEM
     sexp_processor (3.0.7)
     simple-rss (1.2.3)
     spork (0.8.5)
-    therubyracer (0.9.8)
-      libv8 (~> 3.3.10)
     tlsmail (0.0.1)
     transaction-simple (1.4.0)
       hoe (>= 1.1.7)
@@ -139,7 +136,6 @@ DEPENDENCIES
   sexp_processor
   simple-rss (= 1.2.3)
   spork (= 0.8.5)
-  therubyracer
   tlsmail (= 0.0.1)
   transaction-simple (= 1.4.0)
   typhoeus
