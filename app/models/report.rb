@@ -81,7 +81,6 @@ class Report < ActiveRecord::Base
   def background_processes
     self.sync_processed = true
     self.associate_partner_code
-    self.make_local_copies!
     self.build_press_links
     self.build_embeds
     #self.build_videos
@@ -171,18 +170,6 @@ class Report < ActiveRecord::Base
       attaches << data[i.to_s] unless data[i.to_s][:uploaded_data].blank?
     end
     self.attachments.build(attaches) if attaches.any?
-  end
-
-  # copy tempfiles to presistent files because attachments stored as 
-  # tempfiles are not guaranteed to persist if app server dies
-  def make_local_copies!
-    self.attachments.each {|a| a.make_local_copy}
-  end
-
-  # undo make_local_copies so that local attachment files
-  # get deleted (at some point)
-  def move_to_temp_files!
-    self.attachments.each {|a| a.move_to_temp_files}
   end
 
   def build_embeds
