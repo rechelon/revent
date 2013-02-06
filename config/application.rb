@@ -46,7 +46,7 @@ module Revent
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.autoload_paths += [Rails.root.join("vendor","democracy_in_action","lib")]
+    config.autoload_paths += [Rails.root.join("vendor","democracy_in_action","lib"), Rails.root.join("lib")]
 
     config.active_record.observers = :event_sweeper, :rsvp_sweeper, :calendar_sweeper, :attachment_sweeper, :report_sweeper, :'varnish/event_sweeper', :'varnish/theme_element_sweeper'
 
