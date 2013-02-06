@@ -1,10 +1,9 @@
-Revent::Application.routes do
+Revent::Application.routes.draw do
   match "/", :to => "calendars#show", :as => "home", :format => "html"
   match "logged_exceptions/:action(.:format)(/:id)", :controller => "logged_exceptions"
-  match "crossdomain.xml", :controller => "cross_domain", :format => "xml"
   match "events/upcoming/rss", :to => "events#upcoming_rss", :format => "xml"
   match "events/past/rss", :to => "events#past_rss", :format => "xml"
-  match "events/rss", :format => "xml"
+  match "events/rss", :to => "events#rss", :format => "xml"
   match ":permalink/events/upcoming/rss", :to => "events#upcoming_rss", :format => "xml"
   match ":permalink/events/past/rss", :to => "events#past_rss", :format => "xml"
   match ":permalink/events/rss", :to => "events#rss", :format => "xml"
@@ -63,8 +62,8 @@ Revent::Application.routes do
     match 'users/:action', :controller => 'users'
   end
 
-  match 'partners/:id', :controller => 'partners'
-  match ':permalink/partners/:id', :controller => 'partners'
+  match 'partners/:id', :to => 'partners#set_partner_cookie'
+  match ':permalink/partners/:id', :to => 'partners#set_partner_cookie'
 
   match ':permalink/events/fb_rsvp/:id', :to => 'events#fb_rsvp'
 
@@ -73,8 +72,8 @@ Revent::Application.routes do
  
   controller :events do
     scope :action => :new do
-      match ':permalink/signup/:partner_id', :as => 'signup'
-      match 'calendars/:calendar_id/signup/:partner_id'
+      match ':permalink/signup/(:partner_id)', :as => 'signup'
+      match 'calendars/:calendar_id/signup/(:partner_id)'
       match 'signup/(:partner_id)'
     end 
   end
@@ -155,7 +154,7 @@ Revent::Application.routes do
 
   # Install the default route as the lowest priority.
   match ':controller/:action/:id(.:format)'
-  match ':controller/:action.:format'
+  match ':controller/:action(.:format)'
 
   match ':permalink', :to => 'calendars#show', :as => 'calendar_home'
   match ':permalink/embed', :to => 'calendars#embed'
