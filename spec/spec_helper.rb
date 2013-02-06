@@ -1,55 +1,59 @@
-require 'rubygems'
 require 'spork'
+#uncomment the following line to use spork with the debugger
+#require 'spork/ext/ruby-debug'
 
 Spork.prefork do
-  # Loading more in this block will cause your tests to run faster. However, 
+  # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
-  
-end
 
-Spork.each_run do
-  # This code will be run each time you run your specs.
-  
-end
+  # This file is copied to spec/ when you run 'rails generate rspec:install'
+  ENV["RAILS_ENV"] ||= 'test'
+  require File.expand_path("../../config/environment", __FILE__)
+  require 'rspec/rails'
+  require 'rspec/autorun'
+  require 'cache_spec_helper'
 
-# --- Instructions ---
-# - Sort through your spec_helper file. Place as much environment loading 
-#   code that you don't normally modify during development in the 
-#   Spork.prefork block.
-# - Place the rest under Spork.each_run block
-# - Any code that is left outside of the blocks will be ran during preforking
-#   and during each_run!
-# - These instructions should self-destruct in 10 seconds.  If they don't,
-#   feel free to delete them.
-#
+  # Requires supporting ruby files with custom matchers and macros, etc,
+  # in spec/support/ and its subdirectories.
+  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+  RSpec.configure do |config|
+    # ## Mock Framework
+    #
+    # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
+    #
+    # config.mock_with :mocha
+    # config.mock_with :flexmock
+    # config.mock_with :rr
 
+    # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+    config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
+    # If you're not using ActiveRecord, or you'd prefer not to run each of your
+    # examples within a transaction, remove the following line or assign false
+    # instead of true.
+    config.use_transactional_fixtures = true
 
-# This file is copied to ~/spec when you run 'ruby script/generate rspec'
-# from the project root directory.
-ENV["RAILS_ENV"] ||= 'test'
-require File.dirname(__FILE__) + "/../config/environment" unless defined?(Rails.root)
-require 'spec/autorun'
-require 'spec/rails'
-require 'ostruct'
-require 'cache_spec_helper'
+    # If true, the base class of anonymous controllers will be inferred
+    # automatically. This will be the default behavior in future versions of
+    # rspec-rails.
+    config.infer_base_class_for_anonymous_controllers = false
 
-Spec::Runner.configure do |config|
-  # If you're not using ActiveRecord you should remove these
-  # lines, delete config/database.yml and disable :active_record
-  # in your config/boot.rb
-  config.use_transactional_fixtures = true
-  config.use_instantiated_fixtures  = false
-  config.fixture_path = Rails.root.join 'spec', 'fixtures'
-  config.include CacheCustomMatchers
-  config.include AuthenticatedTestHelper
-  config.include FactoryGirl::Syntax::Methods
-end
+    # Run specs in random order to surface order dependencies. If you find an
+    # order dependency and want to debug it, you can fix the order by providing
+    # the seed, which is printed after each run.
+    #     --seed 1234
+    config.order = "random"
 
+    config.include CacheCustomMatchers
+    config.include AuthenticatedTestHelper
 
-def initialize_site( *args )
+    config.include FactoryGirl::Syntax::Methods
+
+  end
+
+  def initialize_site( *args )
     opts = args.first || {}
     @site = opts['current_site'] || create(:site)
     @host = opts['current_host'] || create(:host, :site => @site)
@@ -64,13 +68,21 @@ def initialize_site( *args )
     Site.stub!(:current).and_return(@site)
     Site.stub!(:current_config_path).and_return(Rails.root.join('test', 'config'))
     request.stub!(:host).and_return(Host.current.hostname) if defined?(request)
+  end
+
+  def test_uploaded_file(file = 'arrow.jpg', content_type = 'image/jpg')
+    ActionController::TestUploadedFile.new(Rails.root.join('spec', 'fixtures', 'attachments', file), content_type)
+  end
+
+  def truncate_float(fl, precision)
+    factor = 10.0 ** precision
+    ( (fl * factor).floor ) / factor
+  end
 end
 
-def test_uploaded_file(file = 'arrow.jpg', content_type = 'image/jpg')
-  ActionController::TestUploadedFile.new(Rails.root.join('spec', 'fixtures', 'attachments', file), content_type)
+Spork.each_run do
+  # This code will be run each time you run your specs.
+
 end
 
-def truncate_float(fl, precision)
-  factor = 10.0 ** precision
-  ( (fl * factor).floor ) / factor
-end
+

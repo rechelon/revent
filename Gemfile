@@ -31,14 +31,12 @@ gem "activerecord-activesalesforce-adapter", "~> 2.0.0"
 gem "typhoeus"
 gem "sanitize"
 gem "hoptoad_notifier"
-gem "factory_girl", "~> 1.1"
 gem "geocoder"
 gem "carrierwave"
 gem "fog"
 
 group :test do
-  gem 'rspec', '1.3.2'
-  gem 'rspec-rails', '1.3.4'
-  gem 'spork', '0.8.5'
-#  gem 'webmock', '1.5.0'
+  gem "factory_girl_rails", "~> 1.1"
+  gem 'rspec-rails', '>= 2.0.0.beta.10'
+  gem 'spork', '~> 0.9.0.rc'
 end
