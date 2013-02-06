@@ -1,14 +1,13 @@
-- create seedable demo site
-- expose SiteConfig and host config in admin area
-- refactor OAuth to use standard ruby OAuth lib
 - revisit file uploading/attachments (migrate to paperclip) 
 - get rid of everthing in /plugin that we can remove
 - migrate to rails 3 
   - rewrite lib/memcache_util.rb
+- create seedable demo site
+- expose SiteConfig and host config in admin area
+- refactor OAuth to use standard ruby OAuth lib
 - add event importer vendor library
 - migrate to ruby 1.9.3
 - easy install script
 - documentation
 - security audit
 - pick version number out of a hat
-- git re-init & public release (leave old repo up somewhere)
