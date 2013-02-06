@@ -68,4 +68,7 @@ Net::SMTP.enable_tls( OpenSSL::SSL::VERIFY_NONE)
 require Rails.root.join('lib', 'scrub')
 require Rails.root.join('lib', 'shortline')
 
+ActionMailer::Base.smtp_settings = actionmailer_options Rails.env
+
 initialize_geocoders
+initialize_uploads Rails.env

@@ -24,8 +24,6 @@ Revent::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 end
 
-ActionMailer::Base.smtp_settings = actionmailer_options "development"
-
 DIA_ENABLED = false
 
 require 'memcache_util'

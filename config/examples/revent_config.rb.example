@@ -84,3 +84,36 @@ def actionmailer_options environment
     }
   end
 end
+
+def initialize_uploads environment
+  # options here are detailed in https://github.com/jnicklas/carrierwave
+  case environment
+  when "development"
+    CarrierWave.configure do |config|
+      config.fog_credentials = {
+        :provider               => 'AWS',                        # required
+        :aws_access_key_id      => 'xxx',                        # required
+        :aws_secret_access_key  => 'yyy',                        # required
+        :region                 => 'eu-west-1',                  # optional, defaults to 'us-east-1'
+        :host                   => 's3.example.com',             # optional, defaults to nil
+        :endpoint               => 'https://s3.example.com:8080' # optional, defaults to nil
+      }
+      config.fog_directory  = 'name_of_directory'                     # required
+      config.fog_public     = false                                   # optional, defaults to true
+      config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
+    end
+  when "production"
+    CarrierWave.configure do |config|
+      config.fog_credentials = {
+        :provider                         => 'Google',
+        :google_storage_access_key_id     => 'xxxxxx',
+        :google_storage_secret_access_key => 'yyyyyy'
+      }
+      config.fog_directory = 'name_of_directory'
+    end
+  when "test"
+    CarrierWave.configure do |config|
+      config.storage = :file
+    end
+  end
+end

@@ -38,8 +38,6 @@ Revent::Application.configure do
 
 end
 
-ActionMailer::Base.smtp_settings = actionmailer_options "test"
-
 DIA_ENABLED = true  
 
 require 'memcache_util'
