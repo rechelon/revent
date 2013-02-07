@@ -1,6 +1,7 @@
 - revisit file uploading/attachments (migrate to paperclip) 
 - get rid of everthing in /plugin that we can remove
 - migrate to rails 3 
+- write testss for Mailers
 - create seedable demo site
 - expose SiteConfig and host config in admin area
 - refactor OAuth to use standard ruby OAuth lib
