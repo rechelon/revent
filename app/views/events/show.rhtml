@@ -137,7 +137,7 @@
   <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
 </div>
 
-<%= link_to "Questions? Email the Host", {:update => 'email-host', :url => {:permalink=>@calendar.permalink, :controller => 'events', :action => 'email_host', :id => @event.id, :params => {:ajax => true}}, :method => :get}, :class=>"btn btn-info", :id=>'email-host-btn', :remote => true %>
+<%= link_to "Questions? Email the Host", {:permalink=>@calendar.permalink, :controller => 'events', :action => 'email_host', :id => @event.id }, :class=>"btn btn-info", :id=>'email-host-btn' %>
 
 <div id="email-host"></div>
 
@@ -148,7 +148,7 @@
 <% unless @event.worksite_event? || !@event.show_map?%>
   <% render :partial => 'maps/map_headers' %>
   <script type='text/javascript'>
-    revent.events = new Backbone.Collection([<%= @event.to_map_json %>],{model: EventModel});
+    revent.events = new Backbone.Collection([<%= @event.to_map_json.html_safe %>],{model: EventModel});
 
     jq(function($){
       events_map = new MapView({
