@@ -12,10 +12,13 @@ class Attachment < ActiveRecord::Base
   @@audio_content_types = ['application/ogg'].freeze
   @@document_content_types = ['application/pdf', 'application/msword', 'text/plain']
 
-  @@audio_condition = sanitize_sql(['content_type LIKE ? OR content_type IN (?)', 'audio%', @@audio_content_types]).freeze
-  @@image_condition = sanitize_sql(['content_type LIKE ?', 'image%']).freeze
-  @@document_condition = sanitize_sql(['content_type IN (?)', @@document_content_types]).freeze
+  @@audio_condition = ['content_type LIKE ? OR content_type IN (?)', 'audio%', @@audio_content_types].freeze
+  @@image_condition = ['content_type LIKE ?', 'image%'].freeze
+  @@document_condition = ['content_type IN (?)', @@document_content_types].freeze
   cattr_reader *%w(audio image document).collect! { |t| "#{t}_condition".to_sym }
+  def self.blah
+    sanitize_sql(['content_type LIKE ?', 'image%'])
+  end
 
   class << self
     def audio?(content_type)
@@ -39,11 +42,17 @@ class Attachment < ActiveRecord::Base
     end
 
     def with_content_types(types, &block)
-      scope(:find => { :conditions => types_to_conditions(types).join(' OR ') }, &block)
+      scope(:find => { :conditions => types_to_conditions(types) }, &block)
     end
 
     def types_to_conditions(types)
-      types.collect! { |t| '(' + send("#{t}_condition") + ')' }
+      type_conditions = types.collect! { |t| send("#{t}_condition") }
+      exp, args = [], []
+      type_conditions.each do |t|
+        exp << "("+t.first+")"
+        args += t.slice(1, t.count)
+      end
+      [exp.join(" OR "), *args]
     end
   end
 
