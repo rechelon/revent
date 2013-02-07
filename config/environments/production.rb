@@ -52,8 +52,7 @@ Revent::Application.configure do
   # Disable delivery errors if you bad email addresses should just be ignored
   config.action_mailer.raise_delivery_errors = false
 
-  config.cache_store = :dalli_store, MEMCACHE_SERVERS,
-    { :namespace => 'revent_production', :compress => true }
+  config.cache_store = :dalli_store, *(MEMCACHE_SERVERS + [{ :namespace => 'revent_production', :compress => true }])
 
 end
 
