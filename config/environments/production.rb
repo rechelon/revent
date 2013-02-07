@@ -58,8 +58,6 @@ end
 
 DIA_ENABLED = true
 
-require 'memcache_util'
-
 if defined?(PhusionPassenger)
   PhusionPassenger.on_event(:starting_worker_process) do |forked|
     if forked

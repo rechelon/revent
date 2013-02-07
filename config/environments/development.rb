@@ -26,6 +26,3 @@ Revent::Application.configure do
 end
 
 DIA_ENABLED = false
-
-DC = Dalli::Client.new(MEMCACHE_SERVERS)
-require 'memcache_util'

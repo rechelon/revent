@@ -39,5 +39,3 @@ end
 
 DIA_ENABLED = true  
 
-require 'memcache_util'
-
