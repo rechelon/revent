@@ -23,10 +23,9 @@ Revent::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-  config.cache_store = :dalli_store, *(MEMCACHE_SERVERS + [{ :namespace => 'revent_development', :compress => true }])
-
 end
 
 DIA_ENABLED = false
 
+DC = Dalli::Client.new(MEMCACHE_SERVERS)
 require 'memcache_util'
