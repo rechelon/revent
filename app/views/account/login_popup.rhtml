@@ -19,13 +19,13 @@
     </div>
     <div class="fb-login user-signup">
       <% if Host.current.fb_login_enabled? %>
-        <%= link_to('<img src="/images/fb-connect2.gif" border="0" alt="Sign in with facebook"/>', oauth_request_path(:provider=>'facebook'), :id=>'fb-oauth-btn', :class=>'oauth-btn') %>
+        <%= link_to('<img src="/images/fb-connect2.gif" border="0" alt="Sign in with facebook"/>'.html_safe, oauth_request_path(:provider=>'facebook'), :id=>'fb-oauth-btn', :class=>'oauth-btn') %>
       <% end %>
       <% if Host.current.google_login_enabled? %>
-        <%= link_to('Sign in with <span style="color:#0140CA">G</span><span style="color:#DD1812">o</span><span style="color:#FCCA03">o</span><span style="color:#0140CA">g</span><span style="color:#16A61E">l</span><span style="color:#DD1812">e<span>', oauth_request_path(:provider=>'google'), :id=>'google-oauth-btn', :class=>'oauth-btn') %>
+        <%= link_to('Sign in with <span style="color:#0140CA">G</span><span style="color:#DD1812">o</span><span style="color:#FCCA03">o</span><span style="color:#0140CA">g</span><span style="color:#16A61E">l</span><span style="color:#DD1812">e<span>'.html_safe, oauth_request_path(:provider=>'google'), :id=>'google-oauth-btn', :class=>'oauth-btn') %>
       <% end %>
       <% if Host.current.twitter_login_enabled? %>
-        <%= link_to('<img src="/images/sign-in-with-twitter-l.png" border="0" alt="Sign in with twitter"/>', oauth_request_path(:provider=>'twitter'), :id=>'twitter-oauth-btn', :class=>'oauth-btn') %>
+        <%= link_to('<img src="/images/sign-in-with-twitter-l.png" border="0" alt="Sign in with twitter"/>'.html_safe, oauth_request_path(:provider=>'twitter'), :id=>'twitter-oauth-btn', :class=>'oauth-btn') %>
       <% end %>
     </div>
     <div class="clear"></div>
@@ -42,7 +42,7 @@
     <h3>New Password</h3>
   </div>
   <div class="modal-body">
-      <%= form_tag url_for(:controller=>'account', :action => 'forgot_password') do %>
+      <%= form_tag url_for(:permalink=>@calendar.permalink,:controller=>'account', :action => 'forgot_password') do %>
           <p>Enter your e-mail address below and we will send you a link to reset your password.<p>
           <p>If you don't receive the requested password in your e-mail, check to see if it got trapped by a spam filter or got stuck in your "Junk E-Mail Folder"</p>
           <%= text_field_tag :email, "", :size => 50 %><br />

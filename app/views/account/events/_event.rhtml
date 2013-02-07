@@ -3,24 +3,24 @@
   <td><%= event.city_state  %></td>
   <td class="manage-event-controls">
     <% if hosting %>
-      <%= link_to '<i class="icon-eye-open icon-white"></i> Show', 
+      <%= link_to '<i class="icon-eye-open icon-white"></i> Show'.html_safe, 
           {:controller => '/events', :action => 'show', :permalink => event.calendar.permalink, :id => event},
           :class=>'btn btn-mini btn-info', :target=>'_new' %>
-      <%= link_to '<i class="icon-share icon-white"></i> Copy', 
+      <%= link_to '<i class="icon-share icon-white"></i> Copy'.html_safe, 
             copy_event_path(:permalink => event.calendar.permalink, :id => event ),
             :class=>'btn btn-mini btn-warning' %>
-      <%= link_to '<i class="icon-pencil icon-white"></i>  Manage', 
+      <%= link_to '<i class="icon-pencil icon-white"></i>  Manage'.html_safe, 
         {:controller => '/account/events', :permalink=> event.calendar.permalink, :action => 'show', :id => event}, 
             :class=>'btn btn-mini btn-info' %>
-      <%= link_to '<i class="icon-ban-circle icon-white"></i> Delete', 
+      <%= link_to '<i class="icon-ban-circle icon-white"></i> Delete'.html_safe, 
         {:controller => '/account/events',:action => 'destroy', :permalink => event.calendar.permalink, :id => event},
             :class=>'btn btn-mini btn-danger',
             :confirm=>'Delete this event?' %>
     <% else %>
-      <%= link_to '<i class="icon-eye-open icon-white"></i> Show', 
+      <%= link_to '<i class="icon-eye-open icon-white"></i> Show'.html_safe, 
           {:controller => '/events', :action => 'show', :permalink => event.calendar.permalink, :id => event},
           :class=>'btn btn-mini btn-info', :target=>'_new' %>
-      <%= link_to '<i class="icon-ban-circle icon-white"></i> Not Going', 
+      <%= link_to '<i class="icon-ban-circle icon-white"></i> Not Going'.html_safe, 
          {:controller => '/account/events', :permalink => event.calendar.permalink, :action => 'remove', :id => event},
             :class=>'btn btn-mini btn-danger' %>
     <% end %>

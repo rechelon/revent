@@ -1,6 +1,6 @@
 <div class="well">
   <div class="profile-edit-btn">
-    <%= link_to '<i class="icon-pencil icon-white"></i> Edit your profile', 
+    <%= link_to '<i class="icon-pencil icon-white"></i> Edit your profile'.html_safe, 
           profile_path(:permalink=>@calendar.permalink), 
           :class=>"btn btn-info" %>
   </div>

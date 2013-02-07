@@ -10,7 +10,7 @@
     </div>
     <div class="national-intro-directions">
       <% if @calendar.map_intro_text -%>
-        <%= @calendar.map_intro_text %>
+        <%= @calendar.map_intro_text.html_safe %>
       <% else -%>
         Click on a state or enter your zip code to find events near you...
       <% end -%>

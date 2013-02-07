@@ -12,9 +12,9 @@
     <div id="manage-logged-in" class="well" style="display:none">
       <ul id="manage-nav" class="nav nav-list">
         <li class="nav-header">Action Tools</li>
-        <li><%= link_to '<i class="icon-pencil"></i>&nbsp;Manage Your Actions', manage_account_url(:permalink=>@calendar.permalink) %></li>
-        <li><%= link_to '<i class="icon-user"></i>&nbspEdit Your Profile', profile_url(:permalink=>@calendar.permalink) %></li>
-        <li><%= link_to '<i class="icon-arrow-right"></i>&nbspLogout', logout_url(:permalink=>@calendar.permalink) %></li>
+        <li><%= link_to '<i class="icon-pencil"></i>&nbsp;Manage Your Actions'.html_safe, manage_account_url(:permalink=>@calendar.permalink) %></li>
+        <li><%= link_to '<i class="icon-user"></i>&nbspEdit Your Profile'.html_safe, profile_url(:permalink=>@calendar.permalink) %></li>
+        <li><%= link_to '<i class="icon-arrow-right"></i>&nbspLogout'.html_safe, logout_url(:permalink=>@calendar.permalink) %></li>
       </ul>
     </div>
   </div>
