@@ -16,9 +16,6 @@ class Attachment < ActiveRecord::Base
   @@image_condition = ['content_type LIKE ?', 'image%'].freeze
   @@document_condition = ['content_type IN (?)', @@document_content_types].freeze
   cattr_reader *%w(audio image document).collect! { |t| "#{t}_condition".to_sym }
-  def self.blah
-    sanitize_sql(['content_type LIKE ?', 'image%'])
-  end
 
   class << self
     def audio?(content_type)
