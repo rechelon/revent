@@ -89,11 +89,11 @@ Revent::Application.routes.draw do
   controller :'account/events' do
     scope :constraints => {:id => /\d+/} do
       scope :action => :show do
-        match 'profile/events/:id'
         match ':permalink/profile/events/:id'
+        match 'profile/events/:id'
       end
-      match 'profile/events/:action/:id'
       match ':permalink/profile/events/:action/:id'
+      match 'profile/events/:action/:id'
     end
   end
 
@@ -154,11 +154,12 @@ Revent::Application.routes.draw do
 
   # Install the default route as the lowest priority.
   match ':controller/:action/:id(.:format)'
-  match ':controller/:action(.:format)'
+  match ':controller/:action.:format'
 
   match ':permalink', :to => 'calendars#show', :as => 'calendar_home'
   match ':permalink/embed', :to => 'calendars#embed'
 
   match ':permalink/:controller/:action/:id(.:format)'
-  match ':permalink/:controller/:action.:format'
+  match ':permalink/:controller/:action(.:format)'
+  match ':permalink/:controller', :action => 'index'
 end
