@@ -2,17 +2,17 @@
 <script type="text/javascript">
 
   var revent = {};
-  revent.config = <%= Site.current.config.to_json %>;
+  revent.config = <%= Site.current.config.to_json.html_safe %>;
   revent.site_id = <%= @site_id %>;
-  revent.current_user = new AdminUser(<%= @current_user.to_admin_json %>);
+  revent.current_user = new AdminUser(<%= @current_user.to_admin_json.html_safe %>);
   revent.current_calendar_id = <%= @calendar.id %>;
   revent.calendars = new CalendarCollection();
-  revent.calendars.reset(<%= @calendars.to_json %>);
+  revent.calendars.reset(<%= @calendars.to_json.html_safe %>);
   revent.sponsors = new SponsorCollection();
-  revent.sponsors.reset(<%= @sponsors.to_json %>);
+  revent.sponsors.reset(<%= @sponsors.to_json.html_safe %>);
   revent.themes = new ThemeCollection(); 
-  revent.themes.reset(<%= @themes.to_json %>);
-  revent.theme_element_names = <%= Theme::THEME_ELEMENT_NAMES.to_json %>;
+  revent.themes.reset(<%= @themes.to_json.html_safe %>);
+  revent.theme_element_names = <%= Theme::THEME_ELEMENT_NAMES.to_json.html_safe %>;
   revent.users = new UserCollection();
   revent.events = new EventCollection({users:revent.users});
   revent.reports = new ReportCollection(); 

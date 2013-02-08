@@ -185,7 +185,7 @@ DEPENDENCIES
   hoe
   hoptoad_notifier
   httpclient
-  jammit
+  jammit (= 0.6.5)
   libxml-ruby
   linecache
   mem_cache_fragment_store (= 1.0.1)

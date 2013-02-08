@@ -20,7 +20,6 @@ javascripts:
     - public/javascripts/admin/templates/*.jst
     - public/javascripts/admin/views/row.js
     - public/javascripts/admin/views/search.js
-    - public/javascripts/admin/views/form.js
     - public/javascripts/admin/views/*.js
     - public/javascripts/deps/ace/*.js
     - public/javascripts/plugin/*/admin/**/*.js
@@ -36,7 +35,6 @@ javascripts:
     - public/javascripts/client/templates/*.jst
     - public/javascripts/client/views/row.js
     - public/javascripts/client/views/search.js
-    - public/javascripts/client/views/form.js
     - public/javascripts/client/views/*.js
     - public/javascripts/plugin/*/client/**/*.js
 

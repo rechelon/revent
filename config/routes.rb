@@ -8,8 +8,10 @@ Revent::Application.routes.draw do
   match ":permalink/events/past/rss", :to => "events#past_rss", :format => "xml"
   match ":permalink/events/rss", :to => "events#rss", :format => "xml"
   match ":permalink/map.:format", :to => "maps#index"
+  match ":permalink/maps", :to => "maps#index"
 
   namespace :admin do
+    match '/', :to => 'admin#index'
     match 'events/alert_nearby_supporters'
     match 'events/export'
     match 'users/export'
@@ -161,5 +163,4 @@ Revent::Application.routes.draw do
 
   match ':permalink/:controller/:action/:id(.:format)'
   match ':permalink/:controller/:action(.:format)'
-  match ':permalink/:controller', :action => 'index'
 end

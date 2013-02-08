@@ -68,7 +68,8 @@ var EventModel = Backbone.Model.extend({
   },
   
   get_start: function(){
-    return Date.parse(this.get('start')).toString('MM/dd/yyyy hh:mm tt'); 
+    var start = this.get('start');
+    return start ? Date.parse(this.get('start')).toString('MM/dd/yyyy hh:mm tt') : null;
   },
 
   get_end: function(){
