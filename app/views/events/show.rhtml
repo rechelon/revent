@@ -93,7 +93,7 @@
     <div id="event-directions" class="event-info">
       <span class="label info-label">Directions</span>
       <p>
-        <%= white_list word_wrap(auto_link(@event.directions) {|text| truncate(text, 40) + " " }) %>
+        <%= white_list word_wrap(auto_link(@event.directions) {|text| truncate(text, :length => 40) + " " }) %>
       </p>
     </div>
   <% end %>

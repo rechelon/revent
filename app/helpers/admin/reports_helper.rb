@@ -8,7 +8,7 @@ module Admin::ReportsHelper
   end
 
   def event_column(report)
-    h(truncate(report.event.name, 30))
+    h(truncate(report.event.name, :length => 30))
   end
   
   def status_form_column(report, input_name)

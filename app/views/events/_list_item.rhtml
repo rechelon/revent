@@ -14,6 +14,6 @@
     <h4><%= white_list(list_item.city_state) %></h4>
   </div>
   <div class="event-list-description">
-    <%= truncate(list_item.description(), 375, '...') %>
+    <%= truncate(list_item.description(), :length => 375, :omission => '...') %>
   </div>
 </div>

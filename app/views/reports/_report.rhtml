@@ -9,7 +9,7 @@
       <%= link_to "#{report.event.city_state}", report_url(:permalink => @calendar.permalink, :event_id => report.event.id) %>		
     </div>
     <div class="report-list-text">
-      <%= truncate report.text, 280 %>
+      <%= truncate report.text, :length => 280 %>
     </div>
     <% if report.instance_variable_get(:@distance_from_search) -%>
     <div class="report-list-miles">

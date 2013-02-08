@@ -1,5 +1,5 @@
 <tr class ="profile_item_row" id="report-<%= report.id %>">
-  <td><%= truncate report.text, 80 %></td>
+  <td><%= truncate report.text, :length => 80 %></td>
   <td><%= report.reporter_name %> </td>
   
   <td><%= link_to 'Edit', :controller => 'account/reports', :action => 'edit', :id => report %></td>
