@@ -40,7 +40,7 @@
     <%= @calendar.name %> Reports
   </h1>
   <div class="report-add-link">
-    <%= link_to '<i class="icon-plus-sign icon-white"></i> Add a Report Back', {:permalink => @calendar.permalink, :controller => "reports", :action => "new"},{ :class =>'report-back-btn btn btn-primary'} %>
+    <%= link_to '<i class="icon-plus-sign icon-white"></i> Add a Report Back'.html_safe, {:permalink => @calendar.permalink, :controller => "reports", :action => "new"},{ :class =>'report-back-btn btn btn-primary'} %>
   </div>
   <div id='report-search'>
   </div>

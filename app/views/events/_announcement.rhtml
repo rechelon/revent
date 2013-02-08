@@ -1,5 +1,5 @@
 <div class="event-announcement">
   <h4><%= white_list(announcement.title) %></h4>
   <div class="event-annoucement-time"><%= announcement.created_at.to_s(:short) %></div>
-  <p class="event-annoucement-details"><%= white_list(simple_format(announcement.body)) %></p>
+  <p class="event-annoucement-details"><%= white_list(simple_format(announcement.body)).html_safe %></p>
 </div>
