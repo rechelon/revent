@@ -9,7 +9,7 @@
   <%= render :partial => "fb_event_sync", :locals => {:event => @event} %>
  
   <div class="row spacer">
-    <%= link_to_function '<i class="icon-pencil icon-white"></i> Edit Your Event', visual_effect(:toggle_blind,'profile_event_edit'), :class=>'btn btn-large btn-primary span4' %>
+    <%= link_to_function '<i class="icon-pencil icon-white"></i> Edit Your Event'.html_safe, visual_effect(:toggle_blind,'profile_event_edit'), :class=>'btn btn-large btn-primary span4' %>
   </div>
 
   <div id="profile_event_edit" <% if @event.errors.empty? %> style="display:none;"<% end %>>
@@ -70,7 +70,7 @@
 
 
   <div class="row spacer">
-    <%= link_to_function '<i class="icon-share"></i> Share Your Event', visual_effect(:toggle_blind,'profile_event_promote'), :class=>"btn btn-large span4" %>
+    <%= link_to_function '<i class="icon-share"></i> Share Your Event'.html_safe, visual_effect(:toggle_blind,'profile_event_promote'), :class=>"btn btn-large span4" %>
   </div>
 
     <div id="profile_event_promote"  class="form-horizontal well" style="display:none;">
@@ -88,7 +88,7 @@
     </div>
 
   <div class="row spacer">
-    <%= link_to_function '<i class="icon-camera"></i> Manage Event Report Backs', visual_effect(:toggle_blind, 'profile_event_report'), :class=>'btn btn-large span4' %>
+    <%= link_to_function '<i class="icon-camera"></i> Manage Event Report Backs'.html_safe, visual_effect(:toggle_blind, 'profile_event_report'), :class=>'btn btn-large span4' %>
   </div>
 
   <div id="profile_event_report" class="form-horizontal" <% if @report.nil? || @report.errors.empty? %> style="display:none;"<% end %>>
@@ -149,7 +149,7 @@
   </div>
           
   <div class="row spacer">
-    <%= link_to_function '<i class="icon-eye-open "></i> View and Contact Event Attendees', visual_effect(:toggle_blind,'profile_event_attend'),:class=>"btn btn-large span4" %>
+    <%= link_to_function '<i class="icon-eye-open "></i> View and Contact Event Attendees'.html_safe, visual_effect(:toggle_blind,'profile_event_attend'),:class=>"btn btn-large span4" %>
   </div>
 	
   <div id="profile_event_attend" style="display:none;" class="form-horizontal well">
@@ -189,7 +189,7 @@
   </div>
 	
   <div class="row spacer">
-    <%= link_to_function '<i class="icon-envelope"></i> Invite People to Your Event', visual_effect(:toggle_blind, 'profile_event_invite'), :class=>'btn btn-large span4'%>
+    <%= link_to_function '<i class="icon-envelope"></i> Invite People to Your Event'.html_safe, visual_effect(:toggle_blind, 'profile_event_invite'), :class=>'btn btn-large span4'%>
   </div>
 
   <div id="profile_event_invite" style="display:none;" class="form-horizontal well">	
@@ -228,7 +228,7 @@
   </div>
 
   <div class="row spacer">
-    <%= link_to_function '<i class="icon-comment"></i> Post an Announcement About Your Event', visual_effect(:toggle_blind, 'profile_event_blog'), :class=>'btn btn-large span4' %>
+    <%= link_to_function '<i class="icon-comment"></i> Post an Announcement About Your Event'.html_safe, visual_effect(:toggle_blind, 'profile_event_blog'), :class=>'btn btn-large span4' %>
   </div>
 
   <div id="profile_event_blog"  class="form-horizontal well" <% if @blog.nil? || @blog.errors.empty? %> style="display:none;"<% end %>>
