@@ -20,7 +20,7 @@ class UserMailer < ActionMailer::Base
          :bcc => message[:recipients].split(separator).each{|email| email.strip!})
   end
 
-  def message(from, event, message, host=nil)
+  def generic_message(from, event, message, host=nil)
     host ||= Site.current.host.hostname if Site.current && Site.current.host
     @event = event
     @message = message[:body]
@@ -65,7 +65,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def message_to_host(message, host)
-    @body = message[:body]
+    @message_body = message[:body]
     mail(:to => host.email,
          :from => message[:from],
          :subject => message[:subject])
@@ -73,7 +73,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def message_to_email(message, email)
-    @body = message[:body]
+    @message_body = message[:body]
     mail(:to => email,
          :from => message[:from],
          :subject => message[:subject])

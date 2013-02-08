@@ -128,7 +128,7 @@ class Account::EventsController < AccountControllerShared
   end
 
   def message
-    UserMailer.message(current_user.email, @event, params[:message]).deliver
+    UserMailer.generic_message(current_user.email, @event, params[:message]).deliver
     flash[:notice] = 'Email delivered'
     redirect_to :permalink => @calendar.permalink, :action => 'show', :id => @event
   end
