@@ -13,7 +13,7 @@ class Admin::ReportsController < AdminController
       format.json do
         params[:restrict_to_admins] = "true"
         params[:send_x_headers] = "true"
-        render :json => fetch_reports(params)
+        render :json => fetch_reports(params).as_json(:include => [:event, :user])
       end
     end
   end
