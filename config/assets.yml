@@ -5,7 +5,7 @@ package_assets: off
 javascripts:
   framework:
     - public/javascripts/deps/jquery.js
-    - public/javascripts/deps/underscore.js
+    - public/javascripts/deps/underscore-min.js
     - public/javascripts/deps/*.js
     - public/javascripts/framework/helpers/*.js
     - public/javascripts/framework/collections/*.js

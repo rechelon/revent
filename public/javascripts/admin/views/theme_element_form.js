@@ -20,7 +20,7 @@ var ThemeElementFormView = Backbone.View.extend({
     var editor = ace.edit(jq('.markdown-text', this.el)[0]);
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/html");
-    editor.setValue(this.model.get('markdown'));
+    editor.setValue(_.unescape(this.model.get('markdown')));
     editor.getSession().getSelection().clearSelection();
     editor.getSession().on('change', function(e) {
       theme_element.set({'markdown': editor.getValue()});
