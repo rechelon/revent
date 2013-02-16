@@ -30,7 +30,8 @@ class Report < ActiveRecord::Base
   before_save :update_calendar, :sanitize_input
   after_save :save_user_if_dirty
 
-  def to_json o={}
+  def as_json o={}
+    o ||= {}
     super({
       :include => {
         :event => {:only => [:id,:name,:start,:state,:postal_code,:city]},

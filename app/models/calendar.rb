@@ -60,7 +60,8 @@ class Calendar < ActiveRecord::Base
   #before_validation :escape_permalink
   before_create :attach_to_all_calendar
   
-  def to_json o={}
+  def as_json o={}
+    o ||= {}
     super({
       :except =>[:site_id],
       :include => [:hostform,:categories,:triggers]

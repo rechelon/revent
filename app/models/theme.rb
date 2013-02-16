@@ -26,7 +26,7 @@ class Theme < ActiveRecord::Base
     end
   end
 
-  def to_json o={}
+  def as_json o={}
     super({
       :include => [:elements]
     }.merge o)

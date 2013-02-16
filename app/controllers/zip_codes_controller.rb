@@ -19,7 +19,7 @@ class ZipCodesController < ApplicationController
         else
           ret = zip
         end
-        render :json => ret.to_json({
+        render :json => ret.as_json({
           :except=>[
             :city,
             :latitude,

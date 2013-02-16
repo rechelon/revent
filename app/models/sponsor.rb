@@ -10,7 +10,7 @@ class Sponsor < ActiveRecord::Base
 
   before_create :set_site_id
 
-  def to_json o={}
+  def as_json o={}
     super({
       :except => [:site_id]
     }.merge o)

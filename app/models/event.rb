@@ -72,7 +72,7 @@ class Event < ActiveRecord::Base
   
   validates_presence_of :name, :calendar_id
 
-  def to_json o={}
+  def as_json o={}
     super({
       :except => [
         :short_description,
@@ -87,7 +87,7 @@ class Event < ActiveRecord::Base
   end
 
   def to_map_json o={}
-    to_json(MAP_JSON.merge o)
+    as_json(MAP_JSON.merge o)
   end
 
   def find_by_calendar_id( calendar_id )
@@ -578,7 +578,7 @@ class Event < ActiveRecord::Base
   def to_fb
     event_hash = attributes 
     event_hash[:fb_start] = fb_start
-    event_hash.to_json
+    event_hash.as_json
   end 
 
   def authorized_for_create?

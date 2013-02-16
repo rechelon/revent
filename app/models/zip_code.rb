@@ -86,7 +86,7 @@ class ZipCode < ActiveRecord::Base
       return result.sort { |a, b| a.distance_to_search_zip <=> b.distance_to_search_zip }
    end
 
-   def to_json o={}
+   def as_json o={}
       super({
       }.merge o)
    end

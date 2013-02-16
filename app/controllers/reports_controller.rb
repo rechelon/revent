@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
         params[:calendar] = @calendar
         params[:published] = true
         params[:send_x_headers] = "true"
-        render :json => fetch_reports(params).to_json(:include => :event)
+        render :json => fetch_reports(params).as_json(:include => :event)
       end
     end
   end

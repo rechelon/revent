@@ -86,7 +86,7 @@ class Account::EventsController < AccountControllerShared
           redirect_to :permalink => @calendar.permalink, :action => 'show', :id => @event
         end
         format.json do 
-          render :json => @event.to_json
+          render :json => @event.as_json
         end
       end
 
@@ -104,7 +104,7 @@ class Account::EventsController < AccountControllerShared
     @event.fb_id = params[:fb_id]
     @event.save
     @event.sync_unless_deferred
-    render :json => @event.to_json
+    render :json => @event.as_json
   end
   
   def update_campaign_scripts(event)

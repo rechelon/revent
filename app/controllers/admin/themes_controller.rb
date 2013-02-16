@@ -9,7 +9,7 @@ class Admin::ThemesController < AdminController
       end
       format.json do
         @themes = Theme.find(:all,{:conditions=>{:site_id=>Site.current.id}},:include=>[:elements])
-        render :json => @themes.to_json(:include => :elements)
+        render :json => @themes.as_json(:include => :elements)
       end
     end
   end
