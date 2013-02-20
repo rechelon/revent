@@ -9,6 +9,17 @@ class Attachment < ActiveRecord::Base
   belongs_to :report
   belongs_to :event
 
+  belongs_to :parent, :class_name => 'Attachment'
+  has_many :children, :class_name => 'Attachment', :foreign_key => 'parent_id'
+
+  scope :old, :conditions => "old = true"
+  scope :new, :conditions => "old = false"
+
+  @@thumbnail_types = [:list, :lightbox, :pageview]
+  @@thumbnail_types.each do |type|
+    scope type, :conditions => "thumbnail = '#{type.to_s}'"
+  end
+
   @@audio_content_types = ['application/ogg'].freeze
   @@document_content_types = ['application/pdf', 'application/msword', 'text/plain']
 
@@ -50,6 +61,20 @@ class Attachment < ActiveRecord::Base
         args += t.slice(1, t.count)
       end
       [exp.join(" OR "), *args]
+    end
+  end
+
+  def public_filename type
+    return self.filename.url if type.nil?
+    @@thumbnail_types.each do |tt|
+      if type == tt
+        if self.old?
+          return '' if self.children.send(tt.to_s).empty?
+          return self.children.send(tt.to_s).first.filename.url
+        else
+          return self.filename.thumbnail.send(tt.to_s).url
+        end
+      end
     end
   end
 
