@@ -87,7 +87,7 @@ class Event < ActiveRecord::Base
   end
 
   def to_map_json o={}
-    as_json(MAP_JSON.merge o)
+    to_json(MAP_JSON.merge o)
   end
 
   def find_by_calendar_id( calendar_id )
