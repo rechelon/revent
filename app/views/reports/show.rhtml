@@ -79,7 +79,7 @@
   <div class="report-images">
     <% report.attachments.find_all {|a| a.image?}.each do |image| %>
     <div class="report-image">
-      <%= link_to(image_tag(image.public_filename(:display)), {:controller => :reports, :action => :lightbox, :id => image.id}, :class => 'lbOn') %>
+      <%= link_to(image_tag(image.public_filename(:pageview)), {:controller => :reports, :action => :lightbox, :id => image.id}, :class => 'lbOn') %>
       <div class="media-caption">
         <legend>
           <%= image.caption %>

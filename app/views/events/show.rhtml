@@ -123,7 +123,7 @@
     <ul class='unstyled'>
       <% @event.images.collect do |image| %>
         <li>
-          <%= image_tag image.public_filename(:display) %><br />
+          <%= image_tag image.public_filename(:pageview) %><br />
           <% if image.caption %>
             <%= image.caption %><br />
           <% end %>

@@ -13,7 +13,7 @@
       <div id="event-host-contact">Contact: <%= @host.phone %></div>
     <% end -%>
     <% if @host.profile_image -%>
-      <div id="event-host-image"><%= image_tag(@host.profile_image.public_filename(:display)) %></div>
+      <div id="event-host-image"><%= image_tag(@host.profile_image.public_filename(:pageview)) %></div>
     <% end -%>
   <% end %>
   <div id="event-host-email">
