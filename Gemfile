@@ -32,7 +32,7 @@ gem "typhoeus"
 gem "sanitize"
 gem "hoptoad_notifier"
 gem "geocoder"
-gem "carrierwave"
+gem "carrierwave", :git => "git://github.com/Hainish/carrierwave.git", :branch => '0.5-stable'
 gem "fog"
 
 group :test do
