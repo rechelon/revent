@@ -11,7 +11,7 @@
   revent.sponsors = new SponsorCollection();
   revent.sponsors.reset(<%= @sponsors.to_json.html_safe %>);
   revent.themes = new ThemeCollection(); 
-  revent.themes.reset(<%= @themes.to_json(:include => :elements).html_safe %>);
+  revent.themes.reset(<%= @themes.to_json.html_safe %>);
   revent.theme_element_names = <%= Theme::THEME_ELEMENT_NAMES.to_json.html_safe %>;
   revent.users = new UserCollection();
   revent.events = new EventCollection({users:revent.users});

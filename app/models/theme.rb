@@ -27,8 +27,14 @@ class Theme < ActiveRecord::Base
   end
 
   def as_json o={}
+    o ||= {}
     super({
-      :include => [:elements]
+      :include => {
+        :elements => {
+          :except => [:markdown],
+          :methods => [:escaped_markdown]
+        }
+      }
     }.merge o)
   end
 
