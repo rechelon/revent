@@ -3,7 +3,7 @@
   <% if !event.worksite_event? %>
     <%= white_list([event.city, event.state].compact.join(', ')) %><br/>
   <% end -%>
-  <%= sponsor_string event%>
+  <%= sponsor_string(event).html_safe %>
   <%= event.start.strftime('%a %b %d %I:%M%p').gsub(/ 0/,' ') if event.start %><br/>
   <%= link_to 'Click for more details', {:permalink => event.calendar.permalink, :controller => 'events', :action => 'show', :id => event.id },{:target=>'_blank'}%>
   <% if event.past? %>

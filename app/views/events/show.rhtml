@@ -48,7 +48,7 @@
     <span class="label info-label">Event Description</span><%= simple_format(white_list(auto_link(@event.description))) %>
   </div>
 
-  <%= sponsor_string @event %>
+  <%= sponsor_string(@event).html_safe %>
 
   <% if @event.category %>  
     <div id="event-category" class="event-info">
