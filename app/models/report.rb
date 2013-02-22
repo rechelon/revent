@@ -168,7 +168,7 @@ class Report < ActiveRecord::Base
   def attachment_data=(data)
     attaches = []
     (1..data.count).each do |i|
-      attaches << data[i.to_s] unless data[i.to_s][:uploaded_data].blank?
+      attaches << data[i.to_s] unless data[i.to_s][:filename].blank?
     end
     self.attachments.build(attaches) if attaches.any?
   end

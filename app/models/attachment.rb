@@ -1,6 +1,8 @@
 class Attachment < ActiveRecord::Base
 
   before_save :sanitize_input
+  after_destroy :remove_filename!
+
   after_validation :set_event_id, :on => :create
 
   mount_uploader :filename, AttachmentUploader
@@ -13,7 +15,6 @@ class Attachment < ActiveRecord::Base
   has_many :children, :class_name => 'Attachment', :foreign_key => 'parent_id'
 
   scope :old, :conditions => "old = true"
-  scope :new, :conditions => "old = false"
 
   @@thumbnail_types = [:list, :lightbox, :pageview]
   @@thumbnail_types.each do |type|
