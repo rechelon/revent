@@ -34,6 +34,7 @@ gem "hoptoad_notifier"
 gem "geocoder"
 gem "carrierwave", :git => "git://github.com/Hainish/carrierwave.git", :branch => '0.5-stable'
 gem "fog", '1.0.0'
+gem "liquid"
 
 group :test do
   gem "factory_girl_rails", "~> 1.1"
