@@ -40,7 +40,7 @@ describe User do
         @user.password = ""
         @user.password_confirmation = ""
         @user.save
-        assert @user.errors.on(:password)
+        assert @user.errors(:password)
       }.should_not change( User, :count  )
     end
 
@@ -55,7 +55,7 @@ describe User do
       assert_no_difference User, :count do
         @user.email = nil
         @user.save
-        assert @user.errors.on(:email)
+        assert @user.errors(:email)
       end
     end
   end
