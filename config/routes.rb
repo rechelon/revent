@@ -151,9 +151,6 @@ Revent::Application.routes.draw do
 
   match ':permalink/events/show/:id', :to => 'events#show', :format => 'html'
 
-  match 'events/international/page/:page', :to => 'events#international'
-  match ':permalink/events/international/page/:page', :to => 'events#international'
-
   # Install the default route as the lowest priority.
   match ':controller/:action/:id(.:format)'
   match ':controller/:action.:format'

@@ -5,7 +5,6 @@ class EventsController < ApplicationController
 
   verify :method => :post, :only => [:create, :rsvp], :redirect_to => {:action => 'index'}
 
-  caches_page_unless_flash :total, :show, :international
   caches_action :index
   cache_sweeper :event_sweeper, :only => :create
   
@@ -498,16 +497,6 @@ class EventsController < ApplicationController
     redirect_to calendar_home_url(:permalink=>@calendar.permalink) and return
   end
 
-  def international
-    @country_a3 = params[:id] || 'all'
-    @country_code = CountryCodes.find_by_a3(@country_a3.upcase)[:numeric] || 'all'
-    if @country_code == 'all'
-      @events = @calendar.events.searchable.paginate(:conditions => ["country_code <> ?", Event::COUNTRY_CODE_USA], :order => 'country_code, city, start', :page => params[:page])
-    else
-      @events = @calendar.events.searchable.paginate(:conditions => ["country_code = ?", @country_code], :order => 'start, city', :page => params[:page])
-    end
-  end
- 
   def description
     @event = @calendar.events.find(params[:id])
     render :update do |page|
