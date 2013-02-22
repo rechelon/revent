@@ -5,7 +5,7 @@ gem 'fastercsv'
 gem 'hoe'
 gem 'airbrake'
 gem 'jammit', '0.6.5'
-gem 'uglifier'
+gem 'uglifier', '1.0.4'
 #gem 'json'
 #gem 'json_pure'
 gem 'libxml-ruby'
@@ -14,7 +14,7 @@ gem 'mem_cache_fragment_store', '1.0.1'
 gem 'dalli'
 gem 'mime-types', '1.16'
 gem 'mysql'
-gem 'nokogiri', '1.4.2'
+gem 'nokogiri', '1.5.0'
 gem 'passenger'
 gem 'production_log_analyzer', '1.5.1'
 gem 'rake'
@@ -33,7 +33,7 @@ gem "sanitize"
 gem "hoptoad_notifier"
 gem "geocoder"
 gem "carrierwave", :git => "git://github.com/Hainish/carrierwave.git", :branch => '0.5-stable'
-gem "fog"
+gem "fog", '1.0.0'
 
 group :test do
   gem "factory_girl_rails", "~> 1.1"
