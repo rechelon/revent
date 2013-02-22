@@ -208,10 +208,10 @@ class Event < ActiveRecord::Base
 
   def sync_unless_deferred
     if Site.current.config.delay_dia_sync
-      RAILS_DEFAULT_LOGGER.info('***Delaying Event Sync***') 
+      Rails.logger.info('***Delaying Event Sync***') 
       ShortLine.queue("revent_" + Host.current.hostname, "/workers/events", {:id => self.id})
     else
-      RAILS_DEFAULT_LOGGER.info('***Syncing Event Inline***')
+      Rails.logger.info('***Syncing Event Inline***')
       background_processes
     end
   end
