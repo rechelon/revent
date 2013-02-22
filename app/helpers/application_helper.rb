@@ -26,8 +26,9 @@ module ApplicationHelper
       end
       html += '</div>'
     elsif !event.custom_attributes_data.sponsor_other.blank? 
-     html = "<div id='event-sponsor' class='event-info'><span class='label info-label'>Sponsored by:</span><br> #{event.custom_attributes_data.sponsor_other}</div>"
+      html = "<div id='event-sponsor' class='event-info'><span class='label info-label'>Sponsored by:</span><br> #{event.custom_attributes_data.sponsor_other}</div>"
     end 
+    html
   end
 
   def time_options
