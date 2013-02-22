@@ -398,11 +398,11 @@ class User < ActiveRecord::Base
   end
   
   def country
-    CountryCodes.find_by_numeric(self.country_code)[:name]
+    IsoCountryCodes::find(self.country_code).name
   end
 
   def country=(name)
-    self.country_code = CountryCodes.find_by_name(name)[:numeric]
+    self.country_code = IsoCountryCodes::all.select {|c| c.name == "United States"}.first.numeric.to_i
   end
 
   def city_state

@@ -23,9 +23,4 @@ module Admin::UsersHelper
     select_tag(input_name, options_for_select(DemocracyInAction::Helpers.state_options_for_select(:include_provinces => true).unshift(['Not set', 0]), user.state))
   end
   
-=begin
-  def country_form_column(user, input_name)
-    select_tag(input_name, options_for_select(CountryCodes::countries_for_select('name', 'numeric').sort.unshift(['Not set', 0]), user.country_code))
-  end
-=end  
 end

@@ -25,20 +25,7 @@ class ReportsController < ApplicationController
     redirect_to :action => 'index', :permalink => @calendar.permalink
   end
 
-  def international 
-    @country_a3 = params[:id] || "all"
-    @country_code = CountryCodes.find_by_a3(@country_a3)[:numeric] || "all"
-    if @country_code == "all"
-      @events = @calendar.events.searchable.paginate(:include => {:reports => :attachments}, 
-        :conditions => "reports.id AND reports.status = '#{Report::PUBLISHED}' AND country_code <> '#{Event::COUNTRY_CODE_USA}'", :order => "reports.id", :page => params[:page], :per_page => 20)
-    else
-      @events = @calendar.events.searchable.paginate( :include => {:reports => :attachments}, 
-        :conditions => ["reports.id AND reports.status = '#{Report::PUBLISHED}' AND country_code = ?", @country_code], :order => "reports.id", :page => params[:page], :per_page => 20)
-    end
-    @reports = @events.collect {|e| e.reports.first}
-  end
- 
-  def show
+ def show
     @event = @calendar.events.find(params[:event_id], :include => {:reports => :attachments, :reports => :embeds}, :order => 'reports.position')
     @pagetitle = 'Report for '+@event.name
     @liquid[:pagetitle] = @pagetitle

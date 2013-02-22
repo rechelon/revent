@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  COUNTRY_CODE_USA = CountryCodes.find_by_name("United States of America")[:numeric] 
-  COUNTRY_CODE_CANADA = CountryCodes.find_by_name("Canada")[:numeric] 
+  COUNTRY_CODE_USA = IsoCountryCodes::all.select {|c| c.name == "United States"}.first.numeric.to_i
+  COUNTRY_CODE_CANADA = IsoCountryCodes::all.select {|c| c.name == "Canada"}.first.numeric.to_i
   MAP_JSON = {
     :except=>[
       :created_at,
@@ -465,17 +465,19 @@ class Event < ActiveRecord::Base
     country_code == COUNTRY_CODE_CANADA
   end
 
-  def country
-    CountryCodes.find_by_numeric(self.country_code)[:name]
-  end
-
   def city_state
     [city, (state.blank? ? country : state)].join(', ')
   end
   
-  def country=(name)
-    self.country_code = CountryCodes.find_by_name(name)[:numeric]
+  def country
+    IsoCountryCodes::find(self.country_code).name
   end
+
+  def country=(name)
+    self.country_code = IsoCountryCodes::all.select {|c| c.name == "United States"}.first.numeric.to_i
+  end
+
+
 
   def attendees_high
     rprts = reports.reject{|r| not r.attendees or r.attendees <= 0}
@@ -542,7 +544,7 @@ class Event < ActiveRecord::Base
 private
   def geocode
     # only geocode US or Canadian events
-    return unless (country_code == COUNTRY_CODE_USA or country_code == COUNTRY_CODE_CANADA)
+    return unless (in_usa? or in_canada?)
     if (geo = Geocoder.search(address_for_geocode)).count == 1
       self.latitude = geo[0].coordinates[0]
       self.longitude = geo[0].coordinates[1]
