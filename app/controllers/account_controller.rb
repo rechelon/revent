@@ -75,7 +75,7 @@ class AccountController < AccountControllerShared
     @user.attributes = params[:user]
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
-    @user.create_profile_image(params[:profile_image]) unless params[:profile_image].nil? || params[:profile_image][:uploaded_data].blank?
+    @user.create_profile_image(params[:profile_image]) unless params[:profile_image].nil? || params[:profile_image][:filename].blank?
     if @user.save
       flash[:notice] = "Your profile has been updated"
       redirect_to manage_account_path(:permalink => @calendar.permalink)

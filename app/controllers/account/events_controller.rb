@@ -29,7 +29,7 @@ class Account::EventsController < AccountControllerShared
   end
 
   def upload
-    if !params[:attachment][:uploaded_data].blank? && @event.attachments.create!(params[:attachment])
+    if !params[:attachment][:filename].blank? && @event.attachments.create!(params[:attachment])
       flash[:notice] = "Upload successful"
     else
       flash[:error] = "Upload failed"

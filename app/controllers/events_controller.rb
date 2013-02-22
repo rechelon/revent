@@ -277,7 +277,7 @@ class EventsController < ApplicationController
     if @user.valid? and @event.valid?
 
       # create profile image and save user
-      @user.create_profile_image(params[:profile_image]) unless !params[:profile_image] || !params[:profile_image][:uploaded_data] || params[:profile_image][:uploaded_data].blank?
+      @user.create_profile_image(params[:profile_image]) unless !params[:profile_image] || !params[:profile_image][:filename] || params[:profile_image][:uploaded_data].blank?
       @user.save!
       @user.associate_dia_host @calendar
       @user.sync_unless_deferred
