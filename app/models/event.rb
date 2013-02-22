@@ -71,6 +71,8 @@ class Event < ActiveRecord::Base
   after_create :trigger_email
   
   validates_presence_of :name, :calendar_id
+  validates_with EventDateValidator
+  validates_with EventLocationValidator, :unless => :locationless? 
 
   def as_json o={}
     super({
@@ -188,17 +190,6 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def validate
-    validate_dates
-    unless locationless?
-      validate_city
-      validate_country_code
-      validate_postal_code
-      validate_state
-      validates_mappable
-    end
-  end
-   
   def locationless?
     self.locationless
   end
@@ -207,60 +198,6 @@ class Event < ActiveRecord::Base
     return false if locationless?
     show_map
   end
-  def validate_postal_code
-    if in_usa?
-      unless postal_code =~ /^\d{5}(-\d{4})?$/
-        errors.add :postal_code, "is not a valid U.S. postal code"
-      end
-    elsif in_canada?
-      unless postal_code =~ /^\D\d\D((-| )?\d\D\d)?$/
-        errors.add :postal_code, "is not a valid Canadian postal code"
-      end
-    end      
-  end
-
-  def validate_city
-    errors.add "City is blank" unless city
-  end
-
-  def validate_country_code
-    errors.add "Country is blank" unless country_code 
-  end
-
-  def validate_state
-    if in_usa?
-      valid_us_states = DemocracyInAction::Helpers.state_options_for_select.map{|a| a[1]}
-      if state.blank? or not valid_us_states.include?(state)
-        errors.add :state, "is not a valid U.S. state"
-      end      
-    elsif in_canada?
-      unless state_is_canadian_province?
-        errors.add :state, "is not a valid Canadian province"
-      end
-    end
-  end
-
-  def validate_dates
-    if (self.start && self.end) && (self.start > self.end)
-      errors.add :start, "date must be before end date"
-    end
-    if (self.start && calendar.event_start) && (self.start < calendar.event_start.at_beginning_of_day)
-      message = (calendar.event_end && (calendar.event_start.to_date == calendar.event_end.to_date)) ? "on" : "on or after"
-      errors.add :start, "must be #{message} #{calendar.event_start.strftime('%B %e, %Y')}"
-    end
-    if (self.end && calendar.event_end) && (self.end > (calendar.event_end + 1.day).at_beginning_of_day)
-      message = (calendar.event_start.to_date == calendar.event_end.to_date) ? "on" : "on or before"
-      errors.add :end, "must be #{message} #{calendar.event_end.strftime('%B %e, %Y')}"
-    end
-  end
-  
-  def validates_mappable
-    # only check that usa and canadian events are mappable
-    if (in_usa? || in_canada?) && !(self.latitude && self.longitude)
-      errors.add_to_base "Not enough information provided to place event on a map. Please give us at minimum a valid postal code."
-    end
-  end
-
 
   has_one :democracy_in_action_object, :as => :synced
   def democracy_in_action_synced_table
