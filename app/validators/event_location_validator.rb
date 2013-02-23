@@ -1,7 +1,11 @@
 class EventLocationValidator < ActiveModel::Validator
 
   def validate event
-    validates :validate_city, :validate_country_code, :validate_postal_code, :validate_state, :validates_mappable
+    validate_city event 
+    validate_country_code event 
+    validate_postal_code event
+    validate_state event 
+    validates_mappable event
   end
 
 private
