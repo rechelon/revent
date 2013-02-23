@@ -65,7 +65,7 @@ class Attachment < ActiveRecord::Base
     end
   end
 
-  def public_filename type
+  def public_filename type=nil
     return self.filename.url if type.nil?
     @@thumbnail_types.each do |tt|
       if type == tt
