@@ -85,7 +85,6 @@ class Report < ActiveRecord::Base
     self.build_press_links
     self.build_embeds
     #self.build_videos
-    self.move_to_temp_files! # this needs to be re-implemented
     self.save!
   end
 
