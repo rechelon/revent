@@ -70,8 +70,9 @@ Spork.prefork do
     request.stub!(:host).and_return(Host.current.hostname) if defined?(request)
   end
 
+  include ActionDispatch::TestProcess
   def test_uploaded_file(file = 'arrow.jpg', content_type = 'image/jpg')
-    ActionController::TestUploadedFile.new(Rails.root.join('spec', 'fixtures', 'attachments', file), content_type)
+    fixture_file_upload(File.join('','attachments',file), content_type)
   end
 
   def truncate_float(fl, precision)
