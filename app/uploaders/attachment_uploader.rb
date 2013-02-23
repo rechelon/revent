@@ -7,7 +7,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     CarrierWave.configure do |config|
-      if config.storage == :file
+      if config.storage == CarrierWave::Storage::File
         return "uploads/#{Rails.env}/#{model.class.to_s.underscore}/#{model.id}"
       else
         if model.old?
