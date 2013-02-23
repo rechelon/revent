@@ -16,7 +16,7 @@ module CacheSpecHelpers
   end
 
   def page_cache_file(url)
-    ActionController::Base.send :page_cache_file, url.gsub(/$https?:\/\//, '')
+    ActionController::Base.send :page_cache_file, url.gsub(/$https?:\/\//, ''), nil
   end
 
   def cache_url(url)
