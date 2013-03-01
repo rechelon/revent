@@ -36,6 +36,7 @@ gem "carrierwave", :git => "git://github.com/Hainish/carrierwave.git", :branch =
 gem "fog", '1.0.0'
 gem "liquid"
 gem "iso_country_codes"
+gem "will_paginate", '~> 3.0.0'
 
 group :test do
   gem "factory_girl_rails", "~> 1.1"

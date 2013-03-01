@@ -179,6 +179,7 @@ GEM
     uglifier (1.0.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    will_paginate (3.0.4)
     xml-simple (1.0.12)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
@@ -223,4 +224,5 @@ DEPENDENCIES
   transaction-simple (= 1.4.0)
   typhoeus
   uglifier (= 1.0.4)
+  will_paginate (~> 3.0.0)
   xml-simple (= 1.0.12)
