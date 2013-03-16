@@ -210,7 +210,11 @@ var MapView = Backbone.View.extend({
         if(options.unit == "postal_code"){
           in_memory_unit = "zip_codes";
         } else {
-          options.value = "State of "+options.value;
+          if(state_exceptions[options.value]){
+            options.value = state_exceptions[options.value];
+          } else {
+            options.value = "State of "+options.value;
+          }
           in_memory_unit = "states";
         }
         if(!revent[in_memory_unit][options.value]){

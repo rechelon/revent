@@ -106,3 +106,5 @@ states_mapping = {
   "WV":"WEST_VIRGINIA",
   "WY":"WYOMING"
 }
+
+state_exceptions = {}
