@@ -11,6 +11,7 @@ javascripts:
     - public/javascripts/framework/collections/*.js
     - public/javascripts/framework/templates/*.jst
     - public/javascripts/framework/views/*.js
+    - public/javascripts/plugin/*/framework/**/*.js
   admin:
     - public/javascripts/timepicker.js
     - public/javascripts/admin/router.js
@@ -22,6 +23,7 @@ javascripts:
     - public/javascripts/admin/views/form.js
     - public/javascripts/admin/views/*.js
     - public/javascripts/deps/ace/*.js
+    - public/javascripts/plugin/*/admin/**/*.js
   public:
     - public/javascripts/prototype.js
     - public/javascripts/validation.js
@@ -36,6 +38,7 @@ javascripts:
     - public/javascripts/client/views/search.js
     - public/javascripts/client/views/form.js
     - public/javascripts/client/views/*.js
+    - public/javascripts/plugin/*/client/**/*.js
 
 stylesheets:
   admin:

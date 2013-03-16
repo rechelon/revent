@@ -1,3 +1,4 @@
+vendor/plugins/revent_*
 .rvmrc
 config/*.yml
 !config/assets.yml
