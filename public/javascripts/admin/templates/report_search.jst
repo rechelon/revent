@@ -28,7 +28,7 @@
         <%= select_field({'':'--',published:'Published',unpublished:'Unpublished'},{filter:'status',class:'filter',name:'status'},params.status) %>
       </td>
       <td>
-        <%= select_field(us_states,{filter:'state',class:'filter input-mini',name:'state'},params.state) %>
+        <%= select_field_with_groups(us_states,{filter:'state',class:'filter input-mini',name:'state'},params.state) %>
       </td>
       <td>      
         <input type="input" filter="postal_code" class="filter input-small" name="postal_code" size="5" 

@@ -10,7 +10,7 @@
     </tr>
     <tr>
       <td>
-        <%= select_field(us_states,{filter:'state','class':'filter input-mini',name:'state'},params.state) %>
+        <%= select_field_with_groups(us_states,{filter:'state','class':'filter input-mini',name:'state'},params.state) %>
       </td>
       <td>      
         <input type="input" filter="nearby_zip" class="filter input-mini" name="nearby_zip" size="5" 

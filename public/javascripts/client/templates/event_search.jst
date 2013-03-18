@@ -12,7 +12,7 @@
       </div>
       <div class="control-group control-group-state">
         <label for="state" class="control-label">State</label>
-        <%= select_field(us_states,{filter:'state','class':'filter input-small',name:'state'},params.state) %>
+        <%= select_field_with_groups(us_states,{filter:'state','class':'filter input-small',name:'state'},params.state) %>
         &nbsp;
       </div>
       <% if(categories.length > 1){ %>
