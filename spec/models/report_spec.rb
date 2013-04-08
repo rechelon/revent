@@ -77,21 +77,19 @@ describe Report do
         @uploaded_data = test_uploaded_file
       end
       it "should create attachments" do
-        @report = create :report, :attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => @uploaded_data}}
+        @report = create :report, :attachment_data => {'1' => {:caption => 'attachment 1', :filename => @uploaded_data}}
         @report.process!
-        File.exist?(@report.attachments(true).first.full_filename).should be_true
+        File.exist?(@report.attachments.first.filename.path).should be_true
       end
       it "should create multiple attachments" do
-        @report = build :report, :attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => test_uploaded_file}, '2' => {:caption => 'attachment 2', :uploaded_data => test_uploaded_file}}
-        @report.make_local_copies!
-        @report.move_to_temp_files!
+        @report = build :report, :attachment_data => {'1' => {:caption => 'attachment 1', :filename => @uploaded_data}, '2' => {:caption => 'attachment 2', :filename => @uploaded_data}}
         @report.save
         @report.process!
-        @report.attachments(true).all? {|a| File.exist?(a.full_filename)}.should be_true
+        @report.attachments(true).all? {|a| File.exist?(a.filename.path)}.should be_true
       end
       it "should tag attachments" do
         pending 'tagging not high priority now; get this working later'
-        @report = create :report, :attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => @uploaded_data, :tag_depot => {'0' => 'tag1', '1' => 'tag2'}  }}
+        @report = create :report, :attachment_data => {'1' => {:caption => 'attachment 1', :filename => @uploaded_data, :tag_depot => {'0' => 'tag1', '1' => 'tag2'}  }}
         @report.process!
         @report.attachments.tags.should_not be_empty
       end
@@ -137,7 +135,7 @@ describe Report do
           @params = {:report => {:text => "text", :attendees => '100', :event => create(:event),
                     :reporter_data => {:first_name => "hannah", :last_name => "barbara", :email => "hannah@example.com"},
                     :press_link_data => {'1' => {:url => '', :text => ''}, '2' => {:url => '', :text => ''}},
-                    :attachment_data => {'1' => {:caption => '', :uploaded_data => nil }},
+                    :attachment_data => {'1' => {:caption => '', :filename => nil }},
                     :embed_data => {'1' => {:html => "", :caption => ""}, '2' => {:html => "", :caption => ""}}}}
           @report = Report.create!(@params[:report].merge( :akismet_params => stub('request_object').as_null_object))
         end
@@ -157,7 +155,7 @@ describe Report do
           @params = {:report => {:text => "text", :attendees => '100', :event => create(:event),
                     :reporter_data => {:first_name => "hannah", :last_name => "barbara", :email => "hannah@example.com"},
                     :press_link_data => {'1' => {:url => 'http://example.com', :text => 'the example site'}, '2' => {:url => 'http://other.example.com', :text => 'another one'}},
-                    :attachment_data => {'1' => {:caption => 'attachment 1', :uploaded_data => @uploaded_data}},
+                    :attachment_data => {'1' => {:caption => 'attachment 1', :filename => @uploaded_data}},
                     :embed_data => {'1' => {:html => "<tag>", :caption => "yay"}, '2' => {:html => "<html>", :caption => "whoopee"}}
                   }}
           @report = Report.create!(@params[:report].merge( :akismet_params => stub('request_object').as_null_object))
@@ -200,93 +198,51 @@ describe Report do
       end
     end
 
-    describe "upload attachments to flickr" do
-      before do
-        @upload_proxy = stub( 'uploads_proxy', :upload_image => true )
-        @photo_proxy  = stub( 'photos_proxy', :upload => @upload_proxy )
-        @photoset_proxy = stub( 'photoset_proxy', :addPhoto => true )
-        @flickr_api = stub( 'flickr_api', :photos => @photo_proxy, :photosets => @photoset_proxy )
-        Site.stub!(:flickr).and_return( @flickr_api )
-        @attach = create :attachment, :primary => true, :temp_data => 'data data data'
-        @report = create :report, :event => @event
-        @report.attachments << @attach
-        @report.status = Report::PUBLISHED
-      end
-      it "does not work without a valid Flickr connection" do
-        pending 
-        @upload_proxy.should_not_receive(:upload_image)
-        Site.stub!(:flickr).and_return(false)
-        @report.send_attachments_to_flickr
-      end
-      it "should not send unpublished items to flickr" do
-        pending 
-        @report.stub!(:published?).and_return(false)
-        @upload_proxy.should_not_receive(:upload_image)
-        @report.send_attachments_to_flickr
-      end
-      it "should not send items that already have been uploaded"  do
-        pending 
-        @report.attachments.first.flickr_id = "123"
-        @upload_proxy.should_not_receive(:upload_image)
-        @report.send_attachments_to_flickr
-      end
-      it "checks for metadata" do
-        pending 
-        @report.should_receive(:flickr_title)
-        @report.send_attachments_to_flickr
-      end
-      it "works from tempfiles or full files" do
-        pending 
-        @attach.should_receive(:temp_data).and_return( false )
-        @report.send_attachments_to_flickr
-      end
-      it "calls upload on the flickr api" do
-        pending 
-        @upload_proxy.should_receive(:upload_image)
-        @report.send_attachments_to_flickr
-      end
-      it "sets the flickr id attribute" do
-        pending 
-        @upload_proxy.stub!(:upload_image).and_return(5)
-        @attach.should_receive(:flickr_id=).with(5)
-        @report.send_attachments_to_flickr
-      end
-      it "does not save if the flickr upload failed" do
-        pending 
-        @upload_proxy.stub!(:upload_image).and_return false 
-        @attach.should_not_receive(:save)
-        @report.send_attachments_to_flickr
-      end
-      it "adds the photoset if the attachment is primary and the photoset is defined" do
-        pending 
-        @upload_proxy.stub!(:upload_image).and_return('998988978')
-        @photoset_proxy.should_receive(:addPhoto)
-        @report.send_attachments_to_flickr
-      end
-      it "does not add the photoset if no photoset is defined" do
-        pending 
-        @calendar.stub!(:flickr_photoset).and_return(nil)
-        @photoset_proxy.should_not_receive(:addPhoto)
-        @report.send_attachments_to_flickr
-      end
-      it "does not add the photoset if the attachment is not primary" do
-        pending 
-        @calendar.stub!(:flickr_photoset).and_return( 5 )
-        @report.attachments.first.primary = false
-        @photoset_proxy.should_not_receive(:addPhoto)
-        @report.send_attachments_to_flickr
-      end
-      it "rescues XMLRPC errors" do
-        pending 
-        @flickr_api.stub!(:photos).and_raise( XMLRPC::FaultException.new( "problem", "yeah" ) )
-        lambda{ @report.send_attachments_to_flickr }.should_not raise_error
+    describe "upload attachments to remote storage engine (amazon s3)" do
+      if $test_aws
+        require 'typhoeus'
+        before do
+          @original_storage_type = AttachmentUploader::storage_type
+          AttachmentUploader::storage_type = :fog
+          CarrierWave.configure do |config|
+            config.fog_credentials = $test_fog[:credentials]
+            config.fog_directory = $test_fog[:directory]
+            config.fog_force_path_for_aws = $test_fog[:force_path_for_aws]
+          end
+          @uploaded_data = test_uploaded_file
+          @params = {:report => {:text => "text", :attendees => '100', :event => create(:event),
+                    :reporter_data => {:first_name => "hannah", :last_name => "barbara", :email => "hannah@example.com"},
+                    :press_link_data => {'1' => {:url => 'http://example.com', :text => 'the example site'}, '2' => {:url => 'http://other.example.com', :text => 'another one'}},
+                    :attachment_data => {'1' => {:caption => 'attachment 1', :filename => @uploaded_data}},
+                    :embed_data => {'1' => {:html => "<tag>", :caption => "yay"}, '2' => {:html => "<html>", :caption => "whoopee"}}
+                  }}
+          @report = Report.create!(@params[:report].merge( :akismet_params => stub('request_object').as_null_object))
+          @report.process!
+        end
+        it "should upload file to s3" do
+          Typhoeus::Request.get(@report.attachments.first.filename.url).code.should == 200
+        end
+        it "should upload thumbnail (list) to s3" do
+          Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.list.url).code.should == 200
+        end
+        it "should upload thumbnail (pageview) to s3" do
+          Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.pageview.url).code.should == 200
+        end
+        it "should upload thumbnail (lightbox) to s3" do
+          Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.lightbox.url).code.should == 200
+        end
+        after do
+          AttachmentUploader::storage_type = @original_storage_type
+        end
       end
     end
 
     describe 'email trigger' do
       it "delivers a trigger if the calendar has no triggers but the site does" do
-        TriggerMailer.should_receive(:deliver_trigger)
         @site.stub!(:triggers).and_return(stub('triggers', :any? => true, :find_by_name => true ))
+        t = stub('trigger')
+        t.should_receive(:deliver)
+        TriggerMailer.stub(:trigger).and_return(t)
         @report = build :report, :event => @event
         @report.trigger_email
       end

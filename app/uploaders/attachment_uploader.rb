@@ -46,6 +46,15 @@ class AttachmentUploader < CarrierWave::Uploader::Base
     model.image?
   end
 
+  # we need to be able to dynamically set storage type for tests
+  def self.storage_type= type
+    storage type
+  end
+
+  def self.storage_type
+    storage
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
