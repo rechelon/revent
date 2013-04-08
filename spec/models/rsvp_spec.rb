@@ -14,7 +14,9 @@ describe Rsvp do
 
     it "should send an email" do
       @trigger = create :trigger, :email_plain => 'test email', :from => 'testy mctesterson', :name => 'RSVP Thank You', :calendar => @calendar
-      TriggerMailer.should_receive :deliver_trigger
+      t = stub('trigger')
+      t.should_receive(:deliver)
+      TriggerMailer.stub(:trigger).and_return(t)
       @rsvp.trigger_email
     end
 
