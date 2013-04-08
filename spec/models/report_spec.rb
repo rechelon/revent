@@ -198,45 +198,6 @@ describe Report do
       end
     end
 
-    describe "upload attachments to remote storage engine (amazon s3)" do
-      if $test_aws
-        require 'typhoeus'
-        before do
-          @original_storage_type = AttachmentUploader::storage_type
-          AttachmentUploader::storage_type = :fog
-          CarrierWave.configure do |config|
-            config.fog_credentials = $test_fog[:credentials]
-            config.fog_directory = $test_fog[:directory]
-            config.fog_force_path_for_aws = $test_fog[:force_path_for_aws]
-          end
-          @uploaded_data = test_uploaded_file
-          @params = {:report => {:text => "text", :attendees => '100', :event => create(:event),
-                    :reporter_data => {:first_name => "hannah", :last_name => "barbara", :email => "hannah@example.com"},
-                    :press_link_data => {'1' => {:url => 'http://example.com', :text => 'the example site'}, '2' => {:url => 'http://other.example.com', :text => 'another one'}},
-                    :attachment_data => {'1' => {:caption => 'attachment 1', :filename => @uploaded_data}},
-                    :embed_data => {'1' => {:html => "<tag>", :caption => "yay"}, '2' => {:html => "<html>", :caption => "whoopee"}}
-                  }}
-          @report = Report.create!(@params[:report].merge( :akismet_params => stub('request_object').as_null_object))
-          @report.process!
-        end
-        it "should upload file to s3" do
-          Typhoeus::Request.get(@report.attachments.first.filename.url).code.should == 200
-        end
-        it "should upload thumbnail (list) to s3" do
-          Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.list.url).code.should == 200
-        end
-        it "should upload thumbnail (pageview) to s3" do
-          Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.pageview.url).code.should == 200
-        end
-        it "should upload thumbnail (lightbox) to s3" do
-          Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.lightbox.url).code.should == 200
-        end
-        after do
-          AttachmentUploader::storage_type = @original_storage_type
-        end
-      end
-    end
-
     describe 'email trigger' do
       it "delivers a trigger if the calendar has no triggers but the site does" do
         @site.stub!(:triggers).and_return(stub('triggers', :any? => true, :find_by_name => true ))
@@ -249,6 +210,46 @@ describe Report do
     end
 
   end #when created
+
+  describe "configured to upload attachments to AWS" do
+    if $test_aws
+      before do
+        @original_storage_type = AttachmentUploader::storage_type
+        AttachmentUploader::storage_type = :fog
+        CarrierWave.configure do |config|
+          config.fog_credentials = $test_fog[:credentials]
+          config.fog_directory = $test_fog[:directory]
+          config.fog_force_path_for_aws = $test_fog[:force_path_for_aws]
+        end
+        @uploaded_data = test_uploaded_file
+        @params = {:report => {:text => "text", :attendees => '100', :event => create(:event),
+                  :reporter_data => {:first_name => "hannah", :last_name => "barbara", :email => "hannah@example.com"},
+                  :press_link_data => {'1' => {:url => 'http://example.com', :text => 'the example site'}, '2' => {:url => 'http://other.example.com', :text => 'another one'}},
+                  :attachment_data => {'1' => {:caption => 'attachment 1', :filename => @uploaded_data}},
+                  :embed_data => {'1' => {:html => "<tag>", :caption => "yay"}, '2' => {:html => "<html>", :caption => "whoopee"}}
+                }}
+        @report = Report.create!(@params[:report].merge( :akismet_params => stub('request_object').as_null_object))
+        @report.process!
+      end
+      it "should upload file and thumbnails to s3" do
+        Typhoeus::Request.get(@report.attachments.first.filename.url).code.should == 200
+        Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.list.url).code.should == 200
+        Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.pageview.url).code.should == 200
+        Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.lightbox.url).code.should == 200
+      end
+      it "should delete file from s3 when report is destroyed" do
+        @report.destroy
+        Typhoeus::Request.get(@report.attachments.first.filename.url).code.should == 404
+        Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.list.url).code.should == 404
+        Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.pageview.url).code.should == 404
+        Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.lightbox.url).code.should == 404
+      end
+      after do
+        @report.destroy if @report
+        AttachmentUploader::storage_type = @original_storage_type
+      end
+    end
+  end
 
   describe "when updated" do
   end
