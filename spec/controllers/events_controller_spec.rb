@@ -7,13 +7,8 @@ describe EventsController do
   end
 
   it "should set site from host" do
-    get :index
+    get :new
     @controller.site.host.should == @site.host
-  end
-
-  it "should redirect on index if no query" do
-    get :index
-    response.should be_redirect
   end
 
   describe "show" do
