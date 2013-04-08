@@ -1,0 +1,51 @@
+<% content_for :header do %>
+  <%= javascript_include_tag 'effects' %>
+<% end %>
+<div id="login">
+  <h1>You Must Login to Continue</h1>
+  <p>
+    First time here?  
+    <a href="#first-time">Scroll down to get your password and manage your event.</a>
+  </p>
+  <%= form_tag do %>
+    <p>
+      <label for="login">
+        <b>E-mail:</b>
+      </label>
+      <br />
+      <%= text_field_tag 'email', @email %>
+    </p>
+    <p>
+      <label for="password">
+        <b>Password:</b>
+      </label>
+      <br />
+      <%= password_field_tag 'password' %>
+    </p>
+    <p>
+      <%= submit_tag 'Log in' %>
+    </p>
+    <%= link_to_function 'Forgot your password?', visual_effect(:toggle_blind, 'remind') %>
+  <% end %>
+  <div id="remind" style="display:none;">
+    <p>Enter your e-mail address below and we will send you a link to reset your password.</p>
+    <p>If you don't receive the requested password in your e-mail, check to see if it got trapped by a spam filter or got stuck in your "Junk E-Mail Folder"</p>
+    <%= form_tag '/account/forgot_password' do %>
+      <% if @permalink %>
+        <%= hidden_field_tag 'permalink', @permalink %>
+      <% end %>
+      <p>
+        <label for="login">
+          <b>E-mail:</b>
+        </label>
+        <br />
+        <%= text_field_tag 'email' %>
+      </p>
+      <%= submit_tag 'Send' %>
+    <% end %>
+  </div>
+  <hr />
+  <br />
+  <h1>Want to Create an Account?</h1>
+  <%= render :partial => 'signup_form' %>
+</div>
