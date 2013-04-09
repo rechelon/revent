@@ -18,6 +18,25 @@ describe Report do
       @report.process!
     end
 
+    describe "and a second report is created" do
+      before do
+        @report = create :report, :event => @event, :user => create(:user)
+        @report2 = create :report, :event => @event, :user => create(:user)
+      end
+      it "should set the second report as primary" do
+        @report2.primary!
+        @report2.position.should == 1
+        @report.reload
+        @report.position.should == 2
+      end
+      it "should set the first report as primary" do
+        @report.primary!
+        @report.position.should == 1
+        @report2.reload
+        @report2.position.should == 2
+      end
+    end
+
     describe "user" do
       before do
         @user = create :user, :first_name => 'foxy', :email => 'test@example.com', :site => @site

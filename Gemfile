@@ -37,6 +37,7 @@ gem "fog", '1.0.0'
 gem "liquid"
 gem "iso_country_codes"
 gem "will_paginate", '~> 3.0.0'
+gem "acts_as_list"
 
 group :test do
   gem "factory_girl_rails", "~> 1.1"
