@@ -9,6 +9,7 @@ Revent::Application.routes.draw do
   match ":permalink/events/rss", :to => "events#rss", :format => "xml"
   match ":permalink/map.:format", :to => "maps#index"
   match ":permalink/maps", :to => "maps#index"
+  match ":permalink/zip_codes", :to => "zip_codes#index"
 
   namespace :admin do
     match '/', :to => 'admin#index'
