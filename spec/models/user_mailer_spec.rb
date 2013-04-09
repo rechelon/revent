@@ -19,13 +19,13 @@ describe UserMailer do
       @message = {:subject => 'check, check, testing, 1, 2, 3', :body => 'test upcoming/past events'}
     end
     it "knows if event is in the past" do
-      response = UserMailer.message(@from, @event, @message)
+      response = UserMailer.generic_message(@from, @event, @message)
       response.body.should match(/took place on/)
     end
     it "knows if event is in the future" do
       @event.start = 1.day.from_now
       @event.end = 1.day.from_now + 2.hours
-      response = UserMailer.message(@from, @event, @message)
+      response = UserMailer.generic_message(@from, @event, @message)
       response.body.should match(/will take place on/)
     end
   end

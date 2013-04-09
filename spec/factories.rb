@@ -126,6 +126,7 @@ FactoryGirl.define do
     password "secret" 
     password_confirmation "secret" 
     activated_at 1.day.ago
+    activation_code String.random(10)
     association :site
   end
 
