@@ -39,7 +39,7 @@ class DemocracyInActionResource
   public
   # type is :all, :first, or key number (or array of keys)
   # options is a hash, as for all rails find
-  def DemocracyInActionResource.find(type, options = nil)
+  def self.find(type, options = nil)
     raise ArgumentError, "Invalid option for find - #{type.class}: #{type.to_s}" unless type
     # transform their style into DIA form to allow more searches
     opts = process_opts(options)
@@ -58,6 +58,14 @@ class DemocracyInActionResource
     else
       return records[0]
     end
+  end
+
+  def self.all(options = nil)
+    return find(:all, options)
+  end
+
+  def self.first(options = nil)
+    return find(:first, options)
   end
 
   # this transforms rails-speak into DIA-speak
