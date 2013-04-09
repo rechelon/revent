@@ -8,6 +8,7 @@ describe ReportsController do
       Report.stub!(:new).and_return(@report)
       @uploaded_data = test_uploaded_file
       @create_params = {
+        :permalink => @calendar.permalink,
         :report => {
           :text => "text",
           :attendees => '100',
