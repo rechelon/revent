@@ -7,9 +7,9 @@ describe Event do
     Site.stub!(:current_config_path).and_return(Rails.root.join('test', 'config'))
 
     # mock geocoder
-    @geo = stub('geo', [:coordinates => [77.7777, -111.1111], :precision => "ROOFTOP"])
+    @geo = stub('geo', :data => {"geometry" => {"location" => {"lat" => 77.7777, "lng" => -111.1111}, :precision => "ROOFTOP"}})
 
-    Geocoder.stub!(:search).and_return(@geo)
+    Geocoder.stub!(:search).and_return([@geo])
 
     # mock democracy in action api
     @dia_api = stub('dia_api', :save => true, :authenticate => true)
