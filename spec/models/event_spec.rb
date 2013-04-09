@@ -5,9 +5,9 @@ describe Event do
     initialize_site
 
     # mock geocoder
-    @geo = stub('geo', [:coordinates => [77.7777, -111.1111], :precision => "ROOFTOP"])
+    @geo = stub('geo', :data => {"geometry" => {"location" => {"lat" => 77.7777, "lng" => -111.1111}, :precision => "ROOFTOP"}})
 
-    Geocoder.stub!(:search).and_return(@geo)
+    Geocoder.stub!(:search).and_return([@geo])
 
     # mock democracy in action api
     @dia_api = stub('dia_api', :save => true, :authenticate => true)
@@ -52,7 +52,7 @@ describe Event do
 
     it "should be compatible with will_paginate" do
       create :event
-      Event.by_query({ }).paginate(:all, :page => 1, :per_page => 1).length.should == 1
+      Event.by_query({ }).paginate(:page => 1, :per_page => 1).length.should == 1
     end
 
     it "should accept some predefined sorting needs" do
@@ -81,7 +81,7 @@ describe Event do
 
   describe 'in US' do
     before do
-      @event.country = "United States of America"
+      @event.country = "United States"
       @event.city = "San Francisco"
       @event.postal_code = "94114"
     end
@@ -119,7 +119,7 @@ describe Event do
   end
   describe "outside US and Canada" do
     before do
-      @event.country = "Iran"
+      @event.country = "Iraq"
     end
     it "does not need a valid state" do
       @event.state = nil

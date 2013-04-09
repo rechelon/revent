@@ -474,7 +474,7 @@ class Event < ActiveRecord::Base
   end
 
   def country=(name)
-    self.country_code = IsoCountryCodes::all.select {|c| c.name == "United States"}.first.numeric.to_i
+    self.country_code = IsoCountryCodes::all.select {|c| c.name == name}.first.numeric.to_i
   end
 
 
@@ -546,17 +546,17 @@ private
     # only geocode US or Canadian events
     return unless (in_usa? or in_canada?)
     if (geo = Geocoder.search(address_for_geocode)).count == 1
-      self.latitude = geo[0].coordinates[0]
-      self.longitude = geo[0].coordinates[1]
-      self.precision = geo[0].precision
+      self.latitude = geo.first.data["geometry"]["location"]["lat"]
+      self.longitude = geo.first.data["geometry"]["location"]["lng"]
+      self.precision = geo.first.data["geometry"]["location_type"]
     elsif self.postal_code =~ /^\d{5}(-\d{4})?$/ and (zip = ZipCode.find_by_zip(self.postal_code))
       self.latitude, self.longitude = zip.latitude, zip.longitude if zip
       self.precision = 'zip'
     elsif self.postal_code   # handle US postal codes not in ZipCode table and Canadian postal
       if (geo = Geocoder.search(self.postal_code)).count == 1
-        self.latitude = geo[0].coordinates[0]
-        self.longitude = geo[0].coordinates[1]
-        self.precision = geo[0].precision
+        self.latitude = geo.first.data["geometry"]["location"]["lat"]
+        self.longitude = geo.first.data["geometry"]["location"]["lng"]
+        self.precision = geo.first.data["geometry"]["location_type"]
       end
     end
   end

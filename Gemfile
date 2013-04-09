@@ -31,7 +31,7 @@ gem "activerecord-activesalesforce-adapter", "~> 2.0.0"
 gem "typhoeus"
 gem "sanitize"
 gem "hoptoad_notifier"
-gem "geocoder"
+gem "geocoder", '1.1.6'
 gem "carrierwave", :git => "git://github.com/Hainish/carrierwave.git", :branch => '0.5-stable'
 gem "fog", '1.0.0'
 gem "liquid"
