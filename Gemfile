@@ -25,7 +25,6 @@ gem 'simple-rss', '1.2.3'
 gem 'tlsmail', '0.0.1'
 gem 'transaction-simple', '1.4.0'
 gem 'xml-simple', '1.0.12'
-gem 'haml'
 gem 'httpclient'
 gem "activerecord-activesalesforce-adapter", "~> 2.0.0"
 gem "typhoeus"
