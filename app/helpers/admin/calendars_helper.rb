@@ -24,25 +24,6 @@ module Admin::CalendarsHelper
     link_to calendar.name, :controller => '/admin/calendars', :action => :edit, :id => calendar.id
   end
 
-  #number of events, number of rsvps, number of individual reportbacks, number of events with reports; for aggregate, past events, upcoming events
-  def events_count_column(calendar)
-    "<div>all: " +
-      counts(calendar) +
-      "<br/>past: " +
-      past_counts(calendar) +
-      "<br/>upcoming: " +
-      upcoming_counts(calendar) +
-      "</div>"
-  end
-
-  def states_with_actions(calendar)
-    calendar.events.unique_states.to_s
-  end
-
-  def counts(calendar)
-    "#{calendar.events.count} events, #{rsvp_count(calendar)} rsvps, #{report_count(calendar)} reports, #{events_with_reports_count(calendar)} events with reports, #{states_with_actions(calendar)} states with events"
-  end
-
   def past_counts(calendar)
     Event.with_past do
       counts(calendar)

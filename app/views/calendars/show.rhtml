@@ -5,9 +5,6 @@
     <div class="national-intro-text">
       <%#=  @calendar.name %>
     </div>
-    <div class="national-intro-count">
-      <!--      There are <%#= pluralize @calendar.events.length, @calendar.name %> in <%#= @calendar.events.unique_states %> states. -->
-    </div>
     <div class="national-intro-directions">
       <% if @calendar.map_intro_text -%>
         <%= @calendar.map_intro_text.html_safe %>

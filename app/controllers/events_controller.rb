@@ -124,17 +124,6 @@ class EventsController < ApplicationController
 #    cache_page nil, :permalink => params[:permalink]
   end
 
-  def total
-    @states = @calendar.events.find(:all).collect {|e| e.state}.compact.uniq.select do |state|
-      STATE_CENTERS.keys.reject {|c| :DC == c}.map{|c| c.to_s}.include?(state)
-    end
-    @event_count = @calendar.events.count
-    respond_to do |format|
-      format.js { headers["Content-Type"] = "text/javascript; charset=utf-8" }
-      format.html { render :layout => false }
-    end
-  end
-
   def show
     @event = @calendar.events.find(params[:id], :include => [:blogs, :custom_attributes, {:reports => :attachments}])
     @event_custom_attributes = @event.custom_attributes_data

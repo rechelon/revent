@@ -29,12 +29,7 @@ class Calendar < ActiveRecord::Base
       @counter_sql = @finder_sql = "events.calendar_id IN (#{((proxy_owner.calendar_ids || []) << proxy_owner.id).join(',')})"
       result
     end
-    def unique_states
-      states = proxy_target.collect {|e| e.state}.compact.uniq.select do |state|
-        DaysOfAction::Geo::STATE_CENTERS.keys.reject {|c| :DC == c}.map{|c| c.to_s}.include?(state)
-      end
-      states.length
-    end
+
     def find_updated_since( time )
       find :all, :include => [ :host, { :reports => :user }, :attendees ], :conditions => [ "events.updated_at > :time OR users.updated_at > :time OR reports.updated_at > :time", { :time => time } ]
     end
