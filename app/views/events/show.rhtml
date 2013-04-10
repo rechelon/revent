@@ -9,9 +9,9 @@
 <% end %>
 
 <div id="event-header">
-  <h1><%= white_list @event.name %></h1>
+  <h1><%= scrub @event.name %></h1>
   <%= "<h4 id='worksite_header'>This event is a worksite action.</h4>" if @event.worksite_event?%>
-  <h2><%= white_list @event.city_state %></h2>
+  <h2><%= scrub @event.city_state %></h2>
   <h3 class="start"><%= event_date_range(@event) %></h3>
   <% if @event.host && !@event.worksite_event?%>
     <p>Hosted by <%= link_to @event.host_public_full_name, :permalink => @calendar.permalink,:action => :host, :id => @event %></p>
@@ -45,7 +45,7 @@
 
 <div id="event-intro-text" class="intro-text">
   <div id="event-description" class="event-info">
-    <span class="label info-label">Event Description</span><%= simple_format(white_list(auto_link(@event.description))) %>
+    <span class="label info-label">Event Description</span><%= simple_format(scrub(auto_link(@event.description))) %>
   </div>
 
   <%= sponsor_string(@event).html_safe %>
@@ -74,9 +74,9 @@
         <span class="label info-label">Location</span>
       </div>
       <div class="address">
-        <%= white_list @event.location %><br />
-        <%= white_list @event.city_state %><br />
-        <%= white_list @event.postal_code%>
+        <%= scrub @event.location %><br />
+        <%= scrub @event.city_state %><br />
+        <%= scrub @event.postal_code%>
       </div>
       <div class="google-directions">
         <a  class="btn btn-mini" 
@@ -93,7 +93,7 @@
     <div id="event-directions" class="event-info">
       <span class="label info-label">Directions</span>
       <p>
-        <%= white_list word_wrap(auto_link(@event.directions) {|text| truncate(text, :length => 40) + " " }) %>
+        <%= scrub word_wrap(auto_link(@event.directions) {|text| truncate(text, :length => 40) + " " }) %>
       </p>
     </div>
   <% end %>

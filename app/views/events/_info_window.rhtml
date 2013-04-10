@@ -1,7 +1,7 @@
 <% window = capture do %>
-  <%= white_list event.name %><br/>
+  <%= scrub event.name %><br/>
   <% if !event.worksite_event? %>
-    <%= white_list([event.city, event.state].compact.join(', ')) %><br/>
+    <%= scrub([event.city, event.state].compact.join(', ')) %><br/>
   <% end -%>
   <%= sponsor_string(event).html_safe %>
   <%= event.start.strftime('%a %b %d %I:%M%p').gsub(/ 0/,' ') if event.start %><br/>

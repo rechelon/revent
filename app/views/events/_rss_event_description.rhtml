@@ -1,4 +1,4 @@
-<%= white_list event.name %><br/>
-<%= white_list([event.location, event.city, event.state].compact.join(', ')) %><br/>
+<%= scrub event.name %><br/>
+<%= scrub([event.location, event.city, event.state].compact.join(', ')) %><br/>
 <%= event.start.strftime('%a %b %d %I:%M%p').gsub(/ 0/,' ') if event.start %><br/>
 <%= link_to 'Click for more details', :permalink => event.calendar.permalink, :controller => 'events', :action => 'show', :id => event.id %>

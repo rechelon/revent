@@ -8,10 +8,10 @@
     </h5>
   </div>
   <div class="event-list-name">
-    <h3><%= link_to white_list(list_item.name), :permalink => list_item.calendar.permalink, :controller => 'events', :action => 'show', :id => list_item.id %></h3>
+    <h3><%= link_to scrub(list_item.name), :permalink => list_item.calendar.permalink, :controller => 'events', :action => 'show', :id => list_item.id %></h3>
   </div>
   <div class="event-list-location">
-    <h4><%= white_list(list_item.city_state) %></h4>
+    <h4><%= scrub(list_item.city_state) %></h4>
   </div>
   <div class="event-list-description">
     <%= truncate(list_item.description(), :length => 375, :omission => '...') %>

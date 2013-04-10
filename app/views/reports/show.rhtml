@@ -6,8 +6,8 @@
 <h1>Event Report</h1>
 
 <div class="report-intro-text intro-text">
-  <h2><%= link_to(white_list(@event.name),   :permalink => @calendar.permalink, :controller => 'events', :action => 'show', :id => @event.id ) %></h2>
-  <h3><%= white_list @event.city %>, <%= @event.state %></h3>
+  <h2><%= link_to(scrub(@event.name),   :permalink => @calendar.permalink, :controller => 'events', :action => 'show', :id => @event.id ) %></h2>
+  <h3><%= scrub @event.city %>, <%= @event.state %></h3>
   <div class="report-event-start"><h4><%= @event.start? ? @event.start.strftime('%B %e, %Y') : '?' %></h4></div>
   <div class="report-actions-nav">      
     <blockquote>
@@ -66,10 +66,10 @@
 
   <% report.embeds.each do |embed| %>
   <div class="report-embed">
-    <%= white_list embed.html, :tags => %w(object embed param a iframe), :attributes => %w(name src frameborder value type wmode width height data href) %>
+    <%= scrub embed.html, :tags => %w(object embed param a iframe), :attributes => %w(name src frameborder value type wmode width height data href) %>
     <div class="media-caption">
       <legend>
-        <%= white_list embed.caption %>
+        <%= scrub embed.caption %>
       </legend>
   </div>
   </div>
