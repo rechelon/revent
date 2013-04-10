@@ -95,6 +95,7 @@ You will need access to the following services:
   - google, twitter, and facebook applications for oauth login
 
 REVENT INSTALLATION
+- apt-get install libmysqlclient-dev # if using mysql for db
 - apt-get install libmagickwand-dev libcurl4-gnutls-dev
 - bundle install
 - run ./script/initialize
