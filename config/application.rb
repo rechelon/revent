@@ -3,7 +3,6 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 # Bootstrap application pre-initialization
-require File.expand_path('../../lib/us_state_constants', __FILE__)
 require File.expand_path('../../lib/report_api_module', __FILE__)
 require File.expand_path('../../lib/event_api_module', __FILE__)
 require File.expand_path('../../lib/event_import_module', __FILE__)
