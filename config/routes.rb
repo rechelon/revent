@@ -118,7 +118,7 @@ Revent::Application.routes.draw do
     match 'login_popup/(:partner_id)', :action => 'login_popup', :as => 'login_popup'
     match ':permalink/login_popup/(:partner_id)', :action => 'login_popup', :as => 'login_popup'
     match 'oauth/request/:provider', :action => 'oauth_request', :as => 'oauth_request'
-    match 'oauth/response/:provider', :action => 'oauth_response', :as => 'oauth_request'
+    match 'oauth/response/:provider', :action => 'oauth_response', :as => 'oauth_response'
   end
 
   match 'cache/clear_calendars', :as => 'clear_calendars'
