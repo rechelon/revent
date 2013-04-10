@@ -131,7 +131,7 @@ Revent::Application.routes.draw do
   match 'ally/:referrer', :to => 'events#ally', :as => 'ally'
 
   controller :reports do
-    match ':permalink/reports/new/', :action => 'new', :as => 'new_report'
+    match ':permalink/reports/new/(:id)', :action => 'new', :as => 'new_report'
     match ':permalink/reports/', :action => 'index', :as => 'reports'
 
     match ':permalink/reports/search/state/:state', :action => 'search', :constraints => /\w{2}/, :as => 'report_state_search'
@@ -153,12 +153,12 @@ Revent::Application.routes.draw do
   match ':permalink/events/show/:id', :to => 'events#show', :format => 'html'
 
   # Install the default route as the lowest priority.
-  match ':controller/:action/:id(.:format)'
-  match ':controller/:action.:format'
-
   match ':permalink', :to => 'calendars#show', :as => 'calendar_home'
   match ':permalink/embed', :to => 'calendars#embed'
 
   match ':permalink/:controller/:action/:id(.:format)'
   match ':permalink/:controller/:action(.:format)'
+
+  match ':controller/:action/:id(.:format)'
+  match ':controller/:action.:format'
 end
