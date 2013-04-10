@@ -1,6 +1,3 @@
-- get rid of everthing in /plugin that we can remove
-- migrate to rails 3 
-- replace white_list with Sanitize (gem)
 - write testss for Mailers
 - write tests for uploads
 - remove link_to_function refs
