@@ -10,7 +10,7 @@
     <% end -%>
   </h1>
   <div class="reports-new-intro-text intro-text">
-    <% if @calendar.report_intro_text.html_safe %>
+    <% if @calendar.report_intro_text %>
       <%=  @calendar.report_intro_text.html_safe %>
     <% else %>
       Please take a few minutes to share your stories, videos and pictures from your event.  This information will be displayed publically.		
