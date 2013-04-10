@@ -255,6 +255,7 @@ describe Report do
         Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.list.url).code.should == 200
         Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.pageview.url).code.should == 200
         Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.lightbox.url).code.should == 200
+        @report.destroy
       end
       it "should delete file from s3 when report is destroyed" do
         @report.destroy
@@ -264,7 +265,6 @@ describe Report do
         Typhoeus::Request.get(@report.attachments.first.filename.thumbnail.lightbox.url).code.should == 404
       end
       after do
-        @report.destroy if @report
         AttachmentUploader::storage_type = @original_storage_type
       end
     end
