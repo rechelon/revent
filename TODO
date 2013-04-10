@@ -1,5 +1,6 @@
 - write testss for Mailers
 - write tests for uploads
+- write tests for Oauth
 - remove link_to_function refs
 - create seedable demo site
 - expose SiteConfig and host config in admin area

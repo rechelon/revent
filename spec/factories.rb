@@ -98,6 +98,8 @@ FactoryGirl.define do
   factory :host do
     hostname {"events." + String.random(10) + ".org"}
     theme "stepitup"
+    fb_app_id "abcdefg"
+    fb_app_secret "hijklmnop"
     site
   end
   
