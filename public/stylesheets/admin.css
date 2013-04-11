@@ -684,6 +684,9 @@ font-weight: bold;
 margin-top: 4px;
 float: none;
 }
+.user-form .permissions, .user-form .permission-list table{
+  clear: both;
+}
 .user-form .create-permission-btn{
 margin-top: 8px;
 display: inline-block;
