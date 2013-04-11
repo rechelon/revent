@@ -47,8 +47,6 @@ Revent::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.active_record.verification_timeout = 14400
-
   # Disable delivery errors if you bad email addresses should just be ignored
   config.action_mailer.raise_delivery_errors = false
 
