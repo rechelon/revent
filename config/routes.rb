@@ -60,9 +60,9 @@ Revent::Application.routes.draw do
 
   # routes for workers (shortline)
   namespace :workers do
-    match 'events/:action', :controller => 'events'
-    match 'reports/:action', :controller => 'reports'
-    match 'users/:action', :controller => 'users'
+    match 'events(/:action)', :controller => 'events'
+    match 'reports(/:action)', :controller => 'reports'
+    match 'users(/:action)', :controller => 'users'
   end
 
   match 'partners/:id', :to => 'partners#set_partner_cookie'
