@@ -55,14 +55,3 @@ Revent::Application.configure do
 end
 
 DIA_ENABLED = true
-
-if defined?(PhusionPassenger)
-  PhusionPassenger.on_event(:starting_worker_process) do |forked|
-    if forked
-      # We're in smart spawning mode.
-     CACHE.reset 
-    else
-      # We're in conservative spawning mode. We don't need to do anything.
-    end
-  end 
-end
