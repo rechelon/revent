@@ -66,7 +66,7 @@
 
   <% report.embeds.each do |embed| %>
   <div class="report-embed">
-    <%= scrub embed.html, :tags => %w(object embed param a iframe), :attributes => %w(name src frameborder value type wmode width height data href) %>
+    <%= Sanitize.clean(embed.html, :tags => %w(object embed param a iframe), :attributes => %w(name src frameborder value type wmode width height data href)).html_safe %>
     <div class="media-caption">
       <legend>
         <%= scrub embed.caption %>
