@@ -1,6 +1,6 @@
 <script type='text/javascript'>
   revent.calendar_expiration_date = '<%= @calendar.past_event_cutoff.strftime("%m/%d/%Y") %>';
-  revent.calendar_categories = _.flatten([{id:'', name:''}, <%= @calendar.categories.to_json :only => [:name, :id] %>]);
+  revent.calendar_categories = _.flatten([{id:'', name:''}, <%= @calendar.categories.to_json(:only => [:name, :id]).html_safe %>]);
   var total_events_fetched = false;
   var map_generated = false;
   var router_waiting = false;
