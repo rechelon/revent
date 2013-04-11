@@ -10,7 +10,7 @@ class Admin::UsersController < AdminController
         @query = {}
         @query[:conditions] = params_to_conditions
         @query[:limit] =  params[:limit] || 25
-        @query[:joins] = "LEFT JOIN user_permissions ON users.id=user_permissions.user_id LEFT JOIN sponsors_users ON users.id=sponsors_users.user_id"
+        @query[:joins] = "LEFT JOIN sponsors_users ON users.id=sponsors_users.user_id"
         @query[:group] = "users.id"
         
         total_pages = (User.find(:all, {:select=>'1',:conditions=>@query[:conditions], :joins=>@query[:joins], :group=>@query[:group]}).count.to_f / @query[:limit].to_f).ceil
