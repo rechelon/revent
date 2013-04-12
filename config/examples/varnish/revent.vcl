@@ -77,6 +77,9 @@ sub vcl_recv {
   if (req.url ~ "^/[^/]+/events/copy" ) {
     return (pass);
   }
+  if (req.url ~ "^/oauth" ) {
+    return (pass);
+  }
   if (req.url ~ "^/[^/]+/reports" ) {
     return (pass);
   }
@@ -146,6 +149,9 @@ sub vcl_fetch {
     return (hit_for_pass);
   }
   if (req.url ~ "^/[^/]+/signup" ) {
+    return (hit_for_pass);
+  }
+  if (req.url ~ "^/oauth" ) {
     return (hit_for_pass);
   }
   if (req.url ~ "^/[^/]+/events/copy" ) {
