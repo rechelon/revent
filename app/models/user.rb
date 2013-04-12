@@ -219,7 +219,7 @@ class User < ActiveRecord::Base
     end
     unless u.save
       logger.warn("Validation error(s) occurred when trying to create user from DemocracyInActionSupporter: #{u.errors.inspect}")
-      u.save_with_validation(false)
+      u.save :validation => false
     end
     dia_obj.synced = u
     dia_obj.save
