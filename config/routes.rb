@@ -12,7 +12,7 @@ Revent::Application.routes.draw do
   match ":permalink/zip_codes", :to => "zip_codes#index"
 
   namespace :admin do
-    match '/', :to => 'admin#index'
+    match '/', :action => 'index'
     match 'events/alert_nearby_supporters'
     match 'events/export'
     match 'users/export'
