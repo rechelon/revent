@@ -51,6 +51,8 @@ Revent::Application.routes.draw do
     match 'reports/:action.:format', :controller => 'reports'
 
     delete 'cache', :controller => 'caches#destroy'
+
+    match ':action'
   end
 
   namespace :purge do
