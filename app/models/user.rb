@@ -398,6 +398,7 @@ class User < ActiveRecord::Base
   end
   
   def country
+    return nil if self.country_code.blank?
     IsoCountryCodes::find(self.country_code).name
   end
 
