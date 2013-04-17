@@ -247,6 +247,7 @@ class EventsController < ApplicationController
     if self.current_user
       @user = self.current_user
       @user.partner_id  = cookies[:partner_id] if cookies[:partner_id]
+      @user.attributes = params[:user] if params[:user]
     else
       @user = User::find_or_build_related_user params[:user], cookies
       if !User.find_by_email(@user.email).blank?
