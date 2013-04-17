@@ -427,7 +427,7 @@ class AccountController < AccountControllerShared
     @user.admin = false
     @user.activate_new_user
     # no email address yet, so don't validate
-    @user.save :validation => false
+    @user.save :validate => false
     cookies[:revent_auth] = '1';
     self.current_user = @user
     
