@@ -103,7 +103,12 @@ var MapView = Backbone.View.extend({
         if(options.unit == "postal_code"){
           in_memory_unit = "zip_codes";
         } else {
-          options.value = "county:"+states_mapping[options.value];
+          if(state_exceptions[options.value]){
+            options.value = "country:'"+state_exceptions[options.value]+"'";
+          } else {
+            options.value = "county:'"+states_mapping[options.value]+"'";
+            //alert(options.value);
+          }
           in_memory_unit = "states";
         }
         if(!revent[in_memory_unit][options.value]){
