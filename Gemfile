@@ -38,6 +38,7 @@ gem "liquid"
 gem "iso_country_codes"
 gem "will_paginate", '~> 3.0.0'
 gem "acts_as_list"
+gem "mollom"
 
 group :test do
   gem "factory_girl_rails", "~> 1.1"

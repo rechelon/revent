@@ -53,6 +53,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def real_ip
+    if VARNISH_SERVERS.include?(request.remote_ip)
+      request.env['HTTP_X_FORWARDED_FOR']
+    else
+      request.remote_ip
+    end
+  end
+
   def render_optional_error_file(status_code)
     status = interpret_status(status_code)
     path = Rails.root.join("public","#{status[0,3]}.html")

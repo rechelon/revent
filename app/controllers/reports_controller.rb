@@ -72,10 +72,13 @@ class ReportsController < ApplicationController
       @report.reporter_name = @user.first_name+" "+@user.last_name
       if User.find_by_email(reporter_data[:email]).blank?
         @report.user = @user;
+      else
+        flash[:error] = 'User with this email is registered.  Please log in first.'
+        redirect_to(home_url) and return
       end
     end
 
-    if @report.spammy?
+    if @report.spammy? real_ip
       flash[:error] = 'This report appears to be spam'
       redirect_to(home_url) and return
     end
