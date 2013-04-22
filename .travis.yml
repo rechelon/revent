@@ -4,7 +4,8 @@ rvm:
 services: memcache
 before_script:
   - mysql -e 'create database revent_test;'
-  - cp config/examples/revent_config.yml.example config/revent_config.yml
+  - cp config/examples/revent_config.rb.example config/revent_config.rb
   - cp config/examples/database.yml.example config/database.yml
-  - "sed -i 's/username: revent/username: root/g' config/examples/database.yml"
+  - "sed -i 's/username: revent/username: root/g' config/database.yml"
+  - "RAILS_ENV=test rake db:create db:schema:load"
 script: rspec spec
