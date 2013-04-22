@@ -1,4 +1,4 @@
-source :gemcutter
+source 'https://rubygems.org'
 gem 'rails', '3.0.20'
 #gem 'capistrano', '2.5.19'
 gem 'fastercsv'
