@@ -160,6 +160,7 @@ describe Event do
 
       DemocracyInAction::API.stub!(:new).and_return(@dia_api)
       @event.stub!(:democracy_in_action_object).and_return(mock('object', :destroy => true, :key => 111))
+      Site.current.config.stub!(:salsa_enabled?).and_return(true)
       @dia_api.stub!(:delete)
     end
     it "should not be in the db" do
