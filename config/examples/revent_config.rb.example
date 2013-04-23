@@ -114,7 +114,7 @@ def initialize_uploads environment
       config.storage = :file
       config.cache_dir = 'tmp/uploads'
     end
-    $test_aws = true
+    $test_aws = false # change to true after entering correct credentials
     $test_fog = {
       :credentials => {
         :provider               => 'AWS',                        # required
