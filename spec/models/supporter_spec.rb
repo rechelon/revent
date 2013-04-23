@@ -63,17 +63,19 @@ describe Supporter do
       @sf_supporter_1.dia_group_keys.should == '1,2'
     end
 
-    it 'should create new supporters' do
-      Supporter.create_supporters_from_dia_group('78640')
-      Supporter.find_all_by_email('radcowpenliz+some@gmail.com').size.should == 1
-      Supporter.find_all_by_email('radcowpenliz+somebody@gmail.com').size.should == 1
-    end
+    unless SALSA_TEST_ACCOUNT[:user].blank?
+      it 'should create new supporters' do
+        Supporter.create_supporters_from_dia_group('78640')
+        Supporter.find_all_by_email('radcowpenliz+some@gmail.com').size.should == 1
+        Supporter.find_all_by_email('radcowpenliz+somebody@gmail.com').size.should == 1
+      end
 
-    it 'should not crete duplicate supporters' do
-      Supporter.create_supporters_from_dia_group('78640')
-      Supporter.create_supporters_from_dia_group('78640')
-      Supporter.find_all_by_email('radcowpenliz+some@gmail.com').size.should == 1
-      Supporter.find_all_by_email('radcowpenliz+somebody@gmail.com').size.should == 1
+      it 'should not create duplicate supporters' do
+        Supporter.create_supporters_from_dia_group('78640')
+        Supporter.create_supporters_from_dia_group('78640')
+        Supporter.find_all_by_email('radcowpenliz+some@gmail.com').size.should == 1
+        Supporter.find_all_by_email('radcowpenliz+somebody@gmail.com').size.should == 1
+      end
     end
   end
 end
