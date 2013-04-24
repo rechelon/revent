@@ -351,16 +351,19 @@ class EventsController < ApplicationController
           redirect_to @calendar.rsvp_redirect
         else
           flash.now[:notice] = "<b>Thanks for the RSVP!</b><br /> An email confirming your RSVP has been sent to the email address you provided."
+          @rsvp_success = true;
           show  # don't call show on same line as render
           render(:action => 'show', :id => @event)
         end
       else
         flash.now[:notice] = 'There was a problem registering your RSVP.'       
+        @rsvp_success = false;
         show  # don't call show on same line as render
         render(:action => 'show', :id => @event)
       end
     else
       flash.now[:notice] = 'You cannot RSVP for worksite events.'
+      @rsvp_success = false;
       render(:action => 'show', :id => @event)
     end
   end

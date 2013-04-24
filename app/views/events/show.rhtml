@@ -4,6 +4,9 @@
   <script type='text/javascript'>
     var permalink = "<%= @calendar.permalink %>";
     var event_id = "<%= @event.id %>";
+    <% unless @rsvp_success.nil? %>
+      var rsvp_success = <%= @rsvp_success.to_s %>;
+    <% end %>
   </script>
   <script type='text/javascript' src='/javascripts/ui_events_show.js'></script>
 <% end %>
