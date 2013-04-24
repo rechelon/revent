@@ -349,7 +349,7 @@ class EventsController < ApplicationController
           redirect_to params[:redirect]
         elsif !@calendar.rsvp_redirect.blank?
           redirect_to @calendar.rsvp_redirect
-        else      
+        else
           flash.now[:notice] = "<b>Thanks for the RSVP!</b><br /> An email confirming your RSVP has been sent to the email address you provided."
           show  # don't call show on same line as render
           render(:action => 'show', :id => @event)

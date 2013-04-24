@@ -1,13 +1,13 @@
 <!-- begin revent flash notice -->
 <% if flash[:notice] %>
   <div class="flash-box alert alert-success">
-    <%= flash[:notice] %>
+    <%= flash[:notice].html_safe %>
     <div class="clearfix"></div>
   </div>
 <% end %>
 <% if flash[:error] %>
   <div class="flash-box-error alert alert-error">
-    <%= flash[:error] %>
+    <%= flash[:error].html_safe %>
     <div class="clearfix"></div>
   </div>
 <% end %>

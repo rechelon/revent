@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   before_filter :login_from_cookie
   before_filter  :clean, :set_site, :set_calendar, :provide_liquid, :log_forwarded_ip
+  before_render :provide_liquid_before_render
   helper_method  :site 
   
   rescue_from ActionController::UnknownAction, :with => :unknown    
@@ -35,7 +36,6 @@ class ApplicationController < ActionController::Base
 
   def provide_liquid
     @liquid ||= {}
-    @liquid[:flash] = render_to_string :partial=>'/shared/flash', :locals=>{:flash => flash}
     @liquid[:take_action] = render_to_string :partial=>'/shared/take_action'
     @liquid[:manage] = render_to_string :partial=>'/shared/manage'
     @liquid[:event_spotlight] = render_to_string :partial=>'events/event_spotlight'
@@ -45,6 +45,10 @@ class ApplicationController < ActionController::Base
     @liquid[:site_name] = @calendar.theme.site_name
     @liquid[:site_description] = @calendar.theme.site_description
     @liquid[:url] = request.url
+  end
+
+  def provide_liquid_before_render
+    @liquid[:flash] = render_to_string :partial=>'/shared/flash', :locals=>{:flash => flash}
   end
 
   def log_forwarded_ip

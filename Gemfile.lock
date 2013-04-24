@@ -136,6 +136,7 @@ GEM
       activesupport (= 3.0.20)
       bundler (~> 1.0)
       railties (= 3.0.20)
+    rails3_before_render (0.2.0)
     rails_analyzer_tools (1.4.0)
       SyslogLogger (>= 1.4.0)
       hoe (>= 1.2.0)
@@ -218,6 +219,7 @@ DEPENDENCIES
   passenger
   production_log_analyzer (= 1.5.1)
   rails (= 3.0.20)
+  rails3_before_render
   rake
   rdoc
   rmagick
