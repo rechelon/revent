@@ -194,7 +194,7 @@ class Report < ActiveRecord::Base
     @akismet_params ||= {} 
   end
 
-  def spammy? real_ip
+  def spammy? real_ip=nil
     if Site.current.config.is_akismet_enabled
       akismet = Akismet.new Site.current.config.akismet_api_key, Site.current.config.akismet_domain_name
 
@@ -207,14 +207,15 @@ class Report < ActiveRecord::Base
       )
     end
     unless Site.current.config.mollom_api_public_key.nil? or Site.current.config.mollom_api_private_key.nil?
+      options = {}
+      options[:post_body] = text
+      options[:post_title] = text2 unless text2.nil?
+      options[:author_name] = reporter_name unless reporter_name.nil?
+      options[:author_mail] = reporter_email unless reporter_email.nil?
+      options[:author_ip] = real_ip unless real_ip.nil?
+
       m = Mollom.new :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
-      content = m.check_content(
-        :post_title => text2,
-        :post_body => text,
-        :author_name => reporter_name,
-        :author_mail => reporter_email,
-        :author_ip => real_ip
-      )
+      content = m.check_content(options)
       return content.spam?
     end
     false
