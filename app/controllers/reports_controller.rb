@@ -74,14 +74,14 @@ class ReportsController < ApplicationController
       if User.find_by_email(reporter_data[:email]).blank?
         @report.user = @user;
       else
-        flash[:error] = 'User with this email is registered.  Please log in first.'
+        cookies[:error] = 'User with this email is registered.  Please log in first.'
         redirect_to(home_url) and return
       end
     end
 
     spammy = @report.spammy? real_ip
     if spammy[:result] == true
-      flash[:error] = 'This report appears to be spam'
+      cookies[:error] = 'This report appears to be spam'
       redirect_to(home_url) and return
     elsif spammy[:result] == "unsure"
       if params[:captcha].nil?
@@ -96,7 +96,7 @@ class ReportsController < ApplicationController
         captcha_correct = m.valid_captcha?(:session_id => session[:captcha_session_id], :solution => params[:captcha])
         session[:captcha_session_id] = nil
         unless captcha_correct
-          flash[:error] = 'This report appears to be spam'
+          cookies[:error] = 'This report appears to be spam'
           redirect_to(home_url) and return
         end
       end
@@ -129,9 +129,9 @@ class ReportsController < ApplicationController
       @redirect_url = @calendar.report_redirect
     else
       if @report.published?
-        flash[:notice] = "Thanks for reporting!"
+        cookies[:info] = "Thanks for reporting!"
       else
-        flash[:notice] = "Thanks for reporting! Your report will be published upon review."
+        cookies[:info] = "Thanks for reporting! Your report will be published upon review."
       end
       @redirect_url = calendar_home_url(:permalink => @calendar.permalink)      
     end
