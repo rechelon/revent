@@ -1,5 +1,5 @@
 class Admin::UsersController < AdminController  
-  before_filter :can_crud_user, :only => [:update, :destroy, :reset_password]
+  before_filter :can_crud_user, :only => [:update, :destroy, :reset_password, :log_in_as]
 
   def index
     respond_to do |format|
@@ -157,6 +157,12 @@ class Admin::UsersController < AdminController
       end
     end
     send_data(string, :type => 'text/csv; charset=utf-8; header=present', :filename => "users.csv")
+  end
+
+  def log_in_as
+    self.current_user = @user
+    cookies[:info] = "You are now logged in as "+@user.full_name+" &lt;"+@user.email+"&gt;"
+    redirect_to home_url
   end
 
 private

@@ -137,6 +137,9 @@ var UserFormView = Backbone.View.extend({
           }
         });
         break;
+      case 'log_in_as':
+        document.location = '/admin/users/log_in_as/'+form.model.id; 
+        break;
     }
     return false;
   },
