@@ -140,6 +140,18 @@
   <% end %>
 </div>
 
+<% unless @captcha.nil? %>
+  <div class="control-group">
+    <label class="control-label" for="captcha">
+      <span class="req">*</span>Enter the letters as they appear
+    </label>
+    <div class="controls">
+      <img src='<%= @captcha %>' /><br />
+      <input type='text' name='captcha' />      
+    </div>
+  </div>
+<% end %>
+
 <%- if @calendar.report_redirect %>
 <%= hidden_field_tag "redirect", @calendar.report_redirect %>
 <% end %>

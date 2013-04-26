@@ -198,13 +198,13 @@ class Report < ActiveRecord::Base
     if Site.current.config.is_akismet_enabled
       akismet = Akismet.new Site.current.config.akismet_api_key, Site.current.config.akismet_domain_name
 
-      return akismet.comment_check( 
+      return {:result => akismet.comment_check( 
         akismet_params.merge({ 
           :comment_author => reporter_name,
           :comment_author_email => reporter_email, 
           :comment_content => text
         })
-      )
+      )}
     end
     unless Site.current.config.mollom_api_public_key.nil? or Site.current.config.mollom_api_private_key.nil?
       options = {}
@@ -216,9 +216,14 @@ class Report < ActiveRecord::Base
 
       m = Mollom.new :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
       content = m.check_content(options)
-      return content.spam?
+      return {
+        :result => "unsure",
+        :captcha => m.image_captcha(:session_id => content.session_id)["url"],
+        :session_id => content.session_id
+      } if content.unsure?
+      return {:result => content.spam?}
     end
-    false
+    {:result => false}
   end
 
   def attachments_count
