@@ -47,14 +47,11 @@ class Event < ActiveRecord::Base
   scope :searchable, :conditions => "(private = false OR private IS NULL) AND (worksite_event = false OR worksite_event is NULL )"
   scope :mappable, :conditions => ["(latitude <> 0 AND longitude <> 0) AND (state IS NOT NULL AND state <> '') AND country_code = ?", COUNTRY_CODE_USA]
   scope :worksite, :conditions => "worksite_event = 1"
-  scope :private, :conditions => "private = 1"
   scope :not_private, :conditions => "(private = false OR private IS NULL)"
   scope :with_reports, :include => :reports, :conditions => ["reports.status = ?", Report::PUBLISHED]
   scope :sticky, :conditions => ["sticky = ?", true]
   scope :newer_than, lambda{|date| return {:conditions=>["end > ?", date]}}
   scope :older_than, lambda{|date| return {:conditions=>["start < ?", date]}}
-  scope :all, lambda {{ }}
-  scope :first, lambda {{ :limit => 1 }}
   scope :upcoming, lambda {{:conditions => ["end >= ?", Time.now], :order => 'start, state'}}
   scope :past, lambda {{:conditions => ["end <= ?", Time.now], :order => 'start DESC, state'}}
   scope :first_category, lambda { |category_id|
