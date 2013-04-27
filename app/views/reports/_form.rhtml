@@ -64,7 +64,7 @@
             </div>
             <%- if n < allowed_attachments %>
               <div class="report_add_another">
-              <i class="icon-plus-sign"></i> <%= link_to_function 'Add Another Photo', visual_effect(:toggle_blind,"report_add_photo_#{n+1}")%>
+                <i class="icon-plus-sign"></i> <a class='add-photo-link' data-photo='<%= n+1 %>'>Add Another Photo</a>
               </div>
             <% end %>
           </div>
@@ -96,7 +96,7 @@
           </div>
           <%- if n < allowed_embeds %>
           <div class="report_add_another">
-            <i class="icon-plus-sign"></i> <%= link_to_function 'Add Another Video', visual_effect(:toggle_blind,"report_add_video_#{n+1}")%>
+            <i class="icon-plus-sign"></i> <a class='add-video-link' data-video='<%= n+1 %>'>Add Another Video</a>
           </div>
           <% end %>
         </div>
@@ -132,8 +132,8 @@
   </div>
   <%- if n < allowed_press_links  %>
         <div class="report_add_another">
-          <i class="icon-plus-sign"></i> <%= link_to_function 'Add More Press Coverage', visual_effect(:toggle_blind,"report_add_press_#{n+1}") %>
-            </div>
+          <i class="icon-plus-sign"></i> <a class='add-press-link' data-press='<%= n+1 %>'>Add More Press Coverage</a>
+        </div>
       <% end %>
     </div>
     <% end %>

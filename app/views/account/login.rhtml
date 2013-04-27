@@ -1,5 +1,5 @@
 <% content_for :header do %>
-  <%= javascript_include_tag 'effects' %>
+  <%= javascript_include_tag 'ui/account/login' %>
 <% end %>
 <div id="login">
   <h1>You Must Login to Continue</h1>
@@ -25,7 +25,7 @@
     <p>
       <%= submit_tag 'Log in' %>
     </p>
-    <%= link_to_function 'Forgot your password?', visual_effect(:toggle_blind, 'remind') %>
+    <a id='forgot-password-link'>Forgot your password?</a>
   <% end %>
   <div id="remind" style="display:none;">
     <p>Enter your e-mail address below and we will send you a link to reset your password.</p>

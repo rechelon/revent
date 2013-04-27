@@ -1,0 +1,21 @@
+jq(function($){
+  $('#edit-event-btn').click(function(){
+    $('#profile_event_edit').toggle(300);
+  });
+  $('#share-event-btn').click(function(){
+    $('#profile_event_promote').toggle(300);
+  });
+  $('#manage-reports-btn').click(function(){
+    $('#profile_event_report').toggle(300);
+  });
+  $('#manage-attendees-btn').click(function(){
+    $('#profile_event_attend').toggle(300);
+  });
+  $('#invite-btn').click(function(){
+    $('#profile_event_invite').toggle(300);
+  });
+  $('#announce-btn').click(function(){
+    $('#profile_event_blog').toggle(300);
+  });
+
+});
