@@ -29,7 +29,7 @@ javascripts:
     - public/javascripts/application.js
     - public/javascripts/popup.js
     - public/javascripts/login_popup.js
-    - public/javascripts/ui/ui_application.js
+    - public/javascripts/ui/application.js
     - public/javascripts/client/router.js
     - public/javascripts/client/models/*.js
     - public/javascripts/client/collections/*.js

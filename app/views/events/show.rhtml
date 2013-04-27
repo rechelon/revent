@@ -8,7 +8,7 @@
       var rsvp_success = <%= @rsvp_success.to_s %>;
     <% end %>
   </script>
-  <script type='text/javascript' src='/javascripts/ui_events_show.js'></script>
+  <%= javascript_include_tag 'ui/events/show' %>
 <% end %>
 
 <div id="event-header">
