@@ -514,7 +514,7 @@ class Event < ActiveRecord::Base
     start.to_i
   end
   #json object to be used for facebook integration js
-  def to_fb
+  def as_fb
     event_hash = attributes 
     event_hash[:fb_start] = fb_start
     event_hash.as_json
