@@ -154,7 +154,7 @@
     </label>
   </div>
   <div class="control-group">
-    <label class="control-label" for="description"><span class="req">*</span>Please describe this event for attendees using the box below:</label>       
+    <label class="control-label" for="description"><span class="req">*</span><%= liquid_or_default(@calendar.theme.event_form_description_label, "Please describe this event for attendees using the box below:", @liquid) %></label>       
     <div class="controls">
       <%= f.text_area "description", :title => "Please enter your event's description", :class => "input-xlarge required", :rows => "7", :cols => "57", :id => "dataDescription" %>
     </div>
