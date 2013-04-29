@@ -35,6 +35,17 @@
           <%= text_area_tag 'body', params[:body], :class=>'input-large' %>
         </div>
       </div>
+      <% unless @captcha.nil? %>
+        <div class="control-group">
+          <label class="control-label" for="captcha">
+            <span class="req">*</span>Enter the letters as they appear
+          </label>
+          <div class="controls">
+            <img src='<%= @captcha %>' /><br />
+            <input type='text' name='captcha' />      
+          </div>
+        </div>
+      <% end %>
       <div class="form-actions">
         <%= submit_tag "Send Email", :class=>'btn btn-primary' %>
       </div>

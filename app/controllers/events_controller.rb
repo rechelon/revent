@@ -468,6 +468,34 @@ class EventsController < ApplicationController
           :from => "\"#{params[:from_name]}\" <#{params[:from_email]}>", 
           :subject => params[:subject], 
           :body => params[:body] }
+
+        spammy = spammy?({
+          :from_name => params[:from_name],
+          :from_email => params[:from_email],
+          :subject => params[:subject],
+          :body => params[:body]
+        })
+        if spammy[:result] == true
+          cookies[:error] = 'This report appears to be spam'
+          redirect_to( :controller => 'events', :permalink => @calendar.permalink, :action => 'show', :id => @event ) and return        
+        elsif spammy[:result] == "unsure":
+          if params[:captcha].nil?
+            @captcha = spammy[:captcha]
+            flash.now[:error] = "Please enter the letters at the bottom of the page."
+            session[:captcha_session_id] = spammy[:session_id]
+            render
+            return
+          else
+            m = Mollom.new :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
+            captcha_correct = m.valid_captcha?(:session_id => session[:captcha_session_id], :solution => params[:captcha])
+            session[:captcha_session_id] = nil
+            unless captcha_correct
+              cookies[:error] = 'This report appears to be spam'
+              redirect_to( :controller => 'events', :permalink => @calendar.permalink, :action => 'show', :id => @event ) and return        
+            end
+          end
+        end
+
         if @event.democracy_in_action_key.blank? || !Site.current.config.salsa_enabled?
           UserMailer.message_to_email(message, @event.host_public_email).deliver
         else
@@ -533,4 +561,35 @@ class EventsController < ApplicationController
     #def is_partner_form(form)
       #File.exist?("themes/#{current_theme}/views/events/partners/#{form}")
     #end
+  #
+    def spammy? message
+      if Site.current.config.is_akismet_enabled
+        akismet = Akismet.new Site.current.config.akismet_api_key, Site.current.config.akismet_domain_name
+
+        return {:result => akismet.comment_check( 
+          akismet_params.merge({ 
+            :comment_author => message[:from_name],
+            :comment_author_email => message[:from_email], 
+            :comment_content => message[:body]
+          })
+        )}
+      end
+      unless Site.current.config.mollom_api_public_key.nil? or Site.current.config.mollom_api_private_key.nil?
+        m = Mollom.new :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
+        content = m.check_content({
+          :post_body => message[:body],
+          :post_title => message[:subject],
+          :author_name => message[:from_name],
+          :author_mail => message[:from_email],
+          :author_ip => real_ip
+        })
+        return {
+          :result => "unsure",
+          :captcha => m.image_captcha(:session_id => content.session_id)["url"],
+          :session_id => content.session_id
+        } if content.unsure?
+        return {:result => content.spam?}
+      end
+    end
+
 end
