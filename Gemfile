@@ -40,6 +40,7 @@ gem "will_paginate", '~> 3.0.0'
 gem "acts_as_list"
 gem "mollom"
 gem "rails3_before_render"
+gem "timezone"
 
 group :test do
   gem "factory_girl_rails", "~> 1.1"
