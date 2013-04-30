@@ -537,6 +537,9 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def self.address_required?
+    Site.current.config.event_address_required
+  end
 
 private
   def geocode

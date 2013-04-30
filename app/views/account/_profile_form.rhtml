@@ -15,13 +15,17 @@
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="dataStreet">Street Address</label>
-      <div class="controls"><%= user.text_field "street", :id => "dataStreet", :maxlength => "64", :class => "input-large inputStyle" %>
+      <label class="control-label" for="dataStreet">
+        <% if User.full_address_required? %><span class="req">*</span><% end %>Street Address
+      </label>
+      <div class="controls"><%= user.text_field "street", :id => "dataStreet", :maxlength => "64", :class => "input-large inputStyle"+(User.full_address_required? ? " required" : "") %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="dataCity">City</label>
-      <div class="controls"><%= user.text_field "city", :id => "dataCity", :maxlength => "32", :class => "input-large inputStyle" %>
+      <label class="control-label" for="dataCity">
+        <% if User.full_address_required? %><span class="req">*</span><% end %>City
+      </label>
+      <div class="controls"><%= user.text_field "city", :id => "dataCity", :maxlength => "32", :class => "input-large inputStyle"+(User.full_address_required? ? " required" : "") %>
       </div>
     </div>
     <div class="control-group">

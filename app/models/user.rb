@@ -258,6 +258,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
   validates_presence_of     :email
   validates_presence_of     :password,                   :if => :password_required?
+  validates_with UserAddressValidator
   validates_length_of       :password, :within => 4..40, :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :email,    :within => 3..100
@@ -513,6 +514,10 @@ class User < ActiveRecord::Base
         }
       }
     })
+  end
+
+  def self.full_address_required?
+    Site.current.config.user_full_address_required
   end
 
   protected

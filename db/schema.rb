@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419222758) do
+ActiveRecord::Schema.define(:version => 20130429222721) do
 
   create_table "attachments", :force => true do |t|
     t.string   "content_type"
@@ -422,6 +422,8 @@ ActiveRecord::Schema.define(:version => 20130419222758) do
     t.string  "salsa_node"
     t.string  "mollom_api_public_key"
     t.string  "mollom_api_private_key"
+    t.boolean "event_address_required",                  :default => true
+    t.boolean "user_full_address_required",              :default => false
   end
 
   create_table "sites", :force => true do |t|
