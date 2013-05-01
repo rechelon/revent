@@ -96,32 +96,32 @@
   <% if @calendar.theme.event_form_time_tbd_override %>
     <%= liquid(@calendar.theme.event_form_time_tbd_override, @liquid) %>
   <% else %>
-    <div class="control-group">
+    <div class="control-group" id='control-group-tbd'>
       <label class="checkbox" for="tbd">
         <%= f.check_box "time_tbd", :id=>'tbd' %>
         Time To Be Determined
       </label>
     </div>
   <% end %>
-  <div class="control-group">
+  <div class="control-group" id='control-group-event_start_date'>
     <label class="control-label" for="event_start_date"><span class="req">*</span>Start Date</label>
     <div class="controls">
       <%= text_field_tag 'event_start_date', @event.form_start_date, :size => 16,:class => 'event_start_date required' %>
     </div>
   </div>
-  <div class="control-group time-fields" <% if @event.time_tbd %> style="display:none" <% end %>>
+  <div class="control-group time-fields" id='control-group-event_start_time' <% if @event.time_tbd %> style="display:none" <% end %>>
     <label class="control-label" for="event_start_time"><span class="req">*</span>Start Time</label>
     <div class="controls">
       <%= select_tag 'event_start_time', options_for_select( time_options, @event.form_start_time), :class => 'event_start_time required' %>
     </div>
   </div>
-  <div class="control-group">
+  <div class="control-group" id='control-group-event_end_date'>
     <label class="control-label" for="event_end_date">*</span>End Date</label>
     <div class="controls">
       <%= text_field_tag 'event_end_date',@event.form_end_date, :size => 16,:class => 'event_end_date required' %>
     </div>
   </div>
-  <div class="control-group time-fields" <% if @event.time_tbd %> style="display:none" <% end %>>
+  <div class="control-group time-fields" id='control-group-event_end_time' <% if @event.time_tbd %> style="display:none" <% end %>>
     <label class="control-label" for="event_end_time"><span class="req">*</span>End Time</label>
     <div class="controls">
       <%= select_tag 'event_end_time', options_for_select( time_options, @event.form_end_time), :class => 'event_end_time required' %>              
@@ -134,15 +134,15 @@
       <div class="control-group">
         <label class="control-label" for="event_privacy_level">Privacy:</label>
         <div class="controls">
-          <label class="radio">
+          <label class="radio" id="radio-control-public">
             <%= f.radio_button :privacy_level, 'public' %>
             This event is public, so anyone may search for it.
           </label>
-          <label class="radio"> 
+          <label class="radio" id="radio-control-worksite"> 
             <%= f.radio_button :privacy_level, 'worksite' %>
             This event is a worksite action, so only date, time, city, state, and sponsoring union and local will appear.
           </label>
-          <label class="radio">
+          <label class="radio" id="radio-control-private">
             <%= f.radio_button :privacy_level, 'private' %>
             This event is private, and does not show up in search results. 
           </label>
