@@ -52,6 +52,7 @@ class Event < ActiveRecord::Base
   scope :sticky, :conditions => ["sticky = ?", true]
   scope :newer_than, lambda{|date| return {:conditions=>["end > ?", date]}}
   scope :older_than, lambda{|date| return {:conditions=>["start < ?", date]}}
+  scope :all_scope, lambda {{ }}
   scope :upcoming, lambda {{:conditions => ["end >= ?", Time.now], :order => 'start, state'}}
   scope :past, lambda {{:conditions => ["end <= ?", Time.now], :order => 'start DESC, state'}}
   scope :first_category, lambda { |category_id|
@@ -140,8 +141,8 @@ class Event < ActiveRecord::Base
 
   # finder-chainer!!!
   def self.prioritize(sort)
-    return self.all if sort.nil?
-    sort.inject(self.all) { |search, (finder, value) | sorted = search.send( finder.to_sym, value ) if scopes[ finder.to_sym ]; sorted || search }
+    return self.all_scope if sort.nil?
+    sort.inject(self.all_scope) { |search, (finder, value) | sorted = search.send( finder.to_sym, value ) if scopes[ finder.to_sym ]; sorted || search }
   end
 
   scope :by_query, lambda {|query| 
