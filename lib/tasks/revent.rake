@@ -41,4 +41,40 @@ namespace :revent do
     puts ""
     puts "Please change your webserver configuration accordingly"
   end
+
+  desc "Get mollom statistics for each site with mollom enabled"
+  task :get_mollom_stats do
+    load 'config/environment.rb'
+    Site.all.each do |s|
+      unless s.config.mollom_api_public_key.nil? or s.config.mollom_api_private_key.nil?
+        m = Mollom.new :private_key => s.config.mollom_api_private_key, :public_key => s.config.mollom_api_public_key
+        total_days = m.statistics :type => 'total_days'
+        total_accepted = m.statistics :type => 'total_accepted'
+        total_rejected = m.statistics :type => 'total_rejected'
+        total_percent = total_accepted + total_rejected == 0 ? 0 : (total_rejected.to_f / (total_accepted + total_rejected).to_f).round(4) * 100
+        yesterday_accepted = m.statistics :type => 'yesterday_accepted'
+        yesterday_rejected = m.statistics :type => 'yesterday_rejected'
+        yesterday_percent = yesterday_accepted + yesterday_rejected == 0 ? 0 : (yesterday_rejected.to_f / (yesterday_accepted + yesterday_rejected).to_f).round(4) * 100
+        today_accepted = m.statistics :type => 'today_accepted'
+        today_rejected = m.statistics :type => 'today_rejected'
+        today_percent = today_accepted + today_rejected == 0 ? 0 : (today_rejected.to_f / (today_accepted + today_rejected).to_f).round(4) * 100
+        puts "\n"
+        puts "Site: "+s.name
+        puts "Total days operational: "+total_days.to_s
+        puts "==========================="
+        puts "Total accepted: "+total_accepted.to_s
+        puts "Total rejected: "+total_rejected.to_s
+        puts "Total spam %: "+total_percent.to_s
+        puts "---------------------------"
+        puts "Yesterday accepted: "+yesterday_accepted.to_s
+        puts "Yesterday rejected: "+yesterday_rejected.to_s
+        puts "Yesterday spam %: "+yesterday_percent.to_s
+        puts "---------------------------"
+        puts "Today accepted: "+today_accepted.to_s
+        puts "Today rejected: "+today_rejected.to_s
+        puts "Today spam %: "+today_percent.to_s
+        puts "\n"
+      end
+    end
+  end
 end
