@@ -2,6 +2,20 @@ language: ruby
 rvm:
   - 1.8.7
 services: memcache
+env: 
+  global: 
+  - secure: |- # SALSA_TEST_USER
+      Lm1ZCXwRTkOwD63f+C0fPcfWdN4ashTCW+DKHSCaAXh5yOx/SXXwYNxFoypg
+      CUVuczYA2zuwOuuUh+bL+fPbDQ5/0F5h9gY2EUsTMIEcxM81gyDZT2R2HC64
+      xAc24NPtza7mMDAYu2HiXIqZt0zW0fmPrh76KIzt/g9oxrnk9A0=
+  - secure: |- # SALSA_TEST_PASS
+      UaFkGJPSsMjML7M6toI+ZEq14ekXakjTHuRhyv9QVLSqMTKxmHwmzypyNySu
+      FiZF4QuuWDa+y71Yvawbn5hDxtUGmqc9OCG8t3Mvv8oHmj0w1Taj+NsuC8hw
+      oY3ycyFclfTQibOd9+Z2Kp+zp9GJoMqS96a1K0OqRCRXie7S4qA=
+  - secure: |- # SALSA_TEST_NODE
+      ZNh7VlEEECKc2/+XvsinItshI/wM+FQLfT1G5DCdSu7NQLTYbeJ/EcFUq/iG
+      +gFn04gqye8c1GW7KHHbgKgi1gYGisqm//mnipylB3vfJeYkLhZab5/38JB0
+      T+ig1DbDSJnnIo1MlxsxirgaeILmfacZ+eiWK5VlS+Mymy8emqI=
 before_script:
   - mysql -e 'create database revent_test;'
   - cp config/examples/revent_config.rb.example config/revent_config.rb

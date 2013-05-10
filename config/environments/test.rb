@@ -39,3 +39,7 @@ end
 
 DIA_ENABLED = true  
 
+# allow ENV to populate test credentials, for travis-ci
+SALSA_TEST_ACCOUNT[:user] = ENV['SALSA_TEST_USER'] unless ENV['SALSA_TEST_USER'].blank?
+SALSA_TEST_ACCOUNT[:pass] = ENV['SALSA_TEST_PASS'] unless ENV['SALSA_TEST_PASS'].blank?
+SALSA_TEST_ACCOUNT[:node] = ENV['SALSA_TEST_NODE'] unless ENV['SALSA_TEST_NODE'].blank?
