@@ -64,6 +64,8 @@ Spork.prefork do
     @site.config.salsa_user = SALSA_TEST_ACCOUNT[:user]
     @site.config.salsa_pass = SALSA_TEST_ACCOUNT[:pass]
     @site.config.salsa_node = SALSA_TEST_ACCOUNT[:node]
+    @site.config.mollom_api_public_key = MOLLOM_TEST_ACCOUNT[:public_key]
+    @site.config.mollom_api_private_key = MOLLOM_TEST_ACCOUNT[:private_key]
     @site.save!
     Site.stub!(:current).and_return(@site)
     Site.stub!(:current_config_path).and_return(Rails.root.join('test', 'config'))

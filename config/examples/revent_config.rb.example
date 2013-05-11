@@ -42,6 +42,11 @@ SALSA_TEST_ACCOUNT = {
   :node => ''
 }
 
+MOLLOM_TEST_ACCOUNT = {
+  :public_key => '',
+  :private_key => ''
+}
+
 def initialize_geocoders
   Geocoder.config[:timeout] = 3
   Geocoder.config[:lookup] = :google

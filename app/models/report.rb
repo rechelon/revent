@@ -208,7 +208,7 @@ class Report < ActiveRecord::Base
     end
     unless Site.current.config.mollom_api_public_key.nil? or Site.current.config.mollom_api_private_key.nil?
       options = {}
-      options['postBody'] = text
+      options['postBody'] = text unless text.nil?
       options['postTitle'] = text2 unless text2.nil?
       options['authorName'] = reporter_name unless reporter_name.nil?
       options['authorMail'] = reporter_email unless reporter_email.nil?

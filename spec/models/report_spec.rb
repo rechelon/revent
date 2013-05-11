@@ -228,6 +228,44 @@ describe Report do
       end
     end
 
+    describe 'mollom' do
+      unless MOLLOM_TEST_ACCOUNT[:private_key].blank? or MOLLOM_TEST_ACCOUNT[:public_key].blank?
+        before do
+          @report = build :report, :event => @event
+        end
+
+        it "returns spam result for a spammy report text" do
+          @report.text = "spam"
+          @report.spammy?[:result].should == true
+        end
+
+        it "returns unsure result for an ambiguous report text" do
+          @report.text = "unsure"
+          @report.spammy?[:result].should == "unsure"
+        end
+
+        it "returns ham result for an innocuous report text" do
+          @report.text = "ham"
+          @report.spammy?[:result].should == false
+        end
+
+        it "returns spam result for a spammy report text2" do
+          @report.text2 = "spam"
+          @report.spammy?[:result].should == true
+        end
+
+        it "returns unsure result for an ambiguous report text2" do
+          @report.text2 = "unsure"
+          @report.spammy?[:result].should == "unsure"
+        end
+
+        it "returns ham result for an innocuous report text2" do
+          @report.text2 = "ham"
+          @report.spammy?[:result].should == false
+        end
+      end
+    end
+
   end #when created
 
   describe "configured to upload attachments to AWS" do
