@@ -208,18 +208,18 @@ class Report < ActiveRecord::Base
     end
     unless Site.current.config.mollom_api_public_key.nil? or Site.current.config.mollom_api_private_key.nil?
       options = {}
-      options[:post_body] = text
-      options[:post_title] = text2 unless text2.nil?
-      options[:author_name] = reporter_name unless reporter_name.nil?
-      options[:author_mail] = reporter_email unless reporter_email.nil?
-      options[:author_ip] = real_ip unless real_ip.nil?
+      options['postBody'] = text
+      options['postTitle'] = text2 unless text2.nil?
+      options['authorName'] = reporter_name unless reporter_name.nil?
+      options['authorMail'] = reporter_email unless reporter_email.nil?
+      options['authorIp'] = real_ip unless real_ip.nil?
 
-      m = Mollom.new :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
+      m = RMollom.new :site => MOLLOM_SITE, :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
       content = m.check_content(options)
       return {
         :result => "unsure",
-        :captcha => m.image_captcha(:session_id => content.session_id)["url"],
-        :session_id => content.session_id
+        :captcha => m.create_captcha({'contentId' => content.content_id})["captcha"]["url"],
+        :content_id => content.content_id
       } if content.unsure?
       return {:result => content.spam?}
     end

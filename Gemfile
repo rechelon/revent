@@ -33,12 +33,12 @@ gem "sanitize"
 gem "hoptoad_notifier"
 gem "geocoder", '1.1.6'
 gem "carrierwave", :git => "git://github.com/Hainish/carrierwave.git", :branch => '0.5-stable', :ref => '9a6ee065e378eacad5c3fbe21749c61cf049847f'
+gem "rest_mollom", :git => "git://github.com/Hainish/rest_mollom.git"
 gem "fog", '1.0.0'
 gem "liquid"
 gem "iso_country_codes"
 gem "will_paginate", '~> 3.0.0'
 gem "acts_as_list"
-gem "mollom"
 gem "rails3_before_render"
 
 group :test do

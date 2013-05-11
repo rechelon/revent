@@ -88,13 +88,13 @@ class ReportsController < ApplicationController
         @liquid[:text2] = params[:report][:text2] if params[:report][:text2]
         @captcha = spammy[:captcha]
         flash.now[:error] = "Please enter the letters at the bottom of the page."
-        session[:captcha_session_id] = spammy[:session_id]
+        session[:captcha_content_id] = spammy[:content_id]
         render :action => 'new'
         return
       else
-        m = Mollom.new :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
-        captcha_correct = m.valid_captcha?(:session_id => session[:captcha_session_id], :solution => params[:captcha])
-        session[:captcha_session_id] = nil
+        m = RMollom.new :site => MOLLOM_SITE, :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
+        captcha_correct = m.valid_captcha?(:id => session[:captcha_content_id], 'solution' => params[:captcha])
+        session[:captcha_content_id] = nil
         unless captcha_correct
           cookies[:error] = 'This report appears to be spam'
           redirect_to(home_url) and return

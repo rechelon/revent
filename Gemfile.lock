@@ -7,6 +7,14 @@ GIT
     carrierwave (0.5.8)
       activesupport (>= 3.0)
 
+GIT
+  remote: git://github.com/Hainish/rest_mollom.git
+  revision: 3c5fff33aab6e20f0fca2f31dbb05266b15727e6
+  specs:
+    rest_mollom (0.0.1)
+      json
+      oauth
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -107,13 +115,13 @@ GEM
       memcache-client (>= 1.1.0)
     memcache-client (1.8.5)
     mime-types (1.16)
-    mollom (0.2.3)
     multi_json (1.0.4)
     mysql (2.9.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.1.4)
     nokogiri (1.5.0)
+    oauth (0.4.7)
     open4 (1.3.0)
     passenger (3.0.19)
       daemon_controller (>= 1.0.0)
@@ -213,7 +221,6 @@ DEPENDENCIES
   liquid
   mem_cache_fragment_store (= 1.0.1)
   mime-types (= 1.16)
-  mollom
   mysql
   nokogiri (= 1.5.0)
   passenger
@@ -222,6 +229,7 @@ DEPENDENCIES
   rails3_before_render
   rake
   rdoc
+  rest_mollom!
   rmagick
   rspec-rails (>= 2.0.0.beta.10)
   sanitize

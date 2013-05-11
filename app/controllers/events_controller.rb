@@ -482,12 +482,12 @@ class EventsController < ApplicationController
           if params[:captcha].nil?
             @captcha = spammy[:captcha]
             flash.now[:error] = "Please enter the letters at the bottom of the page."
-            session[:captcha_session_id] = spammy[:session_id]
+            session[:captcha_content_id] = spammy[:content_id]
             render
             return
           else
-            m = Mollom.new :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
-            captcha_correct = m.valid_captcha?(:session_id => session[:captcha_session_id], :solution => params[:captcha])
+            m = RMollom.new :site => MOLLOM_SITE, :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
+            captcha_correct = m.valid_captcha?(:id => session[:captcha_content_id], 'solution' => params[:captcha])
             session[:captcha_session_id] = nil
             unless captcha_correct
               cookies[:error] = 'This report appears to be spam'
@@ -575,18 +575,18 @@ class EventsController < ApplicationController
         )}
       end
       unless Site.current.config.mollom_api_public_key.nil? or Site.current.config.mollom_api_private_key.nil?
-        m = Mollom.new :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
+        m = RMollom.new :site => MOLLOM_SITE, :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
         content = m.check_content({
-          :post_body => message[:body],
-          :post_title => message[:subject],
-          :author_name => message[:from_name],
-          :author_mail => message[:from_email],
-          :author_ip => real_ip
+          'postBody' => message[:body],
+          'postTitle' => message[:subject],
+          'authorName' => message[:from_name],
+          'authorMail' => message[:from_email],
+          'authorIp' => real_ip
         })
         return {
           :result => "unsure",
-          :captcha => m.image_captcha(:session_id => content.session_id)["url"],
-          :session_id => content.session_id
+          :captcha => m.create_captcha({'contentId' => content.content_id})["captcha"]["url"],
+          :content_id => content.content_id
         } if content.unsure?
         return {:result => content.spam?}
       end
