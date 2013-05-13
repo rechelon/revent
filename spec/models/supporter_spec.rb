@@ -34,10 +34,10 @@ describe Supporter do
 
   describe 'on creation' do
     it 'should geocode supporters' do
-       truncate_float(@sf_supporter_1.latitude, 2).should == 37.77
-       truncate_float(@sf_supporter_1.longitude, 2).should == -122.42
-       truncate_float(@ny_supporter_1.latitude, 2).should == 40.70
-       truncate_float(@ny_supporter_1.longitude, 2).should ==  -74.02
+       truncate_float(@sf_supporter_1.latitude, 2).should be_between(37.67, 37.87)
+       truncate_float(@sf_supporter_1.longitude, 2).should be_between(-122.52,-122.32)
+       truncate_float(@ny_supporter_1.latitude, 2).should be_between(40.60, 40.80)
+       truncate_float(@ny_supporter_1.longitude, 2).should be_between(-74.12, -73.92)
     end
   end
   describe 'near_event' do
