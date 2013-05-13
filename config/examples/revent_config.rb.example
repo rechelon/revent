@@ -48,8 +48,10 @@ MOLLOM_TEST_ACCOUNT = {
 }
 
 def initialize_geocoders
-  Geocoder.config[:timeout] = 3
-  Geocoder.config[:lookup] = :google
+  Geocoder.configure(
+    :timeout => 3,
+    :lookup => :google
+  )
 end
 
 def actionmailer_options environment
