@@ -6,6 +6,7 @@ describe ReportsController do
       initialize_site
       @report = build :report
       Report.stub!(:new).and_return(@report)
+      @report.stub!(:spammy?).and_return({:result => false})
       @uploaded_data = test_uploaded_file
       @create_params = {
         :permalink => @calendar.permalink,
