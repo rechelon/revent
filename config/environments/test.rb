@@ -43,3 +43,13 @@ DIA_ENABLED = true
 SALSA_TEST_ACCOUNT[:user] = ENV['SALSA_TEST_USER'] unless ENV['SALSA_TEST_USER'].blank?
 SALSA_TEST_ACCOUNT[:pass] = ENV['SALSA_TEST_PASS'] unless ENV['SALSA_TEST_PASS'].blank?
 SALSA_TEST_ACCOUNT[:node] = ENV['SALSA_TEST_NODE'] unless ENV['SALSA_TEST_NODE'].blank?
+
+$test_fog = {
+  :credentials => {
+    :provider               => 'AWS',
+    :aws_access_key_id      => ENV['AWS_TEST_ACCESS_KEY_ID'],
+    :aws_secret_access_key  => ENV['AWS_TEST_SECRET_ACCESS_KEY']
+  },
+  :directory => ENV['AWS_TEST_DIR'],
+  :force_path_for_aws => true
+} unless ENV['AWS_TEST_ACCESS_KEY_ID'].blank? or ENV['AWS_TEST_SECRET_ACCESS_KEY'].blank? or ENV['AWS_TEST_DIR'].blank?

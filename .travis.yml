@@ -16,6 +16,18 @@ env:
       ZNh7VlEEECKc2/+XvsinItshI/wM+FQLfT1G5DCdSu7NQLTYbeJ/EcFUq/iG
       +gFn04gqye8c1GW7KHHbgKgi1gYGisqm//mnipylB3vfJeYkLhZab5/38JB0
       T+ig1DbDSJnnIo1MlxsxirgaeILmfacZ+eiWK5VlS+Mymy8emqI=
+  - secure: |- # AWS_TEST_ACCESS_KEY_ID
+      iRG9Wz7Sh44/Yk8DGsJZKuia2HNWLDHROT5cPLp1opbF4hMtwYOpsNjl471y
+      uTyhQoslI0ePkj3cqGJeZsEl3gkURkw1/gi4kV11XdsMaMp/kBdH4hpw6SMI
+      qCLnOuGqnOF2O3S8cwnneyPF8ixI2+xv6/iSHSVDBQwawDWtVLo=
+  - secure: |- # AWS_TEST_SECRET_ACCESS_KEY
+      hVnr8Qh6LW3HxKRsm3gNxUSjq8rBRAp1ddJm4UV9mih9awDOt9e6AMI97H2q
+      Og1iPDcW5jTIjprDd5LwofDc2ZD5fs7y/CgQtzV6nJXZBvptmU63fLXNydO8
+      klfhLMePkpsS+1dSlUCW+93UyRerKMjuV5Wdn89keFkNsk3jGYY=
+  - secure: |- # AWS_TEST_DIR
+      sYHSFJX74QpLTruob2cluW+v/Ez6th8mHfTbHFXvT2sCiSJkwU0XjzG8SKLY
+      FOZZIndMBAjChWspC2rKBlPg0GYvsQaKAm3iHHLfjqFJSGuq0m2NdjJWWh+h
+      shM3sxU/KbA4BwiimLcSkhW5xEA6C94gQqHiQIOeKy1Lxo4sKwo=
 before_script:
   - mysql -e 'create database revent_test;'
   - cp config/examples/revent_config.rb.example config/revent_config.rb
