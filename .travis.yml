@@ -28,6 +28,14 @@ env:
       sYHSFJX74QpLTruob2cluW+v/Ez6th8mHfTbHFXvT2sCiSJkwU0XjzG8SKLY
       FOZZIndMBAjChWspC2rKBlPg0GYvsQaKAm3iHHLfjqFJSGuq0m2NdjJWWh+h
       shM3sxU/KbA4BwiimLcSkhW5xEA6C94gQqHiQIOeKy1Lxo4sKwo=
+  - secure: |- # MOLLOM_TEST_PUBLIC_KEY
+      qs3HbKPlqfCmpHZvvWgaDLQzLv9VRIzKg7QQBorrdLqps26FCucrzI3RFWxD
+      kdiGhyvTLZs5GfYnyq67GszkdvmCzYb0DcUpD8Iy8VqcMAg4gTfgmouvLeeo
+      3pIaTZI9wOdDJXrD6qWNo41CM5cc65R2P91pdLZ8xDR8Avq86ZM=
+  - secure: |- # MOLLOM_TEST_PRIVATE_KEY
+      y+GBrw7oBz7wEG8U+6GZZMOBye3RSxb8AY3eCXxwchabuAlqlb4pPO48C5pI
+      kYFeOvvCCnj25RKohgSHdVZN+xCum3ov3c1rdoZSTOLumQHE7Euql9n3E2sO
+      OHtH2FMyfIqYSZTQzbAhtpmWGIfMiSb2l0yGjQh4SguqdL7WxQs=
 before_script:
   - mysql -e 'create database revent_test;'
   - cp config/examples/revent_config.rb.example config/revent_config.rb

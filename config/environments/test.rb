@@ -44,6 +44,9 @@ SALSA_TEST_ACCOUNT[:user] = ENV['SALSA_TEST_USER'] unless ENV['SALSA_TEST_USER']
 SALSA_TEST_ACCOUNT[:pass] = ENV['SALSA_TEST_PASS'] unless ENV['SALSA_TEST_PASS'].blank?
 SALSA_TEST_ACCOUNT[:node] = ENV['SALSA_TEST_NODE'] unless ENV['SALSA_TEST_NODE'].blank?
 
+MOLLOM_TEST_ACCOUNT[:public_key] = ENV['MOLLOM_TEST_PUBLIC_KEY'] unless ENV['MOLLOM_TEST_PUBLIC_KEY'].blank?
+MOLLOM_TEST_ACCOUNT[:private_key] = ENV['MOLLOM_TEST_PRIVATE_KEY'] unless ENV['MOLLOM_TEST_PRIVATE_KEY'].blank?
+
 $test_fog = {
   :credentials => {
     :provider               => 'AWS',
