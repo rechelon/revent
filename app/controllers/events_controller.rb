@@ -129,6 +129,7 @@ class EventsController < ApplicationController
     @event_custom_attributes = @event.custom_attributes_data
     @pagetitle = @event.name 
     @liquid[:pagetitle] = @pagetitle
+    @liquid[:host_fn_li] = @event.host_public_first_name + " " + @event.host_public_last_name.first
     if @calendar.map_engine == "osm"
       @osm_key = Host.current.cloudmade_api_key;
     end
@@ -451,10 +452,12 @@ class EventsController < ApplicationController
     @host = @event.host
     @pagetitle = 'Profile for '+@event.host_public_full_name
     @liquid[:pagetitle] = @pagetitle
+    @liquid[:host_fn_li] = @event.host_public_first_name + " " + @event.host_public_last_name.first
   end
 
   def email_host
     @event = @calendar.events.find(params[:id], :include => :host)
+    @liquid[:host_fn_li] = @event.host_public_first_name + " " + @event.host_public_last_name.first
     @host = @event.host
     @post_url = File.join( '',@calendar.permalink,'events','email_host',@event.to_param )
     return render(:action=> 'email_host', :layout=>false) if params[:ajax] 

@@ -1,6 +1,6 @@
 <div id="event-host">
   <h2><%= @event.name %> is hosted by:</h2>
-  <h3><%= @event.host_public_full_name %></h3>
+  <h3><%= liquid_or_default(@calendar.theme.host_name, @event.host_public_full_name, @liquid) %></h3>
   <% if @event.host_alias %>
     <% unless @event.host_phone.blank? %>
       <div id="event-host-contact">Contact: <%= @event.host_phone %></div>
