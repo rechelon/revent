@@ -263,6 +263,32 @@ class EventsController < ApplicationController
       end
     end
 
+    #set user as host
+    @event.host = @user
+
+    spammy = @event.spammy? real_ip
+    if spammy[:result] == true
+      cookies[:error] = 'This event appears to be spam'
+      redirect_to(home_url) and return
+    elsif spammy[:result] == "unsure"
+      if params[:captcha].nil?
+        @captcha = spammy[:captcha]
+        flash.now[:error] = "Please enter the letters at the bottom of the page."
+        session[:captcha_content_id] = spammy[:content_id]
+        @categories = @calendar.categories.map {|c| [c.name, c.id] }
+        render :action => 'new'
+        return
+      else
+        m = RMollom.new :site => MOLLOM_SITE, :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
+        captcha_correct = m.valid_captcha?(:id => session[:captcha_content_id], 'solution' => params[:captcha])
+        session[:captcha_content_id] = nil
+        unless captcha_correct
+          cookies[:error] = 'This event appears to be spam'
+          redirect_to(home_url) and return
+        end
+      end
+    end
+
     # validate both user and event
     if @user.valid? and @event.valid?
 
@@ -272,9 +298,6 @@ class EventsController < ApplicationController
       @user.associate_dia_host @calendar
       @user.sync_unless_deferred
 
-      #set user as host
-      @event.host = @user
-      
       # save event
       @event.time_tbd = params[:tbd] if params[:tbd]
       @event.host_alias = true unless params[:event_host]

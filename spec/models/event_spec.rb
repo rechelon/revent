@@ -138,6 +138,44 @@ describe Event do
     @event.to_democracy_in_action_event.should be_an_instance_of(DemocracyInActionEvent)
   end
 
+  describe 'mollom' do
+    unless MOLLOM_TEST_ACCOUNT[:private_key].blank? or MOLLOM_TEST_ACCOUNT[:public_key].blank?
+      before do
+        @event = build :event
+      end
+
+      it "returns spam result for a spammy event description" do
+        @event.description = "spam"
+        @event.spammy?[:result].should == true
+      end
+
+      it "returns unsure result for an ambiguous event description" do
+        @event.description = "unsure"
+        @event.spammy?[:result].should == "unsure"
+      end
+
+      it "returns ham result for an innocuous event description" do
+        @event.description = "ham"
+        @event.spammy?[:result].should == false
+      end
+
+      it "returns spam result for a spammy event directions" do
+        @event.directions = "spam"
+        @event.spammy?[:result].should == true
+      end
+
+      it "returns unsure result for an ambiguous event directions" do
+        @event.directions = "unsure"
+        @event.spammy?[:result].should == "unsure"
+      end
+
+      it "returns ham result for an innocuous event directions" do
+        @event.directions = "ham"
+        @event.spammy?[:result].should == false
+      end
+    end
+  end
+
   describe 'when created' do
     it "should push event to Democracy In Action" do
       pending #this test is stupid

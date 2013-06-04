@@ -434,6 +434,38 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def spammy? real_ip=nil
+    if Site.current.config.is_akismet_enabled
+      akismet = Akismet.new Site.current.config.akismet_api_key, Site.current.config.akismet_domain_name
+
+      return {:result => akismet.comment_check( 
+        akismet_params.merge({ 
+          :comment_author => host_public_full_name,
+          :comment_author_email => host_public_email, 
+          :comment_content => description
+        })
+      )}
+    end
+    unless Site.current.config.mollom_api_public_key.nil? or Site.current.config.mollom_api_private_key.nil?
+      options = {}
+      options['postBody'] = description unless description.nil?
+      options['postTitle'] = directions unless directions.nil?
+      options['authorName'] = host_public_full_name unless host_public_full_name.nil?
+      options['authorMail'] = host_public_email unless host_public_email.nil?
+      options['authorIp'] = real_ip unless real_ip.nil?
+
+      m = RMollom.new :site => MOLLOM_SITE, :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
+      content = m.check_content(options)
+      return {
+        :result => "unsure",
+        :captcha => m.create_captcha({'contentId' => content.content_id})["captcha"]["url"],
+        :content_id => content.content_id
+      } if content.unsure?
+      return {:result => content.spam?}
+    end
+    {:result => false}
+  end
+
   def reports_disabled
     !reports_enabled?
   end

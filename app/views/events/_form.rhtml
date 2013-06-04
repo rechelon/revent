@@ -161,6 +161,17 @@
       <%= f.text_area "description", :title => "Please enter your event's description", :class => "input-xlarge required", :rows => "7", :cols => "57", :id => "dataDescription" %>
     </div>
   </div>
+  <% unless @captcha.nil? %>
+    <div class="control-group">
+      <label class="control-label" for="captcha">
+        <span class="req">*</span>Enter the letters as they appear
+      </label>
+      <div class="controls">
+        <img src='<%= @captcha %>' /><br />
+        <input type='text' name='captcha' />      
+      </div>
+    </div>
+  <% end %>
 </div> <!-- /events-form-details -->
 
 <% if @redirect_url %>
