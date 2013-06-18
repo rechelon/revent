@@ -144,8 +144,12 @@
 
 <div id="email-host"></div>
 
-<% unless @event.past? || @event.worksite_event? %>
-  <%= render :partial => "rsvp", :locals => { :event => @event} %>
+<% if @calendar.theme.rsvp_block %>
+  <%= liquid(@calendar.theme.rsvp_block, @liquid) %>
+<% else %>
+  <% unless @event.past? || @event.worksite_event? %>
+    <%= render :partial => "rsvp", :locals => { :event => @event} %>
+  <% end %>
 <% end %>
 
 <% unless @event.worksite_event? || !@event.show_map?%>

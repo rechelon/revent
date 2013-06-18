@@ -130,6 +130,11 @@ class EventsController < ApplicationController
     @pagetitle = @event.name 
     @liquid[:pagetitle] = @pagetitle
     @liquid[:host_fn_li] = @event.host_public_first_name + " " + @event.host_public_last_name.first
+
+    unless @event.past? || @event.worksite_event?
+      @liquid[:rsvp] = render_to_string :partial=>'/events/rsvp', :locals => { :event => @event}
+    end
+
     if @calendar.map_engine == "osm"
       @osm_key = Host.current.cloudmade_api_key;
     end

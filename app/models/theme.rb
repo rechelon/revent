@@ -1,6 +1,6 @@
 class Theme < ActiveRecord::Base
   CONTENT_TOKEN = "{{content}}"
-  THEME_ELEMENT_NAMES = %w(body head site_name site_title site_description event_form_after_info report_form_additional_fields profile_form_additional_fields event_form_time_tbd_override event_form_privacy_override event_form_info_beginning event_form_description_label event_alias host_name)
+  THEME_ELEMENT_NAMES = %w(body head site_name site_title site_description event_form_after_info report_form_additional_fields profile_form_additional_fields event_form_time_tbd_override event_form_privacy_override event_form_info_beginning event_form_description_label event_alias host_name rsvp_block)
   
   belongs_to :site
   has_many :calendars
