@@ -26,6 +26,7 @@ class Event < ActiveRecord::Base
   belongs_to :calendar
   belongs_to :host, :class_name => 'User', :foreign_key => 'host_id'
   belongs_to :category
+  belongs_to :time_zone
   
   has_many :attachments, :dependent => :destroy
   has_many :documents, :class_name => 'Attachment', :conditions => Attachment.types_to_conditions([:document])
@@ -63,7 +64,7 @@ class Event < ActiveRecord::Base
   }
   
   geocoded_by :address_for_geocode
-  before_validation :geocode
+  before_validation :geocode, :code_time_zone
   before_save :set_calendar, :set_district, :clean_country_state, :clean_date_time, :set_host_name, :sanitize_input
   before_destroy :delete_from_democracy_in_action
   after_create :trigger_email
@@ -592,6 +593,19 @@ private
         self.precision = geo.first.data["geometry"]["location_type"]
       end
     end
+  end
+
+  def code_time_zone
+    return unless latitude and longitude and self.time_zone.nil?
+    begin
+      timezone = Timezone::Zone.new :latlon => [latitude, longitude]
+    rescue Timezone::Error::NilZone
+      Rails.logger.info("Could not determine timezone for event with ID: " + id.to_s)
+      return
+    end
+    self.time_zone = TimeZone.find_or_create_by_name timezone.zone
+    self.start = self.start - timezone.utc_offset(self.start)
+    self.end = self.end - timezone.utc_offset(self.end)
   end
 
 end
