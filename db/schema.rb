@@ -213,6 +213,7 @@ ActiveRecord::Schema.define(:version => 20130429222721) do
     t.string   "host_email"
     t.string   "host_phone"
     t.boolean  "host_alias"
+    t.integer  "time_zone"
   end
 
   add_index "events", ["calendar_id"], :name => "index_events_on_calendar_id"
@@ -493,6 +494,10 @@ ActiveRecord::Schema.define(:version => 20130429222721) do
   create_table "themes", :force => true do |t|
     t.integer "site_id"
     t.string  "name"
+  end
+
+  create_table "time_zones", :force => true do |t|
+    t.string "name"
   end
 
   create_table "triggers", :force => true do |t|
