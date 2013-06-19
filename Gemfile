@@ -40,7 +40,7 @@ gem "iso_country_codes"
 gem "will_paginate", '~> 3.0.0'
 gem "acts_as_list"
 gem "rails3_before_render"
-gem "timezone"
+gem "timezone", "0.1.3"
 
 group :test do
   gem "factory_girl_rails", "~> 1.1"
