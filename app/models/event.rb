@@ -612,7 +612,7 @@ private
   end
 
   def code_time_zone
-    return unless latitude and longitude and self.time_zone.nil?
+    return unless latitude and longitude and !locationless? and self.time_zone.nil?
     begin
       timezone = Timezone::Zone.new :latlon => [latitude, longitude]
     rescue Timezone::Error::NilZone

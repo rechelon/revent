@@ -34,6 +34,10 @@ class Admin::EventsController < AdminController
     new_attributes = {}
     @event.attribute_names.each{|key| new_attributes[key] = params[key] if !params[key].nil? }
     @event.attributes = new_attributes
+
+    # force a recoding of time_zone to convert submitted time into UTC
+    @event.time_zone = nil
+
     if @event.host_user_email != params[:host_user_email]
       @event.host_user_email = params[:host_user_email]
     end
