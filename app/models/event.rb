@@ -13,11 +13,13 @@ class Event < ActiveRecord::Base
       :fallback_latitude,
       :short_description,
       :letter_script,
-      :call_script
+      :call_script,
+      :time_zone_id
     ],
     :methods=>[
       :past?,
-      :custom_attributes_data
+      :custom_attributes_data,
+      :tz_offset
     ]
   }
 
@@ -78,12 +80,13 @@ class Event < ActiveRecord::Base
       :except => [
         :short_description,
         :letter_script,
-        :call_script
+        :call_script,
+        :time_zone_id
       ],
       :include => {
         :custom_attributes => {:only=>[:id,:name,:value]}
       },
-      :methods => [:host_user_email]
+      :methods => [:host_user_email, :tz_offset]
     }.merge o)
   end
 
@@ -319,19 +322,23 @@ class Event < ActiveRecord::Base
   end
 
   def form_start_date
-    start ? start.strftime('%m/%d/%Y') : ''
+    return '' unless start
+    (time_zone.nil? ? start : start.in_time_zone(time_zone.name)).strftime('%m/%d/%Y')
   end
   
   def form_start_time
-    start ? start.strftime('%I:%M %p') : ''
+    return '' unless start
+    (time_zone.nil? ? start : start.in_time_zone(time_zone.name)).strftime('%I:%M %p')
   end
 
   def form_end_date
-    self.end ? self.end.strftime('%m/%d/%Y') : ''
+    return '' unless self.end
+    (time_zone.nil? ? self.end : self.end.in_time_zone(time_zone.name)).strftime('%m/%d/%Y')
   end
   
   def form_end_time
-    self.end ? self.end.strftime('%I:%M %p') : ''
+    return '' unless self.end
+    (time_zone.nil? ? self.end : self.end.in_time_zone(time_zone.name)).strftime('%I:%M %p')
   end
  
   def segmented_date
@@ -484,8 +491,9 @@ class Event < ActiveRecord::Base
   scope :reportable, :include => :calendar, :conditions => ["reports_enabled = ? AND calendars.archived = ?", true, false]
 
   def past?
+    return self.end < 24.hours.ago if time_tbd?
     end_datetime = self.end || self.start
-    end_datetime && (end_datetime < 11.hours.ago)
+    end_datetime && (end_datetime < Time.now)
   end
 
   def in_usa?
@@ -573,6 +581,14 @@ class Event < ActiveRecord::Base
 
   def self.address_required?
     Site.current.config.event_address_required
+  end
+  
+  def tz_offset 
+    return [0,0] if time_zone.nil?
+    timezone = Timezone::Zone.new :zone => time_zone.name
+    start_offset = self.start ? timezone.utc_offset(self.start) : 0
+    end_offset = self.end ? timezone.utc_offset(self.end) : 0
+    [start_offset, end_offset]
   end
 
 private

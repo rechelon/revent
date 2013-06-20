@@ -42,6 +42,9 @@ class Account::EventsController < AccountControllerShared
       redirect_to :permalink => @calendar.permalink, :action => 'show', :id => @event and return unless params[:event]
       @event.attributes = params[:event]
 
+      # force a recoding of time_zone to convert submitted time into UTC
+      @event.time_zone = nil
+
       # set start and end if form uses seperate date and time fields
       if(!params['event_start_date'].blank?)
         @event.set_start_from_date_and_time(params['event_start_date'],params['event_start_time'])
