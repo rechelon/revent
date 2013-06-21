@@ -68,12 +68,12 @@
 </div> <!-- /events-form-location -->
 <div id="events-form-additional">
   <% if @categories.any? -%>
-  <div class="control-group" id="events-form-categories">
-    <label class="control-label" for="category_id">Action Type:</label>
-    <div class="controls">
-      <%= f.select "category_id", @categories, {:include_blank => true}, {:title => "Please select your event type", :class => "input-large", :id => "dataEvent_Category_Id" } %>
+    <div class="control-group" id="events-form-categories">
+      <label class="control-label" for="category_id"><%= liquid_or_default(@calendar.theme.category_alias, "Category") %>:</label>
+      <div class="controls">
+        <%= f.select "category_id", @categories, {:include_blank => true}, {:title => "Please select your event type", :class => "input-large", :id => "dataEvent_Category_Id" } %>
+      </div>
     </div>
-  </div>
   <% end -%>
 
   <div class="control-group">

@@ -55,7 +55,7 @@
 
   <% if @event.category %>  
     <div id="event-category" class="event-info">
-	<span class="label info-label">Event Type</span> <%= @event.category.name %> 
+      <span class="label info-label"><%= liquid_or_default(@calendar.theme.category_alias, "Category") %></span> <%= @event.category.name %> 
     </div>
   <% end %>
 

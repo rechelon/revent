@@ -4,6 +4,7 @@
   var total_events_fetched = false;
   var map_generated = false;
   var router_waiting = false;
+  var category_alias = "<%= liquid_or_default(@calendar.theme.category_alias, 'Category') %>";
   var event_list, worksite_event_list;
   revent.total_events = new EventCollection({
     date_range_start: revent.calendar_expiration_date
