@@ -11,5 +11,5 @@ class Rsvp < ActiveRecord::Base
       TriggerMailer.trigger(trigger, self.user, self.event).deliver if trigger
     end
   end
-
+  
 end

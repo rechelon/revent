@@ -62,7 +62,13 @@ GEM
     arel (2.0.10)
     builder (2.1.2)
     daemon_controller (1.1.2)
+    daemons (1.0.10)
     dalli (2.6.2)
+    delayed_job (3.0.5)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.4.4)
+      activerecord (>= 2.1.0, < 4)
+      delayed_job (~> 3.0)
     diff-lcs (1.2.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -207,7 +213,9 @@ DEPENDENCIES
   acts_as_list
   airbrake
   carrierwave!
+  daemons
   dalli
+  delayed_job_active_record
   factory_girl_rails (~> 1.1)
   fastercsv
   fog (= 1.0.0)

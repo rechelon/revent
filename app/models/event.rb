@@ -69,7 +69,7 @@ class Event < ActiveRecord::Base
   before_validation :geocode, :code_time_zone
   before_save :set_calendar, :set_district, :clean_country_state, :clean_date_time, :set_host_name, :sanitize_input
   before_destroy :delete_from_democracy_in_action
-  after_create :trigger_email
+  after_create :trigger_email, :remind_report_back
   
   validates_presence_of :name, :calendar_id
   validates_with EventDateValidator
@@ -272,7 +272,15 @@ class Event < ActiveRecord::Base
       TriggerMailer.trigger(trigger, self.host, self).deliver if trigger
     end
   end
-  
+
+  def remind_report_back
+    calendar = self.calendar
+    Site.current = calendar.site
+    trigger = calendar.triggers.find_by_name("Report Host Reminder") || Site.current.triggers.find_by_name("Report Host Reminder")
+    TriggerMailer.trigger(trigger, self.host, self).deliver if trigger
+  end
+  handle_asynchronously :remind_report_back, :run_at => Proc.new { |e| e.end + 5.hours }
+
   def delete_from_democracy_in_action
     return unless Site.current.config.salsa_enabled?
 

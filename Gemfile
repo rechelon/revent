@@ -41,6 +41,8 @@ gem "will_paginate", '~> 3.0.0'
 gem "acts_as_list"
 gem "rails3_before_render"
 gem "timezone", "0.1.3"
+gem "delayed_job_active_record"
+gem "daemons"
 
 group :test do
   gem "factory_girl_rails", "~> 1.1"

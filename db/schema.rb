@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619003027) do
+ActiveRecord::Schema.define(:version => 20130620234513) do
 
   create_table "attachments", :force => true do |t|
     t.string   "content_type"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20130619003027) do
     t.string   "locked_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "queue"
   end
 
   add_index "delayed_jobs", ["locked_by"], :name => "index_delayed_jobs_on_locked_by"
