@@ -2,7 +2,7 @@ class Trigger < ActiveRecord::Base
 	belongs_to :calendar
 	belongs_to :site
 
-  TRIGGER_NAMES = ["Host Thank You", "RSVP Thank You", "Report Thank You", "Report Host Reminder","Report Attendee Reminder", "Email Nearby Supporters About New Event"]
+  TRIGGER_NAMES = ["Host Thank You", "RSVP Thank You", "RSVP Notify Host", "Report Thank You", "Report Host Reminder","Report Attendee Reminder", "Email Nearby Supporters About New Event"]
 
 	validates_presence_of     :from, :email_plain
   validates_length_of       :from, :within => 3..100
