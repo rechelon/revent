@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+  after_filter :cors_set_access_control_headers
+
   include ReportAPI
 
   def index
