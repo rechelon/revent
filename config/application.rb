@@ -5,6 +5,7 @@ require 'rails/all'
 # Bootstrap application pre-initialization
 require File.expand_path('../../lib/report_api_module', __FILE__)
 require File.expand_path('../../lib/event_api_module', __FILE__)
+require File.expand_path('../../lib/rsvp_api_module', __FILE__)
 require File.expand_path('../../lib/event_import_module', __FILE__)
 require File.expand_path('../../config/revent_config', __FILE__)
 
