@@ -16,7 +16,8 @@
   revent.users = new UserCollection();
   revent.events = new EventCollection({users:revent.users});
   revent.reports = new ReportCollection(); 
-  revent.site_config = {};
+  revent.site_config = new SiteConfigModel();
+  revent.site_config.fetch();
 
   router = new Router();
   
