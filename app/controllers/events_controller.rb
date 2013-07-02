@@ -129,7 +129,7 @@ class EventsController < ApplicationController
     @event_custom_attributes = @event.custom_attributes_data
     @pagetitle = @event.name 
     @liquid[:pagetitle] = @pagetitle
-    @liquid[:host_fn_li] = @event.host_public_first_name + " " + @event.host_public_last_name.first
+    @liquid[:host_fn_li] = @event.host_public_first_name.to_s + " " + @event.host_public_last_name.to_s.first
 
     unless @event.past? || @event.worksite_event?
       @liquid[:rsvp] = render_to_string :partial=>'/events/rsvp', :locals => { :event => @event}
