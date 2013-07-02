@@ -16,6 +16,7 @@
   revent.users = new UserCollection();
   revent.events = new EventCollection({users:revent.users});
   revent.reports = new ReportCollection(); 
+  revent.site_config = {};
 
   router = new Router();
   
@@ -114,6 +115,11 @@
         form_view: SponsorFormView,
         paginated: false
       }).render();
+
+      site_form = new SiteFormView({
+        el: document.getElementById("site-form"),
+        collection: revent.site_config
+      }).render();
     }
 
     // generic callback for initial data load
@@ -178,8 +184,9 @@
       <% end %>
       <% if @current_user.site_admin?%>
         <li><a id="sponsors-menu-item" href="#sponsors">Sponsors</a></li>
+        <li><a id="site-menu-item" href="#site">Site</a></li>
       <% end %>
-      </ul>
+    </ul>
     <div style="clear:both;"></div>
   </div>
 </div>
@@ -230,6 +237,12 @@
     </div>
     <h1>Sponsors</h1>
     <div id="sponsor-list"></div>
+  </div>
+
+  <div id="site-page" class="page" style="display:none">
+    <h1>Site Config</h1>
+    <div id="site-form">
+    </div>
   </div>
 
 </div>
