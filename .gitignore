@@ -24,3 +24,6 @@ nohup.out
 rejects.csv
 winners.csv
 themes/*
+public/tmp/*
+.ruby-version
+.ruby-gemset
