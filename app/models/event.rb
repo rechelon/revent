@@ -462,7 +462,7 @@ class Event < ActiveRecord::Base
         })
       )}
     end
-    unless Site.current.config.mollom_api_public_key.nil? or Site.current.config.mollom_api_private_key.nil?
+    unless Site.current.config.mollom_api_public_key.empty? or Site.current.config.mollom_api_private_key.empty?
       options = {}
       options['postBody'] = description unless description.nil?
       options['postTitle'] = directions unless directions.nil?
