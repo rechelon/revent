@@ -77,13 +77,4 @@ class SiteConfig < ActiveRecord::Base
     self.custom_event_options_deserialized
   end
 
-  def as_json o={}
-    o ||= {}
-    {
-      'custom_attributes'=> self.custom_attributes,
-      'custom_attributes_options' => self.custom_attributes_options,
-      'custom_event_attributes' => self.custom_event_attributes,
-      'custom_event_options' => self.custom_event_options
-    }.merge o
-  end 
 end

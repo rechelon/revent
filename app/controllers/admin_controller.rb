@@ -254,4 +254,14 @@ protected
     access_denied
   end
 
+  def can_view_site_config
+    return true if current_user.site_admin?
+    access_denied
+  end
+
+  def can_edit_site_config
+    return true if current_user.site_admin?
+    access_denied
+  end
+
 end
