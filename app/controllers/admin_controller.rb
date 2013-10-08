@@ -46,8 +46,14 @@ class AdminController < ApplicationController
     users = []
     @errors = []
     @dupes = []
-
-    FasterCSV.foreach(file, {:headers => true, :col_sep => "\t"} ) do |row|
+    @headers = params[:headers].values.reverse
+    @lineno = 0; 
+    FasterCSV.foreach(file, {:headers => @headers, :col_sep => "\t"} ) do |row|
+      @lineno += 1
+      if(@lineno == 1)
+        #skip the headers
+        next;
+      end
       id_field = row[ID_FIELD] || 'no id'
       if row[START_DATE_FIELD].blank?
         @errors << "No start date for event with id: " + id_field
