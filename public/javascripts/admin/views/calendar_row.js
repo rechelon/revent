@@ -10,13 +10,19 @@ var CalendarRowView = Backbone.View.extend({
     "change .host-form-page textarea" : "updateHostForm",
     "click .form-controls .button" : "executeAction",
     "click .new-category-btn" : "newCategory",
-    "click .new-trigger-btn" : "newTrigger"
+    "click .new-trigger-btn" : "newTrigger",
+    "submit #import-events" : "previewImportFile",
   },
   
   initialize: function(o) {
     _.bindAll(this, "render",'remove', "renderThemes");
     revent.themes.bind('refresh', this.renderThemes);
     revent.themes.bind('destroy', this.renderThemes);
+    this.submitFlag = false;
+  },
+
+  setSubmitFlag: function(){
+    this.submitFlag = true;
   },
   
   render: function() {
@@ -67,6 +73,7 @@ var CalendarRowView = Backbone.View.extend({
   },
   
   getRowData: function(){
+
     return {
       calendar: this.model,
       hostform: this.model.getHostForm(),
@@ -135,6 +142,37 @@ var CalendarRowView = Backbone.View.extend({
         }
       }
     });
+  },
+
+  previewImportFile: function(e){
+    if(this.submitFlag){
+      //submit the form as normal
+      return true;
+    }
+    
+    var self = this;
+    var fHandle = e.currentTarget[1].files[0]
+    var fr = new FileReader();
+    fr.readAsText(fHandle);
+    fr.onload = function(e){
+      self.buildImportForm(e.target.result);
+    }
+
+    //prepare the form for submission
+    this.setSubmitFlag();
+    $("#import-preview-btn").val('Import');
+
+    return false;
+  },
+
+  buildImportForm: function(importStr){
+    var $el = $("#importPreviewContainer");
+    var previewRows = 5; //number of rows to show in preview
+    var events = _.map(importStr.split("\n").slice(0,previewRows), function(row){
+      return row.split("\t");
+    });
+    var headers = events[0];
+    $el.html(JST['import_preview']({events: events, headers: headers})); 
   },
   
   updateCalendar: function(e){

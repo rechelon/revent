@@ -191,7 +191,7 @@
     <div class="clear"></div>
   </div>
   <div id="import-tab-<%= calendar.get('id') %>" class="calendar-tab">
-    <form action='/admin/import' method='post' enctype='multipart/form-data'>
+    <form action='/admin/import' method='post' id='import-events' enctype='multipart/form-data'>
       <input type='hidden' name='calendar_id' value='<%= calendar.get('id') %>' />
       <ul class="import-form-page">
         <li>
@@ -211,9 +211,11 @@
             <input type="file" name="event-import"/>
           </div>
         </li>
+        <li id='importPreviewContainer'>
+        </li>
         <li>
           <label>&nbsp;</label>
-          <div class="data"><input type='submit' value='Import' class='button'/></div>
+          <div class="data"><input type='submit' id='import-preview-btn' value='Preview' class='button'/></div>
         </li>
         <li>
       <h2>Import Cheat Sheet</h2>
