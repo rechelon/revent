@@ -160,13 +160,14 @@ var CalendarRowView = Backbone.View.extend({
 
     //prepare the form for submission
     this.setSubmitFlag();
-    $("#import-preview-btn").val('Import');
+    console.log('id', this.get('id'));
+    $("#import-tab-" + this.get('id') + " #import-preview-btn").val('Import');
 
     return false;
   },
 
   buildImportForm: function(importStr){
-    var $el = $("#importPreviewContainer");
+    var $el = $("#import-tab-" + this.get('id') + " #importPreviewContainer");
     var previewRows = 5; //number of rows to show in preview
     var events = _.map(importStr.split("\n").slice(0,previewRows), function(row){
       return row.split("\t");
