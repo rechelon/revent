@@ -46,7 +46,7 @@ class AdminController < ApplicationController
     users = []
     @errors = []
     @dupes = []
-    @headers = params[:headers].values.reverse
+    @headers = params[:headers]
     @lineno = 0; 
     FasterCSV.foreach(file, {:headers => @headers, :col_sep => "\t"} ) do |row|
       @lineno += 1

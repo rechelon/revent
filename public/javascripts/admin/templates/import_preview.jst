@@ -19,7 +19,7 @@
 <table>
   <tr>
     <% _.each(headers, function(header, idx){ %>
-      <th><select name='headers[<%=idx%>]' id='headers-<%=idx%>'><%=options%></select></th>
+      <th><select name='headers[]' id='headers-<%=idx%>'><%=options%></select></th>
       <% setTimeout(function(){$("#headers-" + idx).val(header)},500); %>
     <% }) %>
   </tr>
