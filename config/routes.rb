@@ -9,6 +9,7 @@ Revent::Application.routes.draw do
   match ":permalink/events/rss", :to => "events#rss", :format => "xml"
   match ":permalink/map.:format", :to => "maps#index"
   match ":permalink/maps", :to => "maps#index"
+  match ":permalink/rsvps", :to => "rsvps#index"
   match ":permalink/zip_codes", :to => "zip_codes#index"
 
   namespace :admin do
@@ -20,7 +21,7 @@ Revent::Application.routes.draw do
     match 'reports/export'
     match 'calendars/set_default/:id', :to => 'calendars#set_default'
     match 'themes/clone/:id', :to => 'themes#clone'
-    resources :events, :users, :calendars, :reports, :triggers, :categories, :sponsors, :permissions, :themes, :theme_elements
+    resources :events, :users, :calendars, :reports, :triggers, :categories, :sponsors, :permissions, :themes, :theme_elements, :site_config
 
     match 'users/:action/:id(.:format)', :controller => 'users'
     match 'users/:action(.:format)', :controller => 'users'
@@ -49,6 +50,9 @@ Revent::Application.routes.draw do
 
     match 'reports/:action/:id(.:format)', :controller => 'reports'
     match 'reports/:action.:format', :controller => 'reports'
+
+    match 'site_config.:format', :to => 'site_config#index'
+    match 'site_config/:action.:format', :controller => 'site_config'
 
     delete 'cache', :controller => 'caches#destroy'
 

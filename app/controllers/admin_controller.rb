@@ -46,8 +46,21 @@ class AdminController < ApplicationController
     users = []
     @errors = []
     @dupes = []
+    @headers = params[:headers].values.reverse
+    @lineno = 0; 
+    FasterCSV.foreach(file, {:headers => @headers, :col_sep => "\t"} ) do |row|
+      @lineno += 1
 
-    FasterCSV.foreach(file, {:headers => true, :col_sep => "\t"} ) do |row|
+      #skip the headers
+      if(@lineno == 1)
+        next
+      end
+      
+      #skip rows where all values are nil, this happens due to a newline at the end of the file
+      if(row.to_hash.values.select{|n| n != nil}.empty?)
+        next
+      end
+
       id_field = row[ID_FIELD] || 'no id'
       if row[START_DATE_FIELD].blank?
         @errors << "No start date for event with id: " + id_field
@@ -250,6 +263,16 @@ protected
   end
 
   def can_edit_themes
+    return true if current_user.site_admin?
+    access_denied
+  end
+
+  def can_view_site_config
+    return true if current_user.site_admin?
+    access_denied
+  end
+
+  def can_edit_site_config
     return true if current_user.site_admin?
     access_denied
   end

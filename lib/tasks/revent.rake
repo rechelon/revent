@@ -77,4 +77,21 @@ namespace :revent do
       end
     end
   end
+
+  desc "Get users who have created events in a specified calendar"
+  task :get_users_for_calendar, :'calendar permalink' do |t, args|
+    load 'config/environment.rb'
+    c = Calendar.find_by_permalink(args[:'calendar permalink'])
+    users = []
+    FasterCSV.open("/tmp/revent_users_export.csv", "w") do |csv|
+      csv << ["ID", "Email", "Created", "First Name", "Last Name", "Phone #", "Address", "Address 2", "City", "State", "Postal Code", "Country", "Partner ID", "Facebook ID", "Twitter ID", "Organization", "# of events"]
+      c.events.each do |e|
+        u = e.host
+        unless users.include? u
+          users << u
+          csv << [u.id.to_s, u.email.to_s, u.created_at.to_s, u.first_name.to_s, u.last_name.to_s, u.phone.to_s, u.street.to_s, u.street_2.to_s, u.city.to_s, u.state.to_s, u.postal_code.to_s, u.country_code.to_s, u.partner_id.to_s, u.fb_id.to_s, u.twitter_id.to_s, u.organization.to_s, u.events.count]
+        end
+      end
+    end
+  end
 end

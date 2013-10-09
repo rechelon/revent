@@ -17,7 +17,7 @@ describe Rsvp do
       t = stub('trigger')
       t.should_receive(:deliver)
       TriggerMailer.stub(:trigger).and_return(t)
-      @rsvp.trigger_email
+      @rsvp.trigger_email_to_user
     end
 
     describe "user" do

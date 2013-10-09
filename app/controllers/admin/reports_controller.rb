@@ -13,7 +13,12 @@ class Admin::ReportsController < AdminController
       format.json do
         params[:restrict_to_admins] = "true"
         params[:send_x_headers] = "true"
-        render :json => fetch_reports(params).as_json(:include => [:event, :user])
+        render :json => fetch_reports(params).as_json(
+          :include => {
+            :event => {:methods => [:tz_offset]},
+            :user => {}
+          }
+        )
       end
     end
   end

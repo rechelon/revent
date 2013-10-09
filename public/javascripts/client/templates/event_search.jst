@@ -17,7 +17,7 @@
       </div>
       <% if(categories.length > 1){ %>
         <div class="control-group control-group-category">
-          <label for="category" class="control-label">Category</label>
+          <label for="category" class="control-label"><%= category_alias %></label>
           <%= select_field(options_for_select(categories), {filter:'category_id','class':'filter',name:'category_id', id: 'category_id'}, params.category_id) %>
         </div>
       <% } %>

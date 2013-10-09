@@ -287,10 +287,11 @@ var MapView = Backbone.View.extend({
             icon = mv.icons.upcoming;
           }
           category_ids.push(item.get('category_id'));
-          var start_date = Date.parse(item.get('start')).toString("ddd MMM d");
-          var start_time = Date.parse(item.get('start')).toString(" h:mmtt");
-          var end_date = Date.parse(item.get('end')).toString("ddd MMM d");
-          var end_time = Date.parse(item.get('end')).toString(" h:mmtt");
+          var tz_offset = item.get('tz_offset');
+          var start_date = Date.parse(item.get('start')).add(tz_offset[0]).seconds().toString("ddd MMM d");
+          var start_time = Date.parse(item.get('start')).add(tz_offset[0]).seconds().toString(" h:mmtt");
+          var end_date = Date.parse(item.get('end')).add(tz_offset[1]).seconds().toString("ddd MMM d");
+          var end_time = Date.parse(item.get('end')).add(tz_offset[1]).seconds().toString(" h:mmtt");
           events_arr.push(JST['map_infowindow_event']({
             item: item,
             start_date: start_date,

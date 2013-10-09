@@ -13,11 +13,13 @@ class Event < ActiveRecord::Base
       :fallback_latitude,
       :short_description,
       :letter_script,
-      :call_script
+      :call_script,
+      :time_zone_id
     ],
     :methods=>[
       :past?,
-      :custom_attributes_data
+      :custom_attributes_data,
+      :tz_offset
     ]
   }
 
@@ -26,6 +28,7 @@ class Event < ActiveRecord::Base
   belongs_to :calendar
   belongs_to :host, :class_name => 'User', :foreign_key => 'host_id'
   belongs_to :category
+  belongs_to :time_zone
   
   has_many :attachments, :dependent => :destroy
   has_many :documents, :class_name => 'Attachment', :conditions => Attachment.types_to_conditions([:document])
@@ -63,10 +66,10 @@ class Event < ActiveRecord::Base
   }
   
   geocoded_by :address_for_geocode
-  before_validation :geocode
+  before_validation :geocode, :code_time_zone
   before_save :set_calendar, :set_district, :clean_country_state, :clean_date_time, :set_host_name, :sanitize_input
   before_destroy :delete_from_democracy_in_action
-  after_create :trigger_email
+  after_create :trigger_email, :remind_report_back
   
   validates_presence_of :name, :calendar_id
   validates_with EventDateValidator
@@ -77,12 +80,13 @@ class Event < ActiveRecord::Base
       :except => [
         :short_description,
         :letter_script,
-        :call_script
+        :call_script,
+        :time_zone_id
       ],
       :include => {
         :custom_attributes => {:only=>[:id,:name,:value]}
       },
-      :methods => [:host_user_email]
+      :methods => [:host_user_email, :tz_offset]
     }.merge o)
   end
 
@@ -268,7 +272,15 @@ class Event < ActiveRecord::Base
       TriggerMailer.trigger(trigger, self.host, self).deliver if trigger
     end
   end
-  
+
+  def remind_report_back
+    calendar = self.calendar
+    Site.current = calendar.site
+    trigger = calendar.triggers.find_by_name("Report Host Reminder") || Site.current.triggers.find_by_name("Report Host Reminder")
+    TriggerMailer.trigger(trigger, self.host, self).deliver if trigger
+  end
+  handle_asynchronously :remind_report_back, :run_at => Proc.new { |e| e.end + 5.hours }
+
   def delete_from_democracy_in_action
     return unless Site.current.config.salsa_enabled?
 
@@ -318,19 +330,23 @@ class Event < ActiveRecord::Base
   end
 
   def form_start_date
-    start ? start.strftime('%m/%d/%Y') : ''
+    return '' unless start
+    (time_zone.nil? ? start : start.in_time_zone(time_zone.name)).strftime('%m/%d/%Y')
   end
   
   def form_start_time
-    start ? start.strftime('%I:%M %p') : ''
+    return '' unless start
+    (time_zone.nil? ? start : start.in_time_zone(time_zone.name)).strftime('%I:%M %p')
   end
 
   def form_end_date
-    self.end ? self.end.strftime('%m/%d/%Y') : ''
+    return '' unless self.end
+    (time_zone.nil? ? self.end : self.end.in_time_zone(time_zone.name)).strftime('%m/%d/%Y')
   end
   
   def form_end_time
-    self.end ? self.end.strftime('%I:%M %p') : ''
+    return '' unless self.end
+    (time_zone.nil? ? self.end : self.end.in_time_zone(time_zone.name)).strftime('%I:%M %p')
   end
  
   def segmented_date
@@ -434,6 +450,38 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def spammy? real_ip=nil
+    if Site.current.config.is_akismet_enabled
+      akismet = Akismet.new Site.current.config.akismet_api_key, Site.current.config.akismet_domain_name
+
+      return {:result => akismet.comment_check( 
+        akismet_params.merge({ 
+          :comment_author => host_public_full_name,
+          :comment_author_email => host_public_email, 
+          :comment_content => description
+        })
+      )}
+    end
+    unless Site.current.config.mollom_api_public_key.empty? or Site.current.config.mollom_api_private_key.empty?
+      options = {}
+      options['postBody'] = description unless description.nil?
+      options['postTitle'] = directions unless directions.nil?
+      options['authorName'] = host_public_full_name unless host_public_full_name.nil?
+      options['authorMail'] = host_public_email unless host_public_email.nil?
+      options['authorIp'] = real_ip unless real_ip.nil?
+
+      m = RMollom.new :site => MOLLOM_SITE, :private_key => Site.current.config.mollom_api_private_key, :public_key => Site.current.config.mollom_api_public_key
+      content = m.check_content(options)
+      return {
+        :result => "unsure",
+        :captcha => m.create_captcha({'contentId' => content.content_id})["captcha"]["url"],
+        :content_id => content.content_id
+      } if content.unsure?
+      return {:result => content.spam?}
+    end
+    {:result => false}
+  end
+
   def reports_disabled
     !reports_enabled?
   end
@@ -451,8 +499,9 @@ class Event < ActiveRecord::Base
   scope :reportable, :include => :calendar, :conditions => ["reports_enabled = ? AND calendars.archived = ?", true, false]
 
   def past?
+    return self.end < 24.hours.ago if time_tbd?
     end_datetime = self.end || self.start
-    end_datetime && (end_datetime < 11.hours.ago)
+    end_datetime && (end_datetime < Time.now)
   end
 
   def in_usa?
@@ -541,6 +590,14 @@ class Event < ActiveRecord::Base
   def self.address_required?
     Site.current.config.event_address_required
   end
+  
+  def tz_offset 
+    return [0,0] if time_zone.nil?
+    timezone = Timezone::Zone.new :zone => time_zone.name
+    start_offset = self.start ? timezone.utc_offset(self.start) : 0
+    end_offset = self.end ? timezone.utc_offset(self.end) : 0
+    [start_offset, end_offset]
+  end
 
 private
   def geocode
@@ -560,6 +617,19 @@ private
         self.precision = geo.first.data["geometry"]["location_type"]
       end
     end
+  end
+
+  def code_time_zone
+    return unless latitude and longitude and !locationless? and self.time_zone.nil?
+    begin
+      timezone = Timezone::Zone.new :latlon => [latitude, longitude]
+    rescue Timezone::Error::NilZone
+      Rails.logger.info("Could not determine timezone for event with ID: " + id.to_s)
+      return
+    end
+    self.time_zone = TimeZone.find_or_create_by_name timezone.zone
+    self.start = self.start - timezone.utc_offset(self.start)
+    self.end = self.end - timezone.utc_offset(self.end)
   end
 
 end

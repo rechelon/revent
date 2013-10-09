@@ -7,7 +7,8 @@ var Router = Backbone.Router.extend({
     "reports":"reports",    
     "calendars":"calendars",
     "themes":"themes",
-    "sponsors":"sponsors"
+    "sponsors":"sponsors",
+    "site":"site"
   },
   
   setCurrent: function(button_id){
@@ -53,6 +54,12 @@ var Router = Backbone.Router.extend({
     jq('.page').hide();
     jq('#sponsors-page').show();      
     this.setCurrent('#sponsors-menu-item');
+  },
+
+  site: function(){
+    jq('.page').hide();
+    jq('#site-page').show();
+    this.setCurrent('#site-menu-item');
   }
 
 });

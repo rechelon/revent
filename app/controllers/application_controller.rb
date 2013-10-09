@@ -96,4 +96,11 @@ class ApplicationController < ActionController::Base
 
     raise
   end
+
+  def cors_set_access_control_headers
+    if REMOTE_ORIGINS_ALLOWED.include? request.headers['HTTP_ORIGIN']
+      headers['Access-Control-Allow-Origin'] = request.headers['HTTP_ORIGIN']
+    end
+  end
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429222721) do
+ActiveRecord::Schema.define(:version => 20130620234513) do
 
   create_table "attachments", :force => true do |t|
     t.string   "content_type"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20130429222721) do
     t.string   "locked_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "queue"
   end
 
   add_index "delayed_jobs", ["locked_by"], :name => "index_delayed_jobs_on_locked_by"
@@ -213,6 +214,7 @@ ActiveRecord::Schema.define(:version => 20130429222721) do
     t.string   "host_email"
     t.string   "host_phone"
     t.boolean  "host_alias"
+    t.integer  "time_zone_id"
   end
 
   add_index "events", ["calendar_id"], :name => "index_events_on_calendar_id"
@@ -493,6 +495,10 @@ ActiveRecord::Schema.define(:version => 20130429222721) do
   create_table "themes", :force => true do |t|
     t.integer "site_id"
     t.string  "name"
+  end
+
+  create_table "time_zones", :force => true do |t|
+    t.string "name"
   end
 
   create_table "triggers", :force => true do |t|

@@ -68,11 +68,14 @@ var EventModel = Backbone.Model.extend({
   },
   
   get_start: function(){
+    var tz_offset = this.get('tz_offset');
     var start = this.get('start');
-    return start ? Date.parse(this.get('start')).toString('MM/dd/yyyy hh:mm tt') : null;
+    return start ? Date.parse(this.get('start')).add(tz_offset[0]).seconds().toString('MM/dd/yyyy hh:mm tt') : null;
   },
 
   get_end: function(){
-    return Date.parse(this.get('end')).toString('MM/dd/yyyy hh:mm tt'); 
+    var tz_offset = this.get('tz_offset');
+    var end = this.get('end');
+    return end ? Date.parse(this.get('end')).add(tz_offset[1]).seconds().toString('MM/dd/yyyy hh:mm tt') : null; 
   }  
 });

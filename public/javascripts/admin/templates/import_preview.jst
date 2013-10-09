@@ -1,0 +1,33 @@
+<% var options = "\
+<option value='nil'>Do Not Import</option>\
+<option value='ID'>External Id</option>\
+<option value='Name'>Event Name</option>\
+<option value='Subtitle'>Event Subtitle</option>\
+<option value='Description'>Event Description</option>\
+<option value='Address'>Address</option>\
+<option value='City'>City</option>\
+<option value='State'>State</option>\
+<option value='Zip'>Zip</option>\
+<option value='Day'>Event Day</option>\
+<option value='Start'>Start Time</option>\
+<option value='End'>End Time</option>\
+<option value='First'>First Name</option>\
+<option value='Last'>Last Name</option>\
+<option value='Email'>Contact Email</option>\
+"
+%>
+<table>
+  <tr>
+    <% _.each(headers, function(header, idx){ %>
+      <th><select name='headers[<%=idx%>]' id='headers-<%=idx%>'><%=options%></select></th>
+      <% setTimeout(function(){$("#headers-" + idx).val(header)},500); %>
+    <% }) %>
+  </tr>
+  <% _.each(events, function(evnt){ %>
+  <tr>
+    <% _.each(evnt, function(c){ %>
+      <td> <%= c %> </td>
+    <% }) %>
+  </tr>
+  <% }); %>
+</table>
