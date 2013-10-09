@@ -50,10 +50,17 @@ class AdminController < ApplicationController
     @lineno = 0; 
     FasterCSV.foreach(file, {:headers => @headers, :col_sep => "\t"} ) do |row|
       @lineno += 1
+
+      #skip the headers
       if(@lineno == 1)
-        #skip the headers
-        next;
+        next
       end
+      
+      #skip rows where all values are nil, this happens due to a newline at the end of the file
+      if(row.to_hash.values.select{|n| n != nil}.empty?)
+        next
+      end
+
       id_field = row[ID_FIELD] || 'no id'
       if row[START_DATE_FIELD].blank?
         @errors << "No start date for event with id: " + id_field
