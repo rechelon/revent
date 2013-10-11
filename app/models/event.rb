@@ -621,6 +621,9 @@ private
   end
 
   def code_time_zone
+    self.time_zone = nil
+    return
+=begin
     return unless latitude and longitude and !locationless? and self.time_zone.nil?
     begin
       timezone = Timezone::Zone.new :latlon => [latitude, longitude]
@@ -636,6 +639,7 @@ private
       Rails.logger.info("Could not determine timezone for event with ID: " + id.to_s )
       return
     end
+=end
   end
 
 end
