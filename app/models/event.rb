@@ -592,6 +592,7 @@ class Event < ActiveRecord::Base
   end
   
   def tz_offset 
+    return [0,0]
     return [0,0] if time_zone.nil?
     timezone = Timezone::Zone.new :zone => time_zone.name
     start_offset = self.start ? timezone.utc_offset(self.start) : 0
@@ -628,8 +629,13 @@ private
       return
     end
     self.time_zone = TimeZone.find_or_create_by_name timezone.zone
-    self.start = self.start - timezone.utc_offset(self.start)
-    self.end = self.end - timezone.utc_offset(self.end)
+    begin
+      self.start = self.start - timezone.utc_offset(self.start)
+      self.end = self.end - timezone.utc_offset(self.end)
+    rescue Timezone::Error::ParseTime
+      Rails.logger.info("Could not determine timezone for event with ID: " + id.to_s )
+      return
+    end
   end
 
 end
