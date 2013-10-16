@@ -25,6 +25,8 @@ class Event < ActiveRecord::Base
 
   attr_accessor :suppress_email
 
+  @@event_threshold = DEFAULT_EVENT_DISPLAY_THRESHOLD.hours.ago
+
   belongs_to :calendar
   belongs_to :host, :class_name => 'User', :foreign_key => 'host_id'
   belongs_to :category
@@ -56,8 +58,8 @@ class Event < ActiveRecord::Base
   scope :newer_than, lambda{|date| return {:conditions=>["end > ?", date]}}
   scope :older_than, lambda{|date| return {:conditions=>["start < ?", date]}}
   scope :all_scope, lambda {{ }}
-  scope :upcoming, lambda {{:conditions => ["end >= ?", Time.now], :order => 'start, state'}}
-  scope :past, lambda {{:conditions => ["end <= ?", Time.now], :order => 'start DESC, state'}}
+  scope :upcoming, lambda {{:conditions => ["end >= ?", @@event_threshold], :order => 'start, state'}}
+  scope :past, lambda {{:conditions => ["end <= ?", @@event_threshold], :order => 'start DESC, state'}}
   scope :first_category, lambda { |category_id|
     { :order => "if( category_id = #{category_id.to_i}, 1, 0) DESC" }
   }
@@ -501,7 +503,7 @@ class Event < ActiveRecord::Base
   def past?
     return self.end < 24.hours.ago if time_tbd?
     end_datetime = self.end || self.start
-    end_datetime && (end_datetime < Time.now)
+    end_datetime && (end_datetime < @@event_threshold)
   end
 
   def in_usa?
