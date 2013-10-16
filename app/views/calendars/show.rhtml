@@ -19,6 +19,7 @@
     <div id="eventmap" class="span9" style="height:<%=@map_height%>"></div>
   </div>
   <h2 id='upcoming-events-header'>Upcoming Events</h2>
+  <small>Start times are displayed in their local time zones</small>
   <div id='event-list'></div>
   <div id='upcoming-events-footer' class='pagination-footer'>
     <%= link_to 'View all upcoming events >>', url_for(:controller => 'events', :action => 'upcoming', :permalink => @calendar.permalink) %>
