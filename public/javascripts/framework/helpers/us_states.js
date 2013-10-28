@@ -112,4 +112,11 @@ states_mapping = {
   "WY":"WYOMING"
 }
 
-state_exceptions = {PR: "Puerto Rico"}
+state_exceptions = {
+  PR: "Puerto Rico",
+  RI: "Rhode Island",
+  CO: "Colorado",
+  IL: "Illinois",
+  LA: "Louisianna",
+  MA: "Massechusetts",
+}
