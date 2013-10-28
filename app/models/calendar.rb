@@ -10,6 +10,7 @@ class Calendar < ActiveRecord::Base
   serialize :icon_past
   serialize :icon_worksite
 
+  has_one :default_category, :class_name => 'Category'
   has_one :democracy_in_action_object, :as => :synced
   has_one :hostform, :dependent => :destroy
   accepts_nested_attributes_for :hostform
@@ -54,6 +55,7 @@ class Calendar < ActiveRecord::Base
   validates_presence_of :site_id, :permalink, :name
   #before_validation :escape_permalink
   before_create :attach_to_all_calendar
+  after_create :create_default_category
   
   def as_json o={}
     o ||= {}
@@ -108,6 +110,11 @@ class Calendar < ActiveRecord::Base
     all_cal = site.calendars.find_by_permalink('all')
     return unless all_cal
     self.parent_id = all_cal.id
+  end
+
+  def create_default_category
+    default_category = Category.create({ :name => self.name, :site => self.site, :description => self.short_description, :calendar => self})
+    self.update_attribute(:default_category, default_category)
   end
   
   def get_supporter_group_keys

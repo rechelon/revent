@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620234513) do
+ActiveRecord::Schema.define(:version => 20131028194313) do
 
   create_table "attachments", :force => true do |t|
     t.string   "content_type"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20130620234513) do
     t.text     "icon_past"
     t.text     "icon_worksite"
     t.integer  "theme_id"
+    t.integer  "default_category_id"
   end
 
   add_index "calendars", ["parent_id"], :name => "index_calendars_on_parent_id"
@@ -355,6 +356,15 @@ ActiveRecord::Schema.define(:version => 20130620234513) do
   create_table "reports_sponsors", :id => false, :force => true do |t|
     t.integer "report_id"
     t.integer "sponsor_id"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string "title"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   create_table "rsvps", :force => true do |t|
