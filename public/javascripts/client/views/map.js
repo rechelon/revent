@@ -93,7 +93,7 @@ var MapView = Backbone.View.extend({
           }
         });
       },
-      getCenter: function(options, cb){
+      /*getCenter: function(options, cb){
         options = options || {};
         var mv = this;
         var in_memory_unit;
@@ -122,7 +122,7 @@ var MapView = Backbone.View.extend({
         } else {
           cb(null, revent[in_memory_unit][options.value]);
         }
-      }
+      } */
     },
     gmaps: {
       initialize_adapter: function(){
