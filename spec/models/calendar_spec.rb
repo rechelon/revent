@@ -25,9 +25,6 @@ describe Calendar do
       it "finds the reports" do
         @calendar.reports.should == [ @report ]
       end
-      it "creates a default category" do
-        @calendar.default_category.name.should == @calendar.name
-      end
     end
 
     describe 'for calendars that contain other calendars' do
