@@ -524,9 +524,13 @@ class AccountController < AccountControllerShared
       @user.forgot_password
       @user.save
       flash[:notice] = "A password reset link has been sent to your email address" 
-      redirect_to  :controller => 'account', :action => 'login', :permalink => @calendar.permalink 
     else
       flash[:notice] = "Could not find a user with that email address" 
+    end
+    if params[:redirect]
+      redirect_to params[:redirect]
+    else
+      redirect_to  :controller => 'account', :action => 'login', :permalink => @calendar.permalink 
     end
   end
 

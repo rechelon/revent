@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_filter :login_required, :except => 'login'
+  before_filter :login_required, :except => ['login', 'reset_password']
   include EventImport
 
   def login
@@ -24,6 +24,13 @@ class AdminController < ApplicationController
     end
   end
   
+  def reset_password
+    response.etag = nil
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Cache-Control"] = "no-cache"
+    render :layout => 'admin_login'
+  end
+
   def index
     @calendars = Calendar.find(:all,{:conditions=>{:site_id=>Site.current.id},:include=>[:hostform,:triggers,:categories]})
     if !current_user.site_admin?
