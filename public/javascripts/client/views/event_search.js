@@ -1,6 +1,7 @@
 var EventSearchView = Backbone.View.extend({
 
   events: {
+    'change .calendarSelect' : 'goToCalendar',
     'change .filter' :  'setFilter',
     'keyup .filter' : 'zipSearch'
   },
@@ -8,6 +9,8 @@ var EventSearchView = Backbone.View.extend({
   initialize: function(o) {
     this.collections = o.collections;
     this.categories = o.categories;
+    this.calendars = o.calendars;
+    console.log(this.calendars);
     this.mapview = o.mapview;
     _.bindAll(this,'render','getFormData');
     this.template = o.template;
@@ -28,12 +31,18 @@ var EventSearchView = Backbone.View.extend({
   getFormData: function(){
     return {
       params: this.getSearchParams(),
-      categories: this.categories
+      categories: this.categories,
+      calendars: this.calendars,
     };
   },
 
   beforeSetFilter: function(){
   
+  },
+  
+  goToCalendar: function(e){
+    var value = jq(e.target).val();
+    window.location = '/' + value;
   },
 
   zipSearch: function(e){

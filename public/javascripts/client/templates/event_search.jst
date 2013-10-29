@@ -21,6 +21,13 @@
           <%= select_field(options_for_select(categories), {filter:'category_id','class':'filter',name:'category_id', id: 'category_id'}, params.category_id) %>
         </div>
       <% } %>
+      <% if(calendars.length > 1 && window.location.pathname == '/all'){ %>
+        <div class="control-group control-group-calendar">
+          <label for="calendar" class="control-label">Event Type</label>
+          <%= select_field(options_for_select(calendars), {'class':'filter calendarSelect', name:'calendar', id: 'calendar'}) %>
+        </div>
+      <% } %>
+
       <div class="control-group">
         <img class="search-loader" src="/images/ajax-loader.gif"/>
       </div>

@@ -49,6 +49,8 @@ class Calendar < ActiveRecord::Base
 
 
   scope :current, :conditions => {:current => true}
+
+  scope :active, :conditions => ['event_end > ?', 1.day.ago]
   
   validates_uniqueness_of :permalink, :scope => :site_id
   validates_presence_of :site_id, :permalink, :name

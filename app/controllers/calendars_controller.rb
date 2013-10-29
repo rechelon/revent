@@ -10,7 +10,7 @@ class CalendarsController < ApplicationController
     redirect_to '/'+@calendar.permalink+'/' if params[:permalink].nil?
     @map_width= (params['map_width'] || '560')+'px'
     @map_height= (params['map_height'] || '400')+'px'
-
+    @calendars = Site.current.calendars.active
     if @calendar.map_engine == "osm"
       @osm_key = Host.current.cloudmade_api_key;
     end
