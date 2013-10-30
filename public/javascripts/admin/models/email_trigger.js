@@ -9,7 +9,8 @@ var EmailTrigger = Backbone.Model.extend({
       "Report Thank You":"Report Thank You",
       "Report Host Reminder":"Report Host Reminder",
       "Report Attendee Reminder":"Report Attendee Reminder",
-      "Email Nearby Supporters About New Event":"Email Nearby Supporters About New Event"
+      "Email Nearby Supporters About New Event":"Email Nearby Supporters About New Event",
+      "RSVP Notify Host": "RSVP Notify Host"
     };
   }    
 });
