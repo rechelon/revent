@@ -7,6 +7,7 @@ namespace :reminder do
     site = Site.find_by_host Site.current
     events = site.events.find(:all, :conditions => ["events.end <= ? AND events.end > ?", Time.now, 1.day.ago])
     events.each do |e|
+      next if e.reports.length > 0
       if e.calendar.triggers
         host_trigger = e.calendar.triggers.find_by_name("Report Host Reminder") 
         attendee_trigger = e.calendar.triggers.find_by_name("Report Attendee Reminder") 

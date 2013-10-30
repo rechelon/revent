@@ -281,7 +281,7 @@ class Event < ActiveRecord::Base
     trigger = calendar.triggers.find_by_name("Report Host Reminder") || Site.current.triggers.find_by_name("Report Host Reminder")
     TriggerMailer.trigger(trigger, self.host, self).deliver if trigger
   end
-  handle_asynchronously :remind_report_back, :run_at => Proc.new { |e| e.end + 5.hours }
+  #handle_asynchronously :remind_report_back, :run_at => Proc.new { |e| e.end + 5.hours }
 
   def delete_from_democracy_in_action
     return unless Site.current.config.salsa_enabled?
