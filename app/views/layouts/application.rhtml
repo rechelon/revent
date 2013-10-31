@@ -41,6 +41,15 @@
     <% else %>
             </div> <!-- /main -->
             <div id="sidebar" class="span3">
+              <% if params[:controller] == 'events' && params[:action] == 'show' %>
+                <% if @calendar.theme.rsvp_block %>
+                  <%= liquid(@calendar.theme.rsvp_block, @liquid) %>
+                <% else %>
+                  <% unless @event.past? || @event.worksite_event? %>
+                    <%= render :partial => "rsvp", :locals => { :event => @event} %>
+                  <% end %>
+                <% end %>
+              <% end %>
               <%= render :partial=>'/shared/take_action' %>
               <%= render :partial=>'/shared/manage' %>
               <%= render :partial => 'events/event_spotlight' %>

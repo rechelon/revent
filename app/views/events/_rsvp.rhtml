@@ -1,26 +1,26 @@
-<div id="event-rsvp">
-  <h3>RSVP</h3>
+<div id="event-rsvp" class='well'>
+  <h3 class='nav-header'>RSVP</h3>
 
   <h5>Please let us know you will be coming by RSVPing below.</h5>
   <div id="event-rsvp-form-container">
     <% form_for :user, :url => { :action => "rsvp", :id => event.id, :permalink=>@calendar.permalink }, 
         :html => {:id => 'event-rsvp-form', :class=>'form-horizontal'} do |f| -%>
       <div class="control-group">
-        <%= f.label 'first_name', 'First Name', :class => 'control-label' %>
+        <%= f.label 'first_name', 'First Name *', :class => 'control-label' %>
         <div class="controls">
           <%= f.text_field 'first_name', :class => "required input-large", 
             :title => "Please enter your first name." %>
         </div>
       </div>
       <div class="control-group">
-        <%= f.label 'last_name', 'Last Name', :class => 'control-label' %>
+        <%= f.label 'last_name', 'Last Name *', :class => 'control-label' %>
         <div class="controls">
           <%= f.text_field 'last_name', :class => "required input-large", 
             :title => "Please enter your last name." %>
         </div>
       </div>
       <div class="control-group">
-        <%= f.label 'email', 'Email', :class => 'control-label' %>
+        <%= f.label 'email', 'Email *', :class => 'control-label' %>
         <div class="controls">
           <%= f.text_field 'email', :class => "required input-large", 
             :title => "Please enter a valid email address." %>
@@ -42,7 +42,7 @@
         <%= hidden_field_tag "redirect", @calendar.rsvp_redirect %>
       <% end %>
       <div class="form-actions">
-        <%= submit_tag "RSVP!", :class=>'btn btn-primary' %>
+        <%= submit_tag "RSVP To This Event", :class=>'btn btn-primary' %>
       </div>
     <% end -%>
   </div>
