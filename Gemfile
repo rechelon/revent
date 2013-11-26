@@ -38,7 +38,7 @@ gem "fog", '1.0.0'
 gem "liquid"
 gem "iso_country_codes"
 gem "will_paginate", '~> 3.0.0'
-gem "acts_as_list"
+gem "acts_as_list", '0.2.0'
 gem "rails3_before_render"
 gem "timezone", "0.1.3"
 gem "delayed_job_active_record"
