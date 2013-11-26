@@ -29,7 +29,7 @@ gem 'xml-simple', '1.0.12'
 gem 'httpclient'
 gem "activerecord-activesalesforce-adapter", "~> 2.0.0"
 gem "typhoeus"
-gem "sanitize"
+gem "sanitize", "2.0.3"
 gem "hoptoad_notifier"
 gem "geocoder", '1.1.6'
 gem "carrierwave", :git => "git://github.com/Hainish/carrierwave.git", :branch => '0.5-stable', :ref => '9a6ee065e378eacad5c3fbe21749c61cf049847f'
