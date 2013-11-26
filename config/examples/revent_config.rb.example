@@ -38,6 +38,8 @@ DEFAULT_ICON_WORKSITE = {
   :anchor_y => 5
 }
 
+DEFAULT_EVENT_DISPLAY_THRESHOLD = 5
+
 SALSA_TEST_ACCOUNT = {
   :user => '',
   :pass => '',
