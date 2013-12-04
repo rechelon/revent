@@ -148,12 +148,13 @@ class Admin::UsersController < AdminController
     @query[:joins] = "LEFT JOIN user_permissions ON users.id=user_permissions.user_id LEFT JOIN sponsors_users ON users.id=sponsors_users.user_id"
     @query[:group] = "users.id"
     @users = Site.current.users.find(:all, @query)
-    @attribute_names = @users.inject([]) {|names, u| names << u.custom_attributes.map {|a| a.name }; names.flatten.compact.uniq }
+    #@attribute_names = @users.inject([]) {|names, u| names << u.custom_attributes.map {|a| a.name }; names.flatten.compact.uniq }
     require 'fastercsv'
     string = FasterCSV.generate do |csv|
-      csv << ["Email", "First_Name", "Last_Name", "Phone", "Street", "Street_2", "City", "State", "Postal_Code", "Partner_Code", "Effective Calendar", "Hosted_Events", "Events_Hosting_IDS", "Events_Attending_IDS"] + @attribute_names
+      csv << ["Email", "First Name", "Last Name", "Home Phone", "Street Address", "City", "State", "Postal Code", "Event Name", "Event Date", "International/org","Local"]#"Partner_Code", "Effective Calendar", "Hosted_Events", "Events_Hosting_IDS", "Events_Attending_IDS"] + @attribute_names
       @users.each do |user|
-        csv << [user.email, user.first_name, user.last_name, user.phone, user.street, user.street_2, user.city, user.state, user.postal_code, user.partner_id, user.effective_calendar.name] + [user.events.map{|e|e.name}.join('; '), user.event_ids.map{|id| id.to_s}.join(','), user.attending_ids.map{|id| id.to_s}.join(',') ] + @attribute_names.map {|a| user.custom_attributes_data.send(a.to_sym) }
+        event = user.attending.first
+        csv << [user.email, user.first_name, user.last_name, user.phone, (user.street || '') + ' ' + (user.street_2 || ''), user.city, user.state, user.postal_code, event && event.name, event && event.start, user.organization, event && event.custom_attributes_data.sponsor_local ] #user.partner_id, user.effective_calendar.name] + [user.events.map{|e|e.name}.join('; '), user.event_ids.map{|id| id.to_s}.join(','), user.attending_ids.map{|id| id.to_s}.join(',') ] + @attribute_names.map {|a| user.custom_attributes_data.send(a.to_sym) }
       end
     end
     send_data(string, :type => 'text/csv; charset=utf-8; header=present', :filename => "users.csv")
