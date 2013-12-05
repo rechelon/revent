@@ -1,0 +1,117 @@
+<div id="event-rsvp" class='well'>
+  <h3 class='nav-header'>RSVP</h3>
+
+  <h5>Please let us know you will be coming by RSVPing below.</h5>
+  <div id="event-rsvp-form-container">
+    <% form_for :user, :url => { :action => "rsvp", :id => event.id, :permalink=>@calendar.permalink }, 
+        :html => {:id => 'event-rsvp-form', :class=>'form-horizontal'} do |f| -%>
+      <div class="control-group">
+        <%= f.label 'first_name', 'First Name *', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field 'first_name', :class => "required input-large", 
+            :title => "Please enter your first name." %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label 'last_name', 'Last Name *', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field 'last_name', :class => "required input-large", 
+            :title => "Please enter your last name." %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label 'email', 'Email *', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field 'email', :class => "required input-large", 
+            :title => "Please enter a valid email address." %>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <%= f.label 'street', 'Address *', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field 'street', :class => "required input-large", 
+            :title => "Please enter a valid address." %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label 'city', 'City *', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field 'city', :class => "required input-large", 
+            :title => "Please enter a city." %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label 'state', 'State *', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field 'State', :class => "required input-small", 
+            :title => "Please enter a state." %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label 'postal_code', 'Zip/Postal Code *', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field 'postal_code', :class => "required input-small",
+            :title => "Please enter a zip code" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label 'phone', 'Phone', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field 'phone', :class => "input-large" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label 'organization', 'Union/Organization', :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field 'organization', :class => "input-large" %>
+        </div>
+      </div>
+      <% if @calendar.rsvp_redirect %>
+        <%= hidden_field_tag "redirect", @calendar.rsvp_redirect %>
+      <% end %>
+      <div class="form-actions">
+        <%= submit_tag "RSVP To This Event", :class=>'btn btn-primary' %>
+      </div>
+    <% end -%>
+  </div>
+  <div id="fb-rsvp-header">
+    <a id="fb-rsvp-btn" class="btn">
+      <img src="/images/fb-icon.png" />
+      &nbsp;RSVP on Facebook
+    </a>
+  </div>
+
+  <div id="fb-rsvp" style="display:none">
+    <a href='' id='regular-rsvp-btn'>Don't want to use facebook? Click here for the regular RSVP form.</a>
+    <iframe  src="http://www.facebook.com/plugins/registration.php?
+        client_id=<%= Host.current.fb_app_id  %>&
+        redirect_uri=<%= url_for :controller=>:events, :action=>:fb_rsvp, :id=>event.id, :permalink=>@calendar.permalink, :only_path => false%>&
+        fields=[{'name':'name'},{'name':'email'},{'name':'phone','description':'Phone','type':'text'},{'name':'zip_code','description':'Zip/Postal Code','type':'text'}]"
+      scrolling="auto"
+      frameborder="no"
+      style="border:none"
+      allowTransparency="true"
+      width="100%"
+      height="330">
+    </iframe>
+  </div>
+</div>
+
+<script type="text/javascript" language="javascript">
+  var valid = new Validation("event-rsvp-form", {useTitles : true});
+  jq(function() {
+    jq('#fb-rsvp-btn').click(function(){
+      jq('#fb-rsvp-header').hide();
+      jq('#event-rsvp-form-container').hide();
+      jq('#fb-rsvp').show();
+      return false;
+    });
+    jq('#regular-rsvp-btn').click(function(){
+      jq('#fb-rsvp-header').show();
+      jq('#event-rsvp-form-container').show();
+      jq('#fb-rsvp').hide();
+      return false;
+    });
+  });
+</script>

@@ -133,6 +133,7 @@ class EventsController < ApplicationController
 
     unless @event.past? || @event.worksite_event?
       @liquid[:rsvp] = render_to_string :partial=>'/events/rsvp', :locals => { :event => @event}
+      @liquid[:rsvp_long] = render_to_string :partial=>'/events/rsvp_long', :locals => { :event => @event}
     end
 
     if @calendar.map_engine == "osm"
