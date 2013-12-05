@@ -87,7 +87,13 @@ class AdminController < ApplicationController
       rescue Exception=>e
         @errors << "Couldn't process datetime for event with id: " + id_field
       end
- 
+      
+      if row[LOCATION_FIELD].blank?
+        location = [row[STREET_NUMBER], row[STREET_NUMBER_HALF], row[STREET_PREFIX], row[STREET_NAME], row[STREET_SUFFIX], row[APT_TYPE], row[APT_NO]].join(' ')
+      else
+        location = row[LOCATION_FIELD]
+      end
+
       #deduplication
       if Event.find_by_start_and_location_and_postal_code start_date, row[LOCATION_FIELD], row[POSTAL_CODE_FIELD]
         @dupes << "Detected duplicate event with id: " + id_field
@@ -150,19 +156,20 @@ class AdminController < ApplicationController
         :description => row[DESCRIPTION_FIELD],
         :short_description => row[SHORT_DESCRIPTION_FIELD],
         :directions => row[DIRECTIONS_FIELD],
-        :location=> row[LOCATION_FIELD],
         :city => row[CITY_FIELD],
         :state => row[STATE_FIELD],
         :postal_code => row[POSTAL_CODE_FIELD],
         :fb_id => row[FB_EVENT_ID_FIELD],
+        :organization => row[ORG_NAME],
+        :location=> location,
         :start => start_date,
         :end => end_date,
         :supress_end_time => supress_end_time
       )
-
-      e.locationless = true unless(row[LOCATION_FIELD] && row[CITY_FIELD] && row[STATE_FIELD] && row[POSTAL_CODE_FIELD])      
+      
+      e.custom_attributes_data = {:external_id => row[ID_FIELD]}
+      e.locationless = true unless((row[LOCATION_FIELD] || row[STREET_NAME]) && row[CITY_FIELD] && row[STATE_FIELD] && row[POSTAL_CODE_FIELD])      
       e.suppress_email = true
-
       if not e.valid?
         @errors << "Event not valid for id: " + id_field
         e.errors.each do |err|
