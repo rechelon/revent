@@ -16,6 +16,7 @@
   <%= "<h4 id='worksite_header'>This event is a worksite action.</h4>" if @event.worksite_event?%>
   <h2><%= scrub @event.city_state %></h2>
   <h3 class="start"><%= event_date_range(@event) %></h3>
+  The event time is based on its local time zone.
   <% if @event.host && !@event.worksite_event?%>
     <p>Hosted by <%= link_to liquid_or_default(@calendar.theme.host_name, @event.host_public_full_name, @liquid), :permalink => @calendar.permalink,:action => :host, :id => @event %></p>
     <% if @event.host.show_phone_on_host_profile and @event.host.phone %>
