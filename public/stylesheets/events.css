@@ -371,3 +371,10 @@ text-align:right;
 #forgot-password-link, .add-photo-link, .add-video-link, .add-press-link{
   cursor: pointer;
 }
+#event-rsvp.well {
+background: none;
+border: none;
+box-shadow: none;
+-moz-box-shadow: none;
+-webkit-box-shadow: none;
+}
