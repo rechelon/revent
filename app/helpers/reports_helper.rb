@@ -5,7 +5,9 @@ module ReportsHelper
     image ? image_tag(image.public_filename(:list)) : nil
   end
 
-  def events_select
-    @calendar.events.reportable.newer_than(@calendar.past_event_cutoff - 60.days).all(:order=>"state,city").collect {|e| [truncate("#{e.state || e.country} - #{e.city} - #{e.start.strftime('%m/%d/%y')}: #{e.name}",:length => 70), e.id]}
+  def events_select(user)
+    user.events.reportable.newer_than(@calendar.past_event_cutoff - 60.days).all(:order=>"state,city").collect {|e| [truncate("#{e.state || e.country} - #{e.city} - #{e.start.strftime('%m/%d/%y')}: #{e.name}",:length => 70), e.id]} \
+    | \
+    user.attending.reportable.newer_than(@calendar.past_event_cutoff - 60.days).all(:order=>"state,city").collect {|e| [truncate("#{e.state || e.country} - #{e.city} - #{e.start.strftime('%m/%d/%y')}: #{e.name}",:length => 70), e.id]}
   end
 end

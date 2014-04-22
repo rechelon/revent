@@ -14,7 +14,7 @@
         <span class="req">*</span>Select Your Event
       </label>
       <div class="controls">
-        <%= f.select 'event_id', events_select, {:include_blank => true}, {:class => 'input-large validate-selection'} %>
+        <%= f.select 'event_id', events_select(@user), {:include_blank => true}, {:class => 'input-large validate-selection'} %>
       </div>
     </div>
     <div class="control-group">
