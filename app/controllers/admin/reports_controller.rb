@@ -56,7 +56,7 @@ class Admin::ReportsController < AdminController
     require 'fastercsv'
     string = FasterCSV.generate do |csv| 
       # Report Headers
-      header_row = ['Published','Report Created','Reporter Name','Reporter Email','Text','Text2','Attendees','Attachment Count','Embeds Count']
+      header_row = ['Published','Report Created','Reporter Name','Reporter Email','Text','Text2','Attendees','Attachment Count','Embeds Count', 'Video Links', 'Image Links', 'Press Links', 'Text 3', 'Text 4']
       # Event Headers
       header_row.concat ["Event ID", "Event Name", "Start Date", "Start Time", "Address", "City", "State",
               "Postal Code", "District", "Directions","Short Description", "Long Description", "Host Name", "Host Email", "Host Phone",
@@ -68,7 +68,7 @@ class Admin::ReportsController < AdminController
       @reports.each do |report|
         event = report.event
         host = event.host
-        row = [(report.published? ? 'yes':'no'),report.created_at.to_s(:db),report.reporter_name,report.reporter_email,report.text,report.text2,report.attendees,report.attachments.count,report.embeds.count]
+        row = [(report.published? ? 'yes':'no'),report.created_at.to_s(:db),report.reporter_name,report.reporter_email,report.text,report.text2,report.attendees,report.attachments.count,report.embeds.count,report.video_links,report.image_links,report.press_links_for_export,report.text3,report.text4]
         row.concat [event.id, event.name, event.start.strftime("%m/%d/%Y"), event.start_time,
                 event.location, event.city, event.state, event.postal_code, event.district,
                 event.directions, event.short_description, event.description,

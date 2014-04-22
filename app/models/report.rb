@@ -40,6 +40,18 @@ class Report < ActiveRecord::Base
       :methods => :primary_image
     }.merge o)
   end
+
+  def press_links_for_export
+    self.press_links.map(&:url).join ' '
+  end
+  
+  def image_links
+    self.attachments.map{|a| 'http://' + Site.current.host.hostname + a.public_filename}.join ' '
+  end
+
+  def video_links
+    self.embeds.map(&:html).join ' '
+  end
   
   def update_calendar
     self.calendar_id = self.event.calendar_id

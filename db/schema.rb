@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620234513) do
+ActiveRecord::Schema.define(:version => 20140422042318) do
 
   create_table "attachments", :force => true do |t|
     t.string   "content_type"
@@ -346,6 +346,8 @@ ActiveRecord::Schema.define(:version => 20130620234513) do
     t.boolean  "featured"
     t.text     "text2"
     t.integer  "calendar_id"
+    t.text     "text3"
+    t.text     "text4"
   end
 
   add_index "reports", ["calendar_id"], :name => "index_reports_on_calendar_id"
