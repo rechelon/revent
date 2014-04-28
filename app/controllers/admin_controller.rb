@@ -109,7 +109,11 @@ class AdminController < ApplicationController
       supress_end_time = false
       if row[END_TIME_FIELD].blank?
         end_date = "#{end_date} #{start_time}"
-        end_date = end_date.to_datetime + 2.hours
+        begin
+          end_date = end_date.to_datetime + 2.hours
+        rescue
+          @errors << "Couldn't process datetime for event with id: " + id_field
+        end
       elsif row[END_TIME_FIELD].downcase.strip == 'null'
         end_date = "#{end_date} #{start_time}"
         end_date = end_date.to_datetime + 2.hours
