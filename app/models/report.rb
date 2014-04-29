@@ -46,7 +46,7 @@ class Report < ActiveRecord::Base
   end
   
   def image_links
-    self.attachments.map{|a| a && ('http://' + Site.current.host.hostname + a.public_filename) || ""}.join ' '
+    self.attachments.map{|a| a && ('http://' + Site.current.host.hostname.to_s + a.public_filename.to_s) || ""}.join ' '
   end
 
   def video_links

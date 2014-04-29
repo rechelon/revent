@@ -28,7 +28,7 @@
       <%= render :partial => 'account/profile_form', :locals =>{ :f =>f } %>
     <% end %>
     <div id="event-information">
-      <h3>Action Information</h3>
+      <h3> <%=liquid_or_default(@calendar.theme.event_alias, "Action").capitalize %> Information</h3>
       <div class="required-fields"><span class="req">*</span>Required fields</div>
       <div id="event-host-form">
         <% if !@profile_complete %>

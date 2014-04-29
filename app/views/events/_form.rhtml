@@ -32,7 +32,7 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="dataEvent_Name"><span class="req">*</span>Action Title:</label>
+    <label class="control-label" for="dataEvent_Name"><span class="req">*</span><%=liquid_or_default(@calendar.theme.event_alias, "Action").capitalize %> Title:</label>
     <div class="controls">
       <%= f.text_field "name", :id => "dataEvent_Name", :maxlength => "64", :class => "input-large required inputStyle" %>
     </div>              
@@ -87,7 +87,7 @@
 <%= liquid_or_default(@calendar.theme.event_form_after_info, "", @liquid) %>
 
 <div id="events-form-details">
-  <h3>Action Details</h3>
+  <h3> <%= liquid_or_default(@calendar.theme.event_alias, "Action").capitalize %> Details</h3>
   <div id="host-form-intro-text" class="intro-text">
     <% if @hostform and @hostform.event_info_text %>
       <%= @hostform.event_info_text %>
@@ -140,7 +140,7 @@
           </label>
           <label class="radio" id="radio-control-worksite"> 
             <%= f.radio_button :privacy_level, 'worksite' %>
-            This event is a worksite action, so only date, time, city, state, and sponsoring union and local will appear.
+            This event is a worksite <%= liquid_or_default(@calendar.theme.event_alias, "action") %>, so only date, time, city, state, and sponsoring union and local will appear.
           </label>
           <label class="radio" id="radio-control-private">
             <%= f.radio_button :privacy_level, 'private' %>
