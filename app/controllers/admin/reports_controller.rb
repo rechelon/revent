@@ -56,7 +56,7 @@ class Admin::ReportsController < AdminController
     require 'fastercsv'
     string = FasterCSV.generate do |csv| 
       # Report Headers
-      header_row = ['Published','Report Created','Reporter Name','Reporter Email','Text','Text2','Attendees','Attachment Count','Embeds Count', 'Video Links', 'Image Links', 'Press Links', 'Text 3', 'Text 4']
+      header_row = ['Published','Report Created','Reporter Name','Reporter Email','Text','Text2','Attendees','Attachment Count','Embeds Count', 'Video Links', 'Image Links', 'Press Links', 'Module Used', 'Connected Campaign']
       # Event Headers
       header_row.concat ["Event ID", "Event Name", "Start Date", "Start Time", "Address", "City", "State",
               "Postal Code", "District", "Directions","Short Description", "Long Description", "Host Name", "Host Email", "Host Phone",
