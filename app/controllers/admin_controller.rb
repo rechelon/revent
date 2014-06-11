@@ -217,10 +217,10 @@ class AdminController < ApplicationController
     if params[:object] == "attendees":
       events = calendar.events
       csv_string = FasterCSV.generate do |csv| 
-        csv << ["INTERNATIONAL", "LOCAL", "LAST NAME", "FIRST NAME", "ADDRESS", "CITY", "STATE", "ZIP CODE", "WORK PHONE", "HOME PHONE", "CELL PHONE", "EMAIL", "EVENT", "EVENT DATE", "EVENT HOST", "EVENT STATE", "EVENT EXTERNAL ID", "SHIFT", "STATUS", "VOLUNTEER ACTIVITY", "PARTNER ID"] 
+        csv << ["INTERNATIONAL", "LOCAL", "LAST NAME", "FIRST NAME", "ADDRESS", "ADDRESS LINE 2", "CITY", "STATE", "ZIP CODE", "WORK PHONE", "HOME PHONE", "CELL PHONE", "EMAIL", "EVENT ID", "EVENT", "EVENT DATE", "EVENT HOST", "EVENT LOCATION", "EVENT CITY", "EVENT STATE", "EVENT ZIP", "EVENT EXTERNAL ID", "SHIFT", "STATUS", "VOLUNTEER ACTIVITY", "PARTNER ID"] 
         events.each do |e|
           e.attendees.each do |u|
-            csv << ["null", "null", u.last_name, u.first_name, u.street, u.city, u.state, u.postal_code, "null", u.phone, "null", u.email, e.name, e.start, e.host.email, e.street, e.fb_id, "null", "null", "null", u.partner_id] 
+            csv << ["null", "null", u.last_name, u.first_name, u.street, u.street_2, u.city, u.state, u.postal_code, "null", u.phone, "null", u.email, e.id, e.name, e.start, e.host.email, e.location, e.city, e.state, e.postal_code, e.fb_id, "null", "null", "null", u.partner_id] 
           end
         end
       end
