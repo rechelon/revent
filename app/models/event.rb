@@ -279,7 +279,7 @@ class Event < ActiveRecord::Base
     calendar = self.calendar
     Site.current = calendar.site
     trigger = calendar.triggers.find_by_name("Report Host Reminder") || Site.current.triggers.find_by_name("Report Host Reminder")
-    TriggerMailer.trigger(trigger, self.host, self).deliver if trigger
+    #TriggerMailer.trigger(trigger, self.host, self).deliver if trigger
   end
   #handle_asynchronously :remind_report_back, :run_at => Proc.new { |e| e.end + 5.hours }
 
