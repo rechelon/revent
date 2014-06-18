@@ -100,6 +100,11 @@ class AccountController < AccountControllerShared
 
   def login
     @permalink = params[:permalink] ? params[:permalink] : nil
+    if @permalink
+      @action_url = '/' + @permalink + '/account/forgot_password'
+    else
+      @action_url = '/account/forgot_password'
+    end
     @email = params[:email]
     return unless request.post?
     self.current_user = User.authenticate(params[:email], params[:password])

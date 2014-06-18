@@ -30,7 +30,7 @@
   <div id="remind" style="display:none;">
     <p>Enter your e-mail address below and we will send you a link to reset your password.</p>
     <p>If you don't receive the requested password in your e-mail, check to see if it got trapped by a spam filter or got stuck in your "Junk E-Mail Folder"</p>
-    <%= form_tag "/#{permalink}/account/forgot_password" do %>
+    <%= form_tag @action_url do %>
       <% if @permalink %>
         <%= hidden_field_tag 'permalink', @permalink %>
       <% end %>
