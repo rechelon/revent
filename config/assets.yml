@@ -26,6 +26,7 @@ javascripts:
   public:
     - public/javascripts/prototype.js
     - public/javascripts/validation.js
+    - public/javascripts/jquery.validate.min.js
     - public/javascripts/application.js
     - public/javascripts/popup.js
     - public/javascripts/login_popup.js

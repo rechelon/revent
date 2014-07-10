@@ -7,6 +7,7 @@ class AccountController < AccountControllerShared
   end
 
   def index
+	return
     redirect_to(:action => 'signup') unless logged_in? || User.count > 0
     redirect_to manage_account_path(:permalink => @calendar.permalink)
   end
@@ -100,6 +101,11 @@ class AccountController < AccountControllerShared
 
   def login
     @permalink = params[:permalink] ? params[:permalink] : nil
+    if @permalink
+      @action_url = '/' + @permalink + '/account/forgot_password'
+    else
+      @action_url = '/account/forgot_password'
+    end
     @email = params[:email]
     return unless request.post?
     self.current_user = User.authenticate(params[:email], params[:password])
